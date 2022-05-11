@@ -1,7 +1,7 @@
 <script>
 var ua=navigator.userAgent,
 	fwv=ua.substring(ua.indexOf("5.0 (")+19,ua.indexOf(") Apple"));
-if(fwv==="4.88" ){
+if(fwv==="4.89" ){
 	var toc_addr=0x6F5558,
 	default_vsh_pub_toc=0x6ED5AC,
 	vsh_opd_patch=0x96D5C,
@@ -47,7 +47,7 @@ if(fwv==="4.88" ){
 	gadget_mod15_addr=0x39D038,
 	gadget_mod16_addr=0x4F732C;} 
 	else 
-	{document.write("<html><h1><span style='color:red'>You must install Hybrid Firmware (HFW 4.88.1) before installing HEN!</br>Вы должны установить HFW 4.88.1 перед установкой HEN!</br>Текущая FW: "+fwv+" </h1></span></html>");
+	{document.write("<html><h1><span style='color:red'>You must install Hybrid Firmware (HFW 4.89.1) before installing HEN!</br>Вы должны установить HFW 4.89.1 перед установкой HEN!</br>Текущая FW: "+fwv+" </h1></span></html>");
 	Return}
 var xtra_data,
 	stack_frame,
