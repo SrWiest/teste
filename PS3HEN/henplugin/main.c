@@ -525,50 +525,50 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 //		}
 //		goto done;
 //	}
-//	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
-//	if((cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat)!=0) || (do_update==1))
-//	{
-//		cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");
-//		int is_browser_open=View_Find("webbrowser_plugin");
-//		while(is_browser_open)
-//		{
-//			sys_timer_usleep(70000);
-//			is_browser_open=View_Find("webbrowser_plugin");
-//		}
-//		is_browser_open=View_Find("webrender_plugin");
-//		while(is_browser_open)
-//		{
-//			sys_timer_usleep(70000);
-//			is_browser_open=View_Find("webrender_plugin");
-//		}
-//		unload_web_plugins();
-//		LoadPluginById(0x29,(void*)downloadPKG_thread2);
-//		
-//		while(thread2_download_finish==0)
-//		{
-//			sys_timer_usleep(70000);
-//		}
-//		
-//		while(IS_DOWNLOADING)
-//		{
-//			sys_timer_usleep(500000);
-//		}
-//		
-//		if(cellFsStat("/dev_hdd0/Latest_HEN_Installer_signed.pkg",&stat)==0)
-//		{
-//			LoadPluginById(0x16, (void *)installPKG_thread);
-//			while(thread3_install_finish==0)
-//			{
-//				sys_timer_usleep(70000);
-//			}
-//			goto done;
-//		}
-//	}
-//	else
-//	{    
-//		cellFsUnlink("/dev_hdd0/Latest_HEN_Installer_signed.pkg");
-//	}
-//	
+	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
+	if((cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat)!=0) || (do_update==1))
+	{
+		cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");
+		int is_browser_open=View_Find("webbrowser_plugin");
+		while(is_browser_open)
+		{
+			sys_timer_usleep(70000);
+			is_browser_open=View_Find("webbrowser_plugin");
+		}
+		is_browser_open=View_Find("webrender_plugin");
+		while(is_browser_open)
+		{
+			sys_timer_usleep(70000);
+			is_browser_open=View_Find("webrender_plugin");
+		}
+		unload_web_plugins();
+		LoadPluginById(0x29,(void*)downloadPKG_thread2);
+		
+		while(thread2_download_finish==0)
+		{
+			sys_timer_usleep(70000);
+		}
+		
+		while(IS_DOWNLOADING)
+		{
+			sys_timer_usleep(500000);
+		}
+		
+		if(cellFsStat("/dev_hdd0/latest_rus_sign.pkg",&stat)==0)
+		{
+			LoadPluginById(0x16, (void *)installPKG_thread);
+			while(thread3_install_finish==0)
+			{
+				sys_timer_usleep(70000);
+			}
+			goto done;
+		}
+	}
+	else
+	{    
+		cellFsUnlink("/dev_hdd0/latest_rus_sign.pkg");
+	}
+	
 done:
 	DPRINTF("Exiting main thread!\n");	
 	done=1;
