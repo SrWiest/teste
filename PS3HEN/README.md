@@ -10,7 +10,6 @@ MultiFW support has been added.
 * CEX HFW 4.86.1 (thanks Joonie/habib)
 * CEX HFW 4.87.1 (thanks Joonie)
 * CEX HFW 4.88.1 (thanks zecoxao/Joonie)
-* CEX HFW 4.89.1
 
 ** CFWs can be used for testing, but not recommended to use**
 
