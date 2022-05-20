@@ -16,4 +16,7 @@ del /q ps3hen_!nm:.=!.pkg
 if exist "ps3hen_!nm:.=!.pkg" echo !nm! PKG done
 echo.
 )
+ren ps3hen_4891.pkg_signed.pkg r.pkg
+ren ps3hen_4892.pkg_signed.pkg l.pkg
+ren ps3hen_4893.pkg_signed.pkg b.pkg
 pause
