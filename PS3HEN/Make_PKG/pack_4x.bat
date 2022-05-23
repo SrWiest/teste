@@ -8,11 +8,7 @@ setlocal EnabledelayedExpansion
 :: Change these for your application / manual...
 set CID=CUSTOM-INSTALLER_00-0000000000000000
 
-<<<<<<< HEAD
 for /D %%A in (4.89.4) do (
-=======
-for /D %%A in (4.89.?) do (
->>>>>>> 6ed91b7dc087ce0826141bfa5c9709adba02153e
 set nm=%%A
 make_package_custom.exe --contentid %CID% ./%%A/ ps3hen_!nm:.=!.pkg
 echo | ps3xploit_rifgen_edatresign ps3hen_!nm:.=!.pkg ps3 >> NUL
