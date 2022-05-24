@@ -232,8 +232,16 @@ static void reload_xmb(void)
 	{
 		sys_timer_usleep(70000);
 	}
+	explore_interface->ExecXMBcommand("reload_category_items game",0,0);
 	explore_interface->ExecXMBcommand("reload_category game",0,0);
 	explore_interface->ExecXMBcommand("reload_category network",0,0);
+	explore_interface->ExecXMBcommand("reload_category photo",0,0);
+	explore_interface->ExecXMBcommand("reload_category tv",0,0);
+	explore_interface->ExecXMBcommand("reload_category music",0,0);
+	explore_interface->ExecXMBcommand("reload_category video",0,0);
+	explore_interface->ExecXMBcommand("reload_category user",0,0);
+	explore_interface->ExecXMBcommand("reload_category psn",0,0);
+	explore_interface->ExecXMBcommand("reload_category friend",0,0);
 }
 
 static inline void _sys_ppu_thread_exit(uint64_t val)
@@ -309,7 +317,7 @@ static void downloadPKG_thread2(void)
 	{
 		download_interface = (download_plugin_interface *)plugin_GetInterface(View_Find("download_plugin"), 1);
 	}
-	show_msg((char *)"Скачиваю последний HENpkg");
+	show_msg((char *)"Скачиваю последний HEN.pkg");
 	uint64_t val=peekq(0x80000000002FCB68ULL);
 	if(val==0x323031372F30382FULL) 
 		{
@@ -338,7 +346,7 @@ static void downloadPKG_thread2(void)
 	else if(val==0x323032322F30352FULL)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
-		}	
+		}		
 	thread2_download_finish=1;
 }
 
@@ -405,7 +413,7 @@ int hen_updater(void)
     }
  
 	strcpy(RequestBuffer, "GET ");
-    strcat(RequestBuffer, "/hen/hen_version.bin");
+    strcat(RequestBuffer, "/hen_version.bin");
     strcat(RequestBuffer, " HTTP/1.0\r\n");
 	strcat(RequestBuffer, "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134\r\n");
     strcat(RequestBuffer, "Accept-Language: en-US\r\n");
@@ -514,60 +522,60 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	restore_act_dat();
 	CellFsStat stat;
 	
-//	if(cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0)
-//	{
-//		memset(pkg_path,0,256);
-//		strcpy(pkg_path,"/dev_usb000/HEN_UPD.pkg");
-//		LoadPluginById(0x16, (void *)installPKG_thread);
-//		while(thread3_install_finish==0)
-//		{
-//			sys_timer_usleep(70000);
-//		}
-//		goto done;
-//	}
-//	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
-//	if((cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat)!=0) || (do_update==1))
-//	{
-//		cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");
-//		int is_browser_open=View_Find("webbrowser_plugin");
-//		while(is_browser_open)
-//		{
-//			sys_timer_usleep(70000);
-//			is_browser_open=View_Find("webbrowser_plugin");
-//		}
-//		is_browser_open=View_Find("webrender_plugin");
-//		while(is_browser_open)
-//		{
-//			sys_timer_usleep(70000);
-//			is_browser_open=View_Find("webrender_plugin");
-//		}
-//		unload_web_plugins();
-//		LoadPluginById(0x29,(void*)downloadPKG_thread2);
-//		
-//		while(thread2_download_finish==0)
-//		{
-//			sys_timer_usleep(70000);
-//		}
-//		
-//		while(IS_DOWNLOADING)
-//		{
-//			sys_timer_usleep(500000);
-//		}
-//		
-//		if(cellFsStat("/dev_hdd0/latest_rus_sign.pkg",&stat)==0)
-//		{
-//			LoadPluginById(0x16, (void *)installPKG_thread);
-//			while(thread3_install_finish==0)
-//			{
-//				sys_timer_usleep(70000);
-//			}
-//			goto done;
-//		}
-//	}
-//	else
-//	{    
-//		cellFsUnlink("/dev_hdd0/latest_rus_sign.pkg");
-//	}
+	if(cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0)
+	{
+		memset(pkg_path,0,256);
+		strcpy(pkg_path,"/dev_usb000/HEN_UPD.pkg");
+		LoadPluginById(0x16, (void *)installPKG_thread);
+		while(thread3_install_finish==0)
+		{
+			sys_timer_usleep(70000);
+		}
+		goto done;
+	}
+	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
+	if((cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat)!=0) || (do_update==1))
+	{
+		cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");
+		int is_browser_open=View_Find("webbrowser_plugin");
+		while(is_browser_open)
+		{
+			sys_timer_usleep(70000);
+			is_browser_open=View_Find("webbrowser_plugin");
+		}
+		is_browser_open=View_Find("webrender_plugin");
+		while(is_browser_open)
+		{
+			sys_timer_usleep(70000);
+			is_browser_open=View_Find("webrender_plugin");
+		}
+		unload_web_plugins();
+		LoadPluginById(0x29,(void*)downloadPKG_thread2);
+		
+		while(thread2_download_finish==0)
+		{
+			sys_timer_usleep(70000);
+		}
+		
+		while(IS_DOWNLOADING)
+		{
+			sys_timer_usleep(500000);
+		}
+		
+		if(cellFsStat("/dev_hdd0/latest_rus_sign.pkg",&stat)==0)
+		{
+			LoadPluginById(0x16, (void *)installPKG_thread);
+			while(thread3_install_finish==0)
+			{
+				sys_timer_usleep(70000);
+			}
+			goto done;
+		}
+	}
+	else
+	{    
+		cellFsUnlink("/dev_hdd0/latest_rus_sign.pkg");
+	}
 	
 done:
 	DPRINTF("Exiting main thread!\n");	

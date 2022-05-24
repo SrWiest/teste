@@ -584,8 +584,8 @@ void ecdsa_sign(u8 *hash, u8 *R, u8 *S)
 //#define CB_LOCATION "/dev_habib/rebug/cobra/stage2.cex"
 
 #define COBRA_VERSION		0x0F
-#define COBRA_VERSION_BCD	0x0810
-#define HEN_REV				0x0310
+#define COBRA_VERSION_BCD	0x0830
+#define HEN_REV				0x0311
 
 #if defined(FIRMWARE_4_82)
 	#define FIRMWARE_VERSION	0x0482
@@ -602,7 +602,7 @@ void ecdsa_sign(u8 *hash, u8 *R, u8 *S)
 #elif defined(FIRMWARE_4_87)
 	#define FIRMWARE_VERSION	0x0487	
 #elif defined(FIRMWARE_4_88)
-	#define FIRMWARE_VERSION	0x0488
+	#define FIRMWARE_VERSION	0x0488	
 #elif defined(FIRMWARE_4_89)
 	#define FIRMWARE_VERSION	0x0489	
 #endif
@@ -1701,7 +1701,7 @@ static INLINE void apply_kernel_patches(void)
 	hook_function_with_precall(get_syscall_address(804),sys_fs_close,1);
 	hook_function_with_precall(get_syscall_address(802),sys_fs_read,4);
 	#endif
-	#if defined (FIRMWARE_4_82) ||  defined (FIRMWARE_4_84) ||  defined (FIRMWARE_4_85) ||  defined (FIRMWARE_4_86) ||  defined (FIRMWARE_4_87) ||  defined (FIRMWARE_4_88) ||  defined (FIRMWARE_4_89)
+	#if defined (FIRMWARE_4_82) || defined (FIRMWARE_4_84) || defined (FIRMWARE_4_85) || defined (FIRMWARE_4_86) || defined (FIRMWARE_4_87) || defined (FIRMWARE_4_88) || defined (FIRMWARE_4_89)
 	hook_function_with_cond_postcall(um_if_get_token_symbol,um_if_get_token,5);
 	hook_function_with_cond_postcall(update_mgr_read_eeprom_symbol,read_eeprom_by_offset,3);
 	#endif
@@ -1742,10 +1742,18 @@ int main(void)
 			ecdsa_set_priv();
 			
 #endif
-	cellFsUnlink("/dev_hdd0/hen/hfw_settings.xml"); // to avoid conflict for remap fix
-	cellFsUnlink("/dev_hdd0/hen/xml/hfw_settings.xml");// Cleanup Old HEN Files
-	cellFsUnlink("/dev_hdd0/hen/xml/ps3hen_updater.xml");// Cleanup Old HEN Files
-	map_first_slot("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml");//2.3.3+
+// Cleanups
+	cellFsUnlink("/dev_hdd0/tmp/explore/nsx/db.xml");// Cleanup for custom What's New.
+	cellFsUnlink("/dev_hdd0/tmp/explore/xil2");// Cleanup for custom Xil items.
+	cellFsUnlink("/dev_hdd0/hen/pro_features.xml"); // Remap Fix.
+
+// Remaps
+	map_path_slot("/dev_flash/vsh/module/xmb_plugin.sprx","/dev_flash/vsh/resource/AAA/xmb_plugin.sprx",0);// Shows IP Information on XMB™.
+	map_path_slot("/dev_flash/vsh/module/explore_plugin.sprx","/dev_flash/vsh/resource/AAA/explore_plugin.sprx",1);// Enables Custom What's New and Ads.
+	map_path_slot("/dev_flash/vsh/resource/explore/icon/hen_enable.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",2);// Switches the HEN Logo.
+	map_path_slot("/dev_hdd0/hen/webman_features.xml","/dev_flash/vsh/resource/explore/xmb/category_webman_features.xml",4);// Toggles webMAN Features Items. (Only When webMAN is Installed)
+	map_path_slot("/dev_hdd0/hen/hen_enable.xml","/dev_flash/hen/xml/hen_enabled.xml",6);//Switches the HEN Logo to Custom What's New.
+	
 	storage_ext_init();
 	modules_patch_init();
 //	drm_init();
