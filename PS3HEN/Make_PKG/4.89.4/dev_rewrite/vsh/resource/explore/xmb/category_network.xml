@@ -15,6 +15,11 @@
 				/>
 			<Query
 				class="type:x-xmb/folder-pixmap"
+				key="file_explorer" 
+				src="xmb://localhost/dev_flash/hen/xml/File_Manager.xml#seg_file_manager_items"
+				/>	
+			<Query
+				class="type:x-xmb/folder-pixmap"
 				key="seg_ps3xploit_site"
 				attr="seg_ps3xploit_site"
 				src="#seg_ps3xploit_site"

@@ -210,6 +210,15 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
+			<Table key="dump_psid">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_psid.png</String></Pair>
+				<Pair key="title"><String>Дамп PSID</String></Pair>
+				<Pair key="info"><String>Сохраняет PSID в лог-файл</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>dump_psid</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
 			<Table key="log_klic">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_log_klicense.png</String></Pair>
 				<Pair key="title"><String>Журнал использования KLicense</String></Pair>
@@ -252,6 +261,7 @@
 			<Item class="type:x-xmb/module-action" key="view_clog"			attr="view_clog"/>
 			<Item class="type:x-xmb/module-action" key="clean_log"			attr="clean_log"/>
 			<Item class="type:x-xmb/module-action" key="dump_idps"			attr="dump_idps"/>
+			<Item class="type:x-xmb/module-action" key="dump_psid"			attr="dump_psid"/>
 			<Item class="type:x-xmb/module-action" key="log_klic"			attr="log_klic"/>
 			<Item class="type:x-xmb/module-action" key="log_secureid"		attr="log_secureid"/>
 			<Item class="type:x-xmb/module-action" key="dump_disc_key"		attr="dump_disc_key"/>
