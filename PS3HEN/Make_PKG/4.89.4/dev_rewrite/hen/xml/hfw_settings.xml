@@ -95,7 +95,7 @@
 		<Attributes>
 			<Table key="soft_reboot_action">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/power_soft.png</String></Pair>
-				<Pair key="title_rsc"><String>★ Софтребут</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_soft_reboot</String></Pair>
 				<Pair key="info_rsc"><String></String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>soft_reboot_action</String></Pair>
@@ -105,7 +105,7 @@
 			</Table>
 			<Table key="hard_reboot_action">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/power_full.png</String></Pair>
-				<Pair key="title_rsc"><String>★ Хардребут</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_hard_reboot</String></Pair>
 				<Pair key="info_rsc"><String></String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>hard_reboot_action</String></Pair>
@@ -115,7 +115,7 @@
 			</Table>
 			<Table key="power_off_action">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/power_off.png</String></Pair>
-				<Pair key="title_rsc"><String>★ Выключить PS3</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_power_off</String></Pair>
 				<Pair key="info_rsc"><String></String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>power_off_action</String></Pair>
@@ -159,8 +159,8 @@
 			</Table>
 			<Table key="override_sfo">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/ingame_override_sfo.png</String></Pair>
-				<Pair key="title_rsc"><String>Пропатчить Param.SFO</String></Pair>
-				<Pair key="info_rsc"><String>Активировать атрибут в SFO для включения RemotePlay + SystemBGM в играх с дисками без обновлений</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_override_sfo</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_override_sfo_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>override_sfo</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
@@ -178,24 +178,22 @@
 		<Attributes>
 			<Table key="view_log">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_view_log.png</String></Pair>
-				<Pair key="title_rsc"><String>Посмотреть логи hfw</String></Pair>
-				<Pair key="info_rsc"><String>http://localhost/dev_hdd0/tmp/hfw_settings.log
-				(требуется WebMAN MOD для этой функции)</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_view_log</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_view_log_info</String></Pair>
 				<Pair key="module_name"><String>webrender_plugin</String></Pair>
 				<Pair key="module_action"><String>http://localhost/dev_hdd0/tmp/hfw_settings.log</String></Pair>
 			</Table>
 			<Table key="view_clog">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_view_log.png</String></Pair>
-				<Pair key="title_rsc"><String>Посмотреть логи cfw</String></Pair>
-				<Pair key="info_rsc"><String>http://localhost/dev_hdd0/tmp/cfw_settings.log
-				(требуется WebMAN MOD для этой функции)</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_view_log_cfw</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_view_log_info</String></Pair>
 				<Pair key="module_name"><String>webrender_plugin</String></Pair>
 				<Pair key="module_action"><String>http://localhost/dev_hdd0/tmp/cfw_settings.log</String></Pair>
 			</Table>
 			<Table key="clean_log">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_clean_log.png</String></Pair>
-				<Pair key="title_rsc"><String>Очистить логи</String></Pair>
-				<Pair key="info_rsc"><String>/dev_hdd0/tmp/hfw_settings.log</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_clean_log</String></Pair>
+				<Pair key="info_rsc"><String></String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>clean_log</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
@@ -203,8 +201,8 @@
 			</Table>
 			<Table key="dump_idps">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_idps.png</String></Pair>
-				<Pair key="title_rsc"><String>Дамп IDPS</String></Pair>
-				<Pair key="info_rsc"><String>Сохраняет IDPS в лог-файл</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_dump_idps</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_dump_idps_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>dump_idps</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
@@ -212,8 +210,8 @@
 			</Table>
 			<Table key="dump_psid">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_psid.png</String></Pair>
-				<Pair key="title_rsc"><String>Дамп PSID</String></Pair>
-				<Pair key="info_rsc"><String>Сохраняет PSID в лог-файл</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_dump_psid</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_dump_psid_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>dump_psid</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
@@ -221,8 +219,8 @@
 			</Table>
 			<Table key="log_klic">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_log_klicense.png</String></Pair>
-				<Pair key="title_rsc"><String>Журнал использования KLicense</String></Pair>
-				<Pair key="info_rsc"><String>Сохраняет имя файла и klicensee в файл журнала</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_log_klic</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_log_klic_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>log_klic</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
@@ -230,8 +228,8 @@
 			</Table>
 			<Table key="log_secureid">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_log_secure_fileid.png</String></Pair>
-				<Pair key="title_rsc"><String>Записать использование безопасного файла ID</String></Pair>
-				<Pair key="info_rsc"><String>Записывает имя файла сохранения и ключ идентификатора файла в файл журнала</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_log_secureid</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_log_secureid_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>log_secureid</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
@@ -239,8 +237,8 @@
 			</Table>
 			<Table key="dump_disc_key">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_disc_hashkey.png</String></Pair>
-				<Pair key="title_rsc"><String>Ключ хэш-диска</String></Pair>
-				<Pair key="info_rsc"><String>Извлекает ключ хеша диска из ОРИГИНАЛЬНОГО игрового диска</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_disc_key</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_disc_key_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>dump_disc_key</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
@@ -248,7 +246,7 @@
 			</Table>
 			<Table key="backup_registry">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_backup_xregistry.png</String></Pair>
-				<Pair key="title_rsc"><String>Резервное копирование xRegistry.sys</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_backup_registry</String></Pair>
 				<Pair key="info_rsc"><String></String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>backup_registry</String></Pair>
@@ -273,8 +271,8 @@
 		<Attributes>
 			<Table key="applicable_version">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/recovery_display_minver.png</String></Pair>
-				<Pair key="title_rsc"><String>Показать минимальную версию прошивки</String></Pair>
-				<Pair key="info_rsc"><String>Версия прошивки которая была установлена на заводе</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_applicable_version</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_applicable_version_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>applicable_version</String></Pair>
 				<Pair key="ingame"><String>disable</String></Pair>
@@ -283,8 +281,8 @@
 			</Table>
 			<Table key="fs_check">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/recovery_check_file_system.png</String></Pair>
-				<Pair key="title_rsc"><String>Проверить файловую систему</String></Pair>
-				<Pair key="info_rsc"><String>Перезагрузить, проверить и восстановить файловую систему</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_fs_check</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_fs_check_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>fs_check</String></Pair>
 				<Pair key="ingame"><String>disable</String></Pair>
@@ -293,8 +291,8 @@
 			</Table>
 			<Table key="rebuild_db">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/recovery_rebuild_db.png</String></Pair>
-				<Pair key="title_rsc"><String>Переконструрировать базу данных</String></Pair>
-				<Pair key="info_rsc"><String>Перезагрузить и переконструрировать базу данных</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_rebuild_db</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_rebuild_db_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>rebuild_db</String></Pair>
 				<Pair key="ingame"><String>disable</String></Pair>
@@ -303,8 +301,8 @@
 			</Table>
 			<Table key="recovery_mode">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/recovery_toggle.png</String></Pair>
-				<Pair key="title_rsc"><String>Режим восстановления</String></Pair>
-				<Pair key="info_rsc"><String>Перезагрузить и войти в режим восстановления (не поддерживается на моделях с памятью NAND!)</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_recovery_mode</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_recovery_mode_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>recovery_mode</String></Pair>
 				<Pair key="ingame"><String>disable</String></Pair>
@@ -323,8 +321,8 @@
 		<Attributes>
 			<Table key="toggle_auto_update">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/auto_update.png</String></Pair>
-				<Pair key="title_rsc"><String>Переключить автообновление</String></Pair>
-				<Pair key="info_rsc"><String>Это включит/выключит автоматическое обновление HEN при запуске.</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_auto_update</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_auto_update_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>toggle_auto_update</String></Pair>
 				<Pair key="ingame"><String>disable</String></Pair>
@@ -333,8 +331,8 @@
 			</Table>
 			<Table key="uninstall_hen">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
-				<Pair key="title_rsc"><String>Удалить HEN</String></Pair>
-				<Pair key="info_rsc"><String>Это удалит PS3HEN из вашей системы и восстановит файлы OFW, кроме silk_webkit.sprx.</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_uninstall_hen</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_uninstall_hen_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>uninstall_hen</String></Pair>
 				<Pair key="ingame"><String>disable</String></Pair>
