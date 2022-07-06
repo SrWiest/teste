@@ -11,7 +11,7 @@
 			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="hfw_settings_en"
-				src="xmb://localhost/dev_flash/hen/xml/hfw_settings.xml#seg_hfw_settings"
+				src="xmb://localhost/dev_hdd0/hen/hfw_settings.xml#seg_hfw_settings"
 				/>
 			<Query
 				class="type:x-xmb/folder-pixmap"
