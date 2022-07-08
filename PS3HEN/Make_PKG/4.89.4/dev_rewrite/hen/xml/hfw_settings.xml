@@ -64,21 +64,22 @@
 				<Pair key="info_rsc"><String>msg_hfw_pkgi_info</String></Pair>
  			</Table>			
 		</Attributes>
-		<Items>
+		<Items>			
 			<Query class="type:x-xmb/folder-pixmap" key="reboot_ps3"		attr="reboot_ps3"		src="#seg_reboot_ps3"/>
 			<Query class="type:x-xmb/folder-pixmap" key="ingame_settings"	attr="ingame_settings"	src="#seg_ingame_settings"/> 
 			<Query class="type:x-xmb/folder-pixmap" key="dump_tools"		attr="dump_tools"		src="#seg_dump_tools"/>
 			<Query class="type:x-xmb/folder-pixmap" key="recovery_menu"		attr="recovery_menu"	src="#seg_recovery_menu"/>
-            <!--<Query class="type:x-xmb/folder-pixmap" key="ps3hen_theme"		attr="ps3hen_theme"		src="#seg_ps3hen_theme"/>-->			
+            <!--<Query class="type:x-xmb/folder-pixmap" key="ps3hen_theme"		attr="ps3hen_theme"		src="#seg_ps3hen_theme"/>-->
+			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_maintenance"		attr="ps3hen_maintenance"		src="#seg_ps3hen_maintenance"/>			
 			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update"		attr="ps3hen_updater"	src="xmb://localhost/dev_flash/hen/xml/ps3hen_updater.xml#seg_ps3hen_updater"/>
-			<Query class="type:x-xmb/folder-pixmap"	key="update_toolbox_main" attr="update_toolbox_main" src="#update_toolbox_item"/>
+			<Query class="type:x-xmb/folder-pixmap"	key="update_toolbox_main" attr="update_toolbox_main" src="#update_toolbox_item"/>			
 		</Items>
 	</View>
 	
 	<View id="update_toolbox_item">
 		<Attributes>
 			<Table key="update_toolbox_link">
-				<Pair key="info_rsc"><String>net_package_install</String></Pair>
+				<Pair key="info"><String>net_package_install</String></Pair>
 				<Pair key="pkg_src"><String>https://github.com/nikolaevich23/pkgi/releases/latest/download/pkgi.gnpdrm.pkg</String></Pair>
 				<Pair key="pkg_src_qa"><String>https://github.com/nikolaevich23/pkgi/releases/latest/download/pkgi.gnpdrm.pkg</String></Pair>
 				<Pair key="content_name"><String>msg_install</String></Pair>
@@ -133,7 +134,7 @@
 
 	<View id="seg_ps3hen_theme">
 		<Items>		  
-			<Query class="type:x-xmb/xmlpackagefolder" key="theme_switch" src="host://localhost/q?path=/dev_hdd0/hen/themes&suffix=.pkg&subclass=x-host/package"/>	  
+			<Query class="type:x-xmb/xmlpackagefolder" key="theme_switch" src="host://localhost/q?path=/dev_hdd0/hen/themes&suffix=.pkg&subclass=x-host/package"/>
 		</Items>
 	</View>	
 	
@@ -328,6 +329,42 @@
 				<Pair key="ingame"><String>disable</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>			
+			<Table key="hen_off">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/off.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_off</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
+				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
+				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_xmb.on#/dev_hdd0/hen/hen_xmb.off#move</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+			<Table key="hen_on">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/on.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_on</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
+				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
+				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_xmb.off#/dev_hdd0/hen/hen_xmb.on#move</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+			<Table key="hen_audio_on">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/on.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_audio_on</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
+				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
+				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_audio.off#/dev_hdd0/hen/hen_audio.on#move</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+			<Table key="hen_audio_off">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/off.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_audio_off</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
+				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
+				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_audio.on#/dev_hdd0/hen/hen_audio.off#move</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
 			<Table key="uninstall_hen">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
@@ -342,6 +379,10 @@
 		</Attributes>
 		<Items>
 			<Item class="type:x-xmb/module-action" key="toggle_auto_update"	attr="toggle_auto_update"/>
+			<Item class="type:x-xmb/module-action" key="hen_off" attr="hen_off"/>
+			<Item class="type:x-xmb/module-action" key="hen_on" attr="hen_on"/>			
+			<Item class="type:x-xmb/module-action" key="hen_audio_on" attr="hen_audio_on"/>
+			<Item class="type:x-xmb/module-action" key="hen_audio_off" attr="hen_audio_off"/>			
 			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
 		</Items>
 	</View>

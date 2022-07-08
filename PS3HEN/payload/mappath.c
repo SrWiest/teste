@@ -42,7 +42,6 @@ void map_path_slot(char *old, char *newp, int slot)
         return;
     }
 }
-
 int map_path(char *oldpath, char *newpath, uint32_t flags)
 {
 	int i, firstfree = -1;

@@ -51,7 +51,7 @@
 #pragma comment(lib, "netctl_stub")
  
 #define SERVER_PORT htons(80)
-#define HOST_SERVER "nikolaevich23.github.io"
+#define HOST_SERVER "www.ps3xploit.com"
  
 int Socket;
 struct hostent *Host;
@@ -232,7 +232,10 @@ static void reload_xmb(void)
 	{
 		sys_timer_usleep(70000);
 	}
+// Reload All Categories and Swap Icons if Remaped 
 	explore_interface->ExecXMBcommand("reload_category_items game",0,0);
+
+// Reload All Categories for New Queries
 	explore_interface->ExecXMBcommand("reload_category game",0,0);
 	explore_interface->ExecXMBcommand("reload_category network",0,0);
 	explore_interface->ExecXMBcommand("reload_category photo",0,0);
@@ -309,7 +312,7 @@ static uint64_t peekq(uint64_t addr)
 	return_to_user_prog(uint64_t);
 }
 
-
+// FW version values are checked using a partial date from lv2 kernel. 4.89 Sample: 323032322F30322F = 2022/02/
 static void downloadPKG_thread2(void)
 {
 
@@ -317,7 +320,7 @@ static void downloadPKG_thread2(void)
 	{
 		download_interface = (download_plugin_interface *)plugin_GetInterface(View_Find("download_plugin"), 1);
 	}
-	show_msg((char *)"Скачиваю последний HEN.pkg");
+	show_msg((char *)"Downloading latest HEN pkg");
 	uint64_t val=peekq(0x80000000002FCB68ULL);
 	if(val==0x323031372F30382FULL) 
 		{
@@ -329,24 +332,24 @@ static void downloadPKG_thread2(void)
 		}	
 	else if(val==0x323031392F30372FULL)
 		{
-			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.85/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
+			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.85/latest_rus_sign.pkgpkg", (wchar_t *) L"/dev_hdd0");
 		}	
 	else if(val==0x323032302F30312FULL)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.86/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
-		}
-	else if(val==0x323032302F31322FULL)
+		}	
+	else if(val==0x323032302F30372FULL)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.87/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
-		}		
-	else if(val==0x323032312F30362FULL)
+		}	
+	else if(val==0x323032312F30342FULL)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.88/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
-		}	
-	else if(val==0x323032322F30352FULL)
+		}		
+	else if(val==0x323032322F30322FULL)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
-		}		
+		}	
 	thread2_download_finish=1;
 }
 
@@ -400,7 +403,7 @@ int hen_updater(void)
 	Host = gethostbyname(HOST_SERVER);
 	if(!Host)
 	{
-		show_msg((char *)"Сервер недоступен!\n");
+		show_msg((char *)"Could not resolve update Host!\n");
 		return -1;
 	}
     SocketAddress.sin_addr.s_addr = *((unsigned long*)Host->h_addr);
@@ -408,12 +411,12 @@ int hen_updater(void)
     SocketAddress.sin_port = SERVER_PORT;
     Socket = socket(AF_INET, SOCK_STREAM, 0);
     if (connect(Socket, (struct sockaddr *)&SocketAddress, sizeof(SocketAddress)) != 0) {
-		show_msg((char *)"Не удалось подключиться к серверу обновлений!");
+		show_msg((char *)"Failed To Connect To Update Server!");
         return -1;
     }
  
 	strcpy(RequestBuffer, "GET ");
-    strcat(RequestBuffer, "/hen_version.bin");
+    strcat(RequestBuffer, "/hen/hen_version.bin");
     strcat(RequestBuffer, " HTTP/1.0\r\n");
 	strcat(RequestBuffer, "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134\r\n");
     strcat(RequestBuffer, "Accept-Language: en-US\r\n");
@@ -442,7 +445,7 @@ int hen_updater(void)
 	socketclose(Socket);			
 	if(reply_len<=6)
 	{
-		show_msg((char *)"Ошибка при обновлении!");
+		show_msg((char *)"Error on update server!");
 		return 0;
 	}
 	
@@ -452,12 +455,12 @@ int hen_updater(void)
 	}
 	else
 	{
-		show_msg((char *)"Сервер обновлений выдал ошибку!");
+		show_msg((char *)"Update Server Responded With Error!");
 		return 0;
 	}
 	
 	char msg[100];
-	sprintf(msg,"Последний PS3HEN %X.%X.%X",latest_rev>>8, (latest_rev & 0xF0)>>4, (latest_rev&0xF));
+	sprintf(msg,"Latest PS3HEN available is %X.%X.%X",latest_rev>>8, (latest_rev & 0xF0)>>4, (latest_rev&0xF));
 	show_msg((char*)msg);
 	if(hen_version<latest_rev)
 	{
@@ -466,6 +469,7 @@ int hen_updater(void)
 	return 0;
 }
 
+// Restore act.dat (thanks bucanero)
 void restore_act_dat(void);
 void restore_act_dat(void)
 {
@@ -505,7 +509,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	int view = View_Find("explore_plugin");
 	system_call_1(8, SYSCALL8_OPCODE_HEN_REV); hen_version = (int)p1;
 	char henver[0x30];
-	sprintf(henver, "PS3HEN %X.%X.%X\nPSPx.Ru Team", hen_version>>8, (hen_version & 0xF0)>>4, (hen_version&0xF));
+	sprintf(henver, "PS3HEN %X.%X.%X\nPSPx.Ru Team", hen_version>>8, (hen_version & 0xF0)>>4, (hen_version&0xF));	
 	
 	show_msg((char *)henver);
 	
@@ -518,10 +522,12 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	
 	enable_ingame_screenshot();
 	reload_xmb();
-	// restore act.dat from act.bak backup
-	restore_act_dat();
+	
 	CellFsStat stat;
 	
+	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
+	
+	// Emergency USB HEN Installer
 	if(cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0)
 	{
 		memset(pkg_path,0,256);
@@ -533,8 +539,24 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		}
 		goto done;
 	}
-	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
-	if((cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat)!=0) || (do_update==1))
+	
+	if(cellFsStat("/dev_usb001/HEN_UPD.pkg",&stat)==0)
+	{
+		memset(pkg_path,0,256);
+		strcpy(pkg_path,"/dev_usb001/HEN_UPD.pkg");
+		LoadPluginById(0x16, (void *)installPKG_thread);
+		while(thread3_install_finish==0)
+		{
+			sys_timer_usleep(70000);
+		}
+		goto done;
+	}
+	
+	// restore act.dat from act.bak backup
+	restore_act_dat();
+		
+	// Check local HEN file in flash. If missing or if hen_updater file missing, then proceed to update
+	if((do_update==1) || (cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat)!=0))
 	{
 		cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");
 		int is_browser_open=View_Find("webbrowser_plugin");
@@ -580,7 +602,6 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 done:
 	DPRINTF("Exiting main thread!\n");	
 	done=1;
-	
 	sys_ppu_thread_exit(0);
 }
 
@@ -589,7 +610,7 @@ int henplugin_start(__attribute__((unused)) uint64_t arg)
 	//sys_timer_sleep(40000);
 	sys_ppu_thread_create(&thread_id, henplugin_thread, 0, 3000, 0x4000, SYS_PPU_THREAD_CREATE_JOINABLE, THREAD_NAME);
 	// Exit thread using directly the syscall and not the user mode library or we will crash
-	_sys_ppu_thread_exit(0);	
+	_sys_ppu_thread_exit(0);
 	return SYS_PRX_RESIDENT;
 }
 

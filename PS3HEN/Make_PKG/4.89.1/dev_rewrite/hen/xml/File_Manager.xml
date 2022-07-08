@@ -5,11 +5,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/folder_search</String>
 				</Pair>
-				<Pair key="title">
-					<String>XMB Обозреватель файлов</String>
+				<Pair key="title_rsc">
+					<String>msg_hfw_fe_main</String>
 				</Pair>
-				<Pair key="info">
-					<String>Для просмотра и удаления</String>
+				<Pair key="info_rsc">
+					<String>msg_hfw_fe_main_info</String>
 				</Pair>
 			</Table>
 		</Attributes>
@@ -23,11 +23,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/folder_list</String>
 				</Pair>
-				<Pair key="title">
-					<String>Все устройства</String>
+				<Pair key="title_rsc">
+					<String>msg_hfw_fm_dev_all</String>
 				</Pair>
-				<Pair key="info">
-					<String>Обзор на всех устройствах</String>
+				<Pair key="info_rsc">
+					<String>msg_hfw_fm_dev_all_info</String>
 				</Pair>
 				<Pair key="child">
 					<String>segment</String>
@@ -37,11 +37,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/hdd</String>
 				</Pair>
-				<Pair key="title">
-					<String>Внутренний жеский диск</String>
+				<Pair key="title_rsc">
+					<String>msg_hfw_fm_dev_hdd</String>
 				</Pair>
-				<Pair key="info">
-					<String>Обзор на внутреннем жеском диске</String>
+				<Pair key="info_rsc">
+					<String>msg_hfw_fm_dev_hdd_info</String>
 				</Pair>
 				<Pair key="child">
 					<String>segment</String>
@@ -51,11 +51,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>Все USB</String>
+				<Pair key="title_rsc">
+					<String>msg_hfw_fm_dev_usb</String>
 				</Pair>
-				<Pair key="info">
-					<String>Обзор на USB устройствах</String>
+				<Pair key="info_rsc">
+					<String>msg_hfw_fm_dev_usb_info</String>
 				</Pair>
 				<Pair key="child">
 					<String>segment</String>
@@ -65,11 +65,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/flash</String>
 				</Pair>
-				<Pair key="title">
-					<String>Внутренняя флеш память</String>
+				<Pair key="title_rsc">
+					<String>msg_hfw_fm_dev_flash</String>
 				</Pair>
-				<Pair key="info">
-					<String>Обзор флеш памяти</String>
+				<Pair key="info_rsc">
+					<String>msg_hfw_fm_dev_flash_info</String>
 				</Pair>
 				<Pair key="child">
 					<String>segment</String>
@@ -79,11 +79,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/disc</String>
 				</Pair>
-				<Pair key="title">
-					<String>Оптические диски</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_optical</String>
 				</Pair>
-				<Pair key="info">
-					<String>Обзор Blu-Ray/DVD</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_optical_info</String>
 				</Pair>
 				<Pair key="child">
 					<String>segment</String>
@@ -93,11 +93,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/produo</String>
 				</Pair>
-				<Pair key="title">
-					<String>Карты памяти</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_memorycard</String>
 				</Pair>
-				<Pair key="info">
-					<String>Обзор карт памяти</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_memorycard_info</String>
 				</Pair>
 				<Pair key="child">
 					<String>segment</String>
@@ -107,11 +107,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/item_tex_disc_bd_contents</String>
 				</Pair>
-				<Pair key="title">
-					<String>Мультимедиа с HDD и USB</String>
+				<Pair key="title_rsc">
+					<String>msg_media_usb</String>
 				</Pair>
-				<Pair key="info">
-					<String>Для отображения выберите устройство, нажмите  и выберите "отобразить все"</String>
+				<Pair key="info_rsc">
+					<String>msg_media_usb_info</String>
 				</Pair>
 			</Table>
 		</Attributes>
@@ -122,7 +122,7 @@
 			<Query class="type:x-xmb/folder-pixmap" key="fm_dev_usb" attr="fm_dev_usb" src="#seg_filemanager_usb"/>
 			<Query class="type:x-xmb/folder-pixmap" key="fm_dev_memorycard" attr="fm_dev_memorycard" src="#seg_filemanager_memorycard"/>
 			<Query class="type:x-xmb/folder-pixmap" key="fm_dev_optical" attr="fm_dev_optical" src="#seg_filemanager_optical"/>
-			<Query class="type:x-xmb/folder-pixmap" key="media_usb" attr="media_usb" src="xmb://localhost/dev_hdd0/game/HENTOOLBX/USRDIR/TOOLBOX/xmbpd/media_usb.xml#media_usb_items"/>
+			<Query class="type:x-xmb/folder-pixmap" key="media_usb" attr="media_usb" src="xmb://localhost/dev_flash/hen/xml/media_usb.xml#media_usb_items"/>
 		</Items>
 	</View>
 	<View id="seg_filemanager_all">
@@ -141,11 +141,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/hdd</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_hdd0/</String>
+				<Pair key="title_rsc">
+					<String>msg_hdd_items</String>
 				</Pair>
-				<Pair key="info">
-					<String>основной hdd</String>
+				<Pair key="info_rsc">
+					<String>msg_hdd_items_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -158,11 +158,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/hdd</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_hdd1/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_hdd1</String>
 				</Pair>
-				<Pair key="info">
-					<String>резервный hdd (при наличии)</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_hdd1_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -198,11 +198,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb000/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb000</String>
 				</Pair>
-				<Pair key="info">
-					<String>Основной порт USB (правый)</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb000_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -215,11 +215,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb001/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb001</String>
 				</Pair>
-				<Pair key="info">
-					<String>порт USB (левый)</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb001_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -232,11 +232,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb002/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb002</String>
 				</Pair>
-				<Pair key="info">
-					<String/>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb002_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -249,11 +249,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb003/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb003</String>
 				</Pair>
-				<Pair key="info">
-					<String/>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb002_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -266,11 +266,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb004/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb004</String>
 				</Pair>
-				<Pair key="info">
-					<String/>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb002_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -283,11 +283,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb005/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb005</String>
 				</Pair>
-				<Pair key="info">
-					<String/>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb002_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -300,11 +300,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb006/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb006</String>
 				</Pair>
-				<Pair key="info">
-					<String/>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb002_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -317,11 +317,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/usb</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_usb007/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_usb007</String>
 				</Pair>
-				<Pair key="info">
-					<String/>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_usb002_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -393,11 +393,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/flash</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_flash/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_flash</String>
 				</Pair>
-				<Pair key="info">
-					<String>Флеш память (только чтение)</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_flash_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -410,11 +410,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/flash_warning</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_blind/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_blind</String>
 				</Pair>
-				<Pair key="info">
-					<String>Флеш память (запись включена)</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_blind_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -427,11 +427,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/flash_warning</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_rewrite/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_rewrite</String>
 				</Pair>
-				<Pair key="info">
-					<String>Флеш память (запись включена)</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_blind_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -444,11 +444,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/flash</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_flash2/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_flash2</String>
 				</Pair>
-				<Pair key="info">
-					<String>Вторая флеш память (xregistry и тп)</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_flash2_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -461,11 +461,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/flash</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_flash3/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_flash3</String>
 				</Pair>
-				<Pair key="info">
-					<String>Треться флеш память</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_flash3_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -519,11 +519,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/disc</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_bdvd/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_bdvd</String>
 				</Pair>
-				<Pair key="info">
-					<String>Блюрей диск</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_bdvd_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -536,11 +536,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/disc</String>
 				</Pair>
-				<Pair key="title">
-					<String>app_home/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_app_home</String>
 				</Pair>
-				<Pair key="info">
-					<String>Виртуальный Блюрей</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_app_home_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -553,11 +553,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/disc</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_ps2disc/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_ps2disc</String>
 				</Pair>
-				<Pair key="info">
-					<String>Диск формата PS2</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_ps2disc_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -599,11 +599,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/produo</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_ms/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_ms</String>
 				</Pair>
-				<Pair key="info">
-					<String>Карта памяти Pro Duo</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_ms_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -616,11 +616,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/sd</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_sd/</String>
+				<Pair key="title_rsc">
+					<String>msg_dev_sd</String>
 				</Pair>
-				<Pair key="info">
-					<String>Карта памяти SD</String>
+				<Pair key="info_rsc">
+					<String>msg_dev_sd_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
@@ -633,11 +633,11 @@
 				<Pair key="icon">
 					<String>/dev_flash/hen/icon/cflash</String>
 				</Pair>
-				<Pair key="title">
-					<String>dev_cf/</String>
+				<Pair key="title_rsc">
+					<String>msg_fm_dev_cf</String>
 				</Pair>
-				<Pair key="info">
-					<String>Карта памяти CF</String>
+				<Pair key="info_rsc">
+					<String>msg_fm_dev_cf_info</String>
 				</Pair>
 				<Pair key="str_noitem">
 					<String>msg_error_no_content</String>
