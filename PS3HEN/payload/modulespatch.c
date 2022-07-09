@@ -433,12 +433,20 @@ PatchTableEntry patch_table[] =
 	{ PREMO_GAME_PLUGIN_HASH, premo_game_plugin_patches },		
 };
 
+CellFsStat stat;
+if((cellFsStat("/dev_hdd0/hen/hen_audio.off",&stat)!=0))
+	{
+	patch_table[11].remove;
+	show_msg((char *)"test!");
+	}
+	
 #define N_PATCH_TABLE_ENTRIES	(sizeof(patch_table) / sizeof(PatchTableEntry))
 
 #ifdef DEBUG
 
 static char *hash_to_name(uint64_t hash)
 {
+	
     switch(hash)
 	{
 		case VSH_HASH:
@@ -490,15 +498,7 @@ static char *hash_to_name(uint64_t hash)
 		break;
 		
 		case LIBAUDIO_HASH:
-			CellFsStat stat;
-			if((cellFsStat("/dev_hdd0/hen/hen_audio.on",&stat)!=0))
-			{
 			return "libaudio.sprx";
-			}
-			else
-			{
-			return "";
-			}
 		break;		
 		
 		/*case BASIC_PLUGINS_HASH:

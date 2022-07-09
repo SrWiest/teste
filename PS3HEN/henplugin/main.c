@@ -525,7 +525,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	
 	CellFsStat stat;
 	
-	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
+	int do_update=(cellFsStat("/dev_hdd0/hen/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
 	
 	// Emergency USB HEN Installer
 	if(cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0)
