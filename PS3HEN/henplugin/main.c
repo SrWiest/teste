@@ -528,7 +528,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	int do_update=(cellFsStat("/dev_hdd0/hen/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
 	
 	// Emergency USB HEN Installer
-	if(cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0)
+	if((do_update==1) && (cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0))
 	{
 		memset(pkg_path,0,256);
 		strcpy(pkg_path,"/dev_usb000/HEN_UPD.pkg");
@@ -540,7 +540,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		goto done;
 	}
 	
-	if(cellFsStat("/dev_usb001/HEN_UPD.pkg",&stat)==0)
+	if((do_update==1) && (cellFsStat("/dev_usb001/HEN_UPD.pkg",&stat)==0))
 	{
 		memset(pkg_path,0,256);
 		strcpy(pkg_path,"/dev_usb001/HEN_UPD.pkg");

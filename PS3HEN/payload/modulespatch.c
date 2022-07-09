@@ -432,13 +432,6 @@ PatchTableEntry patch_table[] =
 	{ PREMO_PLUGIN_HASH, premo_plugin_patches },
 	{ PREMO_GAME_PLUGIN_HASH, premo_game_plugin_patches },		
 };
-
-CellFsStat stat;
-if((cellFsStat("/dev_hdd0/hen/hen_audio.off",&stat)!=0))
-	{
-	patch_table[11].remove;
-	show_msg((char *)"test!");
-	}
 	
 #define N_PATCH_TABLE_ENTRIES	(sizeof(patch_table) / sizeof(PatchTableEntry))
 
@@ -907,7 +900,9 @@ LV2_PATCHED_FUNCTION(int, modules_patching, (uint64_t *arg1, uint32_t *arg2))
 				//Do nothing
 			break;
 		}
-
+		
+		CellFsStat stat;	
+		
 		for (int i = 0; i < N_PATCH_TABLE_ENTRIES; i++)
 		{
 			if (patch_table[i].hash == hash)
@@ -917,6 +912,13 @@ LV2_PATCHED_FUNCTION(int, modules_patching, (uint64_t *arg1, uint32_t *arg2))
 				#endif
 
 				int j = 0;
+				
+				if((i==11) && (cellFsStat("/dev_hdd0/hen/hen_audio.off",&stat)==0))
+				{
+					i++;
+					j++;
+				}
+				
 				SprxPatch *patch = &patch_table[i].patch_table[j];
 
 				while (patch->offset != 0)
