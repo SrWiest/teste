@@ -51,7 +51,7 @@
 #pragma comment(lib, "netctl_stub")
  
 #define SERVER_PORT htons(80)
-#define HOST_SERVER "www.ps3xploit.com"
+#define HOST_SERVER "f91991q0.bget.ru"
  
 int Socket;
 struct hostent *Host;
@@ -416,7 +416,7 @@ int hen_updater(void)
     }
  
 	strcpy(RequestBuffer, "GET ");
-    strcat(RequestBuffer, "/hen/hen_version.bin");
+    strcat(RequestBuffer, "/hen_version.bin");
     strcat(RequestBuffer, " HTTP/1.0\r\n");
 	strcat(RequestBuffer, "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134\r\n");
     strcat(RequestBuffer, "Accept-Language: en-US\r\n");
