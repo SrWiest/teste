@@ -1,6 +1,4 @@
-# nikolaevich23.github.io
-
-# rushen 3.1.2
+# hen 3.1.2 rus mod (pspx.ru team)
 
 ![image](https://i4.imageban.ru/out/2021/08/21/2828cfa8da1a21f4ef031f8e95e7a74f.jpg)
 
