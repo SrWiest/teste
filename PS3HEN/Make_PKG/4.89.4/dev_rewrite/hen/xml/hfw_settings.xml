@@ -321,7 +321,7 @@
  	<View id="seg_ps3hen_maintenance">
 		<Attributes>
 			<Table key="toggle_auto_update">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/auto_update.png</String></Pair>
+				<Pair key="icon"><String>/dev_hdd0/hen/auto_update.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_auto_update</String></Pair>
 				<Pair key="info_rsc"><String>msg_hfw_auto_update_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
@@ -331,40 +331,24 @@
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>			
 			<Table key="hen_off">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/off.png</String></Pair>
-				<Pair key="title_rsc"><String>msg_hen_off</String></Pair>
-				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
-				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
-				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_xmb.on#/dev_hdd0/hen/hen_xmb.off#move</String></Pair>
+				<Pair key="icon"><String>/dev_hdd0/hen/hen_xmb.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_xmb</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_xmb</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>
-			<Table key="hen_on">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/on.png</String></Pair>
-				<Pair key="title_rsc"><String>msg_hen_on</String></Pair>
-				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
-				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
-				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_xmb.off#/dev_hdd0/hen/hen_xmb.on#move</String></Pair>
-				<Pair key="bar_action"><String>none</String></Pair>
-				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>
+			</Table>			
 			<Table key="hen_audio_on">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/on.png</String></Pair>
-				<Pair key="title_rsc"><String>msg_hen_audio_on</String></Pair>
-				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
-				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
-				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_audio.off#/dev_hdd0/hen/hen_audio.on#move</String></Pair>
+				<Pair key="icon"><String>/dev_hdd0/hen/audio.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_audio</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_audio</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
-				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>
-			<Table key="hen_audio_off">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/off.png</String></Pair>
-				<Pair key="title_rsc"><String>msg_hen_audio_off</String></Pair>
-				<Pair key="info_rsc"><String>msg_hen_off_info</String></Pair>
-				<Pair key="module_name"><String>videodownloader_plugin</String></Pair>
-				<Pair key="module_action"><String>fcopy#/dev_hdd0/hen/hen_audio.on#/dev_hdd0/hen/hen_audio.off#move</String></Pair>
-				<Pair key="bar_action"><String>none</String></Pair>
-				<Pair key="lbl_half"><String>1</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>								
 			</Table>
 			<Table key="uninstall_hen">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
@@ -380,9 +364,7 @@
 		<Items>
 			<Item class="type:x-xmb/module-action" key="toggle_auto_update"	attr="toggle_auto_update"/>
 			<Item class="type:x-xmb/module-action" key="hen_off" attr="hen_off"/>
-			<Item class="type:x-xmb/module-action" key="hen_on" attr="hen_on"/>			
 			<Item class="type:x-xmb/module-action" key="hen_audio_on" attr="hen_audio_on"/>
-			<Item class="type:x-xmb/module-action" key="hen_audio_off" attr="hen_audio_off"/>			
 			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
 		</Items>
 	</View>

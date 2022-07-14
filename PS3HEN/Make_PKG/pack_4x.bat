@@ -7,6 +7,7 @@ setlocal EnabledelayedExpansion
 
 :: Change these for your application / manual...
 set CID=CUSTOM-INSTALLER_00-0000000000000000
+if exist ps3hen_489?.pkg_signed.pkg del /Q ps3hen_489?.pkg_signed.pkg
 
 for /D %%A in (4.89.?) do (
 set nm=%%A
