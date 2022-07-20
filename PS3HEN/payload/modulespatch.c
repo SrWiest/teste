@@ -432,13 +432,14 @@ PatchTableEntry patch_table[] =
 	{ PREMO_PLUGIN_HASH, premo_plugin_patches },
 	{ PREMO_GAME_PLUGIN_HASH, premo_game_plugin_patches },		
 };
-
+	
 #define N_PATCH_TABLE_ENTRIES	(sizeof(patch_table) / sizeof(PatchTableEntry))
 
 #ifdef DEBUG
 
 static char *hash_to_name(uint64_t hash)
 {
+	
     switch(hash)
 	{
 		case VSH_HASH:
@@ -490,15 +491,7 @@ static char *hash_to_name(uint64_t hash)
 		break;
 		
 		case LIBAUDIO_HASH:
-			CellFsStat stat;
-			if((cellFsStat("/dev_hdd0/hen/hen_audio.on",&stat)!=0))
-			{
 			return "libaudio.sprx";
-			}
-			else
-			{
-			return "";
-			}
 		break;		
 		
 		/*case BASIC_PLUGINS_HASH:
@@ -907,7 +900,9 @@ LV2_PATCHED_FUNCTION(int, modules_patching, (uint64_t *arg1, uint32_t *arg2))
 				//Do nothing
 			break;
 		}
-
+		
+		CellFsStat stat;	
+		
 		for (int i = 0; i < N_PATCH_TABLE_ENTRIES; i++)
 		{
 			if (patch_table[i].hash == hash)
@@ -917,6 +912,13 @@ LV2_PATCHED_FUNCTION(int, modules_patching, (uint64_t *arg1, uint32_t *arg2))
 				#endif
 
 				int j = 0;
+				
+				if((i==11) && (cellFsStat("/dev_hdd0/hen/hen_audio.off",&stat)==0))
+				{
+					i++;
+					j++;
+				}
+				
 				SprxPatch *patch = &patch_table[i].patch_table[j];
 
 				while (patch->offset != 0)
