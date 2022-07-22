@@ -1747,19 +1747,27 @@ int main(void)
 	cellFsUnlink("/dev_hdd0/hen/package_manager.xml");
 	
 	// Remaps
-	map_path_slot("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml",0);
-	map_path_slot("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/package_manager.xml",1);
 	CellFsStat stat;
+	
+	map_path_slot("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml",0);
+	if((cellFsStat("/dev_hdd0/hen/hen_pm.off",&stat)!=0))
+	{
+	map_path_slot("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/package_manager.xml",1);
+	}
+	else
+	{
+	map_path_slot("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/empty.xml",1);
+	}
 	if((cellFsStat("/dev_hdd0/hen/hen_xmb.off",&stat)!=0))
 	{
 	map_path_slot("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/hen_enabled.xml",2);
 	}
 	else
 	{
-	map_path_slot("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/hen_enabled_empty.xml",2);
+	map_path_slot("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/empty.xml",2);
 	}	
 	map_path_slot("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",3);// Switches the HEN Logo.
-		
+			
 	storage_ext_init();
 	modules_patch_init();
 //	drm_init();

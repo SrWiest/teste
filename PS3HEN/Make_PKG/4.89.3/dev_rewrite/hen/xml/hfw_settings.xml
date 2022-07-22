@@ -339,7 +339,27 @@
 				<Pair key="ingame"><String>disable</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>			
+			</Table>
+			<Table key="hen_pm">
+				<Pair key="icon"><String>/dev_hdd0/hen/hen_pm.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_pm</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_pm</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+			<Table key="hen_ofw">
+				<Pair key="icon"><String>/dev_hdd0/hen/hen_ofw.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_ofw</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_ofw</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>	
 			<Table key="hen_audio_on">
 				<Pair key="icon"><String>/dev_hdd0/hen/audio.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hen_audio</String></Pair>
@@ -364,6 +384,8 @@
 		<Items>
 			<Item class="type:x-xmb/module-action" key="toggle_auto_update"	attr="toggle_auto_update"/>
 			<Item class="type:x-xmb/module-action" key="hen_off" attr="hen_off"/>
+			<Item class="type:x-xmb/module-action" key="hen_pm" attr="hen_pm"/>
+			<Item class="type:x-xmb/module-action" key="hen_ofw" attr="hen_ofw"/>
 			<Item class="type:x-xmb/module-action" key="hen_audio_on" attr="hen_audio_on"/>
 			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
 		</Items>

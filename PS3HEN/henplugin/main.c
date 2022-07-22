@@ -191,29 +191,30 @@ static void show_msg(char* msg)
 
 process_id_t vsh_pid=0;
 
-static int poke_vsh(uint64_t address, char *buf,int size)
-{
-	if(!vsh_pid)
-	{
-		uint32_t tmp_pid_list[MAX_PROCESS];
-		char name[25];
-		int i;
-		system_call_3(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_ALL_PROC_PID,(uint64_t)(uint32_t)tmp_pid_list);
-		for(i=0;i<MAX_PROCESS;i++)
-		{
-			system_call_4(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_PROC_NAME_BY_PID,tmp_pid_list[i],(uint64_t)(uint32_t)name);
-			if(strstr(name,"vsh"))
-			{
-				vsh_pid=tmp_pid_list[i];
-				break;
-			}
-		}
-		if(!vsh_pid)
-			return -1;
-	}
-	system_call_6(8,SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_SET_PROC_MEM,vsh_pid,address,(uint64_t)(uint32_t)buf,size);
-	return_to_user_prog(int);
-}
+//static int poke_vsh(uint64_t address, char *buf,int size)
+//{
+//	if(!vsh_pid)
+//	{
+//		uint32_t tmp_pid_list[MAX_PROCESS];
+//		char name[25];
+//		int i;
+//		system_call_3(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_ALL_PROC_PID,(uint64_t)(uint32_t)tmp_pid_list);
+//		for(i=0;i<MAX_PROCESS;i++)
+//		{
+//			system_call_4(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_PROC_NAME_BY_PID,tmp_pid_list[i],(uint64_t)(uint32_t)name);
+//			if(strstr(name,"vsh"))
+//			{
+//				vsh_pid=tmp_pid_list[i];
+//				break;
+//			}
+//		}
+//		if(!vsh_pid)
+//			return -1;
+//	}
+//	system_call_6(8,SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_SET_PROC_MEM,vsh_pid,address,(uint64_t)(uint32_t)buf,size);
+//	return_to_user_prog(int);
+//}
+
 static void enable_ingame_screenshot(void)
 {
 	((int*)getNIDfunc("vshmain",0x981D7E9F,0))[0] -= 0x2C;
@@ -244,25 +245,23 @@ static void reload_xmb(void)
 	explore_interface->ExecXMBcommand("reload_category video",0,0);
 	explore_interface->ExecXMBcommand("reload_category user",0,0);
 	explore_interface->ExecXMBcommand("reload_category psn",0,0);
-	explore_interface->ExecXMBcommand("reload_category friend",0,0);
-	char q[]= "xcb://localhost/query?sort=+Game:Common.titleForSort&cond=Oe+Game:Game.titleId RELOADXMB";
-	char a[18]= "Game:Game.titleId";
-	char msg[90];
-	int output[8]={0,0,0,0,0,0,0,0};//using 8 randomly here 
-	int ret= explore_interface->DoUnk11(&q[0],&a[0],&output[0]);
-	if(ret)
-	{
-		sprintf (msg,"Error 0x%X\n",ret);
-		show_msg((char*)msg);
-	}
-	else
-	{
-		for(int i=0;i<8;i++)
-		{
-		sprintf (msg,"Output %i = 0x%X\n", i, output[i]);
-		show_msg((char*)msg);
-		}
-	}
+	explore_interface->ExecXMBcommand("reload_category friend",0,0);	
+//	char q[89]= "xcb://localhost/query?sort=+Game:Common.titleForSort&cond=Oe+Game:Game.titleId RELOADXMB";
+//	char a[18]= "Game:Game.titleId";
+//	int output[8]={0,0,0,0,0,0,0,0};
+//	int ret=explore_interface->DoUnk11(query,attr,&output[0]);
+//	if(ret)
+//	{
+//		sprintf(msg,"Error 0x%X\n",ret);
+//		show_msg((char*)msg);		
+//	}
+//	else
+//	{
+//		for(int i=0;i<8;i++){
+//		sprintf(msg, "Output %i = 0x%X\n", i, output[i]);
+//		show_msg((char*)msg);
+//		}
+//	}	
 }
 
 static inline void _sys_ppu_thread_exit(uint64_t val)
