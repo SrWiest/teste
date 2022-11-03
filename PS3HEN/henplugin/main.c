@@ -32,6 +32,8 @@
 #include "download_plugin.h"
 #include "game_ext_plugin.h"
 #include "xmb_plugin.h"
+#include "xregistry.h"
+
 
 #include <sys/sys_time.h>
 #include <sys/types.h>
@@ -109,7 +111,7 @@ typedef struct
 	int (*DoUnk8)(void);  // 3 Parameter:
 	int (*DoUnk9)(void);  // 3 Parameter: void *, void *, void *
 	int (*DoUnk10)(void); // 2 Parameter: char * , int * out
-	int (*DoUnk11)(char *, char *, int *); // 3 Parameter: char * query , char * attribute? , uint8 output[]
+	int (*DoUnk11)(void); // 3 Parameter: char * query , char * attribute? , uint8 output[]
 	int (*DoUnk12)(void); // 1 Parameter: struct
 	int (*DoUnk13)(void); // return 0 / 1 Parameter: int 0-9
 	int (*DoUnk14)(void); // return 0 / 2 Parameter: int 0-9,
@@ -486,17 +488,23 @@ int hen_updater(void)
 	return 0;
 }
 
+static int sysLv2FsLink(const char *oldpath, const char *newpath)
+{
+    system_call_2(810, (uint64_t)(uint32_t)oldpath, (uint64_t)(uint32_t)newpath);
+    return_to_user_prog(int);
+}
+
 // Restore act.dat (thanks bucanero)
 void restore_act_dat(void);
 void restore_act_dat(void)
 {
 	CellFsStat stat;
 	char path1[64], path2[64];
-	uint8_t actdat[4152];
+/*	uint8_t actdat[4152];
 	int fd, max_uid = 100;
-	uint64_t read;
+	uint64_t read;*/
 
-	for (int i = 1; i <= max_uid; i++)
+	for (int i = 1; i <=0x100; i++)
 	{
 		sprintf(path1, "/dev_hdd0/home/%08d/exdata/act.bak", i);
 		sprintf(path2, "/dev_hdd0/home/%08d/exdata/act.dat", i);
@@ -504,7 +512,9 @@ void restore_act_dat(void)
 		if((cellFsStat(path1,&stat) == CELL_FS_SUCCEEDED) && (cellFsStat(path2,&stat) != CELL_FS_SUCCEEDED))
 		{
 			// copy act.bak to act.dat
-			if(cellFsOpen(path1, CELL_FS_O_RDONLY, &fd, NULL, 0) != CELL_FS_SUCCEEDED)
+			sysLv2FsLink(path1, path2);
+			
+			/*if(cellFsOpen(path1, CELL_FS_O_RDONLY, &fd, NULL, 0) != CELL_FS_SUCCEEDED)
 				continue;
 
 			cellFsRead(fd, (void *)actdat, sizeof(actdat), &read);
@@ -514,7 +524,7 @@ void restore_act_dat(void)
 				continue;
 
 			cellFsWrite(fd, (void *)actdat, sizeof(actdat), &read);
-			cellFsClose(fd);
+			cellFsClose(fd);*/
 		}
 	}
 }
@@ -539,8 +549,29 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	
 	enable_ingame_screenshot();
 	reload_xmb();
-	
 	CellFsStat stat;
+	
+	char path1[0x30];
+	sprintf(path1, "/dev_hdd0/home/%08i/webbrowser/history.xml", xsetting_CC56EB2D()->GetCurrentUserNumber());
+	
+	char path2[0x30];
+	sprintf(path2, "/dev_hdd0/home/%08i/http/auth_cache.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
+	
+	char path3[0x30];
+	sprintf(path3, "/dev_hdd0/home/%08i/http/cookie.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
+
+	if(cellFsStat(path1,&stat)==0)
+	{
+		cellFsUnlink(path1);
+	}
+	if(cellFsStat(path2,&stat)==0)
+	{
+		cellFsUnlink(path2);
+	}
+	if(cellFsStat(path3,&stat)==0)
+	{
+		cellFsUnlink(path3);
+	}
 	
 	int do_update=(cellFsStat("/dev_hdd0/hen/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR
 	
