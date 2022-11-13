@@ -1,6 +1,6 @@
 # hen 3.1.5 rus mod
 
-![image](https://i6.imageban.ru/out/2022/07/22/60d2f68ab681b8ea40a908a78c960faa.jpg)
+![image](https://i3.imageban.ru/out/2022/11/13/f4adc3c11290131adb3de28b2d550870.jpg)
 
 ## Изменения в 3.1.5
 - Добавлено отображение различных магазинов через обслуживание (по умолчанию отключено)
