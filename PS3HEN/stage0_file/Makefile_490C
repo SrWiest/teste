@@ -13,7 +13,7 @@ TARGET		= stage0
 
 CFLAGS = -ffunction-sections -fdata-sections -Os -m64 -fno-builtin -fno-exceptions \
 			   -Os -Wall $(foreach dir,$(INCLUDE),-I$(dir)) \
-			   -DLV2 -DFIRMWARE_4_87 -ffreestanding 
+			   -DLV2 -DFIRMWARE_4_90 -ffreestanding 
 CFLAGS += --std=gnu99
 LDFLAGS=-nostartfiles -nostdlib -mbig-endian
 LDFLAGS= -T $(TARGET).ld -nostartfiles -nostdlib -nodefaultlibs -Wl,-static -Wl,-s -L. $(foreach dir,$(LIBSDIR),-L$(dir)) $(LIBS) -Wl,--gc-sections -Wl
@@ -25,7 +25,7 @@ all: $(TARGET).bin
 %.bin: %.elf
 	$(OBJCOPY) -O binary $< $@	
 	@rm -f *.o *.elf ../lv1/src/*.o
-	mv stage0.bin ../stage0.bin_487C
+	mv stage0.bin ../stage0.bin_490C
 
 $(TARGET).elf: $(OBJS) $(TARGET).ld
 	$(CC) $(LDFLAGS) -o $@ $(OBJS)
@@ -37,4 +37,4 @@ $(TARGET).elf: $(OBJS) $(TARGET).ld
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f *.o *.elf *.self *.bin *.487c *.map ../lv1/src/*.o ../debug/src/*.o ../lv2/src/*.o
+	rm -f *.o *.elf *.self *.bin *.485c *.map ../lv1/src/*.o ../debug/src/*.o ../lv2/src/*.o

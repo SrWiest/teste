@@ -369,6 +369,10 @@ static void downloadPKG_thread2(void)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
 		}	
+	else if(val==0x323032322F31322FULL)
+		{
+			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.90/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
+		}	
 	thread2_download_finish=1;
 }
 
@@ -499,34 +503,16 @@ void restore_act_dat(void);
 void restore_act_dat(void)
 {
 	CellFsStat stat;
-	char path1[64], path2[64];
-/*	uint8_t actdat[4152];
-	int fd, max_uid = 100;
-	uint64_t read;*/
+	char path1[0x28], path2[0x28];
 
-	for (int i = 1; i <=0x100; i++)
-	{
-		sprintf(path1, "/dev_hdd0/home/%08d/exdata/act.bak", i);
-		sprintf(path2, "/dev_hdd0/home/%08d/exdata/act.dat", i);
+		sprintf(path1, "/dev_hdd0/home/%08i/exdata/act.bak", xsetting_CC56EB2D()->GetCurrentUserNumber());
+		sprintf(path2, "/dev_hdd0/home/%08i/exdata/act.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
 		
 		if((cellFsStat(path1,&stat) == CELL_FS_SUCCEEDED) && (cellFsStat(path2,&stat) != CELL_FS_SUCCEEDED))
 		{
 			// copy act.bak to act.dat
-			sysLv2FsLink(path1, path2);
-			
-			/*if(cellFsOpen(path1, CELL_FS_O_RDONLY, &fd, NULL, 0) != CELL_FS_SUCCEEDED)
-				continue;
-
-			cellFsRead(fd, (void *)actdat, sizeof(actdat), &read);
-			cellFsClose(fd);
-
-			if(cellFsOpen(path2, CELL_FS_O_WRONLY, &fd, NULL, 0) != CELL_FS_SUCCEEDED)
-				continue;
-
-			cellFsWrite(fd, (void *)actdat, sizeof(actdat), &read);
-			cellFsClose(fd);*/
+			sysLv2FsLink(path1, path2);	
 		}
-	}
 }
 
 static void henplugin_thread(__attribute__((unused)) uint64_t arg)
@@ -535,7 +521,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	plugin_GetInterface = getNIDfunc("paf", 0x23AFB290, 0);
 	int view = View_Find("explore_plugin");
 	system_call_1(8, SYSCALL8_OPCODE_HEN_REV); hen_version = (int)p1;
-	char henver[0x30];
+	char henver[0x1E];
 	sprintf(henver, "PS3HEN %X.%X.%X\nPSPx.Ru Team", hen_version>>8, (hen_version & 0xF0)>>4, (hen_version&0xF));	
 	
 	show_msg((char *)henver);
