@@ -1,8 +1,8 @@
 <title>Auto HEN 4.89</title>
 <center>
-<h1><span style='color:blue'>Auto HEN Installer for HFW 4.89 (Thanks to @lmn7)</span></h1>
+<h1><span style='color:blue'>Auto HEN Installer for HFW 4.89 / Автоустановщик HEN для 4.89.2 HFW</span></h1>
 <p>
-<h2><span style='color:red'>For Full Official HEN, install HEN311HFW489FULL.pkg after reboot!
+<h2><span style='color:red'>
 <hr>
 <div id="result"></div>
 <div id="exploit"></div>
@@ -357,7 +357,7 @@ function initROP(init)
 		if((j2===jump_2)&&(j1===jump_1)&&(x===xtra_data)&&(sf===stack_frame))
 		{
 			if(t_out!==0){clearTimeout(t_out);}
-			showMsg('<h2>Downloading setup file...</h2>');
+			showMsg('<h2>Downloading setup file... Скачиваю файлы...</h2>');
 			window.location.href = 'SETUP.P3T';
 			setTimeout(listener,1500);
 		}
@@ -376,7 +376,7 @@ function listener()
 	var myListener = function ()
 	{
 		document.removeEventListener('mousemove', myListener, false);
-		showMsg('<h2>Installing files, please wait...</h2>');
+		showMsg('<h2>Installing files, please wait... Устанавливаю файлы, подождите...</h2>');
 		triggerX();
 	};
 	document.addEventListener('mousemove', myListener, false);
@@ -384,13 +384,13 @@ function listener()
 function triggerX()
 {
 	setTimeout(trigger,50,jump_1_addr);
-	setTimeout(showMsg,2000,"<h2><span style='color:red'>Failed to load setup file. Close the browser and try again.</span></h2>");
+	setTimeout(showMsg,2000,"<h2><span style='color:red'>Failed to load setup file. Close the browser and try again. Ошибка, закройте браузер и повторите снова</span></h2>");
 	t_out=0;
 	total_loops=0;
 }
 function HFWmsg()
 {
-	showMsg("<h2><span style='color:red'>You must install Hybrid Firmware (HFW) 4.89 before using this installer!</h2></span>");
+	showMsg("<h2><span style='color:red'>You must install Hybrid Firmware (HFW) 4.89 before using this installer! Должна быть установлена 4.89 HFW</h2></span>");
 	throw new Error('');
 }
 if(fwv=="4.89"){initROP(true)}else{HFWmsg()}
