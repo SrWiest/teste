@@ -193,29 +193,29 @@ static void show_msg(char* msg)
 
 process_id_t vsh_pid=0;
 
-//static int poke_vsh(uint64_t address, char *buf,int size)
-//{
-//	if(!vsh_pid)
-//	{
-//		uint32_t tmp_pid_list[MAX_PROCESS];
-//		char name[25];
-//		int i;
-//		system_call_3(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_ALL_PROC_PID,(uint64_t)(uint32_t)tmp_pid_list);
-//		for(i=0;i<MAX_PROCESS;i++)
-//		{
-//			system_call_4(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_PROC_NAME_BY_PID,tmp_pid_list[i],(uint64_t)(uint32_t)name);
-//			if(strstr(name,"vsh"))
-//			{
-//				vsh_pid=tmp_pid_list[i];
-//				break;
-//			}
-//		}
-//		if(!vsh_pid)
-//			return -1;
-//	}
-//	system_call_6(8,SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_SET_PROC_MEM,vsh_pid,address,(uint64_t)(uint32_t)buf,size);
-//	return_to_user_prog(int);
-//}
+static int poke_vsh(uint64_t address, char *buf,int size)
+{
+	if(!vsh_pid)
+	{
+		uint32_t tmp_pid_list[MAX_PROCESS];
+		char name[25];
+		int i;
+		system_call_3(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_ALL_PROC_PID,(uint64_t)(uint32_t)tmp_pid_list);
+		for(i=0;i<MAX_PROCESS;i++)
+		{
+			system_call_4(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_PROC_NAME_BY_PID,tmp_pid_list[i],(uint64_t)(uint32_t)name);
+			if(strstr(name,"vsh"))
+			{
+				vsh_pid=tmp_pid_list[i];
+				break;
+			}
+		}
+		if(!vsh_pid)
+			return -1;
+	}
+	system_call_6(8,SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_SET_PROC_MEM,vsh_pid,address,(uint64_t)(uint32_t)buf,size);
+	return_to_user_prog(int);
+}
 
 static void enable_ingame_screenshot(void)
 {

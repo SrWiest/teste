@@ -1,3 +1,8 @@
 @echo off
-xcopy /y PS3HEN.BIN_CEX_489 .\Make_PKG\4.89.3\dev_rewrite\hen\PS3HEN.BIN
-xcopy /y PS3HEN.BIN_CEX_489 PS3HEN.BIN
+setlocal enabledelayedexpansion
+
+for %%A in (PS3HEN.BIN_CEX_4??) do (
+set a=%%A
+set b=!a:~16,3!
+xcopy /Y PS3HEN.BIN_CEX_4!b! .\Make_PKG\4.!b!\dev_rewrite\hen\PS3HEN.BIN
+)
