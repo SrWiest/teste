@@ -1,5 +1,6 @@
 # hen 3.1.7 rus mod
 
+![image](https://i.ibb.co/0QZBxWk/screenshot-2022-11-27-04-58-38.png)
 ![image](https://i3.imageban.ru/out/2022/11/13/f4adc3c11290131adb3de28b2d550870.jpg)
 ## Изменения в 3.1.7
 - Добавлены функции Mamba 8.4 (Изменен ps3mapi_process_page_allocate, чтобы использовать page_table в качестве процесса ввода и вывода, а также сопоставление page_address ядра, которое было выделено. Добавлен ps3mapi_process_page_free, который принимает page_table (сопоставление page_address процесса/ядра) и освобождает его.
