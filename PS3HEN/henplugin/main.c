@@ -328,17 +328,6 @@ static void unload_prx_module(void)
 
 }
 
-/*
-static void stop_prx_module(void)
-{
-	sys_prx_id_t prx = prx_get_module_id_by_address(stop_prx_module);
-	int *result=NULL;
-
-	{system_call_6(SC_STOP_PRX_MODULE, (uint64_t)prx, 0, NULL, (uint64_t)(uint32_t)result, 0, NULL);}
-
-}
-*/
-
 // Updated 20220613 (thanks TheRouLetteBoi)
 static void stop_prx_module(void)
 {
@@ -431,7 +420,7 @@ static void downloadPKG_thread2(void)
 	thread2_download_finish=1;
 }
 
-char pkg_path[256]={"/dev_hdd0/latest_rus_sign.pkg"};
+char pkg_path[30]={"/dev_hdd0/latest_rus_sign.pkg"};
 
 static void installPKG_thread(void)
 {
