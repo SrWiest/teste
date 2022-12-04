@@ -1,4 +1,0 @@
-# EU
-Dest=89;CompatibleSystemSoftwareVersion=4.8900-;
-Dest=89;IncrementalUpdateVersion=00099999-00099999;ImageVersion=00099999;SystemSoftwareVersion=4.8900;CDN=https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kPwnfNQWMOw3Bv5ugd0VO6f-Z_7WeYgw;CDN_Timeout=30;
-Dest=89;ImageVersion=00099999;SystemSoftwareVersion=4.8900;CDN=https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kPwnfNQWMOw3Bv5ugd0VO6f-Z_7WeYgw;CDN_Timeout=30;
