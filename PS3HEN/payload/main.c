@@ -1235,21 +1235,20 @@ void cleanup_files(void)
 
 // Hotkey Buttons pressed at launch
 //static int mappath_disabled=0;// Disable all mappath mappings at launch
-//static int boot_plugins_disabled=0;// Disable user and kernel plugins on launch
-static int boot_plugins_txt_disabled=0;
+int boot_plugins_disabled=0;// Disable user and kernel plugins on launch
 
 static void check_combo_buttons(void);
 static void check_combo_buttons(void)
 {
 	pad_data onboot;
 	
-	timer_usleep(14000);
+	timer_usleep(16000);
 	
 	if (pad_get_data(&onboot) >= ((PAD_BTN_OFFSET_DIGITAL+1)*2)){
 
 		if((onboot.button[PAD_BTN_OFFSET_DIGITAL] & (PAD_CTRL_L2)) == (PAD_CTRL_L2)){
 
-			boot_plugins_txt_disabled=0;
+			boot_plugins_disabled=0;
 			#ifdef DEBUG
 //				DPRINTF("PAYLOAD->L2 Pressed: mappath remappings disabled\n");
 			#endif
@@ -1257,7 +1256,7 @@ static void check_combo_buttons(void)
 
 		if((onboot.button[PAD_BTN_OFFSET_DIGITAL] & (PAD_CTRL_R2)) == (PAD_CTRL_R2)){
 
-			boot_plugins_txt_disabled=1;
+			boot_plugins_disabled=1;
 			#ifdef DEBUG
 				//DPRINTF("PAYLOAD->R2 Pressed: boot plugins disabled\n");
 			#endif
@@ -1296,11 +1295,6 @@ int main(void)
 	//map_path("/dev_hdd0/hen/xml","/dev_flash/hen/remap/xml",FLAG_MAX_PRIORITY|FLAG_PROTECT); // Remap path to XML	
 	map_path("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
 	CellFsStat stat;
-	
-	if(boot_plugins_txt_disabled==1)
-	{
-	 map_path("/dev_hdd0/boot_plugins.txt","/dev_flash/hen/xml/empty.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
-	}
 	
 	if((cellFsStat("/dev_hdd0/hen/hen_pm.off",&stat)!=0))
 	{
@@ -1345,18 +1339,19 @@ int main(void)
 	memset((void *)MKA(0x7e0000),0,0x100);
 	memset((void *)MKA(0x7f0000),0,0x1000);
 	
-	//if(boot_plugins_disabled==0)
-	//{
-		load_boot_plugins();
-		load_boot_plugins_kernel();
+//	if(boot_plugins_disabled==0)
+//	{
+	load_boot_plugins(boot_plugins_disabled);
+	load_boot_plugins_kernel();
 	
 		#ifdef DEBUG
 			//DPRINTF("PAYLOAD->plugins loaded\n");
 		#endif
-	//}
+//	}
 
-	/*else
+/*	else
 	{	
+	
 		#ifdef DEBUG
 			//DPRINTF("PAYLOAD->plugins not loaded\n");
 		#endif

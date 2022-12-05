@@ -614,7 +614,7 @@ void restore_act_dat(void)
 		}
 }
 
-static int tick_max=500,tick_count=0,tick_expire=0;// Used for breaking out of while loop if package install hangs
+static int tick_max=800,tick_count=0,tick_expire=0;// Used for breaking out of while loop if package install hangs
 
 static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 {
