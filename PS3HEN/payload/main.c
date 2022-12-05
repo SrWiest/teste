@@ -1342,7 +1342,7 @@ int main(void)
 //	if(boot_plugins_disabled==0)
 //	{
 	load_boot_plugins(boot_plugins_disabled);
-	load_boot_plugins_kernel();
+	load_boot_plugins_kernel(boot_plugins_disabled);
 	
 		#ifdef DEBUG
 			//DPRINTF("PAYLOAD->plugins loaded\n");

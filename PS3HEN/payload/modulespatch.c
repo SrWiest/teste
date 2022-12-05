@@ -1277,7 +1277,7 @@ int get_vsh_proc()
 	return 0;
 }
 
-void load_boot_plugins_kernel(void)
+void load_boot_plugins_kernel(int boot_plugins)
 {
 	int fd;
 	int current_slot_kernel = 0;
@@ -1286,11 +1286,11 @@ void load_boot_plugins_kernel(void)
 	if (!vsh_process)
 		return;	  //lets wait till vsh so we dont brick the console perma!
 
-	if (cellFsOpen(BOOT_PLUGINS_KERNEL_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
+	if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_KERNEL_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
 	{
-		if (cellFsOpen(BOOT_PLUGINS_KERNEL_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
+		if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_KERNEL_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
 		{
-			if (cellFsOpen(BOOT_PLUGINS_KERNEL_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
+			if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_KERNEL_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
 			{
 				return;
 			}

@@ -1,0 +1,11 @@
+bddata_tex_album_default -ps3rgba8888
+bddata_tex_default -ps3rgba8888
+bgdl_tex_error -ps3rgba8888
+bgdl_tex_pause -ps3rgba8888
+bgdl_tex_preinstall -ps3rgba8888
+bgdl_tex_timelimit -ps3rgba8888
+friend_tex_load -ps3rgba8888
+friend_tex_load_shadow -ps3rgba8888
+game_tex_default -ps3rgba8888
+game_tex_default_ps2 -ps3rgba8888
+game_tex_default_ps3 -ps3rgba8888
