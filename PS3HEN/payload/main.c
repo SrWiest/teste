@@ -1235,14 +1235,14 @@ void cleanup_files(void)
 
 // Hotkey Buttons pressed at launch
 //static int mappath_disabled=0;// Disable all mappath mappings at launch
-int boot_plugins_disabled=0;// Disable user and kernel plugins on launch
+static int boot_plugins_disabled=0;// Disable user and kernel plugins on launch
 
 static void check_combo_buttons(void);
 static void check_combo_buttons(void)
 {
 	pad_data onboot;
 	
-	timer_usleep(16000);
+	timer_usleep(1000);
 	
 	if (pad_get_data(&onboot) >= ((PAD_BTN_OFFSET_DIGITAL+1)*2)){
 
@@ -1262,7 +1262,7 @@ static void check_combo_buttons(void)
 			#endif
 		}
 	}
-	timer_usleep(7000);
+	timer_usleep(500);
 }
 
 
@@ -1289,6 +1289,7 @@ int main(void)
 	cleanup_files();
 	
 	// Check for hotkey button presses on launch
+	boot_plugins_disabled=0;
 	check_combo_buttons();
 	
 	// File and folder redirections using mappath mappings
