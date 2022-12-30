@@ -59,7 +59,7 @@
 
 #define COBRA_VERSION		0x0F
 #define COBRA_VERSION_BCD	0x0810
-#define HEN_REV				0x0320
+#define HEN_REV				0x0322
 
 #if defined(FIRMWARE_4_82)
 	#define FIRMWARE_VERSION	0x0482
@@ -1242,13 +1242,13 @@ static void check_combo_buttons(void)
 {
 	pad_data onboot;
 	
-	timer_usleep(1000);
+	//timer_usleep(1000);
 	
 	if (pad_get_data(&onboot) >= ((PAD_BTN_OFFSET_DIGITAL+1)*2)){
 
 		if((onboot.button[PAD_BTN_OFFSET_DIGITAL] & (PAD_CTRL_L2)) == (PAD_CTRL_L2)){
 
-			boot_plugins_disabled=0;
+			boot_plugins_disabled=2;
 			#ifdef DEBUG
 //				DPRINTF("PAYLOAD->L2 Pressed: mappath remappings disabled\n");
 			#endif
@@ -1261,8 +1261,8 @@ static void check_combo_buttons(void)
 				//DPRINTF("PAYLOAD->R2 Pressed: boot plugins disabled\n");
 			#endif
 		}
-	}
-	timer_usleep(500);
+	} 
+	//timer_usleep(500);
 }
 
 
@@ -1340,15 +1340,15 @@ int main(void)
 	memset((void *)MKA(0x7e0000),0,0x100);
 	memset((void *)MKA(0x7f0000),0,0x1000);
 	
-//	if(boot_plugins_disabled==0)
-//	{
+	if(boot_plugins_disabled<2)
+	{
 	load_boot_plugins(boot_plugins_disabled);
 	load_boot_plugins_kernel(boot_plugins_disabled);
 	
 		#ifdef DEBUG
 			//DPRINTF("PAYLOAD->plugins loaded\n");
 		#endif
-//	}
+	}
 
 /*	else
 	{	

@@ -1286,9 +1286,9 @@ void load_boot_plugins_kernel(int boot_plugins)
 	if (!vsh_process)
 		return;	  //lets wait till vsh so we dont brick the console perma!
 
-	if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_KERNEL_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
+	if (cellFsOpen(BOOT_PLUGINS_KERNEL_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 	{
-		if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_KERNEL_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
+		if (cellFsOpen(BOOT_PLUGINS_KERNEL_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 		{
 			if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_KERNEL_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
 			{
@@ -1352,9 +1352,9 @@ void load_boot_plugins(int boot_plugins)
 	// Improving initial KW's code
 	// Firstly will load plugin from '/dev_hdd0' instead '/dev_flash'
 	// If it does not exist in '/dev_hdd0' will load it from '/dev_flash'
-	if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
+	if (cellFsOpen(BOOT_PLUGINS_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 	{
-		if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
+		if (cellFsOpen(BOOT_PLUGINS_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 		{
 			if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
 			{

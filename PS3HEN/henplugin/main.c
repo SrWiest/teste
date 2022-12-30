@@ -447,13 +447,13 @@ static void unload_web_plugins(void)
 	while(View_Find("webrender_plugin"))
 	{
 		UnloadPluginById(0x1C, (void *)unloadSysPluginCallback);
-		sys_timer_usleep(70000);
+		sys_timer_usleep(20000);
 	}
 
 	while(View_Find("webbrowser_plugin"))
 	{
 		UnloadPluginById(0x1B, (void *)unloadSysPluginCallback);
-		sys_timer_usleep(70000);
+		sys_timer_usleep(20000);
 	}
 
 	explore_interface->ExecXMBcommand("close_all_list", 0, 0);
@@ -540,53 +540,86 @@ void clear_web_cache_check(void)
 	// Clear WebBrowser cache (thanks xfrcc)
 	// Toggles can be accessed by HFW Tools menu
 	CellFsStat stat;
-	
-	//char msg[0x80];
-	int cleared_history = 0;
-	int cleared_auth_cache = 0;
-	int cleared_cookie = 0;
+	char msg[0x80];
+	char cleared_history[0x07];
+	char cleared_auth_cache[0x07];
+	char cleared_cookie[0x07];
 	//int cleared_total = 0;
-	
 	char path1[0x40];
 	sprintf(path1, "/dev_hdd0/home/%08i/webbrowser/history.xml", xsetting_CC56EB2D()->GetCurrentUserNumber());
-
 	char path2[0x40];
 	sprintf(path2, "/dev_hdd0/home/%08i/http/auth_cache.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
-
 	char path3[0x40];
 	sprintf(path3, "/dev_hdd0/home/%08i/http/cookie.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
-
-	if(cellFsStat(path1,&stat)==0 && cellFsStat("/dev_hdd0/hen/clear_web_history.off",&stat)==1)
+	char path4[0x40];
+	sprintf(path4, "/dev_hdd0/home/%08i/community/CI.TMP", xsetting_CC56EB2D()->GetCurrentUserNumber());
+	char path5[0x40];
+	sprintf(path5, "/dev_hdd0/home/%08i/community/MI.TMP", xsetting_CC56EB2D()->GetCurrentUserNumber());
+	char path6[0x40];
+	sprintf(path6, "/dev_hdd0/home/%08i/community/PTL.TMP", xsetting_CC56EB2D()->GetCurrentUserNumber());
+	
+	if((cellFsStat(path1,&stat)==0) && (cellFsStat("/dev_hdd0/hen/clear_web_history.off",&stat)!=0))												
 	{
 		//DPRINTF("Toggle Activated: clear_web_history\n");
 		cellFsUnlink(path1);
-		cleared_history = 1;
+		sprintf (cleared_history, "%s", "clean");
 		//cleared_total++;
+	} 
+	else if((cellFsStat(path1,&stat)!=0) && (cellFsStat("/dev_hdd0/hen/clear_web_history.off",&stat)!=0))
+	{
+		sprintf (cleared_history, "%s", "no need");	
+	}	
+	else if(cellFsStat("/dev_hdd0/hen/clear_web_history.off",&stat)==0)
+	{
+		sprintf (cleared_history, "%s", "disable");	
 	}
-	
-	if(cellFsStat(path2,&stat)==0 && cellFsStat("/dev_hdd0/hen/clear_web_auth_cache.off",&stat)==1)
+		
+	if((cellFsStat(path2,&stat)==0) && (cellFsStat("/dev_hdd0/hen/clear_web_auth_cache.off",&stat)!=0))
 	{
 		//DPRINTF("Toggle Activated: clear_web_auth_cache\n");
 		cellFsUnlink(path2);
-		cleared_auth_cache = 1;
+		sprintf (cleared_auth_cache, "%s", "clean");
 		//cleared_total++;
 	}
+	else 
+	{
+		sprintf (cleared_auth_cache, "%s", "disable");
+	}
 	
-	if(cellFsStat(path3,&stat)==0 && cellFsStat("/dev_hdd0/hen/clear_web_cookie.off",&stat)==1)
+	if((cellFsStat(path3,&stat)==0) && (cellFsStat("/dev_hdd0/hen/clear_web_cookie.off",&stat)!=0))
 	{
 		//DPRINTF("Toggle Activated: clear_web_cookie\n");
 		cellFsUnlink(path3);
-		cleared_cookie = 1;
+		sprintf (cleared_cookie, "%s", "clean");
 		//cleared_total++;
 	}
-	
-	/*if(cleared_total>0)
+	else 
 	{
-		sprintf(msg, "Clear Web Cache\nHistory[%i] / Auth Cache[%i] / Cookie[%i]", cleared_history, cleared_auth_cache, cleared_cookie);
+		sprintf (cleared_cookie, "%s", "disable");
+	}
+
+	if(cellFsStat(path4,&stat)==0)
+	{
+		cellFsUnlink(path4);
+	}
+	if(cellFsStat(path5,&stat)==0)
+	{		
+		cellFsUnlink(path5);
+	}
+	if(cellFsStat(path6,&stat)==0)
+	{		
+		cellFsUnlink(path6);
+	}
+	
+	if(cellFsStat("/dev_hdd0/hen/clear_info.off",&stat)!=0)
+	{
+		sprintf(msg, "Clear Web Cache History %-s\nAuth Cache %-s\nCookie %-s", cleared_history, cleared_auth_cache, cleared_cookie);
 		show_msg((char*)msg);
 	}
-	else
+	/*else
 	{
+		sprintf(msg, "Clear Web Cache\nHistory %s\n Auth Cache %s\n Cookie %s", cleared_history, cleared_auth_cache, cleared_cookie);
+		show_msg((char*)msg);
 		//DPRINTF("No Clear Web Cache Toggles Activated\n");
 	}*/
 }
@@ -659,11 +692,11 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		LoadPluginById(0x16, (void *)installPKG_thread);
 		while(thread3_install_finish==0)
 		{
-			sys_timer_usleep(70000);
+			sys_timer_usleep(14000);
 		}
 		while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)!=0)
 		{
-			sys_timer_usleep(70000);
+			sys_timer_usleep(14000);
 			tick_count++;
 			if(tick_count>=tick_max){tick_expire=1;break;};
 			//DPRINTF("Waiting for package to finish installing\n");
@@ -684,11 +717,11 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		LoadPluginById(0x16, (void *)installPKG_thread);
 		while(thread3_install_finish==0)
 		{
-			sys_timer_usleep(70000);
+			sys_timer_usleep(7000);
 		}
 		while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)!=0)
 		{
-			sys_timer_usleep(70000);
+			sys_timer_usleep(7000);
 			tick_count++;
 			if(tick_count>=tick_max){tick_expire=1;break;};
 			//DPRINTF("Waiting for package to finish installing\n");
@@ -711,13 +744,13 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		
 		while(is_browser_open)
 		{	
-			sys_timer_usleep(70000);
+			sys_timer_usleep(7000);
 			is_browser_open=View_Find("webbrowser_plugin");
 		}
 		is_browser_open=View_Find("webrender_plugin");
 		while(is_browser_open)
 		{
-			sys_timer_usleep(70000);
+			sys_timer_usleep(7000);
 			is_browser_open=View_Find("webrender_plugin");
 		}
 		unload_web_plugins();
@@ -725,7 +758,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 
 		while(thread2_download_finish==0)
 		{
-			sys_timer_usleep(70000);
+			sys_timer_usleep(7000);
 		}
 
 		while(IS_DOWNLOADING)
@@ -743,7 +776,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 			LoadPluginById(0x16, (void *)installPKG_thread);
 			while(thread3_install_finish==0)
 			{
-				sys_timer_usleep(70000);
+				sys_timer_usleep(7000);
 			}
 			
 			// The package is now installing
@@ -751,7 +784,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 			while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)!=0)
 			{
 				//DPRINTF("tick_count: %i\n",tick_count);
-				sys_timer_usleep(70000);
+				sys_timer_usleep(7000);
 				tick_count++;
 				if(tick_count>=tick_max){tick_expire=1;break;};
 				//DPRINTF("Waiting for package to finish installing\n");
@@ -784,12 +817,12 @@ done:
 			sprintf(reboot_txt, "Error: Unable To Verify Installation!\nYou Must Reboot Manually!");
 		}
 		show_msg((char *)reboot_txt);
-		sys_timer_usleep(70000);// Wait a few seconds
+		sys_timer_usleep(20000);// Wait a few seconds
 		
 		// Verify the temp file is removed
 		while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)==0)
 		{
-			sys_timer_usleep(70000);
+			sys_timer_usleep(20000);
 			cellFsUnlink("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp");// Remove temp file
 			//DPRINTF("Waiting for temporary zzz_hen_installed.tmp file to be removed\n");
 		}
@@ -825,7 +858,7 @@ int henplugin_stop()
 	uint64_t exit_code;
 	if (ret == 0) sys_ppu_thread_join(t_id, &exit_code);
 
-	sys_timer_usleep(7000);
+	sys_timer_usleep(4000);
 	stop_prx_module();
 
 	_sys_ppu_thread_exit(0);
