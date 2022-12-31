@@ -59,7 +59,7 @@
 
 #define COBRA_VERSION		0x0F
 #define COBRA_VERSION_BCD	0x0810
-#define HEN_REV				0x0322
+#define HEN_REV				0x0323
 
 #if defined(FIRMWARE_4_82)
 	#define FIRMWARE_VERSION	0x0482
@@ -1235,7 +1235,7 @@ void cleanup_files(void)
 
 // Hotkey Buttons pressed at launch
 //static int mappath_disabled=0;// Disable all mappath mappings at launch
-static int boot_plugins_disabled;// Disable user and kernel plugins on launch
+static int boot_plugins_disabled=0;// Disable user and kernel plugins on launch
 
 static void check_combo_buttons(void);
 static void check_combo_buttons(void)
@@ -1339,7 +1339,10 @@ int main(void)
 	memset((void *)MKA(0x7f0000),0,0x1000);
 	
 	// Check for hotkey button presses on launch
-	check_combo_buttons();
+	if((cellFsStat("/dev_hdd0/hen/hotkeys.off",&stat)!=0))
+	{
+		check_combo_buttons();
+	}	
 	
 	if(boot_plugins_disabled<2)
 	{
