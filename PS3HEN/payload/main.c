@@ -1235,7 +1235,7 @@ void cleanup_files(void)
 
 // Hotkey Buttons pressed at launch
 //static int mappath_disabled=0;// Disable all mappath mappings at launch
-static int boot_plugins_disabled=0;// Disable user and kernel plugins on launch
+static int boot_plugins_disabled;// Disable user and kernel plugins on launch
 
 static void check_combo_buttons(void);
 static void check_combo_buttons(void)
@@ -1261,10 +1261,12 @@ static void check_combo_buttons(void)
 				//DPRINTF("PAYLOAD->R2 Pressed: boot plugins disabled\n");
 			#endif
 		}
+	} else 
+	{
+		boot_plugins_disabled=0;	
 	} 
 	//timer_usleep(500);
 }
-
 
 extern volatile int sleep_done;
 
@@ -1287,10 +1289,6 @@ int main(void)
 		
 	// Cleanup Old and Temp HEN Files
 	cleanup_files();
-	
-	// Check for hotkey button presses on launch
-	boot_plugins_disabled=0;
-	check_combo_buttons();
 	
 	// File and folder redirections using mappath mappings
 	//map_path("/dev_hdd0/hen/xml","/dev_flash/hen/remap/xml",FLAG_MAX_PRIORITY|FLAG_PROTECT); // Remap path to XML	
@@ -1339,6 +1337,9 @@ int main(void)
 	do_hook_all_syscalls();
 	memset((void *)MKA(0x7e0000),0,0x100);
 	memset((void *)MKA(0x7f0000),0,0x1000);
+	
+	// Check for hotkey button presses on launch
+	check_combo_buttons();
 	
 	if(boot_plugins_disabled<2)
 	{
