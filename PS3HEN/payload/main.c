@@ -59,7 +59,7 @@
 
 #define COBRA_VERSION		0x0F
 #define COBRA_VERSION_BCD	0x0810
-#define HEN_REV				0x0323
+#define HEN_REV				0x0324
 
 #if defined(FIRMWARE_4_82)
 	#define FIRMWARE_VERSION	0x0482
@@ -90,6 +90,7 @@
 #endif
 
 #define MAKE_VERSION(cobra, fw, type) ((cobra&0xFF) | ((fw&0xffff)<<8) | ((type&0x1)<<24))
+
 
 typedef struct
 {
@@ -610,6 +611,15 @@ LV2_SYSCALL2(void, sys_cfw_lv1_poke, (uint64_t lv1_addr, uint64_t lv1_value))
 	lv1_poked(lv1_addr, lv1_value);
 }
 
+LV2_SYSCALL2(uint64_t, sys_cfw_lv1_peek, (uint64_t lv1_addr))
+{
+	DPRINTF("lv1_peek %p\n", (void*)lv1_addr);
+	
+    uint64_t ret;
+    ret = lv1_peekd(lv1_addr);
+    return ret;
+}
+
 LV2_SYSCALL2(void, sys_cfw_lv1_call, (uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, uint64_t a5, uint64_t a6, uint64_t a7, uint64_t num))
 {
 	/* DO NOT modify */
@@ -870,6 +880,19 @@ LV2_SYSCALL2(int64_t, syscall8, (uint64_t function, uint64_t param1, uint64_t pa
 				break;
 				case PS3MAPI_OPCODE_PCHECK_SYSCALL8:
 					return ps3mapi_partial_disable_syscall8;
+				break;
+				case PS3MAPI_OPCODE_CREATE_CFW_SYSCALLS:
+					create_syscalls();
+					return SUCCEEDED;
+				break;
+
+				case PS3MAPI_OPCODE_ALLOW_RESTORE_SYSCALLS:
+					allow_restore_sc = (uint8_t)param2; // 1 = allow, 0 = do not allow
+					return SUCCEEDED;
+				break;
+
+				case PS3MAPI_OPCODE_GET_RESTORE_SYSCALLS:
+					return allow_restore_sc;
 				break;
 				//----------
 				//REMOVE HOOK
@@ -1163,6 +1186,18 @@ LV2_SYSCALL2(int, sm_get_fan_policy_sc,(uint8_t id, uint8_t *st, uint8_t *policy
 	return ret;
 }
 
+void create_syscalls(void)
+{
+	create_syscall2(8, syscall8);
+	create_syscall2(6, sys_cfw_peek);
+	create_syscall2(7, sys_cfw_poke);
+	create_syscall2(9, sys_cfw_lv1_poke);
+	create_syscall2(10, sys_cfw_lv1_call);
+	create_syscall2(11, sys_cfw_lv1_peek);
+	create_syscall2(15, sys_cfw_lv2_func);
+	create_syscall2(SYS_MAP_PATH, sys_map_path);
+}
+
 static INLINE void apply_kernel_patches(void)
 {
     /// Adding HEN patches on init for stability /// -- START
@@ -1241,9 +1276,7 @@ static void check_combo_buttons(void);
 static void check_combo_buttons(void)
 {
 	pad_data onboot;
-	
-	//timer_usleep(1000);
-	
+
 	if (pad_get_data(&onboot) >= ((PAD_BTN_OFFSET_DIGITAL+1)*2)){
 
 		if((onboot.button[PAD_BTN_OFFSET_DIGITAL] & (PAD_CTRL_L2)) == (PAD_CTRL_L2)){
@@ -1265,7 +1298,6 @@ static void check_combo_buttons(void)
 	{
 		boot_plugins_disabled=0;	
 	} 
-	//timer_usleep(500);
 }
 
 extern volatile int sleep_done;
@@ -1310,9 +1342,17 @@ int main(void)
 	else
 	{
 	 map_path("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/empty.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
-	}	
+	}
+	if((cellFsStat("/dev_hdd0/hen/ip.off",&stat)!=0))
+	{	
+	map_path("/dev_flash/vsh/module/xmb_plugin.sprx","/dev_flash/vsh/resource/AAA/xmb_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches ip.
+	}
+	if((cellFsStat("/dev_hdd0/hen/trophy.off",&stat)!=0))
+	{
+	map_path("/dev_flash/vsh/module/explore_plugin.sprx","/dev_flash/vsh/resource/AAA/explore_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches the additional trophy.
+	}
 	map_path("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches the HEN Logo.
-	
+
 	#ifdef DEBUG
 		printMappingList();
 		//DPRINTF("sys_map_path offset 0x%8lx\n",(uint64_t)(uint64_t*)sys_map_path);

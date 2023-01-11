@@ -265,7 +265,7 @@ static void reload_xmb(void)
 {
 	while(!IS_ON_XMB)
 	{
-		sys_timer_usleep(70000);
+		sys_timer_usleep(7000);
 	}
 // Reload All Categories and Swap Icons if Remaped 
 	explore_interface->ExecXMBcommand("reload_category_items game",0,0);
@@ -663,7 +663,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	if(view==0)
 	{
 		view=View_Find("explore_plugin");
-		sys_timer_usleep(70000);
+		sys_timer_usleep(14000);
 	}
 	explore_interface = (explore_plugin_interface *)plugin_GetInterface(view, 1);
 

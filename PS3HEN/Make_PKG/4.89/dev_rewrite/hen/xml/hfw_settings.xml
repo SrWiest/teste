@@ -410,6 +410,46 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>								
 			</Table>
+			<Table key="hen_clog">
+				<Pair key="icon"><String>/dev_hdd0/hen/clear_info.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_clog</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_clear_info</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>								
+			</Table>
+			<Table key="hen_keys">
+				<Pair key="icon"><String>/dev_hdd0/hen/clear_info.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_keys</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_hotkeys</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>								
+			</Table>
+			<Table key="hen_ip">
+				<Pair key="icon"><String>/dev_hdd0/hen/ip.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_ip</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_reload</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_ip</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+			<Table key="hen_trophy">
+				<Pair key="icon"><String>/dev_hdd0/hen/trophy.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_trophy</String></Pair>
+				<Pair key="info_rsc"><String>msg_hen_xmb_reload</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_trophy</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
 			<Table key="uninstall_hen">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_uninstall_hen</String></Pair>
@@ -430,7 +470,11 @@
 			<Item class="type:x-xmb/module-action" key="hen_audio_on" attr="hen_audio_on"/>
 			<Item class="type:x-xmb/module-action" key="hen_cwh" attr="hen_cwh"/>
 			<Item class="type:x-xmb/module-action" key="hen_cwa" attr="hen_cwa"/>
-			<Item class="type:x-xmb/module-action" key="hen_cwc" attr="hen_cwc"/>			
+			<Item class="type:x-xmb/module-action" key="hen_cwc" attr="hen_cwc"/>
+			<Item class="type:x-xmb/module-action" key="hen_clog" attr="hen_clog"/>			
+			<Item class="type:x-xmb/module-action" key="hen_keys" attr="hen_keys"/>
+			<Item class="type:x-xmb/module-action" key="hen_ip" attr="hen_ip"/>		
+			<Item class="type:x-xmb/module-action" key="hen_trophy" attr="hen_trophy"/>
 			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
 		</Items>
 	</View>
