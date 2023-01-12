@@ -270,6 +270,16 @@
 
 	<View id="seg_recovery_menu">
 		<Attributes>
+			<Table key="restore_syscall">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/flash.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_rs</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_rs_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>restore_syscall</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
 			<Table key="applicable_version">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/recovery_display_minver.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_applicable_version</String></Pair>
@@ -312,6 +322,7 @@
 			</Table>
 		</Attributes>
 		<Items>
+			<Item class="type:x-xmb/module-action"  key="restore_syscall"	attr="restore_syscall"/>
 			<Item class="type:x-xmb/module-action"  key="applicable_version"	attr="applicable_version"/>
 			<Item class="type:x-xmb/module-action"  key="fs_check"				attr="fs_check"/>
 			<Item class="type:x-xmb/module-action"  key="rebuild_db"			attr="rebuild_db"/>

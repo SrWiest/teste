@@ -5,7 +5,7 @@
 #define MAX_SPOOF_REVISION			99999
 #define MAX_SPOOF_REVISION_CHARS	5
 
-#define CFG_ALLOW_RESTORE_SC 		3
+#define CFG_ALLOW_RESTORE_SC 		1
 
 typedef struct
 {

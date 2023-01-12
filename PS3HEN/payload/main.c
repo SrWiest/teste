@@ -1191,10 +1191,12 @@ void create_syscalls(void)
 	create_syscall2(8, syscall8);
 	create_syscall2(6, sys_cfw_peek);
 	create_syscall2(7, sys_cfw_poke);
-	create_syscall2(9, sys_cfw_lv1_poke);
+	//create_syscall2(9, sys_cfw_lv1_poke);
 	create_syscall2(10, sys_cfw_lv1_call);
-	create_syscall2(11, sys_cfw_lv1_peek);
+	//create_syscall2(11, sys_cfw_lv1_peek);
 	create_syscall2(15, sys_cfw_lv2_func);
+	create_syscall2(389, sm_set_fan_policy_sc);
+	create_syscall2(409, sm_get_fan_policy_sc);
 	create_syscall2(SYS_MAP_PATH, sys_map_path);
 }
 
