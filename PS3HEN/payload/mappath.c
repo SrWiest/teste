@@ -1044,7 +1044,7 @@ void restore_syscalls(const char *path)
 	// Restore disabled CFW Syscalls without reboot just entering to Settings > System Update on XMB - aldostools
 //	if(allow_restore_sc)
 //	{
-		if((!strcmp(path, "/dev_flash/vsh/module/software_update_plugin.sprx")) || (!strcmp(path, "/dev_flash/vsh/module/xai_plugin.sprx")))
+		if(!strcmp(path, "/dev_flash/vsh/module/software_update_plugin.sprx")) 
 		{			
 			if(check_syscalls())
 				create_syscalls();
