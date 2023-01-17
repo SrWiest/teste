@@ -1,0 +1,5 @@
+tex_check2_ws -ps3rgba8888
+tex_error_ws -ps3rgba8888
+tex_notification_info -ps3dxt5
+tex_notification_info2 -ps3dxt5
+tex_warning -ps3rgba8888
