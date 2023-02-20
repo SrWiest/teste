@@ -1,7 +1,7 @@
 <h1 align="center">Hi there, I'm <a href="https://www.pspx.ru/forum/" target="_blank">in1975</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">This is the repository for Hen 3.2.4 rus mod</h3>
-
+[![Downloads][img_downloads]][pkg_downloads] 
 <p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
@@ -103,4 +103,7 @@
 - xai_plugin доработан.
 - Обновлена информация о PS3HEN
 - Другие мелкие правки
+
+[pkg_downloads]: https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg
+[pkg_latest]: https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg
 
