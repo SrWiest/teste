@@ -3,23 +3,19 @@
 <h3 align="center">This is the repository for Hen 3.2.4 rus mod</h3>
 <p align="center">
   <a href="https://github.com/ryo-ma/github-profile-trophy/issues">
-    <img src="https://img.shields.io/github/issues/ryo-ma/github-profile-trophy"/> 
+    <img src="https://img.shields.io/github/issues/nikolaevich23/github-profile-trophy"/> 
   </a>
   <a href="https://github.com/ryo-ma/github-profile-trophy/network/members">
-    <img src="https://img.shields.io/github/forks/ryo-ma/github-profile-trophy"/> 
+    <img src="https://img.shields.io/github/forks/nikolaevich23/github-profile-trophy"/> 
   </a>  
   <a href="https://github.com/ryo-ma/github-profile-trophy/stargazers">
-    <img src="https://img.shields.io/github/stars/ryo-ma/github-profile-trophy"/> 
+    <img src="https://img.shields.io/github/stars/nikolaevich23/github-profile-trophy"/> 
   </a>
     <a href="https://github.com/ryo-ma/github-profile-trophy/LICENSE">
-    <img src="https://img.shields.io/github/license/ryo-ma/github-profile-trophy"/> 
+    <img src="https://img.shields.io/github/license/nikolaevich23/github-profile-trophy"/> 
   </a>
 </p>
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=nikolaevich23)](https://github.com/nikolaevich23/github-profile-trophy)
 <p align="center">
-  <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
-</p><p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
 
