@@ -1,6 +1,7 @@
+<h1 align="center">Hi there, I'm <a href="https://www.pspx.ru/forum/" target="_blank">in1975</a> 
+<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
+<h3 align="center">This is the repository for Hen 3.2.4 rus mod</h3>
 [![trophy](https://github-profile-trophy.vercel.app/?username=nikolaevich23)](https://github.com/nikolaevich23/github-profile-trophy)
-
-# hen 3.2.4 rus mod
 
 ## Изменения в 3.2.4 
 - Новый способ установки HEN (для исключения проблем с разделом сеть). Если после загрузки HEN.P3T эксплоит не сработал - закройте браузер, откройте вновь, наберите адрес и пропустите загрузку файла 2й раз (нет необходимости качать его еще раз).
