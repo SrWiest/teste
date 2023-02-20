@@ -4,7 +4,7 @@
 <p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
-[![Downloads][img_downloads]][pkg_downloads]] 
+[![Downloads][img_downloads]][pkgi_downloads] [![Release][img_latest]][pkgi_latest] [![License][img_license]][pkgi_license]
 
 ## Изменения в 3.2.4 
 - Новый способ установки HEN (для исключения проблем с разделом сеть). Если после загрузки HEN.P3T эксплоит не сработал - закройте браузер, откройте вновь, наберите адрес и пропустите загрузку файла 2й раз (нет необходимости качать его еще раз).
