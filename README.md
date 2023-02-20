@@ -4,7 +4,7 @@
 <p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
-[![Downloads][img_downloads]][pkgi_downloads] [![Release][img_latest]][pkgi_latest] [![License][img_license]][pkgi_license]
+[![Downloads][img_downloads]][pkgi_downloads]
 
 ## Изменения в 3.2.4 
 - Новый способ установки HEN (для исключения проблем с разделом сеть). Если после загрузки HEN.P3T эксплоит не сработал - закройте браузер, откройте вновь, наберите адрес и пропустите загрузку файла 2й раз (нет необходимости качать его еще раз).
@@ -106,4 +106,5 @@
 
 [pkg_downloads]: https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg
 [pkg_latest]: https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg
+[img_downloads]: https://img.shields.io/github/downloads/nikolaevich23/nikolaevich23.github.io/total.svg?maxAge=3600
 
