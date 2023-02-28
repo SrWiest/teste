@@ -9,7 +9,7 @@ setlocal EnabledelayedExpansion
 set CID=CUSTOM-INSTALLER_00-0000000000000000
 if exist ps3hen_4???.pkg_signed.pkg del /Q ps3hen_4???.pkg_signed.pkg
 
-for /D %%A in (4.89*) do (
+for /D %%A in (4.9*) do (
 set nm=%%A
 make_package_custom.exe --contentid %CID% ./%%A/ ps3hen_!nm:.=!.pkg
 echo | ps3xploit_rifgen_edatresign ps3hen_!nm:.=!.pkg ps3 >> NUL
