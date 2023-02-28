@@ -1,0 +1,41 @@
+Rcomage v1.1.2, written by ZiNgA BuRgA
+A general purpose RCO creation and manipulation command-line tool.
+
+Syntax: rcomage.exe compile <xmlfile> <rcofile> [options]
+  Compiles an RCO <rcofile> using structure defined in <xmlfile>.
+  <xmlfile> can be '-' which means stdin.
+  Note that the XML file may have linked resources which need to be present for
+  the compilation process to succeed.
+
+
+Options:
+  For the following --pack-* functions, values can be 'none', 'zlib' or 'rlz'.
+  --pack-res and --pack-cmp, if specified, override values stored in XML.
+  Note: RLZ compression is EXPERIMENTAL!
+    --pack-hdr <val>  How to compress the RCO header. [none]
+    --pack-res <val>  How to compress RCO resources (BMP, GIM & GMO).
+    --pack-cmp <val>  Compression used on already compressed resources. [none]
+                      This can be used to force additional compression on PNG,
+                      JPEG, TIFF and GIF resources. 'none' is recommended.
+    --zlib-method <val>
+                      Zlib compression method/strategy [7z]
+                      Can be default, filtered, huffman, rle, fixed or 7z
+                      '7z' will use 7-Zip's deflate instead of zlib
+    --zlib-level <n>  Zlib compression level [3]
+                      Values can be 0-9, or 1-4 for '--zlib-method 7z'
+                      Defaults to 9 if not using 7z
+    --rlz-mode <n>    RLZ compression mode [-1]
+                      Values can be 0-31, or -1
+                      -1 tries modes 5, 6 & 7 and selects optimal output (default
+                      Sony behaviour)
+
+    --no-convgim      Don't automatically run images marked as format=gim
+                      through gimconv if extension is not '.gim'.
+    --gimconv-cmd <command>
+                      gimconv command to execute; defaults to 'gimconv'.
+    --gimconv-flags <flags>
+                      Additional flags to pass to gimconv.
+    --no-convvag      Don't automatically convert WAV sounds to VAG format
+                      (based on extension).  Note WAV->VAG conversion is lossy!
+    --no-encvsmx      Don't automatically encode text files to VSMX
+                      (based on extension).
