@@ -1119,459 +1119,458 @@ RESUME GAMEPLAY ONLY ON APPROVAL OF YOUR PHYSICIAN.
 	<Text name="msg_health_warning_detail_sceasia_14">・If you experience any of the following health problems, discontinue use of the system immediately. If symptoms persist, consult with your physician.
 - Dizziness, nausea, fatigue or symptoms similar to motion sickness
 - Discomfort or pain in a part of the body, such as eyes, ears, hands or arms</Text>
-	<Text name="msg_tool_package_file"><![CDATA[★ パッケージマネージャー]]></Text>
-	<Text name="msg_tool_package_file_info">PlayStation™Networkコンテンツや自作パッケージを管理します。</Text>
-	<Text name="msg_tool_rebug_file"><![CDATA[★ Rebug Essentials]]></Text>
-	<Text name="msg_tool_rebug_file_info">Rebugの機能にアクセスするアプリケーション[Rebug Toolbox]をインストールします。</Text>
-	<Text name="msg_tool_psn_file"><![CDATA[★ PlayStation™Networkコンテンツ]]></Text>
-	<Text name="msg_tool_psn_file_info">PlayStation™Networkからダウンロードしたコンテンツを管理します。</Text>
-	<Text name="msg_tool_install_file_info">ストレージデバイスやPS3™からパッケージファイルをインストールします。</Text>
-	<Text name="msg_tool_delete_file"><![CDATA[★ パッケージファイルの削除]]></Text>
-	<Text name="msg_tool_delete_file_info">ストレージデバイスやPS3™からパッケージファイルを削除します。</Text>
-	<Text name="msg_tool_hdd0_file">PS3™本体ストレージ</Text>
-	<Text name="msg_tool_hdd0_install_info">本体ストレージの[packages]フォルダーからパッケージファイルをインストールします。</Text>
-	<Text name="msg_tool_hdd0_delete_info">本体ストレージの[packages]フォルダーからパッケージファイルを削除します。</Text>
-	<Text name="msg_tool_usb_file">パッケージフォルダー</Text>
-	<Text name="msg_tool_usb_install_info">ストレージデバイスの[packages]フォルダーからパッケージファイルをインストールします。</Text>
-	<Text name="msg_tool_usb_delete_info">ストレージデバイスの[packages]フォルダーからパッケージファイルを削除します。</Text>
-	<Text name="msg_tool_og_file">スタンダード</Text>
-	<Text name="msg_tool_og_install_info">ストレージデバイスのrootからパッケージファイルをインストールします。</Text>
-	<Text name="msg_tool_og_delete_info">ストレージデバイスのrootからパッケージファイルを削除します。</Text>
-	<Text name="msg_tool_no_package">パッケージファイルが見つかりません。</Text>
-	<Text name="msg_tool_no_psn_content">PlayStation™Networkコンテンツが見つかりません。</Text>
-	<Text name="msg_cfw_settings_title"><![CDATA[★ カスタムファームウェアツール]]></Text>
-	<Text name="msg_fsm_tools_title">アドバンスドサービスツール</Text>
-	<Text name="msg_basic_tools_title">ベーシックツール</Text>
-	<Text name="msg_cobra_tools_title">Cobraツール</Text>
-	<Text name="msg_dump_tools_title">ダンプツール</Text>
-	<Text name="msg_recovery_menu_title">サービスツール</Text>
-	<Text name="msg_ingame_settings_title">インゲーム設定</Text>
-	<Text name="msg_fan_settings_title">ファンツール</Text>
-	<Text name="msg_fan_ps2_settings_title">PS2ファン</Text>
-	<Text name="msg_soft_reboot_action_title">再起動 (ソフトリセット)</Text>
-	<Text name="msg_hard_reboot_action_title">再起動 (ハードリセット)</Text>
-	<Text name="msg_lv2_reboot_action_title">再起動 (LV2)</Text>
-	<Text name="msg_fan_speed_title">ファンスピード</Text>
-	<Text name="msg_fan_speed_info">現在のファンスピードを表示します。  </Text>
-	<Text name="msg_show_temp_celsius_title">本体の内部温度 (摂氏)</Text>
-	<Text name="msg_show_temp_celsius_info">現在のCPU/RSXの温度を摂氏で表示します。  </Text>
-	<Text name="msg_show_temp_fahrenheit_title">本体の内部温度 (華氏)</Text>
-	<Text name="msg_show_temp_fahrenheit_info">現在のCPU/RSXの温度を華氏で表示します。  </Text>
-	<Text name="msg_show_idps_title">IDPSを表示</Text>
-	<Text name="msg_show_idps_info">現在のIDPSを表示します。  </Text>
-	<Text name="msg_show_psid_title">PSIDを表示</Text>
-	<Text name="msg_show_psid_info">現在のPSIDを表示します。  </Text>
-	<Text name="msg_cobra_data_title">Cobra情報</Text>
-	<Text name="msg_cobra_data_info">Cobraのバージョン情報を表示します。  </Text>
-	<Text name="msg_cobra_mode_title">Cobraモード切りかえ</Text>
-	<Text name="msg_cobra_mode_info">Cobraモードの有効/無効を切りかえます。変更を反映するには再起動が必要です。  </Text>
-	<Text name="msg_fan_mode_disabled_title">ファンモード: 無効</Text>
-	<Text name="msg_fan_mode_disabled_info">ファンコントロールを無効化します。  </Text>
-	<Text name="msg_fan_mode_syscon_title">ファンモード: SYSCON</Text>
-	<Text name="msg_fan_mode_syscon_info">SYSCONを利用してファンスピードを制御します。  </Text>
-	<Text name="msg_fan_mode_payload_title">ファンモード: PAYLOAD</Text>
-	<Text name="msg_fan_mode_payload_info">Cobraペイロードを利用してファンスピードを制御します。  </Text>
-	<Text name="msg_fan_mode_manual_title">ファンモード: MANUAL</Text>
-	<Text name="msg_fan_mode_manual_info">ファンスピードを 0x70 に設定します。  </Text>
-	<Text name="msg_fan_mode_max_title">ファンモード: MAX</Text>
-	<Text name="msg_fan_mode_max_info">ファンスピードを 0xFF に設定します。  </Text>
-	<Text name="msg_fan_ps2mode_disabled_title">PS2ファンモード: 無効</Text>
-	<Text name="msg_fan_ps2mode_disabled_info">PS2ゲーム中のファンコントロールを無効化します。  </Text>
-	<Text name="msg_fan_ps2mode_syscon_title">PS2ファンモード: SYSCON</Text>
-	<Text name="msg_fan_ps2mode_syscon_info">PS3™のSYSCONを利用してPS2ゲーム中のファンスピードを制御します。  </Text>
-	<Text name="msg_fan_ps2mode_40_title">PS2ファンモード: 40%</Text>
-	<Text name="msg_fan_ps2mode_40_info">PS2ゲーム中のファンスピードを 0x66 に設定します。  
-		  PS2ゲーム中にファンスピードの変更はできません。 注意して選択してください。  </Text>
-	<Text name="msg_fan_ps2mode_50_title">PS2ファンモード: 50%</Text>
-	<Text name="msg_fan_ps2mode_50_info">PS2ゲーム中のファンスピードを 0x80 に設定します。  
-		  PS2ゲーム中にファンスピードの変更はできません。 注意して選択してください。  </Text>
-	<Text name="msg_fan_ps2mode_60_title">PS2ファンモード: 60%</Text>
-	<Text name="msg_fan_ps2mode_60_info">PS2ゲーム中のファンスピードを 0x9A に設定します。  
-		  PS2ゲーム中にファンスピードの変更はできません。 注意して選択してください。  </Text>
-	<Text name="msg_fan_ps2mode_70_title">PS2ファンモード: 70%</Text>
-	<Text name="msg_fan_ps2mode_70_info">PS2ゲーム中のファンスピードを 0xB4 に設定します。  
-		  PS2ゲーム中にファンスピードの変更はできません。 注意して選択してください。  </Text>
-	<Text name="msg_fan_ps2mode_80_title">PS2ファンモード: 80%</Text>
-	<Text name="msg_fan_ps2mode_80_info">PS2ゲーム中のファンスピードを 0xCE に設定します。  
-		  PS2ゲーム中にファンスピードの変更はできません。 注意して選択してください。  </Text>
-	<Text name="msg_fan_ps2mode_90_title">PS2ファンモード: 90%</Text>
-	<Text name="msg_fan_ps2mode_90_info">PS2ゲーム中のファンスピードを 0xE8 に設定します。  
-		  PS2ゲーム中にファンスピードの変更はできません。 注意して選択してください。  </Text>
-	<Text name="msg_view_log_title">ログを表示</Text>
-	<Text name="msg_view_log_info">http://localhost/dev_hdd0/tmp/cfw_settings.log (webMAN MODにはこのファイルが必要です。)</Text>
-	<Text name="msg_clean_log_title">ログを消去</Text>
-	<Text name="msg_clean_log_info">"/dev_hdd0/tmp/cfw_settings.log"をリセットします。  </Text>
-	<Text name="msg_dump_idps_title">IDPSのダンプ</Text>
-	<Text name="msg_dump_idps_info">IDPSをログファイルに保存します。  </Text>
-	<Text name="msg_dump_psid_title">PSIDのダンプ</Text>
-	<Text name="msg_dump_psid_info">PSIDをログファイルに保存します。  </Text>
-	<Text name="msg_log_klic_title">KLicenseの利用履歴</Text>
-	<Text name="msg_log_klic_info">ファイル名とKLicensee履歴をログファイルに保存します。  </Text>
-	<Text name="msg_log_secureid_title">Secure File IDの利用履歴</Text>
-	<Text name="msg_log_secureid_info">データ名とFile ID keyをログファイルに保存します。  </Text>
-	<Text name="msg_dump_disc_key_title">ディスクハッシュキーのダンプ</Text>
-	<Text name="msg_dump_disc_key_info">ゲームディスクからハッシュキーを検索し保存します。  </Text>
-	<Text name="msg_backup_registry_title">xRegistry.sysのバックアップ</Text>
-	<Text name="msg_backup_registry_info">xRegistry.sysのバックアップを /dev_usb もしくは /dev_hdd0 に作成します。  </Text>
-	<Text name="msg_applicable_version_title">出荷時システムソフトウェア表示</Text>
-	<Text name="msg_applicable_version_info">ダウングレード可能な最小バージョンを表示します。  </Text>
-	<Text name="msg_fs_check_title">ファイルシステムの修復</Text>
-	<Text name="msg_fs_check_info">システムを再起動しファイルシステムの確認・修復をします。  </Text>
-	<Text name="msg_rebuild_db_title">データベースの再構築</Text>
-	<Text name="msg_rebuild_db_info">システムを再起動しデータベースを再構築します。  </Text>
-	<Text name="msg_recovery_mode_title">リカバリーモード</Text>
-	<Text name="msg_recovery_mode_info">システムをリカバリーモードで再起動します。（この操作はNANDモデルの本体には対応していません）  </Text>
-	<Text name="msg_rsod_fix_title">RSODの修正</Text>
-	<Text name="msg_rsod_fix_info">VTRMを初期化しRSODを修正します。  </Text>
-	<Text name="msg_enable_hvdbg_title">ハイパーバイザーデバッグの有効化</Text>
-	<Text name="msg_service_mode_title">ファクトリーサービスモード</Text>
-	<Text name="msg_service_mode_info">ファクトリーサービスモードの有効/無効を切りかえます。（**FSM実行中はCFWをインストールしないでください**）  </Text>
-	<Text name="msg_remarry_bd_title">BDドライブの再接続</Text>
-	<Text name="msg_remarry_bd_info">この操作を実行するには事前にFSMを有効にし、"eid_root_key"を /dev_usb に配置してください。  </Text>
-	<Text name="msg_usb_firm_loader_title">USBファームウェアローダー</Text>
-	<Text name="msg_usb_firm_loader_info">/dev_flash へのアクセスを /dev_usb にリダイレクトします。</Text>
-	<Text name="msg_enable_screenshot_title">インゲームスクリーンショットを有効にする</Text>
-	<Text name="msg_enable_recording_title">ゲームレコーディングを有効にする</Text>
-	<Text name="msg_override_sfo_title">ゲームディスクのSFO属性変更</Text>
-	<Text name="msg_override_sfo_info">PS3™ゲームディスクのSFO属性を変更しリモートプレイとシステムBGMを有効にします。</Text>
-	<Text name="msg_toggle_dlna_title">DLNA切りかえ</Text>
-	<Text name="msg_create_syscalls_title">Syscallの作成</Text>
-	<Text name="msg_create_syscalls_info">6, 7, 8, 9, 10, 11, 15, 35のSyscallを作成します。  </Text>
-	<Text name="msg_shutdown_action_title">電源を切る</Text>
-	<Text name="msg_shutdown_action_info">本体の電源を切ります。</Text>
-	<Text name="msg_toggle_coldboot_title">Coldboot切りかえ</Text>
-	<Text name="msg_toggle_coldboot_info">coldboot.rafをカスタム／オリジナルのColdbootに変更します。  </Text>
-	<Text name="msg_power_options_title">起動オプション</Text>
-	<Text name="msg_hard_reboot_action_info">システムを完全に再起動します。</Text>
-	<Text name="msg_soft_reboot_action_info">システムを再起動（ソフトリセット）します。</Text>
-	<Text name="msg_lv2_reboot_action_info">LV2を再起動します。</Text>
-	<Text name="msg_allow_restore_sc_title">Syscallのリストア許可</Text>
-	<Text name="msg_allow_restore_sc_info">[システムアップデート]からSyscallの修復を許可します。  </Text>
-	<Text name="msg_qa_tools_title">QAツール</Text>
-	<Text name="msg_check_qa_title">QA Flagの確認</Text>
-	<Text name="msg_check_qa_info">QA flagの有効/無効を確認します。  </Text>
-	<Text name="msg_qa_enable_title">QA Flagの有効化</Text>
-	<Text name="msg_qa_enable_info">QA Flagを有効にします。 (ボタンコンボ: +++++)  </Text>
-	<Text name="msg_qa_disable_title">QA Flagの無効化</Text>
-	<Text name="msg_qa_disable_info">QA Flagを無効にします。  </Text>
-	<Text name="msg_patch_savedata_title">セーブデータのコンバート</Text>
-	<Text name="msg_patch_savedata_info">/dev_usbXXX/PS3/SAVEDATA 内のセーブデータをこのPS3™にコンバートします。  </Text>
-	<Text name="msg_show_accountid_title">アカウントIDを表示</Text>
-	<Text name="msg_show_accountid_info">現在のユーザーアカウントIDを表示します。  </Text>
-	<Text name="msg_patch_accountid_title">アカウントIDの作成</Text>
-	<Text name="msg_patch_accountid_info">xRegistryに偽装アカウントIDを作成します。  </Text>
-	<Text name="msg_patch_accountid_overwrite_title">アカウントIDの上書き</Text>
-	<Text name="msg_patch_accountid_overwrite_info"> xRegistryの偽装アカウントIDを現在のユーザーアカウントIDに上書きします。  </Text>
-	<Text name="msg_patch_accountid_remove_title">アカウントIDの削除</Text>
-	<Text name="msg_patch_accountid_remove_info"> xRegistryから現在のユーザーのアカウントIDを削除します。  </Text>
-	<Text name="msg_button_assignment_title">ボタンアサイン設定</Text>
-	<Text name="msg_button_assignment_info"> と  のアサインを入れ替えます。  </Text>
-	<Text name="msg_xreg_settings_title">xRegistryツール</Text>
-	<Text name="msg_skip_rif_title">ライセンス生成のスキップ</Text>
-	<Text name="msg_skip_rif_info">すでにライセンスファイル(RIF)が存在する場合、ライセンスの生成を中止します。  </Text>
-	<Text name="msg_activate_account_title">アカウントのアクティベーション</Text>
-	<Text name="msg_activate_account_info">act.datファイルを現在のローカルアカウントに作成します。  </Text>
-	<Text name="msg_remove_license_title">アカウントを無効にする</Text>
-	<Text name="msg_remove_license_info"> 現在のユーザーアカウントからact.datファイルを削除し、アクティベーションを無効化します。  </Text>
-	<Text name="msg_backup_license_title">アクティベーションファイルのバックアップ</Text>
-	<Text name="msg_backup_license_info">act.datのバックアップを /dev_usb もしくは /dev_hdd0 に作成します。  </Text>
-	<Text name="msg_ask_license_action">現在のアカウントのアクティベーションファイルを恒久的に無効化します。よろしいですか？
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_ask_acc_overwrite_action">現在のアカウントIDをこのアカウントに上書きします。よろしいですか？
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_ask_fs_check_action">システムを再起動しファイルシステムを確認・修復します。よろしいですか？
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_ask_fsm_action">システムをファクトリーサービスモードで再起動します。よろしいですか？
+<Text name="msg_tool_package_file"><![CDATA[★PKGファイルの管理]]></Text>
+<Text name="msg_tool_package_file_info"><![CDATA[PlayStation™ Network コンテンツと PKG ファイルを管理します。]]></Text>
+<Text name="msg_tool_lw"><![CDATA[★ ローカル Web サーバー]]></Text>
+<Text name="msg_tool_lw_info"><![CDATA[ローカル Web サーバーからインストール]]></Text>
+<Text name="msg_tool_psn_file"><![CDATA[★ PlayStation™Networkのコンテンツ]]></Text>
+<Text name="msg_tool_psn_file_info"><![CDATA[PlayStation™Networkからダウンロードしたファイルを管理する]]></Text>
+<Text name="msg_tool_install_file_info"><![CDATA[メディア ドライブまたは PS3™ から pkg ファイルをインストールします。]]></Text>
+<Text name="msg_tool_delete_file"><![CDATA[★PKGファイルを削除]]></Text>
+<Text name="msg_tool_delete_file_info"><![CDATA[ドライブまたは PS3™ から pkg ファイルを削除します。]]></Text>
+<Text name="msg_tool_hdd0_file"><![CDATA[☆ PS3™ ストレージシステム]]></Text>
+<Text name="msg_tool_hdd0_install_info"><![CDATA[ディレクトリ [dev_hdd0/packages] から PS3™ にインストールします。]]></Text>
+<Text name="msg_tool_hdd0_delete_info"><![CDATA[PS3™のディレクトリ[dev_hdd0/packages]から削除]]></Text>
+<Text name="msg_tool_usb_file"><![CDATA[☆パッケージディレクトリ]]></Text>
+<Text name="msg_tool_usb_install_info"><![CDATA[ストレージ デバイスの [PKG] ディレクトリからインストールします。]]></Text>
+<Text name="msg_tool_usb_delete_info"><![CDATA[ストレージ デバイスの [PKG] ディレクトリから削除します。]]></Text>
+<Text name="msg_tool_og_file"><![CDATA[☆標準]]></Text>
+<Text name="msg_tool_og_install_info"><![CDATA[USB ドライブから PKG をインストールします。]]></Text>
+<Text name="msg_tool_og_delete_info"><![CDATA[USB ドライブから PKG を削除します。]]></Text>
+<Text name="msg_tool_no_package">PKG ファイルが見つかりません。</Text>
+<Text name="msg_tool_no_psn_content"><![CDATA[PlayStation™オンラインコンテンツが見つかりません]]></Text>
+<Text name="msg_tool_all_file"><![CDATA[☆ All Places™]]></Text>
+<Text name="msg_tool_all_info"><![CDATA[お使いの PS3™ 上のすべての既知の場所]]></Text>
+<Text name="msg_tool_hen_i"><![CDATA[★ セット HEN ]]></Text>
+<Text name="msg_tool_hen_d"><![CDATA[★HENを有効にする]]></Text>
+<Text name="msg_tool_hen_e"><![CDATA[★ HEN はすでに有効になっています]]></Text>
+<Text name="msg_hfw_set"><![CDATA[★ HEN Tools ]]></Text>
+<Text name="msg_hfw_reboot"><![CDATA[★ Reboot PS3 ]]></Text>
+<Text name="msg_hfw_dump"><![CDATA[★ ダンプ ツール ]]></Text>
+<Text name="msg_hfw_recovery"><![CDATA[★ サービス ツール ]]></Text>
+<Text name="msg_hfw_game"><![CDATA[★ゲーム設定]]></Text>
+<Text name="msg_hfw_maintenance"><![CDATA[★メンテナンス]]></Text>
+<Text name="msg_hfw_maintenance_info"><![CDATA[HEN アップデートなどを含む設定]]></Text>
+<Text name="msg_hfw_updater"><![CDATA[★ PS3HEN アップデート ]]></Text>
+<Text name="msg_hfw_updater_info"><![CDATA[インストール後にコンソールを再起動する必要があります。]]></Text>
+<Text name="msg_hfw_pkgi"><![CDATA[★ PKGi PS3 RUS MOD ]]></Text>
+<Text name="msg_hfw_pkgi_info"><![CDATA[PKGi PS3 RUS MOD のインストール/更新 (コンテンツ ダウンロード用)]]></Text>
+<Text name="msg_hfw_soft_reboot"><![CDATA[★ Softboot ]]></Text>
+<Text name="msg_hfw_hard_reboot"><![CDATA[★ハードリブート]]></Text>
+<Text name="msg_hfw_power_off"><![CDATA[★PS3の電源を切る]]></Text>
+<Text name="msg_hfw_override_sfo"><![CDATA[Patch Param.SFO]]></Text>
+<Text name="msg_hfw_override_sfo_info"><![CDATA[SFO の属性を有効にして、更新のないディスクのゲームで RemotePlay + SystemBGM を有効にします]]></Text>
+<Text name="msg_hfw_view_log"><![CDATA[hfw ログを表示]]></Text>
+<Text name="msg_hfw_view_log_info"><![CDATA[この機能には WebMAN MOD が必要]]></Text>
+<Text name="msg_hfw_view_log_cfw"><![CDATA[cfw ログを表示]]></Text>
+<Text name="msg_hfw_clean_log"><![CDATA[ログを消去]]></Text>
+<Text name="msg_hfw_dump_idps"><![CDATA[IDPS ダンプ]]></Text>
+<Text name="msg_hfw_dump_idps_info"><![CDATA[IDPS をログファイルにダンプ]]></Text>
+<Text name="msg_hfw_dump_psid"><![CDATA[PSID ダンプ]]></Text>
+<Text name="msg_hfw_dump_psid_info"><![CDATA[PSIDをログファイルにダンプ]]></Text>
+<Text name="msg_hfw_log_klic"><![CDATA[KLicense使用ログ]]></Text>
+<Text name="msg_hfw_log_klic_info"><![CDATA[ファイル名とライセンスをログファイルに保存]]></Text>
+<Text name="msg_hfw_log_secureid">SecureID の書き込み</Text>
+<Text name="msg_hfw_log_secureid_info"><![CDATA[保存ファイル名とファイルIDキーをログファイルに書き込みます]]></Text>
+<Text name="msg_hfw_disc_key">ディスク ハッシュ キー</Text>
+<Text name="msg_hfw_disc_key_info"><![CDATA[元のゲーム ディスクからディスク ハッシュ キーを取得する]]></Text>
+<Text name="msg_hfw_backup_registry"><![CDATA[xRegistry.sys バックアップ]]></Text>
+<Text name="msg_hfw_applicable_version"><![CDATA[最小ファームウェアバージョンを表示]]></Text>
+<Text name="msg_hfw_applicable_version_info"><![CDATA[工場でインストールされたファームウェアのバージョン]]></Text>
+<Text name="msg_hfw_fs_check"><![CDATA[ファイルシステムのチェック]]></Text>
+<Text name="msg_hfw_fs_check_info"><![CDATA[ファイルシステムのリロード、チェック、修復]]></Text>
+<Text name="msg_hfw_rebuild_db"><![CDATA[データベースの再構築]]></Text>
+<Text name="msg_hfw_rebuild_db_info"><![CDATA[データベースのリロードと再構築]]></Text>
+<Text name="msg_hfw_recovery_mode"><![CDATA[リカバリモード]]></Text>
+<Text name="msg_hfw_recovery_mode_info"><![CDATA[再起動してリカバリモードに入ります (NAND モデルではサポートされていません!)]]></Text>
+<Text name="msg_hfw_auto_update"><![CDATA[自動更新の切り替え]]></Text>
+<Text name="msg_hfw_auto_update_info"><![CDATA[これにより、フラッシュおよびネットワーク起動時の HEN 自動更新が有効/無効になります]]></Text>
+<Text name="msg_hfw_uninstall_hen">HENをアンインストール</Text>
+<Text name="msg_hfw_uninstall_hen_info"><![CDATA[これにより、システムから PS3HEN が削除され、silk_webkit.sprx を除く OFW ファイルが復元されます]]></Text>
+<Text name="msg_hfw_ps3hen_update"><![CDATA[PS3HEN の更新]]></Text>
+<Text name="msg_hfw_ps3hen_update_info"><![CDATA[pspx.ruからダウンロードしてインストール]]></Text>
+<Text name="msg_hfw_ps3hen_about"><![CDATA[PS3HEN情報]]></Text>
+<Text name="msg_hfw_ps3hen_about_info"><![CDATA[情報についてはを押してください]]></Text>
+<Text name="msg_hfw_ps3hen_update_themes"><![CDATA[デフォルトのテーマ]]></Text>
+<Text name="msg_hfw_ps3hen_update_themes_info"><![CDATA[青と赤のテーマを含む]]></Text>
+<Text name="msg_hfw_ps3hen_update_themes2"><![CDATA[Itroublve_Hacker テーマ パック]]></Text>
+<Text name="msg_hfw_ps3hen_update_themes2_info"><![CDATA[7色のバリエーションを含む]]></Text>
+<Text name="msg_hfw_hen_f21_item">HEN - 英語版</Text>
+<Text name="msg_hfw_hen_f21_item_info">正式版</Text>
+<Text name="msg_hfw_hen_f23_item">HEN - ロシア語版</Text>
+<Text name="msg_hen_xmb"><![CDATA[HEN を含める項目を (非表示/表示) に切り替え]]></Text>
+<Text name="msg_hen_pm"><![CDATA[トグル (非表示/表示) PKG ファイル管理]]></Text>
+<Text name="msg_hen_cw"><![CDATA[ブラウザの履歴を消去]]></Text>
+<Text name="msg_hen_cwa"><![CDATA[ブラウザキャッシュのクリアを切り替え]]></Text>
+<Text name="msg_hen_cwc"><![CDATA[ブラウザの Cookie を消去]]></Text>
+<Text name="msg_hen_clog"><![CDATA[クリーンアップ表示の切り替え]]></Text>
+<Text name="msg_hen_ofw"><![CDATA[Toggle (Hide/Show) Utility item]]></Text>
+<Text name="msg_hen_xmb_info"><![CDATA[適用後、PS3を再起動する(次回HENアクティベート後に動作)]]></Text>
+<Text name="msg_hen_audio"><![CDATA[オーディオ ライブラリの切り替え (Bluetooth)]]></Text>
+<Text name="msg_ofw">ユーティリティ</Text>
+<Text name="msg_ofw_info"><![CDATA[システム]]></Text>
+<Text name="msg_hen_mag">ショップ</Text>
+<Text name="msg_hen_mag_info"><![CDATA[警告! XMB のダウンロード ストアと HEN RUS の互換性は保証されません!]]></Text>
+<Text name="msg_hen_keys"><![CDATA[ホットキー ポーリングの切り替え]]></Text>
+<Text name="msg_hen_akari"><![CDATA[XMB メニューに追加情報を表示するプラグインのインストール/削除]]></Text>
+<Text name="msg_hen_akari_info"><![CDATA[使用後PS3を再起動してください。
+webman がインストールされている場合は同様のプラグインがあるため、競合する可能性があります]]></Text>
+<Text name="msg_hen_trophy"><![CDATA[高度なトロフィー オプションの切り替え]]></Text>
+<Text name="msg_hen_xmb_reload"><![CDATA[使用後にPS3を再起動してください。 XMB を更新して表示]]></Text>
+<Text name="msg_basic_tools_title"><![CDATA[基本ツール]]></Text>
+<Text name="msg_cobra_tools_title"><![CDATA[コブラ ツール]]></Text>
+<Text name="msg_dump_tools_title"><![CDATA[情報およびストレージ ツール]]></Text>
+<Text name="msg_recovery_menu_title"><![CDATA[サービス ツール]]></Text>
+<Text name="msg_ingame_settings_title"><![CDATA[ゲーム内設定]]></Text>
+<Text name="msg_fan_settings_title"><![CDATA[ファンツール]]></Text>
+<Text name="msg_fan_ps2_settings_title"><![CDATA[PS2 ファン]]></Text>
+<Text name="msg_soft_reboot_action_title">再起動</Text>
+<Text name="msg_hard_reboot_action_title"><![CDATA[ハード リブート]]></Text>
+<Text name="msg_lv2_reboot_action_title">LV2を再起動</Text>
+<Text name="msg_fan_speed_title"><![CDATA[ファン速度]]></Text>
+<Text name="msg_fan_speed_info"><![CDATA[現在のファン速度を表示 ]]></Text>
+<Text name="msg_show_temp_celsius_title"><![CDATA[PS3 温度 (摂氏)]]></Text>
+<Text name="msg_show_temp_celsius_info"><![CDATA[現在の CPU と RSX の温度を摂氏で表示 ]]></Text>
+<Text name="msg_show_temp_fahrenheit_title"><![CDATA[PS3 温度 (華氏)]]></Text>
+<Text name="msg_show_temp_fahrenheit_info"><![CDATA[現在の CPU と RSX の温度を華氏で表示 ]]></Text>
+<Text name="msg_show_idps_title"><![CDATA[IDPS を表示]]></Text>
+<Text name="msg_show_idps_info"><![CDATA[現在のIDPSを表示]]></Text>
+<Text name="msg_show_psid_title"><![CDATA[PSIDを表示]]></Text>
+<Text name="msg_show_psid_info"><![CDATA[現在のPSIDを表示]]></Text>
+<Text name="msg_cobra_data_title"><![CDATA[コブラ情報]]></Text>
+<Text name="msg_cobra_data_info"><![CDATA[現在のコブラを表示]]></Text>
+<Text name="msg_cobra_mode_title">コブラの切り替え</Text>
+<Text name="msg_cobra_mode_info">コブラのオンとオフを切り替えます (再起動が必要です) </Text>
+<Text name="msg_fan_mode_disabled_title"><![CDATA[ファン制御: 無効]]></Text>
+<Text name="msg_fan_mode_disabled_info"><![CDATA[ファン制御を無効にする ]]></Text>
+<Text name="msg_fan_mode_syscon_title"><![CDATA[ファン制御: SYSCON]]></Text>
+<Text name="msg_fan_mode_syscon_info"><![CDATA[PS3 SYSCON がファン速度を制御できるようにします]]></Text>
+<Text name="msg_fan_mode_payload_title"><![CDATA[ファン制御: PAYLOAD]]></Text>
+<Text name="msg_fan_mode_payload_info"><![CDATA[Cobra  ファン コントロールを有効にする]]></Text>
+<Text name="msg_fan_mode_manual_title"><![CDATA[ファン制御: 手動]]></Text>
+<Text name="msg_fan_mode_manual_info"><![CDATA[ファン速度を 0x70 に設定]]></Text>
+<Text name="msg_fan_mode_max_title"><![CDATA[ファン制御: MAX]]></Text>
+<Text name="msg_fan_mode_max_info"><![CDATA[Cobra ファンの速度を 0xFF に設定 ]]></Text>
+<Text name="msg_fan_ps2mode_disabled_title"><![CDATA[PS2 ファン モード: オフ]]></Text>
+<Text name="msg_fan_ps2mode_disabled_info"><![CDATA[PS2 ゲームでファン制御を無効にします]]></Text>
+<Text name="msg_fan_ps2mode_syscon_title"><![CDATA[PS2 ファン モード: SYSCON]]></Text>
+<Text name="msg_fan_ps2mode_syscon_info"><![CDATA[PS3 SYSCON が PS2 ゲームでファン速度を制御できるようにします]]></Text>
+<Text name="msg_fan_ps2mode_40_title"><![CDATA[PS2 ファン モード: 40%]]></Text>
+<Text name="msg_fan_ps2mode_40_info"><![CDATA[PS2 ゲームでファン速度を 0x66 に設定します
+ ファン速度は PS2 ゲームでは変更できません。慎重に選択してください ]]></Text>
+<Text name="msg_fan_ps2mode_50_title"><![CDATA[PS2 ファン モード: 50%]]></Text>
+<Text name="msg_fan_ps2mode_50_info"><![CDATA[PS2 ゲームでファン速度を 0x80 に設定します
+ ファン速度は PS2 ゲームでは変更できません。慎重に選択してください ]]></Text>
+<Text name="msg_fan_ps2mode_60_title"><![CDATA[PS2 ファン モード: 60%]]></Text>
+<Text name="msg_fan_ps2mode_60_info"><![CDATA[PS2 ゲームでファン速度を 0x9A に設定します
+ ファン速度は PS2 ゲームでは変更できません。慎重に選択してください ]]></Text>
+<Text name="msg_fan_ps2mode_70_title"><![CDATA[PS2 ファン モード: 70%]]></Text>
+<Text name="msg_fan_ps2mode_70_info"><![CDATA[PS2ゲームでファン速度を0xB4に設定
+ ファン速度は PS2 ゲームでは変更できません。慎重に選択してください ]]></Text>
+<Text name="msg_fan_ps2mode_80_title"><![CDATA[PS2 ファン モード: 80%]]></Text>
+<Text name="msg_fan_ps2mode_80_info"><![CDATA[PS2ゲームでファン速度を0xCEに設定
+ ファン速度は PS2 ゲームでは変更できません。慎重に選択してください ]]></Text>
+<Text name="msg_fan_ps2mode_90_title"><![CDATA[PS2 ファン モード: 90%]]></Text>
+<Text name="msg_fan_ps2mode_90_info"><![CDATA[PS2 ゲームでファン速度を 0xE8 に設定します
+ ファン速度は PS2 ゲームでは変更できません。慎重に選択してください ]]></Text>
+<Text name="msg_view_log_title"><![CDATA[ログを表示]]></Text>
+<Text name="msg_view_log_info"><![CDATA[http://localhost/dev_hdd0/tmp/cfw_settings.log (webMAN MOD が必要)]]></Text>
+<Text name="msg_clean_log_title"><![CDATA[ログをクリア]]></Text>
+	<Text name="msg_clean_log_info">/dev_hdd0/tmp/cfw_settings.log ファイルをクリーンアップします</Text>
+<Text name="msg_dump_idps_title"><![CDATA[IDPS を保存]]></Text>
+<Text name="msg_dump_idps_info"><![CDATA[IDPS をログにダンプ]]></Text>
+<Text name="msg_dump_psid_title"><![CDATA[PSIDを保存]]></Text>
+<Text name="msg_dump_psid_info"><![CDATA[PSIDをログにダンプ]]></Text>
+<Text name="msg_log_klic_title"><![CDATA[KLicenseを使い続ける]]></Text>
+<Text name="msg_log_klic_info"><![CDATA[ファイル名とライセンスをログに保存]]></Text>
+<Text name="msg_log_secureid_title"><![CDATA[セキュアファイル ID を使用して保存]]></Text>
+<Text name="msg_log_secureid_info"><![CDATA[ファイル名とIDをログに書き込み]]></Text>
+<Text name="msg_dump_disc_key_title"><![CDATA[ディスクのキーをダンプ]]></Text>
+<Text name="msg_dump_disc_key_info"><![CDATA[元のゲーム ディスクからキーを取得 ]]></Text>
+<Text name="msg_backup_registry_title"><![CDATA[xRegistry.sysを保存]]></Text>
+<Text name="msg_backup_registry_info"><![CDATA[xRegistry.sys を /dev_usb または /dev_hdd0  にバックアップします]]></Text>
+<Text name="msg_applicable_version_title"><![CDATA[利用可能なバージョンを表示]]></Text>
+<Text name="msg_applicable_version_info"><![CDATA[最小ダウングレード バージョンを表示]]></Text>
+<Text name="msg_fs_check_title"><![CDATA[ファイルシステムのチェック]]></Text>
+<Text name="msg_fs_check_info"><![CDATA[ファイルシステムをリロードしてチェックします]]></Text>
+<Text name="msg_rebuild_db_title"><![CDATA[データベースの再構築]]></Text>
+<Text name="msg_rebuild_db_info">データベースをリロードして再構築します</Text>
+<Text name="msg_recovery_mode_title"><![CDATA[リカバリモードの切り替え]]></Text>
+<Text name="msg_recovery_mode_info"><![CDATA[リカバリ モードで再起動します (NAND モデルではサポートされていません!) ]]></Text>
+<Text name="msg_rsod_fix_title">RSOD 修正</Text>
+<Text name="msg_rsod_fix_info">VTRM-Region を初期化して RSOD を修正します</Text>
+<Text name="msg_enable_hvdbg_title">HV プロシージャを有効にする</Text>
+<Text name="msg_service_mode_title">ファクトリーサービスモードを有効にする</Text>
+<Text name="msg_service_mode_info"><![CDATA[ファクトリー サービス モードの開始/終了 (**FSM モードで CFW をインストールしないでください**) ]]></Text>
+<Text name="msg_remarry_bd_title"><![CDATA[Bluray ドライブへのリンク]]></Text>
+<Text name="msg_remarry_bd_info"><![CDATA[必須: FSM にログインし、"eid_root_key" を /dev_usb にコピーします]]></Text>
+<Text name="msg_usb_firm_loader_title"><![CDATA[USBファームウェアローダー]]></Text>
+<Text name="msg_usb_firm_loader_info">/dev_flash を /dev_usb に切り替えます</Text>
+<Text name="msg_enable_screenshot_title"><![CDATA[ゲーム内スクリーンショットを有効にする]]></Text>
+<Text name="msg_enable_recording_title">ゲームの録画を有効にする</Text>
+<Text name="msg_override_sfo_title"><![CDATA[ディスク SFO の上書き]]></Text>
+<Text name="msg_override_sfo_info"><![CDATA[SFO は、更新されていないゲーム ディスクで RemotePlay + SystemBGM を有効にします]]></Text>
+<Text name="msg_toggle_dlna_title">DLNAの切り替え</Text>
+<Text name="msg_create_syscalls_title"><![CDATA[システムコールの作成]]></Text>
+<Text name="msg_create_syscalls_info"><![CDATA[syscall 6, 7, 8, 9, 10, 11, 15, 35 を作成します]]></Text>
+<Text name="msg_shutdown_action_title">シャットダウン</Text>
+<Text name="msg_shutdown_action_info">PS3 をシャットダウンします</Text>
+<Text name="msg_toggle_coldboot_title">Coldboot スプラッシュ画面の切り替え</Text>
+<Text name="msg_toggle_coldboot_info"><![CDATA[カスタム/標準のcoldboot.rafを切り替える]]></Text>
+<Text name="msg_power_options_title"><![CDATA[電源設定]]></Text>
+<Text name="msg_hard_reboot_action_info"><![CDATA[PS3をほとんど再起動しない]]></Text>
+<Text name="msg_soft_reboot_action_info">PS3を再起動します</Text>
+<Text name="msg_lv2_reboot_action_info">LV2を再起動します</Text>
+<Text name="msg_allow_restore_sc_title"><![CDATA[システムコールの復元を許可]]></Text>
+<Text name="msg_allow_restore_sc_info"><![CDATA[システム アップデート  経由でシステム コールを復元できるようにする]]></Text>
+<Text name="msg_qa_tools_title"><![CDATA[QA ツール]]></Text>
+<Text name="msg_check_qa_title"><![CDATA[QAフラグをチェック]]></Text>
+<Text name="msg_check_qa_info"><![CDATA[QA フラグが有効か無効かをチェック ]]></Text>
+<Text name="msg_qa_enable_title">QA フラグを有効にする</Text>
+<Text name="msg_qa_enable_info"><![CDATA[ネットワーク設定で QA フラグを有効にする" (キーボード ショートカット: +++++) ]]></Text>
+<Text name="msg_qa_disable_title">QA フラグを無効にする</Text>
+<Text name="msg_qa_disable_info"><![CDATA[ネットワーク設定で QA フラグを無効にします ]]></Text>
+<Text name="msg_patch_savedata_title"><![CDATA[Convert Saves]]></Text>
+<Text name="msg_patch_savedata_info"><![CDATA[「/dev_usbXXX/PS3/SAVEDATA」からのセーブをあなたのセーブに変換します]]></Text>
+<Text name="msg_show_accountid_title"><![CDATA[アカウントIDを表示]]></Text>
+<Text name="msg_show_accountid_info"><![CDATA[現在のアカウントIDを表示]]></Text>
+<Text name="msg_patch_accountid_title"><![CDATA[アカウント ID の作成]]></Text>
+<Text name="msg_patch_accountid_info"><![CDATA[xRegistry  で現在のユーザーの偽のアカウント ID を作成します]]></Text>
+<Text name="msg_patch_accountid_overwrite_title">アカウントIDを上書き</Text>
+<Text name="msg_patch_accountid_overwrite_info"><![CDATA[ xRegistry からの偽のアカウント ID で現在のアカウント ID を上書きします ]]></Text>
+<Text name="msg_patch_accountid_remove_title">アカウントIDを削除</Text>
+<Text name="msg_patch_accountid_remove_info"> xRegistry の現在のアカウント ID を削除します</Text>
+<Text name="msg_button_assignment_title"><![CDATA[ボタン割り当て]]></Text>
+<Text name="msg_button_assignment_info"><![CDATA[ と   ボタンの切り替え]]></Text>
+<Text name="msg_xreg_settings_title"><![CDATA[xRegistry Tools]]></Text>
+<Text name="msg_skip_rif_title"><![CDATA[ライセンスの作成をスキップ]]></Text>
+<Text name="msg_skip_rif_info"><![CDATA[既に存在する場合はライセンス作成 (RIF) をスキップ ]]></Text>
+<Text name="msg_activate_account_title"><![CDATA[アカウントを有効にする]]></Text>
+<Text name="msg_activate_account_info"><![CDATA[現在のアカウントのact.datを作成]]></Text>
+<Text name="msg_remove_license_title">アカウントを削除</Text>
+<Text name="msg_remove_license_info"> act.dat を削除</Text>
+<Text name="msg_backup_license_title"><![CDATA[アクティベーションファイルを保存]]></Text>
+<Text name="msg_backup_license_info"><![CDATA[act.dat のコピーを /dev_usb または /dev_hdd0  に作成]]></Text>
+<Text name="msg_ask_license_action"><![CDATA[現在のアクティベーション ファイルは削除されます。本気ですか？
 
-		  ファクトリーサービスモード中はCFWのインストールをしないでください。  
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_ask_rsod_fix_action">システムを再起動しRSODの修復を試みます。よろしいですか？
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_ask_rebuild_db_action">システムを再起動しデータベースを再構築します。よろしいですか？
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_ask_recovery_action">システムをリカバリーモードで再起動します。よろしいですか？
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_ask_acc_overwrite_action"><![CDATA[現在のアカウント ID は上書きされます。本気ですか？
 
-		  これはセーフモードではありません。 リカバリーモードはファームウェアを再インストールする際にのみ有用です。  
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_load_kernel_title">LV2カーネルの読み込み</Text>
-	<Text name="msg_load_kernel_info">/dev_usb000 もしくは /dev_flash から"lv2_kernel.self"を読み込みます。  </Text>
-	<Text name="msg_whats_new_title">What's Newオプション</Text>
-	<Text name="msg_whats_new_info">"PlayStation™Network"カテゴリーの[What's New]表示を切りかえます。  </Text>
-	<Text name="msg_create_rif_title">ライセンスの生成</Text>
-	<Text name="msg_create_rif_info">"x:\exdata"のRAPファイルからライセンスファイル(RIF)を生成します。  </Text>
-	<Text name="msg_fan_mode_60_title">最大内部温度 : 60°C/140°F</Text>
-	<Text name="msg_fan_mode_60_info">ファンを制御しシステムの内部温度を最大60°C/140°Fに保ちます。  </Text>
-	<Text name="msg_fan_mode_65_title">最大内部温度 : 65°C/149°F</Text>
-	<Text name="msg_fan_mode_65_info">ファンを制御しシステムの内部温度を最大65°C/149°Fに保ちます。  </Text>
-	<Text name="msg_fan_mode_70_title">最大内部温度 : 70°C/158°F</Text>
-	<Text name="msg_fan_mode_70_info">ファンを制御しシステムの内部温度を最大70°C/158°Fに保ちます。  </Text>
-	<Text name="msg_fan_mode_75_title">最大内部温度 : 75°C/167°F</Text>
-	<Text name="msg_fan_mode_75_info">ファンを制御しシステムの内部温度を最大75°C/167°Fに保ちます。  </Text>
-	<Text name="msg_fan_dynamic_title">ダイナミックファンコントロール（動的制御）</Text>
-	<Text name="msg_fan_manual_title">マニュアル設定</Text>
-	<Text name="msg_fan_manual_40_title">マニュアル : 40%</Text>
-	<Text name="msg_fan_manual_40_info">ファンの回転速度を40%で固定します。 (0x67)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_45_title">マニュアル : 45%</Text>
-	<Text name="msg_fan_manual_45_info">ファンの回転速度を45%で固定します。 (0x75)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_50_title">マニュアル : 50%</Text>
-	<Text name="msg_fan_manual_50_info">ファンの回転速度を50%で固定します。 (0x80)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_55_title">マニュアル : 55%</Text>
-	<Text name="msg_fan_manual_55_info">ファンの回転速度を55%で固定します。 (0x8E)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_60_title">マニュアル : 60%</Text>
-	<Text name="msg_fan_manual_60_info">ファンの回転速度を60%で固定します。 (0x9B)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_65_title">マニュアル : 65%</Text>
-	<Text name="msg_fan_manual_65_info">ファンの回転速度を65%で固定します。 (0xA8)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_70_title">マニュアル : 70%</Text>
-	<Text name="msg_fan_manual_70_info">ファンの回転速度を70%で固定します。 (0xB5)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_75_title">マニュアル : 75%</Text>
-	<Text name="msg_fan_manual_75_info">ファンの回転速度を75%で固定します。 (0xC0)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_80_title">マニュアル : 80%</Text>
-	<Text name="msg_fan_manual_80_info">ファンの回転速度を80%で固定します。 (0xCE)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_85_title">マニュアル : 85%</Text>
-	<Text name="msg_fan_manual_85_info">ファンの回転速度を85%で固定します。 (0xDA)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_90_title">マニュアル : 90%</Text>
-	<Text name="msg_fan_manual_90_info">ファンの回転速度を90%で固定します。 (0xE7)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_fan_manual_95_title">マニュアル : 95%</Text>
-	<Text name="msg_fan_manual_95_info">ファンの回転速度を95%で固定します。 (0xF4)  
-		  これは静的ファンスピードです。 起動中は選択した速度で常時固定されます。  </Text>
-	<Text name="msg_cobra_version_title">Cobraバージョン切りかえ</Text>
-	<Text name="msg_cobra_version_info">Cobraをリリース/デバッグバージョンに切りかえます。変更を反映するには再起動が必要です。  </Text>
-	<Text name="msg_psn_tools_title">PSNツール</Text>
-	<Text name="msg_disable_syscalls_title">Syscallを無効にする</Text>
-	<Text name="msg_disable_syscalls_info">Syscallを無効にし、ログファイルを削除します。  </Text>
-	<Text name="msg_dump_erk_title">ERKのダンプ</Text>
-	<Text name="msg_dump_erk_info">eid_root_keyを /dev_usb もしくは /dev_hdd0/tmp に保存します。  </Text>
-	<Text name="msg_dump_lv2_title">LV2のダンプ</Text>
-	<Text name="msg_dump_lv2_info">LV2を /dev_usb もしくは /dev_hdd0/tmp に保存します。  </Text>
-	<Text name="msg_dump_lv1_title">LV1のダンプ</Text>
-	<Text name="msg_dump_lv1_info">LV1を /dev_usb もしくは /dev_hdd0/tmp に保存します。  </Text>
-	<Text name="msg_file_manager_title">ファイルマネージャー</Text>
-	<Text name="msg_fm_dev_all_title">すべてのデバイス</Text>
-	<Text name="msg_fm_dev_all_info">現在有効なすべてのパーティションを管理します。  </Text>
-	<Text name="msg_fm_dev_hdd0_title">内蔵HDD 0</Text>
-	<Text name="msg_fm_dev_hdd0_info">/dev_hdd0 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_hdd1_title">内蔵HDD 1</Text>
-	<Text name="msg_fm_dev_hdd1_info">/dev_hdd1 内のキャッシュを管理します。  </Text>
-	<Text name="msg_fm_dev_usb_title">USBストレージ機器</Text>
-	<Text name="msg_fm_dev_usb_info">USBデバイス内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_flash_title">内蔵Flashメモリー</Text>
-	<Text name="msg_fm_dev_flash_info">内蔵flash内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_optical_title">光ディスクメディア</Text>
-	<Text name="msg_fm_dev_optical_info"><![CDATA[ディスクメディア内のデータを閲覧します。  ]]></Text>
-	<Text name="msg_fm_dev_memorycard_title">メモリーカード</Text>
-	<Text name="msg_fm_dev_memorycard_info">メモリーカードデバイス内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb000_title">/dev_usb000</Text>
-	<Text name="msg_fm_dev_usb000_info">メインポート（右側）のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb001_title">/dev_usb001</Text>
-	<Text name="msg_fm_dev_usb001_info">/dev_usb001 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb002_title">/dev_usb002</Text>
-	<Text name="msg_fm_dev_usb002_info">/dev_usb002 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb003_title">/dev_usb003</Text>
-	<Text name="msg_fm_dev_usb003_info">/dev_usb003 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb004_title">/dev_usb004</Text>
-	<Text name="msg_fm_dev_usb004_info">/dev_usb004 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb005_title">/dev_usb005</Text>
-	<Text name="msg_fm_dev_usb005_info">/dev_usb005 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb006_title">/dev_usb006</Text>
-	<Text name="msg_fm_dev_usb006_info">/dev_usb006 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_usb007_title">/dev_usb007</Text>
-	<Text name="msg_fm_dev_usb007_info">/dev_usb007 内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_flash_item_title">/dev_flash</Text>
-	<Text name="msg_fm_dev_flash_item_info">メインFWパーティションを閲覧します。 (read only)  </Text>
-	<Text name="msg_fm_dev_blind_item_title">/dev_blind</Text>
-	<Text name="msg_fm_dev_blind_item_info">メインFWパーティションを管理します。 (write access enabled)  </Text>
-	<Text name="msg_fm_dev_rewrite_item_title">/dev_rewrite</Text>
-	<Text name="msg_fm_dev_rewrite_item_info">メインFWパーティションを管理します。 (write access enabled)  </Text>
-	<Text name="msg_fm_dev_flash2_item_title">/dev_flash2</Text>
-	<Text name="msg_fm_dev_flash2_item_info">セカンダリflashパーティションを管理します。 (xregistry etc)  </Text>
-	<Text name="msg_fm_dev_flash3_item_title">/dev_flash3</Text>
-	<Text name="msg_fm_dev_flash3_item_info">サードflashパーティションを管理します。  </Text>
-	<Text name="msg_fm_dev_bdvd_title">/dev_bdvd</Text>
-	<Text name="msg_fm_dev_bdvd_info"><![CDATA[ブルーレイディスク内のデータを閲覧します。  ]]></Text>
-	<Text name="msg_fm_app_home_title">/app_home</Text>
-	<Text name="msg_fm_app_home_info"><![CDATA[仮想BD内のデータを閲覧します。  ]]></Text>
-	<Text name="msg_fm_dev_ps2disc_title">/dev_ps2disc</Text>
-	<Text name="msg_fm_dev_ps2disc_info"><![CDATA[PS2規格ディスク内のデータを閲覧します。  ]]></Text>
-	<Text name="msg_fm_dev_ms_title">/dev_ms</Text>
-	<Text name="msg_fm_dev_ms_info">メモリースティック™内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_sd_title">/dev_sd</Text>
-	<Text name="msg_fm_dev_sd_info">SDメモリーカード内のファイルを管理します。  </Text>
-	<Text name="msg_fm_dev_cf_title">/dev_cf</Text>
-	<Text name="msg_fm_dev_cf_info">コンパクトフラッシュ®内のファイルを管理します。  </Text>
-	<Text name="msg_cobra_sc8_title">Syscall 8の確認</Text>
-	<Text name="msg_cobra_sc8_info">Cobra Syscall 8の有効/無効を確認します。  </Text>
-	<Text name="msg_mount_dev_blind_title">dev_blindの有効化</Text>
-	<Text name="msg_mount_dev_blind_info">/dev_flash を /dev_blind としてマウントします。
-		  flashへのアクセスは危険を伴います。この操作は十分注意して行ってください。  </Text>
-	<Text name="msg_sort_date_title"><![CDATA[ゲームの並べかえ（タイトル名・作成日時順）]]></Text>
-	<Text name="msg_sort_date_info"><![CDATA[ゲームの並べかえオプションをタイトル名順／作成日時順に変更します。  ]]></Text>
-	<Text name="msg_sort_name_title"><![CDATA[ゲームの並べかえ（タイトル名順）]]></Text>
-	<Text name="msg_sort_name_info"><![CDATA[ゲームの並べかえオプションをタイトル名順に変更します。  ]]></Text>
-	<Text name="msg_sort_creation_title"><![CDATA[ゲームの並べかえ（スタンダード）]]></Text>
-	<Text name="msg_sort_creation_info"><![CDATA[ゲームの並べかえオプションを標準（作成日時順）に変更します。  ]]></Text>
-	<Text name="msg_dump_ram_title">RAMのダンプ</Text>
-	<Text name="msg_dump_ram_info">RAMを /dev_usb もしくは /dev_hdd0/tmp にダンプします。  </Text>
-	<Text name="msg_clock_speeds_title">GPU/VRAMクロック数の表示</Text>
-	<Text name="msg_clock_speeds_info">現在のGPU/VRAMクロック数を表示します。  </Text>
-	<Text name="msg_led_menu_title">Ledツール</Text>
-	<Text name="msg_led_off_title">消灯</Text>
-	<Text name="msg_led_off_info">PS3™の電源LEDを消灯します。  </Text>
-	<Text name="msg_led_red_title">レッド（点灯）</Text>
-	<Text name="msg_led_red_info">PS3™の電源LEDをレッド（点灯）に変更します。  </Text>
-	<Text name="msg_led_green_title">グリーン（点灯）</Text>
-	<Text name="msg_led_green_info">PS3™の電源LEDをグリーン（点灯）に変更します。  </Text>
-	<Text name="msg_led_yellow_title">イエロー（点灯）</Text>
-	<Text name="msg_led_yellow_info">PS3™の電源LEDをイエロー（点灯）に変更します。  </Text>
-	<Text name="msg_led_red_bslow_title">レッド（点滅）</Text>
-	<Text name="msg_led_red_bslow_info">PS3™の電源LEDをレッド（点滅）に変更します。  </Text>
-	<Text name="msg_led_green_bslow_title">グリーン（点滅）</Text>
-	<Text name="msg_led_green_bslow_info">PS3™の電源LEDをグリーン（点滅）に変更します。  </Text>
-	<Text name="msg_led_yellow_bslow_title">イエロー（点滅）</Text>
-	<Text name="msg_led_yellow_bslow_info">PS3™の電源LEDをイエロー（点滅）に変更します。  </Text>
-	<Text name="msg_led_red_bfast_title">レッド（高速点滅）</Text>
-	<Text name="msg_led_red_bfast_info">PS3™の電源LEDをレッド（高速点滅）に変更します。  </Text>
-	<Text name="msg_led_green_bfast_title">グリーン（高速点滅）</Text>
-	<Text name="msg_led_green_bfast_info">PS3™の電源LEDをグリーン（高速点滅）に変更します。  </Text>
-	<Text name="msg_led_yellow_bfast_title">イエロー（高速点滅）</Text>
-	<Text name="msg_led_yellow_bfast_info">PS3™の電源LEDをイエロー（高速点滅）に変更します。  </Text>
-	<Text name="msg_led_yellowg_bfast_title">イエロー＋グリーン（高速点滅）</Text>
-	<Text name="msg_led_yellowg_bfast_info">PS3™の電源LEDをイエロー＋グリーン（高速点滅）に変更します。  </Text>
-	<Text name="msg_led_yellowr_bfast_title">イエロー＋レッド（高速点滅）</Text>
-	<Text name="msg_led_yellowr_bfast_info">PS3™の電源LEDをイエロー＋レッド（高速点滅）に変更します。  </Text>
-	<Text name="msg_led_yellowg_bslow_title">イエロー＋グリーン（点滅）</Text>
-	<Text name="msg_led_yellowg_bslow_info">PS3™の電源LEDをイエロー＋グリーン（点滅）に変更します。  </Text>
-	<Text name="msg_led_yellowr_bslow_title">イエロー＋レッド（点滅）</Text>
-	<Text name="msg_led_yellowr_bslow_info">PS3™の電源LEDをイエロー＋レッド（点滅）に変更します。  </Text>
-	<Text name="msg_led_rainbow_title">レインボーモード</Text>
-	<Text name="msg_led_rainbow_info">PS3™の電源LEDをレインボーモードに変更します。  </Text>
-	<Text name="msg_led_special1_title">スペシャルモード 1</Text>
-	<Text name="msg_led_special1_info">PS3™の電源LEDをスペシャルモード 1に変更します。 </Text>
-	<Text name="msg_led_special2_title">スペシャルモード 2</Text>
-	<Text name="msg_led_special2_info">PS3™の電源LEDをスペシャルモード 2に変更します。  </Text>
-	<Text name="msg_buzzer_menu_title">ブザーツール</Text>
-	<Text name="msg_buzzer_single_title">シングルビープ</Text>
-	<Text name="msg_buzzer_single_info">内部ブザーからシステム音（シングルビープ）を出力します。  </Text>
-	<Text name="msg_buzzer_double_title">ダブルビープ</Text>
-	<Text name="msg_buzzer_double_info">内部ブザーからシステム音（ダブルビープ）を出力します。  </Text>
-	<Text name="msg_buzzer_triple_title">トリプルビープ</Text>
-	<Text name="msg_buzzer_triple_info">内部ブザーからシステム音（トリプルビープ）を出力します。  </Text>
-	<Text name="msg_buzzer_continuous_title">連続ビープ</Text>
-	<Text name="msg_buzzer_continuous_info">内部ブザーからシステム音（連続ビープ）を出力します。  </Text>
-	<Text name="msg_check_spe_title">8th SPEの確認</Text>
-	<Text name="msg_check_spe_info">8th SPEの有効/無効を確認します。  </Text>
-	<Text name="msg_toggle_spe_title">8th SPE切りかえ</Text>
-	<Text name="msg_toggle_spe_info">8th SPEの有効/無効を切りかえます。  </Text>
-	<Text name="msg_ask_toggle_spe">専門的な知識を持ち合わせていない場合、8th SPEの切りかえ作業は危険です。よろしいですか？
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_ask_fs_check_action"><![CDATA[システムを再起動してファイル システムをチェックします。本気ですか？
 
-		  システムにダメージが生じても問い合わせには応じません。自己責任で行ってください。  
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_os_options_title">OtherOSツール</Text>
-	<Text name="msg_os_resize_title">VFLASH/NAND領域のリサイズ</Text>
-	<Text name="msg_os_resize_info">OtherOSインストールのため、VFLASH/NAND領域5をリサイズします。  </Text>
-	<Text name="msg_ask_os_resize">リサイズの前に内蔵HDDのバックアップ作成・フォーマットを忘れずに行ってください。よろしいですか？
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_ask_fsm_action"><![CDATA[システムは工場サービス モードで再起動します。本気ですか？
 
-		  システムにダメージが生じても問い合わせには応じません。自己責任で行ってください。  
-			
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_os_petitboot_title">Petitbootのインストール</Text>
-	<Text name="msg_os_petitboot_info">USBデバイスからVFLASH/NAND領域5にPetitbootをインストールします。  </Text>
-	<Text name="msg_ask_os_petitboot">必ずNOR/NAND向けの"dtbImage.ps3.bin"をUSB機器のrootに配置してください。よろしいですか？
+ FACTORY SERVICE MODE で CFW をインストールしないでください 
 
-		  システムにダメージが生じても問い合わせには応じません。自己責任で行ってください。  
-			
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_os_flag_os_title">OtherOSブートフラグを設定</Text>
-	<Text name="msg_os_flag_os_info">システムを再起動しOtherOSをブートします。  </Text>
-	<Text name="msg_os_flag_go_title">GameOSブートフラグを設定</Text>
-	<Text name="msg_os_flag_go_info">OtherOSブートフラグを設定した際に、PS2のロードに生じる問題を修正します。  </Text>
-	<Text name="msg_convert_check_eid_title">TargetIDの確認</Text>
-	<Text name="msg_convert_check_eid_info">EID0およびEID5から現在のTargetIDを確認します。  </Text>
-	<Text name="msg_cex2dex_options_title">CEX2DEXツール</Text>
-	<Text name="msg_convert_cex_title">CEXへの切りかえ</Text>
-	<Text name="msg_convert_cex_info">システムをCEX/RETAILモードに切りかえます。変更にはeid_root_keyが必要です。  </Text>
-	<Text name="msg_convert_dex_title">DEXへの切りかえ</Text>
-	<Text name="msg_convert_dex_info">システムをDEX/DEBUGモードに切りかえます。変更にはeid_root_keyが必要です。  </Text>
-	<Text name="msg_ask_convert_cex_dex">必ずeid_root_keyを /dev_usb もしくは /dev_hdd0 のrootに配置してください。よろしいですか？
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_ask_rsod_fix_action"><![CDATA[システムは RSOD の修正を試み、再起動します。本気ですか？
 
-		  システムにダメージが生じても問い合わせには応じません。自己責任で行ってください。  
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_cex2dex_showinfo_title">システム情報の表示</Text>
-	<Text name="msg_cex2dex_showinfo_info">現在のFW、カーネル、TrgetID、VSH、XMBホスト、Debug Settings情報を表示します。  </Text>
-	<Text name="msg_dump_flash_title">Flashのダンプ</Text>
-	<Text name="msg_dump_flash_info">NOR/NANDを dev_hdd0/tmp もしくは /dev_usb に保存します。  </Text>
-	<Text name="msg_toggle_cobra_plugins_title">プラグイン切りかえ</Text>
-	<Text name="msg_toggle_cobra_plugins_info">"/dev_hdd0/boot_plugins.txt"で指定されたCobraプラグインの有効/無効を切りかえます。  </Text>
-	<Text name="msg_ftp_enable_title">FTPの有効化</Text>
-	<Text name="msg_ftp_enable_info">port 21を使用し、FTP接続を有効にします。  </Text>
-	<Text name="msg_ftp_disable_title">FTPの無効化</Text>
-	<Text name="msg_ftp_disable_info">FTP接続を無効化します。  </Text>
-	<Text name="msg_spoof_idps_title">IDPSスプーフィング</Text>
-	<Text name="msg_spoof_idps_info">"/dev_usb/IDPS.txt"のIDPSを使用しLV2のIDPSを偽装します。  </Text>
-	<Text name="msg_spoof_psid_title">PSIDスプーフィング</Text>
-	<Text name="msg_spoof_psid_info">"/dev_usb/PSID.txt"のPSIDを使用しLV2のPSIDを偽装します。  </Text>
-	<Text name="msg_dump_sysrom_title">SYSROMのダンプ</Text>
-	<Text name="msg_dump_sysrom_info">SYSROMを /dev_usb もしくは /dev_hdd0/tmp に保存します。  </Text>
-	<Text name="msg_prodg_patch_title">VSHデバッグの有効化</Text>
-	<Text name="msg_prodg_patch_info">vsh.selfのデバッグを有効にします。  </Text>
-	<Text name="msg_swap_kernel_title">カーネルのスワップ</Text>
-	<Text name="msg_swap_kernel_info">CEX/DEXのカーネルをスワップします。  </Text>
-	<Text name="msg_ask_swap_kernel">この操作はCoreOSが読み込むカーネルに変更を加えます。よろしいですか？
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_ask_rebuild_db_action"><![CDATA[システムを再起動してデータベースを再構築します。本気ですか？
 
-		  システムにダメージが生じても問い合わせには応じません。自己責任で行ってください。  
-		
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_unlock_hdd_space_title">HDD容量の変更</Text>
-	<Text name="msg_unlock_hdd_space_info"><![CDATA[内蔵HDDから8%の特殊領域を解放／リストアします。  ]]></Text>
-	<Text name="msg_ip_xmb_title">ホスト情報表示の切りかえ</Text>
-	<Text name="msg_ip_xmb_info">XMB上のホスト情報の表示／非表示を切りかえます。  </Text>
-	<Text name="msg_spoof_with_eid5_title">TargetIDスプーフィング </Text>
-	<Text name="msg_spoof_with_eid5_info">EID5のTargetIDを利用しLV2のTargetIDを偽装します。  </Text>
-	<Text name="msg_show_ip_title">IPの表示</Text>
-	<Text name="msg_show_ip_info">生成されている場合、現在のIPを表示します。  </Text>
-	<Text name="msg_external_cobra_title">External Cobra切りかえ</Text>
-	<Text name="msg_external_cobra_info">/dev_usb000　から読み込むCobraペイロード・プラグインの有効/無効を切りかえます。  </Text>
-	<Text name="msg_ask_external_cobra">このオプションを有効化すると、システムの起動時にコントローラーの同期がされない場合があります。
-		もしもこのエラーが発生したら、XMB上でコントローラーの電源を入れ直してください。よろしいですか？
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_ask_recovery_action"><![CDATA[システムはリカバリモードで再起動します。本気ですか？
 
-		決定ボタンで実行、またはキャンセルボタンで戻ります。</Text>
-	<Text name="msg_ps3_lifetime_title">PS3™の総使用時間</Text>
-	<Text name="msg_ps3_lifetime_info">PS3™の使用日数、起動時間、スタンバイ時間を表示します。  </Text>
-	<Text name="msg_toggle_vsh_title">XMBモード切りかえ</Text>
-	<Text name="msg_toggle_vsh_info">XMBモードをCEX/DEXバージョンに切りかえます。  </Text>
-	<Text name="msg_toggle_sysconf_title">Debug Settings切りかえ</Text>
-	<Text name="msg_toggle_sysconf_info">Debug SettingsをCEX/DEXバージョンに切りかえます。  </Text>
-	<Text name="msg_enable_npsignin_lck_title">PSNプロテクションの有効化</Text>
-	<Text name="msg_enable_npsignin_lck_info">Syscallを有効化している場合、PSNへのログインをブロックします。  </Text>
-	<Text name="msg_disable_npsignin_lck_title">PSNプロテクションの無効化</Text>
-	<Text name="msg_disable_npsignin_lck_info">Syscall有効化中のPSNへのログインを許可します。  </Text>
-	<Text name="msg_dump_eeprom_title">EEPROMのダンプ</Text>
-	<Text name="msg_dump_eeprom_info">オフセット 0x2F00, 0x3000, 0x48000, 0x48800, 0x48C00, 0x48D00 から、256バイトのEEPROMデータを /dev_usb もしくは /dev_hdd0/tmp にダンプします。  </Text>
-	<Text name="msg_update_xai_title">xai_pluginアップデート</Text>
-	<Text name="msg_update_xai_info">xai_pluginをEvilnat Githubの最新バージョンに更新します。  </Text>
-	<Text name="msg_dump_syscon_error_log_title">SYSCONエラーログのダンプ</Text>
-	<Text name="msg_dump_syscon_error_log_info">SYSCONエラーログを /dev_usb もしくは /dev_hdd0/tmp にダンプします。  </Text>
-	<Text name="msg_get_token_seed_title">トークンシードのダンプ</Text>
-	<Text name="msg_get_token_seed_info">トークンシードを /dev_usb もしくは /dev_hdd0/tmp にダンプします。  </Text>
-	<Text name="msg_current_ros_bank_title">ROS バンクを表示</Text>
-	<Text name="msg_current_ros_bank_info">アクティブな ROS バンクを表示  </Text>
+ これはセーフモードではありません。ファームウェアのインストールにのみ使用
+
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_load_kernel_title"><![CDATA[LV2カーネルをロード]]></Text>
+<Text name="msg_load_kernel_info">/dev_usb000 または /dev_flash  から lv2_kernel.self を読み込みます</Text>
+<Text name="msg_whats_new_title"><![CDATA[「新着情報」を切り替え]]></Text>
+<Text name="msg_whats_new_info"><![CDATA[「PlayStation™Network」タブの「What's New」を切り替えます]]></Text>
+<Text name="msg_create_rif_title"><![CDATA[ライセンスの作成]]></Text>
+<Text name="msg_create_rif_info"><![CDATA["x:\exdata"  の RAP ファイルからライセンス RIF を作成します]]></Text>
+<Text name="msg_fan_mode_60_title"><![CDATA[最高温度: 60°C/140°F]]></Text>
+<Text name="msg_fan_mode_60_info"><![CDATA[ファン速度を動的に設定して 60°C/140°F を維持します ]]></Text>
+<Text name="msg_fan_mode_65_title"><![CDATA[最高温度: 65°C/149°F]]></Text>
+<Text name="msg_fan_mode_65_info"><![CDATA[ファン速度を動的に設定して 65°C/149°F を維持します ]]></Text>
+<Text name="msg_fan_mode_70_title"><![CDATA[最高温度: 70°C/158°F]]></Text>
+<Text name="msg_fan_mode_70_info"><![CDATA[ファン速度を動的に設定して 70°C/158°F を維持します ]]></Text>
+<Text name="msg_fan_mode_75_title"><![CDATA[最高温度: 75°C/167°F]]></Text>
+<Text name="msg_fan_mode_75_info"><![CDATA[ファン速度を動的に設定して 75°C/167°F を維持します ]]></Text>
+<Text name="msg_fan_dynamic_title"><![CDATA[動的ファン制御]]></Text>
+<Text name="msg_fan_manual_title"><![CDATA[手動速度]]></Text>
+<Text name="msg_fan_manual_40_title"><![CDATA[手動速度: 40%]]></Text>
+<Text name="msg_fan_manual_40_info"><![CDATA[一定のファン速度を 40% (0x67) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_45_title"><![CDATA[手動速度: 45%]]></Text>
+<Text name="msg_fan_manual_45_info"><![CDATA[一定のファン速度を 45% (0x75) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_50_title"><![CDATA[手動速度: 50%]]></Text>
+<Text name="msg_fan_manual_50_info"><![CDATA[一定のファン速度を 50% (0x80) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_55_title"><![CDATA[手動速度: 55%]]></Text>
+<Text name="msg_fan_manual_55_info"><![CDATA[一定のファン速度を 55% に設定 (0x8E) 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_60_title"><![CDATA[手動速度: 60%]]></Text>
+<Text name="msg_fan_manual_60_info"><![CDATA[一定のファン速度を 60% (0x9B) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_65_title"><![CDATA[手動速度: 65%]]></Text>
+<Text name="msg_fan_manual_65_info"><![CDATA[一定のファン速度を 65% に設定 (0xA8) 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_70_title"><![CDATA[手動速度: 70%]]></Text>
+<Text name="msg_fan_manual_70_info"><![CDATA[一定のファン速度を 70% に設定 (0xB5) 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_75_title"><![CDATA[手動速度: 75%]]></Text>
+<Text name="msg_fan_manual_75_info"><![CDATA[一定のファン速度を 75% (0xC0) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_80_title"><![CDATA[手動速度: 80%]]></Text>
+<Text name="msg_fan_manual_80_info"><![CDATA[一定のファン速度を 80% (0xCE) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_85_title"><![CDATA[手動速度: 85%]]></Text>
+<Text name="msg_fan_manual_85_info"><![CDATA[一定のファン速度を 85% (0xDA) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_90_title"><![CDATA[手動速度: 90%]]></Text>
+<Text name="msg_fan_manual_90_info"><![CDATA[一定のファン速度を 90% に設定 (0xE7) 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_fan_manual_95_title"><![CDATA[手動速度: 95%]]></Text>
+<Text name="msg_fan_manual_95_info"><![CDATA[一定のファン速度を 95% (0xF4) に設定します 
+ 速度は一定で、自動的には変化しません]]></Text>
+<Text name="msg_cobra_version_title">コブラのバージョンを切り替える</Text>
+<Text name="msg_cobra_version_info"><![CDATA[リリース版とデバッグ版の切り替え (再起動が必要) ]]></Text>
+<Text name="msg_psn_tools_title"><![CDATA[PSN ツール]]></Text>
+<Text name="msg_disable_syscalls_title"><![CDATA[システムコールを無効にする]]></Text>
+<Text name="msg_disable_syscalls_info"><![CDATA[システムコールを無効にし、履歴ファイルを削除します]]></Text>
+<Text name="msg_dump_erk_title"><![CDATA[ERKを保存]]></Text>
+<Text name="msg_dump_erk_info"><![CDATA[eid_root_key を /dev_usb または /dev_hdd0/tmp  に保存]]></Text>
+<Text name="msg_dump_lv2_title"><![CDATA[セーブLV2]]></Text>
+<Text name="msg_dump_lv2_info"><![CDATA[LV2 を /dev_usb または /dev_hdd0/tmp  にダンプ]]></Text>
+<Text name="msg_dump_lv1_title"><![CDATA[セーブLV1]]></Text>
+<Text name="msg_dump_lv1_info"><![CDATA[LV1 を /dev_usb または /dev_hdd0/tmp  にダンプ]]></Text>
+<Text name="msg_hfw_fe_main"><![CDATA[XMB File Browser]]></Text>
+<Text name="msg_hfw_fe_main_info"><![CDATA[表示および削除するには]]></Text>
+<Text name="msg_fm_dev_all_title"><![CDATA[すべてのアクティブなデバイス]]></Text>
+<Text name="msg_fm_dev_all_info"><![CDATA[すべてのパーティションを管理]]></Text>
+<Text name="msg_fm_dev_hdd0_title">内蔵 HDD 0</Text>
+<Text name="msg_fm_dev_hdd0_info"><![CDATA[/dev_hdd0  で PS3 ファイルを管理]]></Text>
+<Text name="msg_fm_dev_hdd1_title">内蔵 HDD 1</Text>
+<Text name="msg_fm_dev_hdd1_info"><![CDATA[/dev_hdd1でPS3ファイルを管理]]></Text>
+<Text name="msg_fm_dev_usb_title"><![CDATA[USB デバイス]]></Text>
+<Text name="msg_fm_dev_usb_info"><![CDATA[USB デバイス上のファイルの管理 ]]></Text>
+<Text name="msg_fm_dev_flash_title"><![CDATA[内部メモリ]]></Text>
+<Text name="msg_fm_dev_flash_info"><![CDATA[内部ストレージの PS3 ファイルを制御 ]]></Text>
+<Text name="msg_fm_dev_optical_title">光ディスク</Text>
+<Text name="msg_fm_dev_optical_info"><![CDATA[光ディスクの管理 ]]></Text>
+<Text name="msg_fm_dev_memorycard_title"><![CDATA[メモリーカード]]></Text>
+<Text name="msg_fm_dev_memorycard_info"><![CDATA[メモリーカード管理 ]]></Text>
+<Text name="msg_fm_dev_usb000_title">/dev_usb000</Text>
+<Text name="msg_fm_dev_usb000_info"><![CDATA[メインポート (一番右) ]]></Text>
+<Text name="msg_fm_dev_usb001_title">/dev_usb001</Text>
+<Text name="msg_fm_dev_usb001_info"><![CDATA[/dev_usb001内のファイルの管理]]></Text>
+<Text name="msg_fm_dev_usb002_title">/dev_usb002</Text>
+<Text name="msg_fm_dev_usb002_info"><![CDATA[/dev_usb002内のファイルの管理]]></Text>
+<Text name="msg_fm_dev_usb003_title">/dev_usb003</Text>
+<Text name="msg_fm_dev_usb003_info"><![CDATA[/dev_usb003内のファイルの管理]]></Text>
+<Text name="msg_fm_dev_usb004_title">/dev_usb004</Text>
+<Text name="msg_fm_dev_usb004_info"><![CDATA[/dev_usb004のファイルを管理]]></Text>
+<Text name="msg_fm_dev_usb005_title">/dev_usb005</Text>
+<Text name="msg_fm_dev_usb005_info"><![CDATA[/dev_usb005 内のファイルの管理 ]]></Text>
+<Text name="msg_fm_dev_usb006_title">/dev_usb006</Text>
+<Text name="msg_fm_dev_usb006_info"><![CDATA[/dev_usb006内のファイルの管理]]></Text>
+<Text name="msg_fm_dev_usb007_title">/dev_usb007</Text>
+<Text name="msg_fm_dev_usb007_info"><![CDATA[/dev_usb007 内のファイルの管理 ]]></Text>
+<Text name="msg_fm_dev_flash_item_title">/dev_flash</Text>
+<Text name="msg_fm_dev_flash_item_info"><![CDATA[ファームウェアのメイン パーティション (読み取り専用) ]]></Text>
+<Text name="msg_fm_dev_blind_item_title">/dev_blind</Text>
+<Text name="msg_fm_dev_blind_item_info"><![CDATA[メイン ファームウェア パーティション (書き込み可能) ]]></Text>
+<Text name="msg_fm_dev_rewrite_item_title">/dev_rewrite</Text>
+<Text name="msg_fm_dev_rewrite_item_info"><![CDATA[ファームウェア メイン パーティション (書き込み可能) ]]></Text>
+<Text name="msg_fm_dev_flash2_item_title">/dev_flash2</Text>
+<Text name="msg_fm_dev_flash2_item_info"><![CDATA[マイナー ファームウェア パーティション (xregistry など) ]]></Text>
+<Text name="msg_fm_dev_flash3_item_title">/dev_flash3</Text>
+<Text name="msg_fm_dev_flash3_item_info">第 3 セクション </Text>
+<Text name="msg_fm_dev_bdvd_title">/dev_bdvd</Text>
+<Text name="msg_fm_dev_bdvd_info"><![CDATA[Blu-ray Disc ]]></Text>
+<Text name="msg_fm_app_home_title">/app_home</Text>
+<Text name="msg_fm_app_home_info"><![CDATA[ブルーレイ仮想ドライブ ]]></Text>
+<Text name="msg_fm_dev_ps2disc_title">/dev_ps2disc</Text>
+<Text name="msg_fm_dev_ps2disc_info">PS2 ディスク </Text>
+<Text name="msg_fm_dev_ms_title">/dev_ms</Text>
+<Text name="msg_fm_dev_ms_info">メモリースティック プロ デュオ </Text>
+<Text name="msg_fm_dev_sd_title">/dev_sd</Text>
+<Text name="msg_fm_dev_sd_info">セキュア デジタル </Text>
+<Text name="msg_fm_dev_cf_title">/dev_cf</Text>
+<Text name="msg_fm_dev_cf_info">コンパクトフラッシュ </Text>
+<Text name="msg_media_usb"><![CDATA[HDD および USB からのメディア]]></Text>
+<Text name="msg_media_usb_info"><![CDATA[表示するデバイスを選択し、を押して「すべて表示」を選択]]></Text>
+<Text name="msg_music_internal">HDDからの音楽</Text>
+<Text name="msg_music_external">USB 音楽</Text>
+<Text name="msg_video_internal"><![CDATA[HDD ビデオ]]></Text>
+<Text name="msg_video_external"><![CDATA[USB ビデオ]]></Text>
+<Text name="msg_photo_internal"><![CDATA[HDD 写真]]></Text>
+<Text name="msg_photo_external"><![CDATA[USB Photo]]></Text>
+<Text name="msg_cobra_sc8_title"><![CDATA[Check System Call 8]]></Text>
+<Text name="msg_cobra_sc8_info"><![CDATA[Cobra 8 システム コールのステータスを確認]]></Text>
+<Text name="msg_mount_dev_blind_title">マウント/dev_blind</Text>
+<Text name="msg_mount_dev_blind_info"><![CDATA[ /dev_flash を書き込みアクセスで /dev_blind としてマウントします (注意して使用してください!) ]]></Text>
+<Text name="msg_sort_date_title"><![CDATA[名前と日付でゲームを並べ替える]]></Text>
+<Text name="msg_sort_date_info"><![CDATA[アルファベット順および新しいものから古いものへの並べ替えを追加 ]]></Text>
+<Text name="msg_sort_name_title"><![CDATA[名前で並べ替え]]></Text>
+<Text name="msg_sort_name_info"><![CDATA[アルファベット順またはその逆のソートを追加]]></Text>
+<Text name="msg_sort_creation_title"><![CDATA[デフォルトでゲームをソート]]></Text>
+<Text name="msg_sort_creation_info"><![CDATA[新しいものから古いものへ、古いものから新しいものへのソートを追加]]></Text>
+<Text name="msg_dump_ram_title"><![CDATA[RAM の保存]]></Text>
+<Text name="msg_dump_ram_info"><![CDATA[RAM を /dev_usb または /dev_hdd0/tmp  に保存]]></Text>
+<Text name="msg_convert_check_eid_title"><![CDATA[Check TargetID]]></Text>
+<Text name="msg_convert_check_eid_info"><![CDATA[EID0 と EID5 から現在の TargetID を確認します]]></Text>
+<Text name="msg_dump_flash_title"><![CDATA[フラッシュを保存]]></Text>
+<Text name="msg_dump_flash_info"><![CDATA[NOR/NAND フラッシュを dev_hdd0/tmp または /dev_usb  に保存]]></Text>
+<Text name="msg_toggle_cobra_plugins_title">プラグインの切り替え</Text>
+<Text name="msg_toggle_cobra_plugins_info">/dev_hdd0/boot_plugins.txt でプラグインを有効/無効にします </Text>
+<Text name="msg_ftp_enable_title">FTPを有効にする</Text>
+<Text name="msg_ftp_enable_info"><![CDATA[ポート 21 で FTP 接続を有効にします ]]></Text>
+<Text name="msg_ftp_disable_title">FTPを無効にする</Text>
+<Text name="msg_ftp_disable_info"><![CDATA[FTP接続を無効にする]]></Text>
+<Text name="msg_spoof_idps_title"><![CDATA[IDPS Spoof]]></Text>
+<Text name="msg_spoof_idps_info"><![CDATA[LV2 の IDPS を「/dev_usb/IDPS.txt」の IDPS に置き換えます]]></Text>
+<Text name="msg_spoof_psid_title"><![CDATA[PSID Spoof]]></Text>
+<Text name="msg_spoof_psid_info"><![CDATA[LV2 の PSID を "/dev_usb/PSID.txt" の PSID に置き換えます]]></Text>
+<Text name="msg_dump_sysrom_title"><![CDATA[SYSROMの保存]]></Text>
+<Text name="msg_dump_sysrom_info"><![CDATA[SYSROM を /dev_usb または /dev_hdd0/tmp  にダンプします]]></Text>
+<Text name="msg_prodg_patch_title"><![CDATA[VSH デバッグを有効にする]]></Text>
+<Text name="msg_prodg_patch_info"><![CDATA[vsh.self のデバッグを有効にします ]]></Text>
+<Text name="msg_swap_kernel_title"><![CDATA[スワップカーネル]]></Text>
+<Text name="msg_swap_kernel_info"><![CDATA[CEX カーネルと DEX カーネルの切り替え ]]></Text>
+<Text name="msg_ask_swap_kernel"><![CDATA[この設定は、CEX/DEX カーネルをロードして CoreOS を置き換えます。本気ですか？
+
+ 私は結果について責任を負いません 
+
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_unlock_hdd_space_title"><![CDATA[HDD容量の切り替え]]></Text>
+<Text name="msg_unlock_hdd_space_info"><![CDATA[PS3 内蔵 HDD 容量の 8% をアンロック/回復 ]]></Text>
+<Text name="msg_ip_xmb_title"><![CDATA[XMBのホスト情報を切り替える]]></Text>
+<Text name="msg_ip_xmb_info"><![CDATA[XMB ホスト情報を有効/無効にする ]]></Text>
+<Text name="msg_spoof_with_eid5_title"><![CDATA[ターゲット ID の変更]]></Text>
+<Text name="msg_spoof_with_eid5_info"><![CDATA[LV2 の現在の TargetID を EID5 TargetID  に置き換えます]]></Text>
+<Text name="msg_show_ip_title"><![CDATA[IPアドレスを表示]]></Text>
+<Text name="msg_show_ip_info"><![CDATA[存在する場合は現在の IP アドレスを表示 ]]></Text>
+<Text name="msg_external_cobra_title">外部コブラの切り替え</Text>
+<Text name="msg_external_cobra_info"><![CDATA[/dev_usb000  からの外部 Cobra プラグインの読み込みを有効/無効にする]]></Text>
+<Text name="msg_ask_external_cobra"><![CDATA[有効にすると、コントローラーが PS3 に接続しない場合があります。
+これが機能する場合は、XMB でコントローラーの電源をオフにしてからオンにする必要があります。本気ですか？
+
+ を押して続行するか、 を押してキャンセル]]></Text>
+<Text name="msg_ps3_lifetime_title"><![CDATA[PS3の使用状況を表示]]></Text>
+<Text name="msg_ps3_lifetime_info"><![CDATA[PS3 がオンになっていた日数、オンとオフの回数を表示 ]]></Text>
+<Text name="msg_toggle_vsh_title"><![CDATA[XMB モードの切り替え]]></Text>
+<Text name="msg_toggle_vsh_info"><![CDATA[CEX と DEX XMB の切り替え ]]></Text>
+<Text name="msg_toggle_sysconf_title"><![CDATA[デバッグ設定の切り替え]]></Text>
+<Text name="msg_toggle_sysconf_info"><![CDATA[CEX と DEX の切り替え ]]></Text>
+<Text name="msg_enable_npsignin_lck_title">PSN保護を有効にする</Text>
+<Text name="msg_enable_npsignin_lck_info"><![CDATA[syscall が有効な場合に PSN ログインを無効にする ]]></Text>
+<Text name="msg_disable_npsignin_lck_title">PSN保護を無効にする</Text>
+<Text name="msg_disable_npsignin_lck_info"><![CDATA[syscall が有効な場合に PSN ログインを許可 ]]></Text>
+<Text name="msg_dump_eeprom_title"><![CDATA[EEPROM を保存]]></Text>
+<Text name="msg_dump_eeprom_info"><![CDATA[インデントされた 256 バイトの EEPROM 0x2F00、0x3000、0x48000、0x48800、0x48C00、および 0x48D00 を /dev_usb または /dev_hdd0/tmp  にダンプします]]></Text>
+<Text name="msg_update_xai_title"><![CDATA[xai_plugin の更新]]></Text>
+<Text name="msg_update_xai_info"><![CDATA[現在の xai_plugin を Evilnat Github リポジトリ  から最新バージョンに更新]]></Text>
+<Text name="msg_dump_syscon_error_log_title"><![CDATA[SYSCONエラーログを保存]]></Text>
+<Text name="msg_dump_syscon_error_log_info"><![CDATA[現在の SYSCON エラー ログを /dev_usb または /dev_hdd0/tmp  にダンプします]]></Text>
+<Text name="msg_get_token_seed_title"><![CDATA[トークンシードを保存]]></Text>
+<Text name="msg_get_token_seed_info"><![CDATA[現在のトークン シードを /dev_usb または /dev_hdd0/tmp  に保存]]></Text>
+<Text name="msg_current_ros_bank_title"><![CDATA[ROSバンクを表示]]></Text>
+<Text name="msg_current_ros_bank_info"><![CDATA[アクティブなROSバンクを表示]]></Text>
+<Text name="msg_install_all_pkg"><![CDATA[1 つのフォルダーからすべての pkg をインストールする]]></Text>
 </TextLang>
