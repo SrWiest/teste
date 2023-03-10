@@ -58,7 +58,7 @@
 //#define CB_LOCATION "/dev_habib/rebug/cobra/stage2.cex"
 
 #define COBRA_VERSION		0x0F
-#define COBRA_VERSION_BCD	0x0810
+#define COBRA_VERSION_BCD	0x0840
 #define HEN_REV				0x0324
 
 #if defined(FIRMWARE_4_82)
@@ -90,7 +90,6 @@
 #endif
 
 #define MAKE_VERSION(cobra, fw, type) ((cobra&0xFF) | ((fw&0xffff)<<8) | ((type&0x1)<<24))
-
 
 typedef struct
 {
@@ -1236,7 +1235,7 @@ static INLINE void apply_kernel_patches(void)
 		hook_function_with_precall(get_syscall_address(804),sys_fs_close,1);
 		hook_function_with_precall(get_syscall_address(802),sys_fs_read,4);
 	#endif
-	#if defined (FIRMWARE_4_82) || defined (FIRMWARE_4_84) || defined (FIRMWARE_4_85) || defined (FIRMWARE_4_86) || defined (FIRMWARE_4_87) || defined (FIRMWARE_4_88) || defined (FIRMWARE_4_89)
+	#if defined (FIRMWARE_4_82) || defined (FIRMWARE_4_84) || defined (FIRMWARE_4_85) || defined (FIRMWARE_4_86) || defined (FIRMWARE_4_87) || defined (FIRMWARE_4_88) || defined (FIRMWARE_4_89) || defined (FIRMWARE_4_90)
 		hook_function_with_cond_postcall(um_if_get_token_symbol,um_if_get_token,5);
 		hook_function_with_cond_postcall(update_mgr_read_eeprom_symbol,read_eeprom_by_offset,3);
 	#endif
@@ -1348,14 +1347,15 @@ int main(void)
 	{
 	 map_path("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/empty.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
 	}
-	if((cellFsStat("/dev_hdd0/hen/ip.off",&stat)!=0))
+	/*if((cellFsStat("/dev_hdd0/hen/ip.off",&stat)!=0))
 	{	
 	map_path("/dev_flash/vsh/module/xmb_plugin.sprx","/dev_flash/vsh/resource/AAA/xmb_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches ip.
-	}
+	}*/
 	if((cellFsStat("/dev_hdd0/hen/trophy.off",&stat)!=0))
 	{
 	map_path("/dev_flash/vsh/module/explore_plugin.sprx","/dev_flash/vsh/resource/AAA/explore_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches the additional trophy.
 	}
+	//map_path("/dev_flash/vsh/module/nas_plugin.sprx","/dev_flash/vsh/resource/AAA/nas_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches sprx.
 	map_path("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches the HEN Logo.
 
 	#ifdef DEBUG
@@ -1371,6 +1371,7 @@ int main(void)
 	map_path_patches(1);
 	storage_ext_patches();
 	region_patches();
+	
 	//permissions_patches();
 	
 	#ifdef DEBUG

@@ -25,6 +25,7 @@
 #include <string.h>
 #include <time.h>
 #include <types.h>
+#include "main.h"
 #include "allocator.h"
 #include "common.h"
 #include "stdc.h"
@@ -158,6 +159,7 @@ typedef struct
 
 xai_plugin_interface * xai_interface;
 */
+
 
 static void * getNIDfunc(const char * vsh_module, uint32_t fnid, int offset)
 {
@@ -411,13 +413,82 @@ static void downloadPKG_thread2(void)
 		}		
 	else if(val==0x323032322F30322FULL)
 		{
-			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
+			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0"); 
 		}	
-	else if(val==0x323032322F31322FULL)
+	else if(val==0x323032332F30322FULL)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.90/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
 		}	
 	thread2_download_finish=1;
+}
+
+static int sysLv2FsLink(const char *oldpath, const char *newpath)
+{
+    system_call_2(810, (uint64_t)(uint32_t)oldpath, (uint64_t)(uint32_t)newpath);
+    return_to_user_prog(int);
+}
+
+// Restore act.dat (thanks bucanero)
+void restore_act_dat(void);
+void restore_act_dat(void)
+{
+	CellFsStat stat;
+	char path1[64], path2[64];
+
+	sprintf(path1, "/dev_hdd0/home/%08i/exdata/act.bak", xsetting_CC56EB2D()->GetCurrentUserNumber());
+	sprintf(path2, "/dev_hdd0/home/%08i/exdata/act.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
+		
+	if((cellFsStat(path1,&stat) == CELL_FS_SUCCEEDED) && (cellFsStat(path2,&stat) != CELL_FS_SUCCEEDED))
+		{
+			// copy act.bak to act.dat
+			sysLv2FsLink(path1, path2);	
+		}
+}
+
+int filecopy(const char *src, const char *dst, const char *chk)
+{
+	int fd_src, fd_dst, ret;
+	char buffer[0x1000];
+	uint64_t nread, nrw;
+	CellFsStat stat;		
+
+	if((cellFsStat(src, &stat) == CELL_FS_SUCCEEDED)&& (cellFsStat(chk,&stat) != CELL_FS_SUCCEEDED))
+	{
+		cellFsChmod(src, 0666);		
+
+		if(cellFsOpen(src, CELL_FS_O_RDONLY, &fd_src, 0, 0) != CELL_FS_SUCCEEDED || cellFsOpen(dst, CELL_FS_O_CREAT | CELL_FS_O_TRUNC | CELL_FS_O_RDWR, &fd_dst, 0, 0) != CELL_FS_SUCCEEDED)
+		{
+			cellFsClose(fd_src);
+			return 1;
+		}	
+
+		while((ret = cellFsRead(fd_src, buffer, 0x1000, &nread)) == CELL_FS_SUCCEEDED)
+		{
+			if((int)nread)
+			{
+				ret = cellFsWrite(fd_dst, buffer, nread, &nrw);
+
+				if(ret != CELL_FS_SUCCEEDED)
+				{
+					cellFsClose(fd_src);
+					cellFsClose(fd_dst);
+					return 1;
+				}
+
+				memset(buffer, 0, nread);
+			}
+			else			
+				break;			
+		}
+		cellFsChmod(dst, 0666);
+	}
+	else
+		return 1;	    
+	
+	cellFsClose(fd_src);
+	cellFsClose(fd_dst);
+
+	return 0;
 }
 
 char pkg_path[30]={"/dev_hdd0/latest_rus_sign.pkg"};
@@ -431,8 +502,44 @@ static void installPKG_thread(void)
 	}
 
 	game_ext_interface->LoadPage();
-	game_ext_interface->installPKG((char *)pkg_path);
+	game_ext_interface->installPKG((char *)pkg_path);	
 	thread3_install_finish=1;
+}
+
+static void copyflag_thread(void)
+{
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_audio.off", "/dev_hdd0/hen/hen_audio.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/clear_info.off","/dev_hdd0/hen/clear_info.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_mag.off","/dev_hdd0/hen/hen_mag.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/mag.xml","/dev_hdd0/hen/hen_mag.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hotkeys.off","/dev_hdd0/hen/hotkeys.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/ip.off","/dev_hdd0/hen/ip.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/trophy.off","/dev_hdd0/hen/trophy.on");
+	sys_timer_usleep(200);
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/audio.png", "/dev_hdd0/hen/audio.png");
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/clear_info.png", "/dev_hdd0/hen/clear_info.png");
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/hen_mag.png", "/dev_hdd0/hen/hen_mag.png");
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/hotkeys.png", "/dev_hdd0/hen/hotkeys.png");
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/ip.png", "/dev_hdd0/hen/ip.png");
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/trophy.png", "/dev_hdd0/hen/trophy.png");
+	sys_timer_usleep(200);			
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/auto_update.on", "/dev_hdd0/hen/auto_update.off");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/clear_web_auth_cache.on", "/dev_hdd0/hen/clear_web_auth_cache.off");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/clear_web_cookie.on", "/dev_hdd0/hen/clear_web_cookie.off");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/clear_web_history.on", "/dev_hdd0/hen/clear_web_history.off");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_ofw.on", "/dev_hdd0/hen/hen_ofw.off");
+	filecopy("/dev_hdd0/hen/ofw_m_on.xml","/dev_hdd0/hen/ofw_m.xml", "/dev_hdd0/hen/hen_ofw.off");
+	filecopy("/dev_hdd0/hen/mag_on.xml","/dev_hdd0/hen/mag.xml", "/dev_hdd0/hen/hen_mag.off");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_pm.on", "/dev_hdd0/hen/hen_pm.off");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_xmb.on", "/dev_hdd0/hen/hen_xmb.off");
+	sys_timer_usleep(200);
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/auto_update.png", "/dev_hdd0/hen/auto_update.png");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/clear_web_auth_cache.png", "/dev_hdd0/hen/clear_web_auth_cache.png");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/clear_web_cookie.png", "/dev_hdd0/hen/clear_web_cookie.png");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/clear_web_history.png", "/dev_hdd0/hen/clear_web_history.png");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_ofw.png", "/dev_hdd0/hen/hen_ofw.png");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_pm.png", "/dev_hdd0/hen/hen_pm.png");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_xmb.png", "/dev_hdd0/hen/hen_xmb.png");
 }
 
 static void unloadSysPluginCallback(void)
@@ -543,9 +650,9 @@ void clear_web_cache_check(void)
 	char msg[0x80];
 	char cleared_history[0x07];
 	char cleared_auth_cache[0x07];
-	char cleared_cookie[0x07];
+	char cleared_cookie[0x07];	
 	//int cleared_total = 0;
-	char path1[0x40];
+	char path1[0x40];	
 	sprintf(path1, "/dev_hdd0/home/%08i/webbrowser/history.xml", xsetting_CC56EB2D()->GetCurrentUserNumber());
 	char path2[0x40];
 	sprintf(path2, "/dev_hdd0/home/%08i/http/auth_cache.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
@@ -624,28 +731,7 @@ void clear_web_cache_check(void)
 	}*/
 }
 
-static int sysLv2FsLink(const char *oldpath, const char *newpath)
-{
-    system_call_2(810, (uint64_t)(uint32_t)oldpath, (uint64_t)(uint32_t)newpath);
-    return_to_user_prog(int);
-}
-
-// Restore act.dat (thanks bucanero)
-void restore_act_dat(void);
-void restore_act_dat(void)
-{
-	CellFsStat stat;
-	char path1[64], path2[64];
-
-	sprintf(path1, "/dev_hdd0/home/%08i/exdata/act.bak", xsetting_CC56EB2D()->GetCurrentUserNumber());
-	sprintf(path2, "/dev_hdd0/home/%08i/exdata/act.dat", xsetting_CC56EB2D()->GetCurrentUserNumber());
-		
-	if((cellFsStat(path1,&stat) == CELL_FS_SUCCEEDED) && (cellFsStat(path2,&stat) != CELL_FS_SUCCEEDED))
-		{
-			// copy act.bak to act.dat
-			sysLv2FsLink(path1, path2);	
-		}
-}
+//void ShowMessage(const char *string, const char *plugin, const char *tex_icon);
 
 static int tick_max=800,tick_count=0,tick_expire=0;// Used for breaking out of while loop if package install hangs
 
@@ -659,11 +745,16 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	sprintf(henver, "PS3HEN %X.%X.%X\nPSPx.Ru Team", hen_version>>8, (hen_version & 0xF0)>>4, (hen_version&0xF));
 	//DPRINTF("hen_version: %x\n",hen_version);
 	show_msg((char *)henver);
-
+		
+	//LoadPluginById(0x1D, (void *)ShowMessage);
+	//ShowMessage("msg_syscall8_disabled", (char *)XAI_PLUGIN, (char *)TEX_ERROR);
+	//void ShowMessage(const char *string, const char *plugin, const char *tex_icon);
+	//UnloadPluginById(0x1D, (void *)unloadSysPluginCallback);
+	
 	if(view==0)
 	{
 		view=View_Find("explore_plugin");
-		sys_timer_usleep(14000);
+		sys_timer_usleep(70000);
 	}
 	explore_interface = (explore_plugin_interface *)plugin_GetInterface(view, 1);
 
@@ -688,15 +779,15 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		sprintf(hen_usb_update, "Installing Emergency Package\n\nRemove HEN_UPD.pkg after install");
 		memset(pkg_path,0,256);
 		strcpy(pkg_path,"/dev_usb000/HEN_UPD.pkg");
-		show_msg((char *)hen_usb_update);
+		show_msg((char *)hen_usb_update);		
 		LoadPluginById(0x16, (void *)installPKG_thread);
 		while(thread3_install_finish==0)
 		{
-			sys_timer_usleep(14000);
+			sys_timer_usleep(70000);
 		}
 		while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)!=0)
 		{
-			sys_timer_usleep(14000);
+			sys_timer_usleep(70000);
 			tick_count++;
 			if(tick_count>=tick_max){tick_expire=1;break;};
 			//DPRINTF("Waiting for package to finish installing\n");
@@ -717,11 +808,11 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		LoadPluginById(0x16, (void *)installPKG_thread);
 		while(thread3_install_finish==0)
 		{
-			sys_timer_usleep(7000);
+			sys_timer_usleep(70000);
 		}
 		while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)!=0)
 		{
-			sys_timer_usleep(7000);
+			sys_timer_usleep(70000);
 			tick_count++;
 			if(tick_count>=tick_max){tick_expire=1;break;};
 			//DPRINTF("Waiting for package to finish installing\n");
@@ -730,13 +821,31 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		goto done;
 	}
 	
+	if((cellFsStat("/dev_hdd0/latest_rus_sign.pkg",&stat)==0) && (cellFsStat("/dev_hdd0/hen/first.tmp",&stat)==0))
+	{
+		tick_count=0;
+		show_msg((char *)"INSTALL PART 2");
+		LoadPluginById(0x16, (void *)installPKG_thread);
+		while(thread3_install_finish==0)
+			{
+				sys_timer_usleep(23000);
+			}
+		while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)!=0)
+			{
+				sys_timer_usleep(23000);
+				tick_count++;
+				if(tick_count>=tick_max){tick_expire=1;break;};			
+			}					
+		
+		copyflag_thread();
+		reboot_flag=1;		
+		goto done;
+	}
+
 	// restore act.dat from act.bak backup
 	restore_act_dat();
-	
 	// If default HEN Check file is missing, assume HEN is not installed
-	do_install_hen=(cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat));
-	//DPRINTF("do_install_hen: %x\n",do_install_hen);
-		
+	do_install_hen=(cellFsStat("/dev_flash/hen/PS3HEN.BIN",&stat));
 	
 	if((do_install_hen!=0) || (do_update==1))
 	{
@@ -744,13 +853,13 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		
 		while(is_browser_open)
 		{	
-			sys_timer_usleep(7000);
+			sys_timer_usleep(70000);
 			is_browser_open=View_Find("webbrowser_plugin");
 		}
 		is_browser_open=View_Find("webrender_plugin");
 		while(is_browser_open)
 		{
-			sys_timer_usleep(7000);
+			sys_timer_usleep(70000);
 			is_browser_open=View_Find("webrender_plugin");
 		}
 		unload_web_plugins();
@@ -758,7 +867,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 
 		while(thread2_download_finish==0)
 		{
-			sys_timer_usleep(7000);
+			sys_timer_usleep(70000);
 		}
 
 		while(IS_DOWNLOADING)
@@ -776,7 +885,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 			LoadPluginById(0x16, (void *)installPKG_thread);
 			while(thread3_install_finish==0)
 			{
-				sys_timer_usleep(7000);
+				sys_timer_usleep(70000);
 			}
 			
 			// The package is now installing
@@ -784,30 +893,36 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 			while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)!=0)
 			{
 				//DPRINTF("tick_count: %i\n",tick_count);
-				sys_timer_usleep(7000);
+				sys_timer_usleep(70000);
 				tick_count++;
 				if(tick_count>=tick_max){tick_expire=1;break;};
 				//DPRINTF("Waiting for package to finish installing\n");
-			}
+			}			
 			reboot_flag=1;
-			
+			copyflag_thread();			
 			goto done;
 		}
 	}
 	else
-	{    
+	{    		
 		cellFsUnlink(pkg_path);
+		if((cellFsStat("/dev_flash/hen/PS3HEN.BIN",&stat)==0) && (cellFsStat("/dev_hdd0/hen/PS3HEN.BIN",&stat)==0)) cellFsUnlink("/dev_hdd0/hen/PS3HEN.BIN");		
 	}
 	
 done:
 	//DPRINTF("Exiting main thread!\n");	
 	
-	cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");// Removing temp HEN installer
+	cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");// Removing temp HEN installer	
+	cellFsUnlink("/dev_hdd0/latest_rus_sign.pkg");
+	cellFsUnlink("/dev_hdd0/hen/first.tmp");
 	done=1;
 	
 	if(reboot_flag==1)
 	{
-		char reboot_txt[0x80];
+		show_msg((char *)"Reboot PS3 after install");
+		sys_timer_usleep(15000);
+		
+		/*char reboot_txt[0x80];
 		if(tick_expire==0)
 		{
 			sprintf(reboot_txt, "Installation Complete!\n\nPrepare For Reboot...");
@@ -817,16 +932,18 @@ done:
 			sprintf(reboot_txt, "Error: Unable To Verify Installation!\nYou Must Reboot Manually!");
 		}
 		show_msg((char *)reboot_txt);
-		sys_timer_usleep(20000);// Wait a few seconds
+		sys_timer_usleep(8000);// Wait a few seconds*/
 		
 		// Verify the temp file is removed
 		while(cellFsStat("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp",&stat)==0)
 		{
-			sys_timer_usleep(20000);
+			sys_timer_usleep(1000);
 			cellFsUnlink("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp");// Remove temp file
 			//DPRINTF("Waiting for temporary zzz_hen_installed.tmp file to be removed\n");
 		}
-		if(tick_expire==0){reboot_ps3();}// Default Hard Reboot
+		//if(tick_expire==0){
+		reboot_ps3();
+		//} Default Hard Reboot
 	}
 	
 	clear_web_cache_check();// Clear WebBrowser cache check (thanks xfrcc)

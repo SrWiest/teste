@@ -1076,9 +1076,9 @@ LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 		return 0;
 	avoid_recursive_calls = 1;
 	
+	CellFsStat stat;	
 	//extend_kstack(0);
-	if(path0){
-		CellFsStat stat;
+	if(path0){		
 		#ifdef DEBUG
 			int lretin = lock_mtx(&pgui_mtx);
 			if(lretin!=0){
@@ -1151,7 +1151,7 @@ LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 				return 0;
 			} 
 		} 	
-
+		
 		if((strstr(path0,".rif")) && (!strncmp(path0,"/dev_hdd0/home/",14)))
 		{
 			char content_id[0x24];
@@ -1285,6 +1285,10 @@ LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 				page_free(NULL, (void *)buf, 0x2F);
 			}
 		}
+		
+		restore_syscalls(path0);		
+		check_signin(path0);
+
 		#ifdef  DEBUG
 			//DPRINTF("open_path_hook=: processing path [%s]\n", path0);
 		#endif
@@ -1300,9 +1304,7 @@ LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 				}
 			}
 		}
-		
-		restore_syscalls(path0);		
-		check_signin(path0);
+	
 		
 		if(path && (strncmp(path,"/dev_",5)==0 || strncmp(path,"/app_",5)==0 || strncmp(path,"/host_",6)==0)){			
 			/*if (path && ((strcmp(path, "/dev_bdvd/PS3_UPDATE/PS3UPDAT.PUP") == 0)))  // Blocks FW update from Game discs!     
