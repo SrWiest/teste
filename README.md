@@ -1,7 +1,7 @@
 <h1 align="center">Hi there, I'm <a href="https://www.pspx.ru/forum/" target="_blank">in1975</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">This is the repository for Hen 3.2.4 rus mod</h3>
-<h2 align="center">This HEN is a branch (modification) <a href="https://github.com/PS3Xploit/PS3HEN" target="_blank">of this</a></h2>
+<h3 align="center">This HEN is a branch (modification) <a href="https://github.com/PS3Xploit/PS3HEN" target="_blank">of this</a></h3>
 <p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
