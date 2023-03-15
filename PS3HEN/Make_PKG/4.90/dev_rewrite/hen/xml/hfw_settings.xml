@@ -50,12 +50,12 @@
 				<Pair key="icon_rsc"><String>tex_fan</String></Pair>
 				<Pair key="title_rsc"><String>msg_fan_settings_title</String></Pair>
 			</Table>
-			<Table key="ps3hen_updater">
+			<!--<Table key="ps3hen_updater">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_download.png</String></Pair>
 				<Pair key="icon_notation"><String>WNT_XmbItemAlbum</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_updater</String></Pair>
 				<Pair key="info_rsc"><String>msg_hfw_updater_info</String></Pair>
-			</Table>
+			</Table>-->
 			<Table key="update_toolbox_main">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_download.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_pkgi</String></Pair>
@@ -70,7 +70,7 @@
 			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_maintenance"		attr="ps3hen_maintenance"		src="#seg_ps3hen_maintenance"/>
 			<!--<Query class="type:x-xmb/folder-pixmap" key="fan_settings"	 attr="fan_settings"   src="#seg_fan_settings" />-->
 			<Query class="type:x-xmb/folder-pixmap" key="ingame_settings"	attr="ingame_settings"	src="#seg_ingame_settings"/> 			
-			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update"		attr="ps3hen_updater"	src="xmb://localhost/dev_flash/hen/xml/ps3hen_updater.xml#seg_ps3hen_updater"/>
+			<!--<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update"		attr="ps3hen_updater"	src="xmb://localhost/dev_flash/hen/xml/ps3hen_updater.xml#seg_ps3hen_updater"/>-->
 			<Query class="type:x-xmb/folder-pixmap"	key="update_toolbox_main" attr="update_toolbox_main" src="#update_toolbox_item"/>			
 		</Items>
 	</View>
@@ -151,7 +151,7 @@
 	<!-- PSN Tools -->
 	<View id="seg_psn_tools">
 		<Attributes>
-			<Table key="disable_syscalls">
+			<!--<Table key="disable_syscalls">
 				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title_rsc"><String>msg_disable_syscalls_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_disable_syscalls_info</String></Pair>
@@ -159,7 +159,7 @@
 				<Pair key="module_action"><String>disable_syscalls</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>
+			</Table>-->
 			<Table key="spoof_targetid">
 				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title_rsc"><String>msg_spoof_with_eid5_title</String></Pair>
@@ -249,7 +249,7 @@
 			</Table>
 		</Attributes>
 		<Items>
-			<Item class="type:x-xmb/module-action"	key="disable_syscalls" 			attr="disable_syscalls" />
+			<!--<Item class="type:x-xmb/module-action"	key="disable_syscalls" 			attr="disable_syscalls" />-->
 			<Item class="type:x-xmb/module-action"	key="show_accountid" 			attr="show_accountid" />
 			<Item class="type:x-xmb/module-action" 	key="patch_accountid" 			attr="patch_accountid" />			
 			<Item class="type:x-xmb/module-action" 	key="activate_account" 			attr="activate_account" />
@@ -891,7 +891,7 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>		
-			<Table key="cobra_create_syscalls">
+			<!--<Table key="cobra_create_syscalls">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/flash.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_create_syscalls_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_create_syscalls_info</String></Pair>
@@ -908,7 +908,7 @@
 				<Pair key="module_action"><String>disable_syscalls</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>
+			</Table>-->
 			<Table key="enable_ftp">
 				<Pair key="icon_rsc"><String>tex_ftp</String></Pair>
 				<Pair key="title_rsc"><String>msg_ftp_enable_title</String></Pair>
@@ -1179,7 +1179,7 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>								
 			</Table>
-			<Table key="hen_keys">
+			<!--<Table key="hen_keys">
 				<Pair key="icon"><String>/dev_hdd0/hen/hotkeys.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hen_keys</String></Pair>
 				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>
@@ -1188,7 +1188,7 @@
 				<Pair key="ingame"><String>disable</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>								
-			</Table>
+			</Table>-->
 			<Table key="hen_ip">
 				<Pair key="icon"><String>/dev_hdd0/hen/ip.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hen_akari</String></Pair>
@@ -1231,7 +1231,7 @@
 			<Item class="type:x-xmb/module-action" key="hen_cwa" attr="hen_cwa"/>
 			<Item class="type:x-xmb/module-action" key="hen_cwc" attr="hen_cwc"/>
 			<Item class="type:x-xmb/module-action" key="hen_clog" attr="hen_clog"/>			
-			<Item class="type:x-xmb/module-action" key="hen_keys" attr="hen_keys"/>
+			<!--<Item class="type:x-xmb/module-action" key="hen_keys" attr="hen_keys"/>-->
 			<Item class="type:x-xmb/module-action" key="hen_ip" attr="hen_ip"/>		
 			<Item class="type:x-xmb/module-action" key="hen_trophy" attr="hen_trophy"/>
 			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
