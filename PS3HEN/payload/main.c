@@ -58,8 +58,8 @@
 //#define CB_LOCATION "/dev_habib/rebug/cobra/stage2.cex"
 
 #define COBRA_VERSION		0x0F
-#define COBRA_VERSION_BCD	0x0840
-#define HEN_REV				0x0324
+#define COBRA_VERSION_BCD	0x0810
+#define HEN_REV				0x0325
 
 #if defined(FIRMWARE_4_82)
 	#define FIRMWARE_VERSION	0x0482
@@ -201,12 +201,12 @@ LV2_HOOKED_FUNCTION_COND_POSTCALL_3(int,bnet_ioctl,(int socket,uint32_t flags, v
 		int path_len=strlen(path);
 		if(strstr(path,".rif"))
 		{
-			//DPRINTF("RIF fd open called:%s\n",path);
+			DPRINTF("RIF fd open called:%s\n",path);
 			rif_fd=*fd;
 		}
 		else if(strstr(path,"act.dat"))
 		{
-			//DPRINTF("act.dat fd open called:%s\n",path);
+			DPRINTF("act.dat fd open called:%s\n",path);
 			act_fd=*fd;
 		}
 		else if((strstr(path,".edat")) || (strstr(path,".EDAT")) || (strstr(path,"ISO.BIN.ENC")) || (strstr(path+path_len-7,"CONFIG")))
@@ -369,10 +369,10 @@ LV2_HOOKED_FUNCTION_COND_POSTCALL_3(int,read_eeprom_by_offset,(uint32_t offset, 
 	{
 		if(rif_fd==fd)
 		{
-			//DPRINTF("RIF fd read called:%x %p %016lx %p\n",fd,buf,nbytes,nread);
+			DPRINTF("RIF fd read called:%x %p %016lx %p\n",fd,buf,nbytes,nread);
 			if(*nread==0x98)
 			{
-				//DPRINTF("generating rif ECDSA\n");
+				DPRINTF("generating rif ECDSA\n");
 				uint8_t *buf1;
 				page_allocate_auto(NULL, 0x98, 0x2F, (void*)&buf1);
 				memcpy(buf1,buf,0x98);
@@ -390,10 +390,10 @@ LV2_HOOKED_FUNCTION_COND_POSTCALL_3(int,read_eeprom_by_offset,(uint32_t offset, 
 		}
 		else if(act_fd==fd)
 		{
-			//DPRINTF("act fd read called:%x %p %016lx %p\n\n",fd,buf,nbytes,nread);
+			DPRINTF("act fd read called:%x %p %016lx %p\n\n",fd,buf,nbytes,nread);
 			if(*nread==0x1038)
 			{
-				//DPRINTF("generating act ECDSA\n");
+				DPRINTF("generating act ECDSA\n");
 				uint8_t *buf1;
 				page_allocate_auto(NULL, 0x1038, 0x2F, (void*)&buf1);
 				memcpy(buf1,buf,0x1038);
@@ -413,7 +413,7 @@ LV2_HOOKED_FUNCTION_COND_POSTCALL_3(int,read_eeprom_by_offset,(uint32_t offset, 
 		{
 			if(*nread==0x100)
 			{
-				//DPRINTF("generating misc ECDSA\n");
+				DPRINTF("generating misc ECDSA\n");
 				uint8_t *buf1;
 				page_allocate_auto(NULL, 0x100, 0x2F, (void*)&buf1);
 				memcpy(buf1,buf,0x100);
@@ -477,7 +477,7 @@ void _sys_cfw_poke(uint64_t *addr, uint64_t value);
 
 LV2_HOOKED_FUNCTION(void, sys_cfw_new_poke, (uint64_t *addr, uint64_t value))
 {
-	//DPRINTF("New poke called\n");
+	DPRINTF("New poke called\n");
 
 	_sys_cfw_poke(addr, value);
 	asm volatile("icbi 0,%0; isync" :: "r"(addr));
@@ -524,7 +524,7 @@ LV2_SYSCALL2(void, sys_cfw_poke_lv1, (uint64_t _addr, uint64_t value))
 
 LV2_HOOKED_FUNCTION(void *, sys_cfw_memcpy, (void *dst, void *src, uint64_t len))
 {
-	//DPRINTF("sys_cfw_memcpy: %p %p 0x%lx\n", dst, src, len);
+	DPRINTF("sys_cfw_memcpy: %p %p 0x%lx\n", dst, src, len);
 
 	if (len == 8)
 	{
@@ -543,7 +543,7 @@ LV2_HOOKED_FUNCTION(void *, sys_cfw_memcpy, (void *dst, void *src, uint64_t len)
 
 LV2_SYSCALL2(void, sys_cfw_poke, (uint64_t *ptr, uint64_t value))
 {
-	//DPRINTF("LV2 poke %p %016lx\n", ptr, value);
+	DPRINTF("LV2 poke %p %016lx\n", ptr, value);
 	uint64_t addr=(uint64_t)ptr;
 	if (addr >= MKA(syscall_table_symbol))
 	{
@@ -556,13 +556,13 @@ LV2_SYSCALL2(void, sys_cfw_poke, (uint64_t *ptr, uint64_t value))
 
 			if (((value == sc_null) ||(value == syscall_not_impl)) && (syscall_num != 8)) //Allow removing protected syscall 6 7 9 10 35 NOT 8
 			{
-				//DPRINTF("HB remove syscall %ld\n", syscall_num);
+				DPRINTF("HB remove syscall %ld\n", syscall_num);
 				*ptr=value;
 				return;
 			}
 			else //Prevent syscall 6 7 9 10 and 35 from being re-written
 			{
-				//DPRINTF("HB has been blocked from rewritting syscall %ld\n", syscall_num);
+				DPRINTF("HB has been blocked from rewritting syscall %ld\n", syscall_num);
 				return;
 			}
 		}
@@ -606,17 +606,8 @@ LV2_SYSCALL2(void, sys_cfw_poke, (uint64_t *ptr, uint64_t value))
 
 LV2_SYSCALL2(void, sys_cfw_lv1_poke, (uint64_t lv1_addr, uint64_t lv1_value))
 {
-	//DPRINTF("LV1 poke %p %016lx\n", (void*)lv1_addr, lv1_value);
+	DPRINTF("LV1 poke %p %016lx\n", (void*)lv1_addr, lv1_value);
 	lv1_poked(lv1_addr, lv1_value);
-}
-
-LV2_SYSCALL2(uint64_t, sys_cfw_lv1_peek, (uint64_t lv1_addr))
-{
-	DPRINTF("lv1_peek %p\n", (void*)lv1_addr);
-	
-    uint64_t ret;
-    ret = lv1_peekd(lv1_addr);
-    return ret;
 }
 
 LV2_SYSCALL2(void, sys_cfw_lv1_call, (uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4, uint64_t a5, uint64_t a6, uint64_t a7, uint64_t num))
@@ -680,7 +671,7 @@ LV2_SYSCALL2(int64_t, syscall8, (uint64_t function, uint64_t param1, uint64_t pa
 {
 	extend_kstack(0);
 
-	//DPRINTF("Syscall 8 -> %lx\n", function);
+	DPRINTF("Syscall 8 -> %lx\n", function);
 
 	// -- AV: temporary disable cobra syscall (allow dumpers peek 0x1000 to 0x9800)
 	static uint8_t tmp_lv1peek = 0;
@@ -754,7 +745,7 @@ LV2_SYSCALL2(int64_t, syscall8, (uint64_t function, uint64_t param1, uint64_t pa
 		case SYSCALL8_OPCODE_PS3MAPI:
 			switch ((int)param1)
 			{
-				//DPRINTF("syscall8: PS3M_API function 0x%x\n", (int)param1);
+				DPRINTF("syscall8: PS3M_API function 0x%x\n", (int)param1);
 
 				//----------
 				//CORE
@@ -883,19 +874,6 @@ LV2_SYSCALL2(int64_t, syscall8, (uint64_t function, uint64_t param1, uint64_t pa
 				case PS3MAPI_OPCODE_PCHECK_SYSCALL8:
 					return ps3mapi_partial_disable_syscall8;
 				break;
-				case PS3MAPI_OPCODE_CREATE_CFW_SYSCALLS:
-					create_syscalls();
-					return SUCCEEDED;
-				break;
-
-				case PS3MAPI_OPCODE_ALLOW_RESTORE_SYSCALLS:
-					allow_restore_sc = (uint8_t)param2; // 1 = allow, 0 = do not allow
-					return SUCCEEDED;
-				break;
-
-				case PS3MAPI_OPCODE_GET_RESTORE_SYSCALLS:
-					return allow_restore_sc;
-				break;
 				//----------
 				//REMOVE HOOK
 				//----------
@@ -929,7 +907,7 @@ LV2_SYSCALL2(int64_t, syscall8, (uint64_t function, uint64_t param1, uint64_t pa
 				//DEFAULT
 				//----------
 				default:
-					//DPRINTF("syscall8: Unsupported PS3M_API opcode: 0x%lx\n", function);
+					DPRINTF("syscall8: Unsupported PS3M_API opcode: 0x%lx\n", function);
 					return ENOSYS;
 				break;
 			}
@@ -1145,7 +1123,7 @@ LV2_SYSCALL2(int64_t, syscall8, (uint64_t function, uint64_t param1, uint64_t pa
 
 	}
 
-	//DPRINTF("Unsupported syscall8 opcode: 0x%lx\n", function);
+	DPRINTF("Unsupported syscall8 opcode: 0x%lx\n", function);
 	return ENOSYS;
 }
 
@@ -1186,20 +1164,6 @@ LV2_SYSCALL2(int, sm_get_fan_policy_sc,(uint8_t id, uint8_t *st, uint8_t *policy
 		}
 	}
 	return ret;
-}
-
-void create_syscalls(void)
-{
-	create_syscall2(8, syscall8);
-	create_syscall2(6, sys_cfw_peek);
-	create_syscall2(7, sys_cfw_poke);
-	//create_syscall2(9, sys_cfw_lv1_poke);
-	create_syscall2(10, sys_cfw_lv1_call);
-	//create_syscall2(11, sys_cfw_lv1_peek);
-	create_syscall2(15, sys_cfw_lv2_func);
-	create_syscall2(389, sm_set_fan_policy_sc);
-	create_syscall2(409, sm_get_fan_policy_sc);
-	create_syscall2(SYS_MAP_PATH, sys_map_path);
 }
 
 static INLINE void apply_kernel_patches(void)
@@ -1272,6 +1236,7 @@ void cleanup_files(void)
 	cellFsUnlink("/dev_rewrite/vsh/resource/explore/xmb/zzz_hen_installed.tmp");
 }
 
+
 // Hotkey Buttons pressed at launch
 //static int mappath_disabled=0;// Disable all mappath mappings at launch
 static int boot_plugins_disabled=0;// Disable user and kernel plugins on launch
@@ -1280,17 +1245,19 @@ static void check_combo_buttons(void);
 static void check_combo_buttons(void)
 {
 	pad_data onboot;
-
+	
+	timer_usleep(40000);
+	
 	if (pad_get_data(&onboot) >= ((PAD_BTN_OFFSET_DIGITAL+1)*2)){
-
+/*
 		if((onboot.button[PAD_BTN_OFFSET_DIGITAL] & (PAD_CTRL_L2)) == (PAD_CTRL_L2)){
 
-			boot_plugins_disabled=2;
+			mappath_disabled=1;
 			#ifdef DEBUG
-//				DPRINTF("PAYLOAD->L2 Pressed: mappath remappings disabled\n");
+				DPRINTF("PAYLOAD->L2 Pressed: mappath remappings disabled\n");
 			#endif
 		}
-
+*/
 		if((onboot.button[PAD_BTN_OFFSET_DIGITAL] & (PAD_CTRL_R2)) == (PAD_CTRL_R2)){
 
 			boot_plugins_disabled=1;
@@ -1298,11 +1265,10 @@ static void check_combo_buttons(void)
 				//DPRINTF("PAYLOAD->R2 Pressed: boot plugins disabled\n");
 			#endif
 		}
-	} else 
-	{
-		boot_plugins_disabled=0;	
-	} 
+	}
+	timer_usleep(20000);
 }
+
 
 extern volatile int sleep_done;
 
@@ -1325,6 +1291,9 @@ int main(void)
 		
 	// Cleanup Old and Temp HEN Files
 	cleanup_files();
+	
+	// Check for hotkey button presses on launch
+	check_combo_buttons();
 	
 	// File and folder redirections using mappath mappings
 	//map_path("/dev_hdd0/hen/xml","/dev_flash/hen/remap/xml",FLAG_MAX_PRIORITY|FLAG_PROTECT); // Remap path to XML	
@@ -1357,7 +1326,7 @@ int main(void)
 	}
 	//map_path("/dev_flash/vsh/module/nas_plugin.sprx","/dev_flash/vsh/resource/AAA/nas_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches sprx.
 	map_path("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches the HEN Logo.
-
+	
 	#ifdef DEBUG
 		printMappingList();
 		//DPRINTF("sys_map_path offset 0x%8lx\n",(uint64_t)(uint64_t*)sys_map_path);
@@ -1371,7 +1340,6 @@ int main(void)
 	map_path_patches(1);
 	storage_ext_patches();
 	region_patches();
-	
 	//permissions_patches();
 	
 	#ifdef DEBUG
@@ -1384,30 +1352,23 @@ int main(void)
 	memset((void *)MKA(0x7e0000),0,0x100);
 	memset((void *)MKA(0x7f0000),0,0x1000);
 	
-	// Check for hotkey button presses on launch
-	if((cellFsStat("/dev_hdd0/hen/hotkeys.off",&stat)!=0))
+	if(boot_plugins_disabled==0)
 	{
-		check_combo_buttons();
-	}	
-	
-	if(boot_plugins_disabled<2)
-	{
-	load_boot_plugins(boot_plugins_disabled);
-	load_boot_plugins_kernel(boot_plugins_disabled);
+		load_boot_plugins();
+		load_boot_plugins_kernel();
 	
 		#ifdef DEBUG
 			//DPRINTF("PAYLOAD->plugins loaded\n");
 		#endif
 	}
-
-/*	else
-	{	
-	
+/*
+	else
+	{
 		#ifdef DEBUG
 			//DPRINTF("PAYLOAD->plugins not loaded\n");
 		#endif
-	}*/
-
+	}
+*/
 	
 	//enable_ingame_screenshot();
 	

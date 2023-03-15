@@ -415,7 +415,7 @@ static void downloadPKG_thread2(void)
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.89/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0"); 
 		}	
-	else if(val==0x323032332F30322FULL)
+	else if(val==0x3A35340000000000ULL) // for 4.90, kernel offset is off by 0x10 so we are checking this value instead of the timestamp
 		{
 			download_interface->DownloadURL(0,(wchar_t *) L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/4.90/latest_rus_sign.pkg", (wchar_t *) L"/dev_hdd0");
 		}	
@@ -554,13 +554,13 @@ static void unload_web_plugins(void)
 	while(View_Find("webrender_plugin"))
 	{
 		UnloadPluginById(0x1C, (void *)unloadSysPluginCallback);
-		sys_timer_usleep(20000);
+		sys_timer_usleep(50000);
 	}
 
 	while(View_Find("webbrowser_plugin"))
 	{
 		UnloadPluginById(0x1B, (void *)unloadSysPluginCallback);
-		sys_timer_usleep(20000);
+		sys_timer_usleep(50000);
 	}
 
 	explore_interface->ExecXMBcommand("close_all_list", 0, 0);
@@ -975,7 +975,7 @@ int henplugin_stop()
 	uint64_t exit_code;
 	if (ret == 0) sys_ppu_thread_join(t_id, &exit_code);
 
-	sys_timer_usleep(4000);
+	sys_timer_usleep(7000);
 	stop_prx_module();
 
 	_sys_ppu_thread_exit(0);

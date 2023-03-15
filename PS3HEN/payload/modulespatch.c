@@ -578,7 +578,7 @@ void remove_pokes()
 	}
 }*/
 
-#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined (FIRMWARE_4_90) 
+#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined(FIRMWARE_4_90)
 /*LV2_PATCHED_FUNCTION(int, vtable_ioctl,(uint64_t socket, uint64_t unk_11,uint64_t flags, void *kmem, uint64_t unk_0,uint64_t unk, uint64_t function_ptr, uint64_t unk2))
 {
 //	f_desc_t f;
@@ -721,7 +721,7 @@ LV2_PATCHED_FUNCTION(int, modules_patching, (uint64_t *arg1, uint32_t *arg2))
 
 	// +4.30 -> 0x13 (exact firmware since it happens is unknown)
 	// 3.55 -> 0x29
-#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined (FIRMWARE_4_90) || defined(FIRMWARE_4_82DEX) || defined(FIRMWARE_4_84DEX)
+#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined(FIRMWARE_4_90) || defined(FIRMWARE_4_82DEX) || defined(FIRMWARE_4_84DEX)
 	if ((p[0x30/4] >> 16) == 0x13)
 #endif
 	{
@@ -825,7 +825,7 @@ LV2_PATCHED_FUNCTION(int, modules_patching, (uint64_t *arg1, uint32_t *arg2))
 	{
 		uint64_t hash = 0;
 
-#if defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined (FIRMWARE_4_90)
+#if defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined(FIRMWARE_4_90)
 		for (int i = 0; i < 0x100; i++)
 		{
 			hash ^= buf[i];
@@ -959,7 +959,7 @@ LV2_PATCHED_FUNCTION(int, modules_patching, (uint64_t *arg1, uint32_t *arg2))
 	return 0;
 }
 
-#if defined (FIRMWARE_4_82) ||  defined (FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined (FIRMWARE_4_90)
+#if defined (FIRMWARE_4_82) ||  defined (FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined(FIRMWARE_4_90)
 LV2_HOOKED_FUNCTION_COND_POSTCALL_2(int, pre_modules_verification, (uint32_t *ret, uint32_t error))
 {
 /*
@@ -1277,7 +1277,7 @@ int get_vsh_proc()
 	return 0;
 }
 
-void load_boot_plugins_kernel(int boot_plugins)
+void load_boot_plugins_kernel(void)
 {
 	int fd;
 	int current_slot_kernel = 0;
@@ -1290,7 +1290,7 @@ void load_boot_plugins_kernel(int boot_plugins)
 	{
 		if (cellFsOpen(BOOT_PLUGINS_KERNEL_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 		{
-			if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_KERNEL_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
+			if (cellFsOpen(BOOT_PLUGINS_KERNEL_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 			{
 				return;
 			}
@@ -1325,7 +1325,7 @@ void load_boot_plugins_kernel(int boot_plugins)
 }
 
 // webMAN integration support
-void load_boot_plugins(int boot_plugins)
+void load_boot_plugins(void)
 {
 	int fd;
 	int current_slot = BOOT_PLUGINS_FIRST_SLOT;
@@ -1352,13 +1352,22 @@ void load_boot_plugins(int boot_plugins)
 	// Improving initial KW's code
 	// Firstly will load plugin from '/dev_hdd0' instead '/dev_flash'
 	// If it does not exist in '/dev_hdd0' will load it from '/dev_flash'
-	if (cellFsOpen(BOOT_PLUGINS_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
+	
+	// HEN will only check boot plugins text if installed
+	// Fixes issue with outdated plugins being loaded during install
+	if(cellFsStat("/dev_flash/vsh/resource/explore/icon/hen_enable.png",&stat)==0)
 	{
-		if (cellFsOpen(BOOT_PLUGINS_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
+		#ifdef DEBUG
+			DPRINTF("PAYLOAD->HEN Is Installed\n");
+		#endif
+		if (cellFsOpen(BOOT_PLUGINS_FILE1, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 		{
-			if ((boot_plugins==0)&&(cellFsOpen(BOOT_PLUGINS_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0))
+			if (cellFsOpen(BOOT_PLUGINS_FILE2, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
 			{
-				return;
+				if (cellFsOpen(BOOT_PLUGINS_FILE3, CELL_FS_O_RDONLY, &fd, 0, NULL, 0) != 0)
+				{
+					return;
+				}
 			}
 		}
 	}
@@ -1424,7 +1433,7 @@ void modules_patch_init(void)
 	hook_function_with_cond_postcall(modules_verification_symbol, pre_modules_verification, 2);
 	hook_function_with_postcall(map_process_memory_symbol, pre_map_process_memory, 7);
 	do_patch32(MKA(decrypt_func_symbol+0x40),0x60000000);
-#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined (FIRMWARE_4_90)
+#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined(FIRMWARE_4_90)
 //	patch_call(0x123f38, ioctl_patched);
 #endif
 }
@@ -1432,7 +1441,7 @@ void modules_patch_init(void)
 void unhook_all_modules(void)
 {
 	suspend_intr();
-#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined (FIRMWARE_4_90)
+#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined(FIRMWARE_4_90)
 	*(uint32_t *)MKA(patch_func2_offset)=0x4BFDABC1;
 #elif defined(FIRMWARE_4_82DEX) || defined(FIRMWARE_4_84DEX)
 	*(uint32_t *)MKA(patch_func2_offset)=0x4BFDAB11;
@@ -1442,7 +1451,7 @@ void unhook_all_modules(void)
 	unhook_function_with_precall(lv1_call_99_wrapper_symbol, post_lv1_call_99_wrapper, 2);
 	unhook_function_with_cond_postcall(modules_verification_symbol, pre_modules_verification, 2);
 	unhook_function_with_postcall(map_process_memory_symbol, pre_map_process_memory, 7);
-#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined (FIRMWARE_4_90)
+#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84) || defined(FIRMWARE_4_85) || defined(FIRMWARE_4_86) || defined(FIRMWARE_4_87) || defined(FIRMWARE_4_88) || defined(FIRMWARE_4_89) || defined(FIRMWARE_4_90)
 //	do_patch32(MKA(0x123f38), 0xE97C0018);
 #endif
 	resume_intr();
