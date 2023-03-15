@@ -27,6 +27,11 @@
                 src="xmb://localhost/dev_hdd0/game/HENBSTORE/USRDIR/henbrew_store_xmb.xml#henbrew_store_xmb_main"
                 />
 			<Query
+                class="type:x-xmb/folder-pixmap"
+                key="ONLINESTR"
+                src="xmb://localhost/dev_hdd0/game/ONLINESTR/USRDIR/online_store.xml#online_store"
+                />	
+			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="WEBSTOREC"
 				src="xmb://localhost/dev_hdd0/game/WEBSTOREC/USRDIR/webstCOM.xml#main"
