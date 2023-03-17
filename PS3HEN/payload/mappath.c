@@ -32,6 +32,8 @@ typedef struct MapEntry {
 	// unsigned char p_writable;
 // } CellFsMountInformation_t;
 
+uint8_t allow_restore_sc = 1;
+static int8_t avoid_recursive_calls = 0;
 uint8_t photo_gui = 1;
 MapEntry_t *head = NULL;
 MapEntry_t *found = NULL;
@@ -1029,8 +1031,50 @@ int read_act_dat_and_make_rif(uint8_t *idps,uint8_t *rap, uint8_t *act_dat, char
 		return 0;
 }
 
+static int check_syscalls()
+{
+	uint8_t syscalls_disabled = ((*(uint64_t *)MKA(syscall_table_symbol + 8 * 6)) == (*(uint64_t *)MKA(syscall_table_symbol)));
+
+	return syscalls_disabled;
+}
+
+void restore_syscalls(const char *path)
+{
+	// Restore disabled CFW Syscalls without reboot just entering to Settings > System Update on XMB - aldostools
+//	if(allow_restore_sc)
+//	{
+		if(!strcmp(path, "/dev_flash/vsh/module/software_update_plugin.sprx")) 
+		{			
+			if(check_syscalls())
+				create_syscalls();
+		}		
+//	}
+}
+
+void check_signin(const char *path)
+{
+	if(!strcmp(path, "/dev_flash/vsh/module/npsignin_plugin.sprx"))
+	{
+		// Lock/Unlock Sign In to PSN if DeViL303's RCO exists    
+		if(check_syscalls())
+			map_path(NPSIGNIN_UNLOCK, NULL, 0);
+		else
+		{	
+			CellFsStat stat;
+			if(cellFsStat(NPSIGNIN_LOCK, &stat) == SUCCEEDED)
+				map_path(NPSIGNIN_UNLOCK, NPSIGNIN_LOCK, 0);
+			else
+				map_path(NPSIGNIN_UNLOCK, NULL, 0);
+		}
+	}
+}
+
 LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 {
+	if(avoid_recursive_calls) 
+		return 0;
+	avoid_recursive_calls = 1;
+	
 	//extend_kstack(0);
 	if(path0){
 		CellFsStat stat;
@@ -1100,8 +1144,9 @@ LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 		
 			// let's now block homebrews if the "allow" flag is false
 			if (!allow)
-			{
-				set_patched_func_param(1, (uint64_t)crap_pants);
+			{										
+				avoid_recursive_calls = 0;
+				set_patched_func_param(1, (uint64_t)crap_pants);				
 				return 0;
 			}
 		}
@@ -1239,6 +1284,10 @@ LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 				page_free(NULL, (void *)buf, 0x2F);
 			}
 		}
+		
+		restore_syscalls(path0);		
+		check_signin(path0);
+
 		#ifdef  DEBUG
 			//DPRINTF("open_path_hook=: processing path [%s]\n", path0);
 		#endif
@@ -1315,6 +1364,7 @@ LV2_HOOKED_FUNCTION_POSTCALL_2(int, open_path_hook, (char *path0, char *path1))
 			}
 		}
 	}
+	avoid_recursive_calls = 0;
 	return 0;
 }
 

@@ -542,6 +542,31 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_xmb.png", "/dev_hdd0/hen/hen_xmb.png");
 }
 
+void toggle_plugins()
+{
+	int ret;
+	CellFsStat stat;
+
+	if(cellFsStat(PLUGINS_TXT_FILE_ENABLED, &stat) == CELL_FS_SUCCEEDED)
+	{
+		ret = cellFsRename(PLUGINS_TXT_FILE_ENABLED, PLUGINS_TXT_FILE_DISABLED);
+
+		if(ret != CELL_OK)		
+			show_msg((char *)"disable_plugins_error");			
+		else
+			show_msg((char *)"disable_plugins_success");			
+	}
+	else if(cellFsStat(PLUGINS_TXT_FILE_DISABLED, &stat) == CELL_FS_SUCCEEDED)
+	{
+		ret = cellFsRename(PLUGINS_TXT_FILE_DISABLED, PLUGINS_TXT_FILE_ENABLED);
+		
+		if(ret != CELL_OK)		
+			show_msg((char *)"enable_plugins_error");			
+		else
+			show_msg((char *)"enable_plugins_success");	
+	}
+}
+
 static void unloadSysPluginCallback(void)
 {
 	//Add potential callback process
@@ -825,6 +850,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	{
 		tick_count=0;
 		show_msg((char *)"INSTALL PART 2");
+		toggle_plugins();
 		LoadPluginById(0x16, (void *)installPKG_thread);
 		while(thread3_install_finish==0)
 			{
