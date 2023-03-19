@@ -1,10 +1,25 @@
 <h1 align="center">Hi there, I'm <a href="https://www.pspx.ru/forum/" target="_blank">in1975</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
-<h3 align="center">This is the repository for Hen 3.2.4 rus mod</h3>
+<h3 align="center">This is the repository for Hen 3.2.6 rus mod</h3>
 <h3 align="center">This HEN is a branch (modification) <a href="https://github.com/PS3Xploit/PS3HEN" target="_blank">of this</a></h3>
 <p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
+
+## Изменения в 3.2.6
+Добавлено:
+- Блокировка обновления на OFW через пункт сеть (доступно через USB)
+- Пункт переключения блокировки обновления в разделе Сервисные инструменты
+- Пунк конвертирования *.RIF в /dev_hdd0/exdata/*.RAP (чтобы делиться эклюзивами с сообществом)
+
+Убрано (для совместимости с 4.90):
+- Пункт редактирования трофеев 
+
+- С целью исключения конфликтов со старым Webman добавлен пустой файл boot_plugins.txt, обновите Webman
+- Другие мелкие изменения
+
+## Изменения в 3.2.5 
+- Поддержка 4.90 HFW
 
 ## Изменения в 3.2.4 
 - Новый способ установки HEN (для исключения проблем с разделом сеть). Если после загрузки HEN.P3T эксплоит не сработал - закройте браузер, откройте вновь, наберите адрес и пропустите загрузку файла 2й раз (нет необходимости качать его еще раз).
