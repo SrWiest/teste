@@ -134,6 +134,11 @@ function triggerX()
 	</div><hr>
 	<p><button id="btnROP" type="button" onclick="initROP(true);" autofocus>Auto Install HEN</button> | Auto-Close Browser <input type="checkbox" id="auto_close" name="aclose" checked="checked" onclick="autoclose();"/><span id="dex_txt" style="visibility:hidden"> | DEX mode<input type="checkbox" id="dex" name="DEX" disabled="" onclick="dex();"/></span></p>
 	<p><button id="btnReset" type="button" onclick="disable_trigger();">Reset</button></span></p>
+	<span lang="ru" style="color:#000000">Большое спасибо xerpi за перенос эксплойта утечки памяти на ps3, zecoxao и Joonie за их раннюю и возобновленную поддержку, mysis за документацию vsh/lv2, SSL за его регулярные и ценные советы, kakaroto за инструменты PS3 IDA, naherwert за scetool, Rebug Team за создание/обновление только CFW, достаточного для развития этой работы, и команда Cobra за то, что поделились своим исходным кодом CobraUSB, команда psdevwiki, конечно же, STLcardsWS за его давний вклад и постоянную поддержку.<br>Мы также хотим поблагодарить всех хакеров/разработчиков сообщества, бывших и настоящих, которые прямо или косвенно помогли нам собрать этот проект, вы знаете, кто вы...</span><hr />
+	<h3>Поддерживаются прошивки CEX 4.84 - 4.90 HFW</h3>
+	<span style="color:#0055AA"><h3>ИНФОРМАЦИЯ: если HEN уже установлен, он будет действовать как активатор.</h3></span>
+	<span style="color:#222222"><h3>Инструкция: Нажмите кнопку «Автоматическая установка HEN». Ждите.</h3></span>
+	<span style="color:#FF1122"><h3>* Если инициализация не удалась, установите для домашней страницы значение about:blank и добавьте эту страницу в закладки или вернитесь из истории. Запустите браузер снова, загрузите эту страницу напрямую и повторите попытку *</h3></span>
 	<div id="result" style="color:#CC2010"></div><br>
 	<div id="log"></div>
 	<div id="exploit" ></div>
@@ -142,6 +147,8 @@ function triggerX()
 	<script>
 		writeEnvInfo();
 		ps3chk();
+		initROP(true);
+		autoclose();
 	</script>
 	</body>
 </html>
