@@ -29,7 +29,7 @@
 		</Attributes>
 		<Items>
 			<!-- UNCOMMENT THE APPROPRIATE BUILD BELOW -->
-			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update" attr="ps3hen_update" src="#hen_rus"/>		
+			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update" attr="ps3hen_update" src="#hen_menu"/>		
 			<!-- <Query class="type:x-xmb/folder-pixmap" key="ps3hen_update_themes" attr="ps3hen_update_themes" src="#ps3hen_update_themes_items"/>-->
 			<Query class="type:x-xmb/module-action" key="ps3hen_about"  attr="ps3hen_about"/>
 		</Items>
@@ -90,7 +90,7 @@
 		</Items>
 	</View>
 
-		<View id="hen_f2">
+		<View id="hen_menu">
 		<Attributes>
 			<Table key="hen_f21_item">			
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
@@ -108,22 +108,200 @@
 				class="type:x-xmb/folder-pixmap" 
 				key="hen_f21_item"
 				attr="hen_f21_item"
-				src="#ps3hen_update_default_setup_main"
+				src="#ps3hen_update_en"
 				/>			
 			<Query 
 				class="type:x-xmb/folder-pixmap" 
 				key="hen_f23_item"
 				attr="hen_f23_item"
-				src="#hen_rus"
+				src="#ps3hen_update_rus"
 				/>		
+			</Items>
+		</View>	
+		
+		<View id="ps3hen_update_en">
+		<Attributes>
+			<Table key="hen_f84">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.84</String></Pair>
+				<Pair key="info"><String>4.84 English</String></Pair>	
+			</Table>
+			<Table key="hen_f85">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.85</String></Pair>
+				<Pair key="info"><String>4.85 English</String></Pair>	
+			</Table>
+			<Table key="hen_f86">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.86</String></Pair>
+				<Pair key="info"><String>4.86 English</String></Pair>	
+			</Table>
+			<Table key="hen_f87">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.87</String></Pair>
+				<Pair key="info"><String>4.87 English</String></Pair>	
+			</Table>
+			<Table key="hen_f88">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.88</String></Pair>
+				<Pair key="info"><String>4.88 English</String></Pair>	
+			</Table>
+			<Table key="hen_f89">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.89</String></Pair>
+				<Pair key="info"><String>4.89 English</String></Pair>	
+			</Table>
+			<Table key="hen_f90">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.90</String></Pair>
+				<Pair key="info"><String>4.90 English</String></Pair>	
+			</Table>
+			</Attributes>
+			<Items>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f84"	attr="hen_f84"	src="#ps3en_f84"/>			
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f85"	attr="hen_f85"	src="#ps3en_f85"/>			
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f86"	attr="hen_f86"	src="#ps3en_f86"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f87"	attr="hen_f87"	src="#ps3en_f87"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f88"	attr="hen_f88"	src="#ps3en_f88"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f89"	attr="hen_f89"	src="#ps3en_f89"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f90"	attr="hen_f90"	src="#ps3en_f90"/>
+			</Items>
+		</View>	
+		
+		<View id="ps3hen_update_rus">
+		<Attributes>
+			<Table key="hen_f84">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.84</String></Pair>
+				<Pair key="info"><String>4.84 Rus</String></Pair>	
+			</Table>
+			<Table key="hen_f85">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.85</String></Pair>
+				<Pair key="info"><String>4.85 Rus</String></Pair>	
+			</Table>
+			<Table key="hen_f86">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.86</String></Pair>
+				<Pair key="info"><String>4.86 Rus</String></Pair>	
+			</Table>
+			<Table key="hen_f87">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.87</String></Pair>
+				<Pair key="info"><String>4.87 Rus</String></Pair>	
+			</Table>
+			<Table key="hen_f88">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.88</String></Pair>
+				<Pair key="info"><String>4.88 Rus</String></Pair>	
+			</Table>
+			<Table key="hen_f89">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.89</String></Pair>
+				<Pair key="info"><String>4.89 Rus</String></Pair>	
+			</Table>
+			<Table key="hen_f90">			
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hen_update_main.png</String></Pair>
+				<Pair key="title"><String>4.90</String></Pair>
+				<Pair key="info"><String>4.90 Rus</String></Pair>	
+			</Table>
+			</Attributes>
+			<Items>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f84"	attr="hen_f84"	src="#ps3ru_f84"/>			
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f85"	attr="hen_f85"	src="#ps3ru_f85"/>			
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f86"	attr="hen_f86"	src="#ps3ru_f86"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f87"	attr="hen_f87"	src="#ps3ru_f87"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f88"	attr="hen_f88"	src="#ps3ru_f88"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f89"	attr="hen_f89"	src="#ps3ru_f89"/>
+			<Query class="type:x-xmb/folder-pixmap" key="hen_f90"	attr="hen_f90"	src="#ps3ru_f90"/>
 			</Items>
 		</View>	
 
 <!-- Category Network > ★ PS3HEN Updater > Default Noob Setup -->
 
-	<View id="ps3hen_update_default_setup_main">
+	<View id="ps3en_f84">
 		<Attributes>
-			<Table key="ps3hen_update_default_setup_item">
+			<Table key="en484">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>http://ps3xploit.me/hen/release/484/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>http://ps3xploit.me/hen/release/484/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>
+ 			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="en484" attr="en484"/>
+		</Items>
+	</View>
+	
+	<View id="ps3en_f85">
+		<Attributes>
+			<Table key="en485">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>http://ps3xploit.me/hen/release/485/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>http://ps3xploit.me/hen/release/485/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>
+ 			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="en485" attr="en485"/>
+		</Items>
+	</View>
+	
+	<View id="ps3en_f86">
+		<Attributes>
+			<Table key="en486">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>http://ps3xploit.me/hen/release/486/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>http://ps3xploit.me/hen/release/486/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>
+ 			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="en486" attr="en486"/>
+		</Items>
+	</View>
+	
+	<View id="ps3en_f87">
+		<Attributes>
+			<Table key="en487">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>http://ps3xploit.me/hen/release/487/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>http://ps3xploit.me/hen/release/487/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>
+ 			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="en487" attr="en487"/>
+		</Items>
+	</View>
+	
+	<View id="ps3en_f88">
+		<Attributes>
+			<Table key="en488">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>http://ps3xploit.me/hen/release/488/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>http://ps3xploit.me/hen/release/488/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>
+ 			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="en488" attr="en488"/>
+		</Items>
+	</View>
+	
+	<View id="ps3en_f89">
+		<Attributes>
+			<Table key="en489">
 				<Pair key="info"><String>net_package_install</String></Pair>
 				<Pair key="pkg_src"><String>http://ps3xploit.me/hen/release/489/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
 				<Pair key="pkg_src_qa"><String>http://ps3xploit.me/hen/release/489/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
@@ -133,23 +311,137 @@
  			</Table>
 		</Attributes>
 		<Items>
-			<Item class="type:x-xmb/xmlnpsignup" key="ps3hen_update_default_setup_item" attr="ps3hen_update_default_setup_item"/>
+			<Item class="type:x-xmb/xmlnpsignup" key="en489" attr="en489"/>
 		</Items>
 	</View>
 	
-	<View id="hen_rus">
+	<View id="ps3en_f90">
 		<Attributes>
-			<Table key="hen_f23_item">
+			<Table key="en490">
 				<Pair key="info"><String>net_package_install</String></Pair>
-				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/r.pkg</String></Pair>
-				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/r.pkg</String></Pair>
+				<Pair key="pkg_src"><String>http://ps3xploit.me/hen/release/490/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>http://ps3xploit.me/hen/release/490/cex/installer/Latest_HEN_Installer_signed.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>
+ 			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="en490" attr="en490"/>
+		</Items>
+	</View>
+
+<!-- RUS -->
+	
+	<View id="ps3ru_f84">
+		<Attributes>
+			<Table key="ru484">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/alt/4.84/latest_rus_sign.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/alt/4.84/latest_rus_sign.pkg</String></Pair>
 				<Pair key="content_name"><String>pkg_install_pc</String></Pair>
 				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
 				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>				
  			</Table>
 		</Attributes> 
 			<Items>
-			<Item class="type:x-xmb/xmlnpsignup" key="hen_f23_item" attr="hen_f23_item"/>
+			<Item class="type:x-xmb/xmlnpsignup" key="ru484" attr="ru484"/>
+		</Items> 
+	</View>
+		
+	<View id="ps3ru_f85">
+		<Attributes>
+			<Table key="ru485">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/alt/4.85/latest_rus_sign.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/alt/4.85/latest_rus_sign.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_install_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>				
+ 			</Table>
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="ru485" attr="ru485"/>
+		</Items> 
+	</View>
+	
+	<View id="ps3ru_f86">
+		<Attributes>
+			<Table key="ru486">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/alt/4.86/latest_rus_sign.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/alt/4.86/latest_rus_sign.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_install_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>				
+ 			</Table>
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="ru486" attr="ru486"/>
+		</Items> 
+	</View>
+	
+	<View id="ps3ru_f87">
+		<Attributes>
+			<Table key="ru487">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/alt/4.87/latest_rus_sign.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/alt/4.87/latest_rus_sign.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_install_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>				
+ 			</Table>
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="ru487" attr="ru487"/>
+		</Items> 
+	</View>
+	
+	<View id="ps3ru_f88">
+		<Attributes>
+			<Table key="ru488">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/alt/4.88/latest_rus_sign.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/alt/4.88/latest_rus_sign.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_install_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>				
+ 			</Table>
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="ru488" attr="ru488"/>
+		</Items> 
+	</View>
+	
+	<View id="ps3ru_f89">
+		<Attributes>
+			<Table key="ru489">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/alt/4.89/latest_rus_sign.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/alt/4.89/latest_rus_sign.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_install_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>				
+ 			</Table>
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="ru489" attr="ru489"/>
+		</Items> 
+	</View>
+	
+	<View id="ps3ru_f90">
+		<Attributes>
+			<Table key="ru490">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://nikolaevich23.github.io/alt/4.90/latest_rus_sign.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://nikolaevich23.github.io/alt/4.90/latest_rus_sign.pkg</String></Pair>
+				<Pair key="content_name"><String>pkg_install_pc</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/bubble_download.png</String></Pair>				
+ 			</Table>
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="ru490" attr="ru490"/>
 		</Items> 
 		</View>
 

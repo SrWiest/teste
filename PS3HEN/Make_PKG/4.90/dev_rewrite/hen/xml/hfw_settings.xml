@@ -5,8 +5,7 @@
 	<View id="seg_hfw_settings">
 		<Attributes>
 			<Table key="hfw_settings">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_hft.png</String></Pair>
-				<Pair key="icon_notation"><String>WNT_XmbItemAlbum</String></Pair>
+				<Pair key="icon_rsc"><String>tex_basic</String></Pair>				
 				<Pair key="title_rsc"><String>msg_hfw_set</String></Pair>
 				<Pair key="info_rsc"><String></String></Pair>
                 <Pair key="ingame"><String>disable</String></Pair>
@@ -36,13 +35,11 @@
 				<Pair key="title_rsc"><String>msg_recovery_menu_title</String></Pair>
 			</Table>
 			<Table key="ingame_settings">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_ingame.png</String></Pair>
-				<Pair key="icon_notation"><String>WNT_XmbItemAlbum</String></Pair>
+				<Pair key="icon_rsc"><String>game_tex_load</String></Pair>				
 				<Pair key="title_rsc"><String>msg_hfw_game</String></Pair>
 			</Table>
 			<Table key="ps3hen_maintenance">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_maintenance.png</String></Pair>
-				<Pair key="icon_notation"><String>WNT_XmbItemAlbum</String></Pair>
+				<Pair key="icon_rsc"><String>tex_folder_list</String></Pair>				
 				<Pair key="title_rsc"><String>msg_hfw_maintenance</String></Pair>
                 <Pair key="info_rsc"><String>msg_hfw_maintenance_info</String></Pair>
 			</Table>																							
@@ -50,7 +47,7 @@
 				<Pair key="icon_rsc"><String>tex_fan</String></Pair>
 				<Pair key="title_rsc"><String>msg_fan_settings_title</String></Pair>
 			</Table>
-			<Table key="ps3hen_updater">
+			<Table key="ps3hen_update">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_download.png</String></Pair>
 				<Pair key="icon_notation"><String>WNT_XmbItemAlbum</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_updater</String></Pair>
@@ -70,7 +67,7 @@
 			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_maintenance"		attr="ps3hen_maintenance"		src="#seg_ps3hen_maintenance"/>
 			<!--<Query class="type:x-xmb/folder-pixmap" key="fan_settings"	 attr="fan_settings"   src="#seg_fan_settings" />-->
 			<Query class="type:x-xmb/folder-pixmap" key="ingame_settings"	attr="ingame_settings"	src="#seg_ingame_settings"/> 			
-			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update"		attr="ps3hen_updater"	src="xmb://localhost/dev_flash/hen/xml/ps3hen_updater.xml#seg_ps3hen_updater"/>
+			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update"		attr="ps3hen_update"	src="xmb://localhost/dev_flash/hen/xml/ps3hen_updater.xml#seg_ps3hen_updater"/>
 			<Query class="type:x-xmb/folder-pixmap"	key="update_toolbox_main" attr="update_toolbox_main" src="#update_toolbox_item"/>			
 		</Items>
 	</View>
@@ -581,7 +578,7 @@
 	<View id="seg_ingame_settings">
 		<Attributes>
 			<Table key="enable_screenshot">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/ingame_enable_ss.png</String></Pair>
+				<Pair key="icon_rsc"><String>game_tex_load</String></Pair>
 				<Pair key="title_rsc"><String>Enable In-Game Screenshot</String></Pair>
 				<Pair key="info_rsc"><String></String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
@@ -590,7 +587,7 @@
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
 			<Table key="enable_recording">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_list.png</String></Pair>
+				<Pair key="icon_rsc"><String>game_tex_load</String></Pair>
 				<Pair key="title_rsc"><String>Enable Gameplay Recording</String></Pair>
 				<Pair key="info_rsc"><String></String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
@@ -599,7 +596,7 @@
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
 			<Table key="override_sfo">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/ingame_override_sfo.png</String></Pair>
+				<Pair key="icon_rsc"><String>game_tex_load</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_override_sfo</String></Pair>
 				<Pair key="info_rsc"><String>msg_hfw_override_sfo_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
@@ -650,28 +647,10 @@
 				<Pair key="title_rsc"><String>msg_show_temp_celsius_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_show_temp_celsius_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
-				<Pair key="module_action"><String>show_temp_celsius</String></Pair>
+				<Pair key="module_action"><String>show_temp</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>
-			<Table key="show_temp_fahrenheit">
-				<Pair key="icon_rsc"><String>tex_temp</String></Pair>
-				<Pair key="title_rsc"><String>msg_show_temp_fahrenheit_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_show_temp_fahrenheit_info</String></Pair>
-				<Pair key="module_name"><String>xai_plugin</String></Pair>
-				<Pair key="module_action"><String>show_temp_fahrenheit</String></Pair>
-				<Pair key="bar_action"><String>none</String></Pair>
-				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>
-			<!--<Table key="show_clock">
-				<Pair key="icon_rsc"><String>tex_clock</String></Pair>
-				<Pair key="title_rsc"><String>msg_clock_speeds_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_clock_speeds_info</String></Pair>
-				<Pair key="module_name"><String>xai_plugin</String></Pair>
-				<Pair key="module_action"><String>show_clocks</String></Pair>
-				<Pair key="bar_action"><String>none</String></Pair>
-				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>-->
+			</Table>		
 			<Table key="show_idps">
 				<Pair key="icon_rsc"><String>tex_show_id</String></Pair>
 				<Pair key="title_rsc"><String>msg_show_idps_title</String></Pair>
@@ -707,7 +686,7 @@
 				<Pair key="module_action"><String>http://localhost/dev_hdd0/tmp/cfw_settings.log</String></Pair>
 			</Table>
 			<Table key="view_log_hfw">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_view_log.png</String></Pair>
+				<Pair key="icon_rsc"><String>tex_log</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_view_log</String></Pair>
 				<Pair key="info_rsc"><String>msg_hfw_view_log_info</String></Pair>
 				<Pair key="module_name"><String>webrender_plugin</String></Pair>
@@ -794,15 +773,6 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
-			<!--<Table key="dump_erk">
-				<Pair key="icon_rsc"><String>tex_dump_id</String></Pair>
-				<Pair key="title_rsc"><String>msg_dump_erk_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_dump_erk_info</String></Pair>
-				<Pair key="module_name"><String>xai_plugin</String></Pair>
-				<Pair key="module_action"><String>dump_erk</String></Pair>
-				<Pair key="bar_action"><String>none</String></Pair>
-				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>-->	
 			<Table key="dump_syscon_log">
 				<Pair key="icon_rsc"><String>tex_dump_id</String></Pair>
 				<Pair key="title_rsc"><String>msg_dump_syscon_error_log_title</String></Pair>
@@ -812,15 +782,6 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
-			<!--<Table key="get_token_seed">
-				<Pair key="icon_rsc"><String>tex_dump_id</String></Pair>
-				<Pair key="title_rsc"><String>msg_get_token_seed_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_get_token_seed_info</String></Pair>
-				<Pair key="module_name"><String>xai_plugin</String></Pair>
-				<Pair key="module_action"><String>get_token_seed</String></Pair>
-				<Pair key="bar_action"><String>none</String></Pair>
-				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>-->				
 			<Table key="log_klic">
 				<Pair key="icon_rsc"><String>tex_backup_license</String></Pair>
 				<Pair key="title_rsc"><String>msg_log_klic_title</String></Pair>
@@ -855,8 +816,6 @@
 			<Item class="type:x-xmb/module-action"  key="ps3_lifetime" 		 	attr="ps3_lifetime" />				
 			<Item class="type:x-xmb/module-action"  key="fan_speed" 		 	attr="fan_speed" />	
 			<Item class="type:x-xmb/module-action"  key="show_temp_celsius"	 	attr="show_temp_celsius" />	
-			<Item class="type:x-xmb/module-action"  key="show_temp_fahrenheit"	attr="show_temp_fahrenheit" />	
-			<!--<Item class="type:x-xmb/module-action"  key="show_clock"	     	attr="show_clock" />-->
 			<Item class="type:x-xmb/module-action"  key="show_idps"			 	attr="show_idps" />		
 			<Item class="type:x-xmb/module-action"  key="show_psid"			 	attr="show_psid" />	
 			<Item class="type:x-xmb/module-action"  key="show_ip"			 	attr="show_ip" />
@@ -871,9 +830,7 @@
 			<Item class="type:x-xmb/module-action" key="dump_ram"	      attr="dump_ram" />
 			<Item class="type:x-xmb/module-action" key="dump_sysrom"      attr="dump_sysrom" />
 			<Item class="type:x-xmb/module-action" key="dump_eeprom"   	  attr="dump_eeprom" />			
-			<!--<Item class="type:x-xmb/module-action" key="dump_erk"         attr="dump_erk" />-->		
 			<Item class="type:x-xmb/module-action" key="dump_syscon_log"  attr="dump_syscon_log" />			
-			<!--<Item class="type:x-xmb/module-action" key="get_token_seed"   attr="get_token_seed" />-->
 			<Item class="type:x-xmb/module-action" key="log_klic"         attr="log_klic" />
 			<Item class="type:x-xmb/module-action" key="log_secureid"     attr="log_secureid" />
 			<Item class="type:x-xmb/module-action" key="dump_disc_key"    attr="dump_disc_key" />
@@ -892,7 +849,7 @@
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>		
 			<Table key="cobra_create_syscalls">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/flash.png</String></Pair>
+				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title_rsc"><String>msg_create_syscalls_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_create_syscalls_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
@@ -901,7 +858,7 @@
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
 			<Table key="disable_syscalls">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/flash.png</String></Pair>
+				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title_rsc"><String>msg_disable_syscalls_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_disable_syscalls_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
@@ -956,12 +913,31 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>
+			<Table key="create_license_rap">
+				<Pair key="icon_rsc"><String>tex_backup_license</String></Pair>
+				<Pair key="title_rsc"><String>msg_create_rap_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_create_rap_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>export_rap</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
 			<Table key="toggle_plugins">
 				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
 				<Pair key="title_rsc"><String>msg_toggle_cobra_plugins_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_toggle_cobra_plugins_info</String></Pair>
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="module_action"><String>toggle_plugins</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+			<Table key="toggle_upd">
+				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
+				<Pair key="title_rsc"><String>msg_swap_upd_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_swap_upd_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>toggle_update</String></Pair>
 				<Pair key="ingame"><String>disable</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
@@ -1035,11 +1011,13 @@
 			<Item class="type:x-xmb/module-action"	key="disable_syscalls" 		attr="disable_syscalls" />
 			<Item class="type:x-xmb/module-action"  key="enable_ftp"	 		attr="enable_ftp" />
 			<Item class="type:x-xmb/module-action"  key="disable_ftp"			attr="disable_ftp" />
-			<Item class="type:x-xmb/module-action" 	key="toggle_devblind" attr="toggle_devblind" />				
+			<Item class="type:x-xmb/module-action" 	key="toggle_devblind" 		attr="toggle_devblind" />				
 			<!--<Item class="type:x-xmb/module-action"  key="allow_restore_sc"	    attr="allow_restore_sc" />			
 			<Item class="type:x-xmb/module-action"  key="skip_existing_rif"	 	attr="skip_existing_rif" />-->	
 			<Item class="type:x-xmb/module-action" 	key="create_license" 		attr="create_license" />	
+			<Item class="type:x-xmb/module-action" 	key="create_license_rap" 	attr="create_license_rap" />
 			<Item class="type:x-xmb/module-action"  key="toggle_plugins"	 	attr="toggle_plugins" />			
+			<Item class="type:x-xmb/module-action"  key="toggle_upd"	 		attr="toggle_upd" />
 			<Query class="type:x-xmb/folder-pixmap" key="xreg_settings"		 	attr="xreg_settings"     src="#seg_xreg_settings" />
 			<Item class="type:x-xmb/module-action"  key="toggle_coldboot"	 	attr="toggle_coldboot" />			
 			<Item class="type:x-xmb/module-action"  key="applicable_version"	attr="applicable_version"/>
@@ -1232,7 +1210,7 @@
 			<Item class="type:x-xmb/module-action" key="hen_cwc" attr="hen_cwc"/>
 			<Item class="type:x-xmb/module-action" key="hen_clog" attr="hen_clog"/>			
 			<Item class="type:x-xmb/module-action" key="hen_keys" attr="hen_keys"/>
-			<Item class="type:x-xmb/module-action" key="hen_ip" attr="hen_ip"/>		
+			<!--<Item class="type:x-xmb/module-action" key="hen_ip" attr="hen_ip"/>-->		
 			<Item class="type:x-xmb/module-action" key="hen_trophy" attr="hen_trophy"/>
 			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
 		</Items>

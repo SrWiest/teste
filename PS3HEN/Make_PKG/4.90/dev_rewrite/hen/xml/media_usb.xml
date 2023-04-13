@@ -3,70 +3,34 @@
 	<View id="media_usb_items">
 		<Attributes>
 			<Table key="music_internal">
-				<Pair key="icon">
-					<String>/dev_flash/hen/icon/music</String>
-				</Pair>
-				<Pair key="title_rsc">
-					<String>msg_music_internal</String>
-				</Pair>
-				<Pair key="str_noitem">
-					<String>msg_no_data</String>
-				</Pair>
+				<Pair key="icon_rsc"><String>tex_music</String></Pair>
+				<Pair key="title_rsc"><String>msg_music_internal</String></Pair>
+				<Pair key="str_noitem"><String>msg_no_data</String></Pair>
 			</Table>
 			<Table key="music_external">
-				<Pair key="icon">
-					<String>/dev_flash/hen/icon/music</String>
-				</Pair>
-				<Pair key="title_rsc">
-					<String>msg_music_external</String>
-				</Pair>
-				<Pair key="str_noitem">
-					<String>msg_no_data</String>
-				</Pair>
+				<Pair key="icon_rsc"><String>tex_music</String></Pair>
+				<Pair key="title_rsc"><String>msg_music_external</String></Pair>
+				<Pair key="str_noitem"><String>msg_no_data</String></Pair>
 			</Table>
 			<Table key="video_internal">
-				<Pair key="icon">
-					<String>/dev_flash/hen/icon/video</String>
-				</Pair>
-				<Pair key="title_rsc">
-					<String>msg_video_internal</String>
-				</Pair>
-				<Pair key="str_noitem">
-					<String>msg_no_data</String>
-				</Pair>
+				<Pair key="icon_rsc"><String>tex_video</String></Pair>
+				<Pair key="title_rsc"><String>msg_video_internal</String></Pair>
+				<Pair key="str_noitem"><String>msg_no_data</String></Pair>
 			</Table>
 			<Table key="video_external">
-				<Pair key="icon">
-					<String>/dev_flash/hen/icon/video</String>
-				</Pair>
-				<Pair key="title_rsc">
-					<String>msg_video_external</String>
-				</Pair>
-				<Pair key="str_noitem">
-					<String>msg_no_data</String>
-				</Pair>
+				<Pair key="icon_rsc"><String>tex_video</String></Pair>
+				<Pair key="title_rsc"><String>msg_video_external</String></Pair>
+				<Pair key="str_noitem"><String>msg_no_data</String></Pair>
 			</Table>
 			<Table key="photo_internal">
-				<Pair key="icon">
-					<String>/dev_flash/hen/icon/icon_Import</String>
-				</Pair>
-				<Pair key="title_rsc">
-					<String>msg_photo_internal</String>
-				</Pair>
-				<Pair key="str_noitem">
-					<String>msg_no_data</String>
-				</Pair>
+				<Pair key="icon_rsc"><String>tex_photo</String></Pair>
+				<Pair key="title_rsc"><String>msg_photo_internal</String></Pair>
+				<Pair key="str_noitem"><String>msg_no_data</String></Pair>
 			</Table>
 			<Table key="photo_external">
-				<Pair key="icon">
-					<String>/dev_flash/hen/icon/icon_Import</String>
-				</Pair>
-				<Pair key="title_rsc">
-					<String>msg_photo_external</String>
-				</Pair>
-				<Pair key="str_noitem">
-					<String>msg_no_data</String>
-				</Pair>
+				<Pair key="icon_rsc"><String>tex_photo</String></Pair>
+				<Pair key="title_rsc"><String>msg_photo_external</String></Pair>
+				<Pair key="str_noitem"><String>msg_no_data</String></Pair>
 			</Table>
 		</Attributes>
 		<Items>

@@ -60,15 +60,9 @@
 				<Pair key="child"><String>segment</String></Pair>
 			</Table>
 			<Table key="media_usb">
-				<Pair key="icon">
-					<String>/dev_flash/hen/icon/item_tex_disc_bd_contents</String>
-				</Pair>
-				<Pair key="title_rsc">
-					<String>msg_media_usb</String>
-				</Pair>
-				<Pair key="info_rsc">
-					<String>msg_media_usb_info</String>
-				</Pair>
+				<Pair key="icon_rsc"><String>item_tex_disc_bd_contents</String></Pair>
+				<Pair key="title_rsc"><String>msg_media_usb</String></Pair>
+				<Pair key="info_rsc"><String>msg_media_usb_info</String></Pair>
 			</Table>
 		</Attributes>
 		<Items>

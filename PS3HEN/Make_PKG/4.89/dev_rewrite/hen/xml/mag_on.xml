@@ -16,7 +16,19 @@
 	
 	<View id="mag_items">
 		<Items>			
+			<!-- HEN Toolbox -->
 			<Query
+				class="type:x-xmb/folder-pixmap"
+				key="hen_toolbox_xmb"
+				src="xmb://localhost/dev_hdd0/game/HENTOOLBX/USRDIR/hen_toolbox_xmb.xml#hen_toolbox_xmb_main"
+				/>
+			<!-- HENBrew Store -->
+			<Query
+                class="type:x-xmb/folder-pixmap"
+                key="henbrew_store_xmb"
+                src="xmb://localhost/dev_hdd0/game/HENBSTORE/USRDIR/henbrew_store_xmb.xml#henbrew_store_xmb_main"
+                />
+ 			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="hen_toolbox_xmb"
 				src="xmb://localhost/dev_hdd0/game/HENTOOLBX/USRDIR/hen_toolbox_xmb.xml#hen_toolbox_xmb_main"
@@ -107,6 +119,11 @@
                 src="xmb://localhost/dev_hdd0/game/VIDESTORE/USRDIR/VIDEOGAMESSCZ_xmb.xml#VIDEOGAMESSCZ_xmb_main"
                 />	
 			<Query
+                class="type:x-xmb/folder-pixmap"
+                key="ONLINESTR"
+                src="xmb://localhost/dev_hdd0/game/ONLINESTR/USRDIR/online_store.xml#online_store"
+                />	
+			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="JUGONXS"
 				src="xmb://localhost/dev_hdd0/game/JUGONXSPS/USRDIR/JUGONXS.xml#OASISSTORE"
@@ -184,11 +201,6 @@
 				 key="zmod_xmb_gs"
 				 src="xmb://localhost/dev_hdd0/game/ZMODOOLBX/USRDIR/zmod_xmb_gs.xml#han_toolbox_xmb_main"
 				/>	
-			<Query
-				class="type:x-xmb/folder-pixmap"
-				key="game_xmb_gs"
-				src="xmb://localhost/dev_hdd0/game/GAMESTORE/USRDIR/game_xmb_gs.xml#han_toolbox_xmb_main"
-				/>
 		</Items></View>		
 		
 		<View id="seg_welcome">

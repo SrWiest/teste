@@ -62,8 +62,7 @@
 	<View id="seg_ps3xploit_site">
 		<Attributes>
 			<Table key="ps3xploit_site">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/ps3xploit_www.png</String></Pair>
-				<Pair key="icon_notation"><String>WNT_XmbItemBrowser</String></Pair>
+				<Pair key="icon_rsc"><String>tex_cfw_info</String></Pair>				
 				<Pair key="title"><String>pspx.ru</String></Pair>
 				<Pair key="module_name"><String>webrender_plugin</String></Pair>
 				<Pair key="module_action"><String>https://www.pspx.ru/forum/showthread.php?t=108836</String></Pair>

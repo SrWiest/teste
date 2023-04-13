@@ -149,6 +149,34 @@
 			<Query class="type:x-xmb/xmlpackagefolder" key="host_provider_hdd0" src="host://localhost/q?path=/dev_hdd0/tmp/np_pkg&suffix=.pkg&subclass=x-host/package" />
 			<Query class="type:x-xmb/folder-pixmap" key="seg_hdd_install" src="ese://localhost/query?type=install_game"/>
 			<Query class="type:x-xmb/folder-pixmap" key="seg_pkg_install" src="ese://localhost/query?type=install_pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb00" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000000&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb01" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000001&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb02" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000002&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb03" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000003&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb04" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000004&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb05" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000005&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb06" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000006&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb07" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000007&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb08" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000008&suffix=.pkg&subclass=x-host/package"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb09" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000009&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso01" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000001&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso02" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000002&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso03" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000003&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso04" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000004&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso05" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000005&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso06" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000006&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso07" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000007&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso08" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000008&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso09" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000009&suffix=.iso&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg01" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000001&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg02" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000002&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg03" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000003&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg04" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000004&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg05" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000005&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg06" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000006&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg07" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000007&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg08" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000008&suffix=.pkg&subclass=x-host/package"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg09" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000009&suffix=.pkg&subclass=x-host/package"/>
 		</Items>
 	</View>
 
@@ -317,6 +345,34 @@
 			<Query class="type:x-xmb/xmlpackagefolder" key="host_provider_hdd0" src="host://localhost/q?path=/dev_hdd0/tmp/np_pkg&suffix=.pkg" />
 			<Query class="type:x-xmb/folder-pixmap" key="seg_hdd_install" src="ese://localhost/query?type=install_game"/>
 			<Query class="type:x-xmb/folder-pixmap" key="seg_pkg_install" src="ese://localhost/query?type=install_pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb00" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000000&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb01" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000001&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb02" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000002&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb03" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000003&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb04" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000004&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb05" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000005&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb06" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000006&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb07" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000007&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb08" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000008&suffix=.pkg"/>
+			<Query class="type:x-xmb/folder-pixmap" key="host_provider_usb09" src="host://localhost/q?path=/dev_hdd0/vsh/task/00000009&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso01" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000001&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso02" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000002&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso03" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000003&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso04" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000004&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso05" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000005&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso06" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000006&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso07" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000007&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso08" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000008&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_iso09" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000009&suffix=.iso"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg01" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000001&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg02" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000002&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg03" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000003&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg04" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000004&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg05" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000005&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg06" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000006&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg07" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000007&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg08" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000008&suffix=.pkg"/>
+            <Query class="type:x-xmb/folder-pixmap" key="host_provider_pkg09" src="host://localhost/q?path=/dev_hdd0/vsh/game_pkg/80000009&suffix=.pkg"/>
 		</Items>
 	</View>	
 		
