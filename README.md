@@ -1,10 +1,21 @@
 <h1 align="center">Hi there, I'm <a href="https://www.pspx.ru/forum/" target="_blank">in1975</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
-<h3 align="center">This is the repository for Hen 3.2.8 rus mod</h3>
+<h3 align="center">This is the repository for Hen 3.2.9 rus mod</h3>
 <h3 align="center">This HEN is a branch (modification) <a href="https://github.com/PS3Xploit/PS3HEN" target="_blank">of this</a></h3>
 <p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
+
+## Изменения в 3.2.9
+- Новый метод установки через https://nikolaevich23.github.io/329
+- Черный список программы запуска PSP - когда UMD не смонтирован - не был реализован должным образом. 
+- Закомментированы некоторые неиспользуемые функции, изменены некоторые глобальные переменные на статические и незначительное форматирование кода.
+- Удалена переменная is_psp_launcher. Это создавало ненужный RAP для лаунчера PSP.
+- Поправлена опция перезаписи sfo (в ранних версиях случайно выключил)
+- Опция магазинов и дополнительного плагина убрана.
+- Магазины перемещены в основной раздел игры, чтобы исключить проблему со скачиванием, когда много вложений меню. (Магазины в hen не входят, качайте отдельно).
+- Изменены некоторые иконки, удалены ненужные.
+- Другие мелкие правки.
 
 ## Изменения в 3.2.8
 ### Добавлено:
