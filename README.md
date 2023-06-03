@@ -1,10 +1,19 @@
 <h1 align="center">Hi there, I'm <a href="https://www.pspx.ru/forum/" target="_blank">in1975</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
-<h3 align="center">This is the repository for Hen 3.2.9 rus mod</h3>
+<h3 align="center">This is the repository for Hen 3.3.0 rus mod</h3>
 <h3 align="center">This HEN is a branch (modification) <a href="https://github.com/PS3Xploit/PS3HEN" target="_blank">of this</a></h3>
 <p align="center">
   <img alig src="https://github-profile-trophy.vercel.app/?username=nikolaevich23&column=6&rank=SSS,SS,S,AAA,AA,A,B,C" />
 </p>
+
+## Изменения в 3.3.0
+- Ускорена загрузка xmb меню (пункт управления pkg, webman).
+- Добавлена опция включения и выключения папки app_home (playstation 3).
+- Добавлена программа RELOADXMB, которая сразу монтируется в app_home, чтобы не было ошибки при заходе в папку app_home (playstation 3).
+- Теперь webman при включенной папке app_home (playstation 3) корректно обновляет список игр и меню XMB.
+- Добавлена поддержка магазина darkstore и RETROBOXX 
+- Поправил иконки и описания в основном меню при запуске игры (фоновое меню)
+- другие мелкие изменения
 
 ## Изменения в 3.2.9
 - Новый метод установки через https://nikolaevich23.github.io/329
