@@ -30,7 +30,7 @@ var idps='idps.hex';
 var act='act.dat';
 var start_x='xxxx';
 
-var usb_sp='/dev_hdd0/theme/PS3HENWM.p3t';
+var usb_sp='/dev_hdd0/theme/PS3HEN.p3t';
 var mount_path='/dev_blind';
 var flash_partition='xxxxCELL_FS_IOS:BUILTIN_FLSH1';
 var filesystem='CELL_FS_FAT';
