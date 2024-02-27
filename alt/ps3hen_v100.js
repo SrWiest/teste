@@ -2543,7 +2543,7 @@ function ps3chk(){
 				case fwCompat[33]:
 					//alert(msgHFW);
 //					initDEX();
-					loadcex_489();
+					loadcex_491();
 					break;					
 					
 				default:
