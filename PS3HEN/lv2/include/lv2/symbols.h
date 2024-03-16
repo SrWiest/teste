@@ -3,7 +3,7 @@
 #ifndef __FIRMWARE_SYMBOLS_H_S__
 #define __FIRMWARE_SYMBOLS_H_S__
 
-#if defined(FIRMWARE_4_82) || defined(FIRMWARE_4_84)|| defined(FIRMWARE_4_85)|| defined(FIRMWARE_4_86)|| defined(FIRMWARE_4_87)|| defined(FIRMWARE_4_88)|| defined(FIRMWARE_4_89)
+#if defined(FIRMWARE_4_81) || defined(FIRMWARE_4_82) || defined(FIRMWARE_4_83)|| defined(FIRMWARE_4_84)|| defined(FIRMWARE_4_85)|| defined(FIRMWARE_4_86)|| defined(FIRMWARE_4_87)|| defined(FIRMWARE_4_88)|| defined(FIRMWARE_4_89)|| defined(FIRMWARE_4_91)
 
 #define TOC 											0x34FBB0
 
@@ -574,7 +574,11 @@
 #define unk_func2_unregister_service					0x9e900
 #define unk_func3_unregister_service					0xa3394
 
-#elif defined(FIRMWARE_4_90)
+// Target Manager Fix (haxxen, EvilNat, habib)
+//#define sys_toc_symbol 0x80000000003759C0
+//#define sys_tty_write_symbol 0x800000000027550C
+
+#elif defined(FIRMWARE_4_80) || defined(FIRMWARE_4_90)
 
 #define TOC 											0x34FBA0
 

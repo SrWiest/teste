@@ -21,6 +21,28 @@
 #define PS3MAPI_CORE_VERSION			 		0x0124
 #define PS3MAPI_CORE_MINVERSION			 		0x0111
 
+#if defined(FIRMWARE_4_80)
+	#define PS3MAPI_FW_VERSION			 		0x0480
+	#if defined(IS_MAMBA)
+		#define PS3MAPI_FW_TYPE			 		"CEX MAMBA"
+	#else
+		#define PS3MAPI_FW_TYPE			 		"CEX COBRA"
+	#endif
+	#define PS3MAPI_IDPS_1			 			0x80000000003E2E30ULL
+	#define PS3MAPI_IDPS_2			 			0x8000000000474AF4ULL
+	#define PS3MAPI_PSID						0x8000000000474B0CULL
+#endif
+#if defined(FIRMWARE_4_81)
+	#define PS3MAPI_FW_VERSION			 		0x0481
+	#if defined(IS_MAMBA)
+		#define PS3MAPI_FW_TYPE			 		"CEX MAMBA"
+	#else
+		#define PS3MAPI_FW_TYPE			 		"CEX COBRA"
+	#endif
+	#define PS3MAPI_IDPS_1			 			0x80000000003E2E30ULL
+	#define PS3MAPI_IDPS_2			 			0x8000000000474AF4ULL
+	#define PS3MAPI_PSID						0x8000000000474B0CULL
+#endif
 #if defined(FIRMWARE_4_82)
 	#define PS3MAPI_FW_VERSION			 		0x0482
 	#if defined(IS_MAMBA)
@@ -42,6 +64,17 @@
 	#define PS3MAPI_IDPS_1			 			0x8000000000409A30ULL
 	#define PS3MAPI_IDPS_2			 			0x800000000049CAF4ULL
 	#define PS3MAPI_PSID						0x800000000049CB0CULL
+#endif
+#if defined(FIRMWARE_4_83)
+	#define PS3MAPI_FW_VERSION			 		0x0483
+	#if defined(IS_MAMBA)
+		#define PS3MAPI_FW_TYPE			 		"CEX MAMBA"
+	#else
+		#define PS3MAPI_FW_TYPE			 		"CEX COBRA"
+	#endif
+	#define PS3MAPI_IDPS_1			 			0x80000000003E2E30ULL
+	#define PS3MAPI_IDPS_2			 			0x8000000000474AF4ULL
+	#define PS3MAPI_PSID						0x8000000000474B0CULL
 #endif
 #if defined(FIRMWARE_4_84)
 	#define PS3MAPI_FW_VERSION			 		0x0484
@@ -137,6 +170,18 @@
 	#define PS3MAPI_PSID						0x8000000000474B0CULL
 #endif
 
+#if defined(FIRMWARE_4_91)
+	#define PS3MAPI_FW_VERSION			 		0x0491
+	#if defined(IS_MAMBA)
+		#define PS3MAPI_FW_TYPE			 		"CEX MAMBA"
+	#else
+		#define PS3MAPI_FW_TYPE			 		"CEX COBRA"
+	#endif
+	#define PS3MAPI_IDPS_1			 			0x80000000003E2E30ULL
+	#define PS3MAPI_IDPS_2			 			0x8000000000474AF4ULL
+	#define PS3MAPI_PSID						0x8000000000474B0CULL
+#endif
+
 #define PS3MAPI_OPCODE_GET_CORE_VERSION			0x0011
 #define PS3MAPI_OPCODE_GET_CORE_MINVERSION		0x0012
 #define PS3MAPI_OPCODE_GET_FW_TYPE				0x0013
@@ -216,10 +261,9 @@ int ps3mapi_create_process_thread(process_id_t pid, thread_t *thread, void *entr
 #define PS3MAPI_OPCODE_DISABLE_SYSCALL			0x0092
 #define PS3MAPI_OPCODE_PDISABLE_SYSCALL8 		0x0093 //Look in main.c for code.
 #define PS3MAPI_OPCODE_PCHECK_SYSCALL8 			0x0094 //Look in main.c for code.
-#define PS3MAPI_OPCODE_CREATE_CFW_SYSCALLS			0x0095
-#define PS3MAPI_OPCODE_ALLOW_RESTORE_SYSCALLS		0x0096
-#define PS3MAPI_OPCODE_GET_RESTORE_SYSCALLS			0x0097
-
+#define PS3MAPI_OPCODE_CREATE_CFW_SYSCALLS		0x0095
+#define PS3MAPI_OPCODE_ALLOW_RESTORE_SYSCALLS	0x0096
+#define PS3MAPI_OPCODE_GET_RESTORE_SYSCALLS		0x0097												   
 int ps3mapi_check_syscall(int num);
 int ps3mapi_disable_syscall(int num);
 

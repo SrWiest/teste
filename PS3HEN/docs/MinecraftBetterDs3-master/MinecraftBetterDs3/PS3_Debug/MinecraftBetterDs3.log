@@ -1,0 +1,68 @@
+﻿Build started 7/2/2023 9:33:49 PM.
+     1>Project "C:\Users\visual\Documents\Visual Studio 2010\Projects\MinecraftBetterDs3\MinecraftBetterDs3\MinecraftBetterDs3.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         prx.cpp
+         ps3ppusnc.exe -D_DEBUG -D__CELL_ASSERT__ -D__PS3__ -DLIBNAME=cellPrx_MinecraftBetterDs3 -DSTUBNAME=cellPrx_MinecraftBetterDs3_stub -o PS3_Debug\prx.o -c -Xdepmode=1 -MD -Xmserrors -I. -IC:/usr/local/cell\target\ppu\include -IC:/usr/local/cell\target\common\include -I"C:/usr/local/cell\host-win32\sn\ppu\include" -g -O0 -Xstd=cpp11 -Xc-=rtti --use_pch="PS3_Debug\MinecraftBetterDs3.pch" "C:\Users\visual\Documents\Visual Studio 2010\Projects\MinecraftBetterDs3\MinecraftBetterDs3\prx.cpp"
+     1>.\PS3.h(272,9): warning 2623: conversion from a string literal to "char *" is deprecated
+         
+     1>.\PS3.h(611,16): warning 2520: invalid narrowing conversion from "int" to "char"
+         
+     1>.\PS3.h(638,8): warning 1070: returning pointer to local variable
+         
+     1>.\PS3.h(653,9): warning 2623: conversion from a string literal to "char *" is deprecated
+         
+     1>.\PS3.h(662,9): warning 1070: returning pointer to local variable
+         
+     1>.\PS3.h(665): warning 942: missing return statement at end of non-void function "SendRequest"
+         
+     1>.\PS3.h(672,13): warning 1628: argument of type "const char *" is incompatible with parameter (1 of SendRequest) of type "char *"
+         
+     1>.\PS3.h(680,13): warning 1628: argument of type "const char *" is incompatible with parameter (1 of SendRequest) of type "char *"
+         
+     1>.\PS3.h(687,2): warning 551: variable "FreeMemory" is used before its value is set
+         
+     1>.\PS3.h(688,16): warning 551: variable "HeapFree" is used before its value is set
+         
+     1>.\PS3.h(689,2): warning 551: variable "UsedMemory" is used before its value is set
+         
+     1>.\PS3.h(750,35): warning 552: parameter "retBuffer" was set but never used
+         
+     1>.\Dialog.h(217,6): warning 178: variable "ret" was declared but never referenced
+         
+     1>.\Dialog.h(259,6): warning 552: variable "ret" was set but never used
+         
+     1>.\FOV.h(18,17): warning 2520: invalid narrowing conversion from "int" to "char"
+         
+     1>.\FOV.h(46,30855): warning 1635: switch statement is missing case and default labels
+         
+     1>.\FOV.h(48,2): warning 178: label "case0" was declared but never referenced
+         
+     1>.\FOV.h(49,2): warning 178: label "case1" was declared but never referenced
+         
+     1>.\FOV.h(50,2): warning 178: label "case2" was declared but never referenced
+         
+     1>.\FOV.h(51,2): warning 178: label "case3" was declared but never referenced
+         
+     1>.\FOV.h(52,2): warning 178: label "case4" was declared but never referenced
+         
+     1>.\FOV.h(53,2): warning 178: label "case5" was declared but never referenced
+         
+     1>.\FOV.h(54,2): warning 178: label "case6" was declared but never referenced
+         
+     1>.\FOV.h(55,2): warning 178: label "case7" was declared but never referenced
+         
+     1>.\FOV.h(56,2): warning 178: label "case8" was declared but never referenced
+         
+     1>.\Mods.h(14,16): warning 2520: invalid narrowing conversion from "int" to "char"
+         
+     1>C:\Users\visual\Documents\Visual Studio 2010\Projects\MinecraftBetterDs3\MinecraftBetterDs3\prx.cpp(32,10): warning 1628: argument of type "const char *" is incompatible with parameter (1 of SetState) of type "char *"
+         
+       Link:
+         C:\usr\local\cell\host-win32\sn\bin\ps3ppuld64.exe -oformat=fsprx -o "C:\Users\visual\Documents\Visual Studio 2010\Projects\MinecraftBetterDs3\PS3_Debug\MinecraftBetterDs3.sprx" -L"C:/usr/local/cell\host-win32\lib\prx\ldscripts" --start-group PS3_Debug\prx.o PS3_Debug\stdafx.o C:/usr/local/cell\target\ppu\lib\libc.a C:/usr/local/cell\target\ppu\lib\libdbg_libio_stub.a C:/usr/local/cell\target\ppu\lib\libc_stub.a "C:\Program Files (x86)\SN Systems\PS3\ppu\lib\sn\libsn.a" C:/usr/local/cell\target\ppu\lib\libm.a C:/usr/local/cell\target\ppu\lib\libsysutil_np_trophy_stub.a C:/usr/local/cell\target\ppu\lib\libio_stub.a C:/usr/local/cell\target\ppu\lib\libsysutil_stub.a C:/usr/local/cell\target\ppu\lib\libsysmodule_stub.a C:/usr/local/cell\target\ppu\lib\libsyscall.a C:/usr/local/cell\target\ppu\lib\libgcm_sys_stub.a "C:/usr/local/cell\host-win32\spu\lib\gcc\spu-lv2\4.1.1\libgcc.a" C:/usr/local/cell\target\ppu\lib\libpadfilter.a libsn.a libm.a libio_stub.a libfs_stub.a --end-group
+         MinecraftBetterDs3.vcxproj -> C:\Users\visual\Documents\Visual Studio 2010\Projects\MinecraftBetterDs3\PS3_Debug\MinecraftBetterDs3.sprx
+         Moving Stub Library cellPrx_MinecraftBetterDs3_stub.a -> C:\Users\visual\Documents\Visual Studio 2010\Projects\MinecraftBetterDs3\PS3_Debug\
+     1>Done Building Project "C:\Users\visual\Documents\Visual Studio 2010\Projects\MinecraftBetterDs3\MinecraftBetterDs3\MinecraftBetterDs3.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.58

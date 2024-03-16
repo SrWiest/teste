@@ -1125,8 +1125,8 @@
 	<View id="seg_download_hdd0_main">
 		<Attributes>
 			<Table key="dev_hdd0">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hdd.png</String></Pair>
-				<Pair key="title"><String>dev_hdd0</String></Pair>
+				<Pair key="icon_rsc"><String>tex_dump</String></Pair>
+				<Pair key="title_rsc"><String>msg_fm_dev_hdd0_title</String></Pair>
 				<Pair key="device_path"><String>/dev_hdd0</String></Pair>
 				<Pair key="child"><String>segment</String></Pair>
 			</Table>
@@ -1229,8 +1229,8 @@
 	<View id="seg_download_hdd1_main">
 		<Attributes>
 			<Table key="dev_hdd1">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/hdd.png</String></Pair>
-				<Pair key="title"><String>dev_hdd1</String></Pair>
+				<Pair key="icon_rsc"><String>tex_dump</String></Pair>
+				<Pair key="title_rsc"><String>msg_fm_dev_hdd1_title</String></Pair>
 				<Pair key="device_path"><String>/dev_hdd1</String></Pair>
 			</Table>
 		</Attributes>
@@ -1286,7 +1286,7 @@
 	<View id="seg_download_dev_blind">
 		<Attributes>
 			<Table key="dev_blind">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/blind.png</String></Pair>
+				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title"><String>dev_blind</String></Pair>
 				<Pair key="device_path"><String>/dev_blind</String></Pair>
 				<Pair key="child"><String>segment</String></Pair>
@@ -1430,7 +1430,7 @@
 	<View id="seg_download_dev_rewrite">
 		<Attributes>
 			<Table key="dev_rewrite">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/blind.png</String></Pair>
+				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title"><String>dev_rewrite</String></Pair>
 				<Pair key="device_path"><String>/dev_rewrite</String></Pair>
 				<Pair key="child"><String>segment</String></Pair>
@@ -1575,7 +1575,7 @@
 	<View id="seg_download_dev_flash2">
 		<Attributes>
 			<Table key="dev_flash2">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/flash.png</String></Pair>
+				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title"><String>dev_flash2</String></Pair>
 				<Pair key="device_path"><String>/dev_flash2</String></Pair>
 				<Pair key="child"><String>segment</String></Pair>
@@ -1624,7 +1624,7 @@
 	<View id="seg_download_dev_flash3">
 		<Attributes>
 			<Table key="dev_flash3">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/flash.png</String></Pair>
+				<Pair key="icon_rsc"><String>tex_fs</String></Pair>
 				<Pair key="title"><String>dev_flash3</String></Pair>
 				<Pair key="device_path"><String>/dev_flash3</String></Pair>
 			</Table>
@@ -1678,6 +1678,18 @@
 		</Items>
 	</View>
 	
+	<View id="seg_download_home_catalogue">
+		<Attributes>
+			<Table key="download_home_catalogue">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_list.png</String></Pair>
+				<Pair key="title"><String>PlayStation®Home Catalogue</String></Pair>
+				<Pair key="device_path"><String>/dev_hdd0/game/NPIA00005/USRDIR/OBJECTCATALOGUE</String></Pair>
+			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/folder-pixmap" key="download_home_catalogue" attr="download_home_catalogue"/>
+		</Items>
+	</View>									
 	
 	<View id="seg_download_hdd_packages">
 		<Attributes>

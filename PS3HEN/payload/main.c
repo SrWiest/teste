@@ -58,13 +58,19 @@
 //#define CB_LOCATION "/dev_habib/rebug/cobra/stage2.cex"
 
 #define COBRA_VERSION		0x0F
-#define COBRA_VERSION_BCD	0x0810
-#define HEN_REV				0x0325
+#define COBRA_VERSION_BCD	0x0840
+#define HEN_REV				0x0334
 
-#if defined(FIRMWARE_4_82)
+#if defined(FIRMWARE_4_80)
+	#define FIRMWARE_VERSION	0x0480
+#elif defined(FIRMWARE_4_81)
+	#define FIRMWARE_VERSION	0x0481
+#elif defined(FIRMWARE_4_82)
 	#define FIRMWARE_VERSION	0x0482
 #elif defined(FIRMWARE_4_82DEX)
 	#define FIRMWARE_VERSION	0x0482
+#elif defined(FIRMWARE_4_83)
+	#define FIRMWARE_VERSION	0x0483
 #elif defined(FIRMWARE_4_84)
 	#define FIRMWARE_VERSION	0x0484
 #elif defined(FIRMWARE_4_84DEX)
@@ -81,6 +87,8 @@
 	#define FIRMWARE_VERSION	0x0489
 #elif defined(FIRMWARE_4_90)
 	#define FIRMWARE_VERSION	0x0490	
+#elif defined(FIRMWARE_4_91)
+	#define FIRMWARE_VERSION	0x0491		
 #endif
 
 #if defined(CFW)
@@ -188,7 +196,7 @@ LV2_HOOKED_FUNCTION_COND_POSTCALL_3(int,bnet_ioctl,(int socket,uint32_t flags, v
 		return DO_POSTCALL;
 }
 
-#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX) || defined (FIRMWARE_4_82)
+#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX)
 	LV2_HOOKED_FUNCTION_PRECALL_SUCCESS_6(int,sys_fs_open,(const char *path, int flags, int *fd, uint64_t mode, const void *arg, uint64_t size))
 	{
 	/*	if(!strstr(get_process_name(get_current_process_critical()),"vsh"))
@@ -364,7 +372,7 @@ LV2_HOOKED_FUNCTION_COND_POSTCALL_3(int,read_eeprom_by_offset,(uint32_t offset, 
 	return DO_POSTCALL;
 }
 
-#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX) || defined (FIRMWARE_4_82)
+#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX)
 	LV2_HOOKED_FUNCTION_PRECALL_SUCCESS_4(int,sys_fs_read,(int fd, void *buf, uint64_t nbytes, uint64_t *nread))
 	{
 		if(rif_fd==fd)
@@ -1227,15 +1235,15 @@ static INLINE void apply_kernel_patches(void)
 	*(uint64_t *)MKA(ECDSA_FLAG)=0;
 	
 	/// Adding HEN patches on init for stability ///	 -- END
-	#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX) || defined (FIRMWARE_4_82)
+	#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX)
 		hook_function_with_precall(get_syscall_address(801),sys_fs_open,6);
 	#endif
 	hook_function_with_cond_postcall(get_syscall_address(724),bnet_ioctl,3);
-	#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX) || defined (FIRMWARE_4_82)
+	#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX)
 		hook_function_with_precall(get_syscall_address(804),sys_fs_close,1);
 		hook_function_with_precall(get_syscall_address(802),sys_fs_read,4);
 	#endif
-	#if defined (FIRMWARE_4_82) || defined (FIRMWARE_4_84) || defined (FIRMWARE_4_85) || defined (FIRMWARE_4_86) || defined (FIRMWARE_4_87) || defined (FIRMWARE_4_88) || defined (FIRMWARE_4_89) || defined (FIRMWARE_4_90)
+	#if defined (FIRMWARE_4_80) || defined (FIRMWARE_4_81) || defined (FIRMWARE_4_82) || defined (FIRMWARE_4_83) || defined (FIRMWARE_4_84) || defined (FIRMWARE_4_85) || defined (FIRMWARE_4_86) || defined (FIRMWARE_4_87) || defined (FIRMWARE_4_88) || defined (FIRMWARE_4_89) || defined (FIRMWARE_4_90) || defined (FIRMWARE_4_91)
 		hook_function_with_cond_postcall(um_if_get_token_symbol,um_if_get_token,5);
 		hook_function_with_cond_postcall(update_mgr_read_eeprom_symbol,read_eeprom_by_offset,3);
 	#endif
@@ -1282,7 +1290,7 @@ static void check_combo_buttons(void)
 {
 	pad_data onboot;
 	
-	timer_usleep(40000);
+	timer_usleep(4000);
 	
 	if (pad_get_data(&onboot) >= ((PAD_BTN_OFFSET_DIGITAL+1)*2)){
 
@@ -1306,7 +1314,7 @@ static void check_combo_buttons(void)
 	{
 		boot_plugins_disabled=0;	
 	}	
-	timer_usleep(20000);
+	timer_usleep(2000);
 }
 
 
@@ -1323,7 +1331,7 @@ int main(void)
 	#endif
 
 	//	poke_count=0;
-	#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX) || defined (FIRMWARE_4_82)
+	#if defined(FIRMWARE_4_82DEX) || defined (FIRMWARE_4_84DEX)
 		ecdsa_set_curve();
 		ecdsa_set_pub();
 		ecdsa_set_priv();
@@ -1334,39 +1342,51 @@ int main(void)
 	
 	// File and folder redirections using mappath mappings
 	//map_path("/dev_hdd0/hen/xml","/dev_flash/hen/remap/xml",FLAG_MAX_PRIORITY|FLAG_PROTECT); // Remap path to XML	
-	map_path("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
+
+	map_path_slot("/app_home/PS3_GAME","/dev_hdd0/game/RELOADXMB",0);	
+	map_path_slot("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",1);// Switches the HEN Logo.	
+	map_path_slot("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml",2);
+		
 	CellFsStat stat;
 	
 	if((cellFsStat("/dev_hdd0/hen/hen_pm.off",&stat)!=0))
 	{
-	 map_path("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/package_manager.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
+	 map_path_slot("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/package_manager.xml",3);
 	}
 	else
 	{
-	 map_path("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/empty.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
+	 map_path_slot("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/empty.xml",3);
 	}
 	if((cellFsStat("/dev_hdd0/hen/hen_xmb.off",&stat)!=0))
 	{
-	 map_path("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/hen_enabled.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
+	 map_path_slot("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/hen_enabled.xml",4);
 	}
 	else
 	{
-	 map_path("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/empty.xml",FLAG_MAX_PRIORITY|FLAG_PROTECT);
+	 map_path_slot("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/empty.xml",4);
 	}
-	/*if((cellFsStat("/dev_hdd0/hen/ip.off",&stat)!=0))
-	{	
-	map_path("/dev_flash/vsh/module/xmb_plugin.sprx","/dev_flash/vsh/resource/AAA/xmb_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches ip.
-	}*/
 	if((cellFsStat("/dev_hdd0/hen/trophy.off",&stat)!=0))
 	{
-	map_path("/dev_flash/vsh/module/explore_plugin.sprx","/dev_flash/vsh/resource/AAA/explore_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches the additional trophy.
+	map_path_slot("/dev_flash/vsh/module/explore_plugin.sprx","/dev_flash/vsh/resource/AAA/explore_plugin.sprx",5);// Switches the additional trophy.
+	}	
+	
+	if((cellFsStat("/dev_hdd0/hen/hen_apphome.off",&stat)!=0))
+	{
+	 map_path_slot("/dev_hdd0/hen/apphome.xml","/dev_flash/hen/xml/apphome.xml",6);
+	}
+	/*else
+	{
+	 map_path_slot("/dev_hdd0/hen/apphome.xml","/dev_flash/hen/xml/empty.xml",6);
+	}*/
+	if((cellFsStat("/dev_hdd0/hen/gameboot.off",&stat)!=0))
+	{	
+	map_path_slot("/dev_flash/vsh/module/game_ext_plugin.sprx","/dev_flash/vsh/resource/AAA/game_ext_plugin.sprx",7);// Switches gameboot
+	map_path_slot("/dev_flash/vsh/resource/custom_render_plugin.rco","/dev_flash/vsh/resource/AAA/custom_render_plugin.rco",8);// Switches gameboot rco
 	}
 	//map_path("/dev_flash/vsh/module/nas_plugin.sprx","/dev_flash/vsh/resource/AAA/nas_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches sprx.
-	map_path("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches the HEN Logo.
 	
 	#ifdef DEBUG
-		printMappingList();
-		//DPRINTF("sys_map_path offset 0x%8lx\n",(uint64_t)(uint64_t*)sys_map_path);
+		DPRINTF("sys_map_path offset 0x%8lx\n",(uint64_t)(uint64_t*)sys_map_path);
 	#endif
 	
 	storage_ext_init();
@@ -1394,6 +1414,8 @@ int main(void)
 	{
 		check_combo_buttons();
 	}	
+	
+	//boot_plugins_disabled=1;
 	
 	if(boot_plugins_disabled<2)
 	{

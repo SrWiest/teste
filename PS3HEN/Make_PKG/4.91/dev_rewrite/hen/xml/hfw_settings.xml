@@ -1005,6 +1005,12 @@
 				<Pair key="info_rsc"><String>msg_hen_xmb_reload</String></Pair>				
 				<Pair key="module_action"><String>toggle_hen_trophy</String></Pair>				
 			</Table>
+			<Table key="hen_gameboot" include="shared_actions">
+				<Pair key="icon"><String>/dev_hdd0/hen/gameboot.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_toggle_gameboot_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_toggle_gameboot_info</String></Pair>				
+				<Pair key="module_action"><String>toggle_hen_gameboot</String></Pair>				
+			</Table>
 			<Table key="uninstall_hen" include="shared_actions">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_uninstall_hen</String></Pair>
@@ -1021,6 +1027,7 @@
 			<Item class="type:x-xmb/module-action" key="hen_clog" attr="hen_clog"/>			
 			<Item class="type:x-xmb/module-action" key="hen_keys" attr="hen_keys"/>
 			<Item class="type:x-xmb/module-action" key="hen_trophy" attr="hen_trophy"/>
+			<!--<Item class="type:x-xmb/module-action" key="hen_gameboot" attr="hen_gameboot"/>-->
 			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
 		</Items>
 	</View>
@@ -1100,7 +1107,12 @@
 				<Pair key="icon"><String>/dev_hdd0/hen/hen_grg.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hen_grg</String></Pair>
 				<Pair key="module_action"><String>toggle_hen_grg</String></Pair>
-			</Table>		
+			</Table>
+			<Table key="old_int">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_int_old</String></Pair>
+				<Pair key="info_rsc"><String>msg_int_old_info</String></Pair>
+ 			</Table>			
 		</Attributes>
 		<Items>
 			<Item class="type:x-xmb/module-action" key="hen_off" attr="hen_off"/>
@@ -1116,9 +1128,26 @@
 			<Item class="type:x-xmb/module-action" key="hen_gpsn" attr="hen_gpsn"/>
 			<Item class="type:x-xmb/module-action" key="hen_ghb" attr="hen_ghb"/>
 			<Item class="type:x-xmb/module-action" key="hen_grg" attr="hen_grg"/>
+			<Query class="type:x-xmb/folder-pixmap"	key="old_int" attr="old_int" src="#old_int_item"/>
 		</Items>
 	</View>
-		
+
+	<View id="old_int_item">
+		<Attributes>
+			<Table key="old_int">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://github.com/nikolaevich23/man/raw/master/XMB/xmb-g-stand.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://github.com/nikolaevich23/man/raw/master/XMB/xmb-g-stand.pkg</String></Pair>
+				<Pair key="content_name"><String>msg_install</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
+ 			</Table> 
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="old_int" attr="old_int"/>
+		</Items> 
+	</View>
+	
 		<!-- Confirmations -->
 	<View id="seg_confirm_delete_license">
 		<Attributes>
