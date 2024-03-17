@@ -1378,7 +1378,7 @@ int main(void)
 	{
 	 map_path_slot("/dev_hdd0/hen/apphome.xml","/dev_flash/hen/xml/empty.xml",6);
 	}*/
-	if((cellFsStat("/dev_hdd0/hen/gameboot.off",&stat)!=0))
+	if((cellFsStat("/dev_hdd0/hen/gameboot.off",&stat)!=0)&&(cellFsStat("/dev_hdd0/hen/gameboot.on",&stat)==0))
 	{	
 	map_path_slot("/dev_flash/vsh/module/game_ext_plugin.sprx","/dev_flash/vsh/resource/AAA/game_ext_plugin.sprx",7);// Switches gameboot
 	map_path_slot("/dev_flash/vsh/resource/custom_render_plugin.rco","/dev_flash/vsh/resource/AAA/custom_render_plugin.rco",8);// Switches gameboot rco

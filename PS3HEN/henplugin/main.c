@@ -527,6 +527,7 @@ static void downloadPKG_thread2(void)
 	const wchar_t* kernel_type = L"";
 	const wchar_t* pkg_suffix = L"";
 	const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/%ls/latest_rus%ls";
+	//const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/t/%ls/latest_rus%ls";
 	const wchar_t* pkg_dl_path = L"/dev_hdd0";
 	wchar_t pkg_url[256];
 	
@@ -1150,12 +1151,12 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	cellFsUnlink("/dev_hdd0/latest_rus_sign.pkg");
 	cellFsUnlink("/dev_hdd0/latest_rus_WMM_sign.pkg");
 	
-	if (cellFsStat("/dev_hdd0/hen/first.tmp",&stat)==0)
+	if ((cellFsStat("/dev_hdd0/hen/auto_update.off",&stat)!=0)&&(cellFsStat("/dev_hdd0/hen/auto_update.on",&stat)!=0)) // check flag
 	{
 		//toggle_plugins();
 		copyflag_thread();
 		reboot_flag=1;
-		sys_timer_usleep(140000);
+		sys_timer_usleep(100000);
 		goto done;
 	}
 	
