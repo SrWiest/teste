@@ -1347,9 +1347,10 @@ int main(void)
 	map_path_slot("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",1);// Switches the HEN Logo.	
 	map_path_slot("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml",2);
 		
+	int rt1 = 0;
 	CellFsStat stat;
 	
-	if((cellFsStat("/dev_hdd0/hen/hen_pm.off",&stat)!=0))
+	if(cellFsStat("/dev_hdd0/hen/hen_pm.off",&stat)!=0)
 	{
 	 map_path_slot("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/package_manager.xml",3);
 	}
@@ -1357,7 +1358,7 @@ int main(void)
 	{
 	 map_path_slot("/dev_hdd0/hen/package_manager.xml","/dev_flash/hen/xml/empty.xml",3);
 	}
-	if((cellFsStat("/dev_hdd0/hen/hen_xmb.off",&stat)!=0))
+	if(cellFsStat("/dev_hdd0/hen/hen_xmb.off",&stat)!=0)
 	{
 	 map_path_slot("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/hen_enabled.xml",4);
 	}
@@ -1365,24 +1366,24 @@ int main(void)
 	{
 	 map_path_slot("/dev_hdd0/hen/hen_enabler.xml","/dev_flash/hen/xml/empty.xml",4);
 	}
-	if((cellFsStat("/dev_hdd0/hen/trophy.off",&stat)!=0))
+	if(cellFsStat("/dev_hdd0/hen/trophy.off",&stat)!=0)
 	{
 	map_path_slot("/dev_flash/vsh/module/explore_plugin.sprx","/dev_flash/vsh/resource/AAA/explore_plugin.sprx",5);// Switches the additional trophy.
 	}	
 	
-	if((cellFsStat("/dev_hdd0/hen/hen_apphome.off",&stat)!=0))
+	if(cellFsStat("/dev_hdd0/hen/hen_apphome.off",&stat)!=0)
 	{
 	 map_path_slot("/dev_hdd0/hen/apphome.xml","/dev_flash/hen/xml/apphome.xml",6);
 	}
-	/*else
-	{
-	 map_path_slot("/dev_hdd0/hen/apphome.xml","/dev_flash/hen/xml/empty.xml",6);
-	}*/
-	if((cellFsStat("/dev_hdd0/hen/gameboot.off",&stat)!=0)&&(cellFsStat("/dev_hdd0/hen/gameboot.on",&stat)==0))
+	
+	rt1 = cellFsStat("/dev_hdd0/hen/gameboot.on", &stat);
+	
+	if(rt1 == CELL_OK)
 	{	
 	map_path_slot("/dev_flash/vsh/module/game_ext_plugin.sprx","/dev_flash/vsh/resource/AAA/game_ext_plugin.sprx",7);// Switches gameboot
 	map_path_slot("/dev_flash/vsh/resource/custom_render_plugin.rco","/dev_flash/vsh/resource/AAA/custom_render_plugin.rco",8);// Switches gameboot rco
 	}
+	
 	//map_path("/dev_flash/vsh/module/nas_plugin.sprx","/dev_flash/vsh/resource/AAA/nas_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches sprx.
 	
 	#ifdef DEBUG

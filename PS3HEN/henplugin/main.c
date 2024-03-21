@@ -1156,7 +1156,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		//toggle_plugins();
 		copyflag_thread();
 		reboot_flag=1;
-		sys_timer_usleep(10000);
+		sys_timer_usleep(2000000);
 		//goto done;
 	}
 	
