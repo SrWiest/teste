@@ -1156,8 +1156,8 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		//toggle_plugins();
 		copyflag_thread();
 		reboot_flag=1;
-		sys_timer_usleep(100000);
-		goto done;
+		//sys_timer_usleep(100000);
+		//goto done;
 	}
 	
 	if((do_install_hen!=0) || (do_update==1))	
@@ -1247,10 +1247,10 @@ done:
 		play_rco_sound("snd_trophy");
 		
 		char reboot_txt[0x80];
-		sprintf(reboot_txt, "Installation Complete!\n\n Reboot manually ...");
+		sprintf(reboot_txt, "Installation Complete!\n\n Rebooting ...");
 		show_msg((char *)reboot_txt);
-		//sys_timer_usleep(15000000);// Wait a few seconds						 
-		//reboot_ps3();// Default Soft Reboot
+		sys_timer_usleep(15000000);// Wait a few seconds						 
+		reboot_ps3();// Default Soft Reboot
 	}
 	
 	clear_web_cache_check();// Clear WebBrowser cache check (thanks xfrcc)
