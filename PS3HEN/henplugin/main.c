@@ -526,8 +526,8 @@ static void downloadPKG_thread2(void)
 	const wchar_t* fw_version = L"";
 	const wchar_t* kernel_type = L"";
 	const wchar_t* pkg_suffix = L"";
-	//const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/%ls/latest_rus%ls";
-	const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/t/%ls/latest_rus%ls";
+	const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/%ls/latest_rus%ls";
+	//const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/t/%ls/latest_rus%ls";
 	const wchar_t* pkg_dl_path = L"/dev_hdd0";
 	wchar_t pkg_url[256];
 	
