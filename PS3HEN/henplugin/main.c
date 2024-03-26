@@ -1148,15 +1148,13 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	
 	// Removing temp installer packages so old ones can't be installed
 	DPRINTF("HENPLUGIN->Removing Temp Installer Packages\n");
-	cellFsUnlink("/dev_hdd0/latest_rus_sign.pkg");
-	cellFsUnlink("/dev_hdd0/latest_rus_WMM_sign.pkg");
+	cellFsUnlink(pkg_path);
+	cellFsUnlink(pkg_path_wmm);
 	
 	if ((cellFsStat("/dev_hdd0/hen/auto_update.off",&stat)!=0)&&(cellFsStat("/dev_hdd0/hen/auto_update.on",&stat)!=0)) // check flag
 	{		
 		copyflag_thread();
 		reboot_flag=1;
-		//sys_timer_usleep(2000);
-		//goto done;
 	}
 	
 	if((do_install_hen!=0) || (do_update==1))	
@@ -1228,15 +1226,14 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	{   
 		// Removing temp packages
 		//cellFsUnlink(pkg_path);
-		//cellFsUnlink("/dev_hdd0/Latest_HEN_Installer_signed.pkg");
-		//cellFsUnlink("/dev_hdd0/Latest_HEN_Installer_WMM_signed.pkg");
 	}
 	
 done:
 	DPRINTF("HENPLUGIN->Exiting main thread!\n");	
 	
 	cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");// Removing temp HEN installer	
-	cellFsUnlink("/dev_hdd0/latest_rus_sign.pkg");
+	cellFsUnlink(pkg_path);
+	cellFsUnlink(pkg_path_wmm);
 	done=1;
 	
 	
