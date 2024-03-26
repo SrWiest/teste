@@ -1347,7 +1347,7 @@ int main(void)
 	map_path_slot("/dev_flash/vsh/resource/explore/icon/hen_disabled.png","/dev_flash/vsh/resource/AAA/hen_enabled.png",1);// Switches the HEN Logo.	
 	map_path_slot("/dev_hdd0/hen/hfw_settings.xml","/dev_flash/hen/xml/hfw_settings.xml",2);
 		
-	int rt1 = 0;
+	int rt = 0;
 	CellFsStat stat;
 	
 	if(cellFsStat("/dev_hdd0/hen/hen_pm.off",&stat)!=0)
@@ -1376,9 +1376,9 @@ int main(void)
 	 map_path_slot("/dev_hdd0/hen/apphome.xml","/dev_flash/hen/xml/apphome.xml",6);
 	}
 	
-	rt1 = cellFsStat("/dev_hdd0/hen/gameboot.on", &stat);
+	rt = cellFsStat("/dev_hdd0/hen/gameboot.on", &stat);
 	
-	if(rt1 == CELL_OK)
+	if(rt == CELL_OK)
 	{	
 	map_path_slot("/dev_flash/vsh/module/game_ext_plugin.sprx","/dev_flash/vsh/resource/AAA/game_ext_plugin.sprx",7);// Switches gameboot
 	map_path_slot("/dev_flash/vsh/resource/custom_render_plugin.rco","/dev_flash/vsh/resource/AAA/custom_render_plugin.rco",8);// Switches gameboot rco
@@ -1411,7 +1411,10 @@ int main(void)
 	memset((void *)MKA(0x7f0000),0,0x1000);
 	
 	// Check for hotkey button presses on launch
-	if((cellFsStat("/dev_hdd0/hen/hotkeys.off",&stat)!=0))
+	
+	rt = cellFsStat("/dev_hdd0/hen/hotkeys.on", &stat);
+	
+	if(rt == CELL_OK)	
 	{
 		check_combo_buttons();
 	}	
