@@ -77,8 +77,8 @@ static int done = 0;
 uint16_t hen_version;
 int henplugin_start(uint64_t arg);
 int henplugin_stop(void);
-int is_wmm_installed = 0;
-int is_hen_installing = 0;
+//int is_wmm_installed = 0;
+//int is_hen_installing = 0;
 
 extern int vshmain_87BB0001(int param);
 int (*vshtask_notify)(int, const char *) = NULL;
@@ -794,7 +794,6 @@ static void copyflag_thread(void)
 	filecopy("/dev_flash/hen/xml/mag_on.xml","/dev_hdd0/hen/mag.xml", "/dev_hdd0/hen/hen_mag.off");
 	sys_timer_usleep(200);
 	cellFsUnlink("/dev_hdd0/hen/apphome.xml");// Removing old
-	//filecopy("/dev_flash/hen/xml/apphome.xml","/dev_hdd0/hen/apphome.xml", "/dev_hdd0/hen/hen_apphome.off");
 }
 
 static void installPKG_thread(void)
@@ -1120,13 +1119,14 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	// Check for webMAN-MOD
 	if((cellFsStat("/dev_hdd0/plugins/webftp_server.sprx",&stat)==0) || (cellFsStat("/dev_hdd0/plugins/webftp_server_lite.sprx",&stat)==0))
 	{
-		is_wmm_installed=1;
+		//is_wmm_installed=1;
+		use_wmm_pkg=1;
 		DPRINTF("HENPLUGIN->WMM Detected\n");
 	}
 	
 	// Display message about the removal of boot plugins
 	// Created from payload if HEN is installing, so plugins can not be loaded
-	if(cellFsStat("/dev_hdd0/tmp/installer.active",&stat)==0)
+	/*if(cellFsStat("/dev_hdd0/tmp/installer.active",&stat)==0)
 	{
 		is_hen_installing=1;
 		//play_rco_sound("snd_trophy");
@@ -1141,7 +1141,7 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		}
 		show_msg((char *)msg_boot_plugins);
 		cellFsUnlink("/dev_hdd0/tmp/installer.active");
-	}
+	}*/
 	
 	do_update=(cellFsStat("/dev_hdd0/hen/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR	
 	//DPRINTF("HENPLUGIN->Checking do_update: %i\n",do_update);
@@ -1152,11 +1152,10 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	cellFsUnlink("/dev_hdd0/latest_rus_WMM_sign.pkg");
 	
 	if ((cellFsStat("/dev_hdd0/hen/auto_update.off",&stat)!=0)&&(cellFsStat("/dev_hdd0/hen/auto_update.on",&stat)!=0)) // check flag
-	{
-		//toggle_plugins();
+	{		
 		copyflag_thread();
 		reboot_flag=1;
-		sys_timer_usleep(2000000);
+		//sys_timer_usleep(2000);
 		//goto done;
 	}
 	
@@ -1246,10 +1245,10 @@ done:
 		play_rco_sound("snd_trophy");
 		
 		char reboot_txt[0x80];
-		sprintf(reboot_txt, "Installation Complete!\n\n Reboot manually...");
+		sprintf(reboot_txt, "The operation is completed!\n\n I'm rebooting...");
 		show_msg((char *)reboot_txt);
-		//sys_timer_usleep(15000000);// Wait a few seconds						 
-		//reboot_ps3();// Default Soft Reboot
+		sys_timer_usleep(8000000);// Wait a few seconds						 
+		reboot_ps3();// Default Soft Reboot
 	}
 	
 	clear_web_cache_check();// Clear WebBrowser cache check (thanks xfrcc)
