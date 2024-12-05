@@ -36,7 +36,35 @@
 			<Query class="type:x-xmb/folder-pixmap" key="package_files_install" attr="package_files_install" src="#seg_install_package"/>
 			<Query class="type:x-xmb/folder-pixmap" key="host_psn" attr="host_psn" src="#seg_install_files_psn_path"/>
 			<Query class="type:x-xmb/folder-pixmap" key="seg_package_files_delete" attr="seg_package_files_delete" src="#seg_delete_package"/>
+			<!--<Query class="type:x-xmb/folder-pixmap" key="mg" attr="mg" src="#mount_game"/>-->
 		</Items></View>
+		
+	<View id="mount_game">
+		<Attributes>
+			<Table key="mount_items">
+				<Pair key="icon_rsc"><String>item_tex_disc_install</String></Pair>
+				<Pair key="title_rsc"><String>msg_tool_mount</String></Pair>
+				<Pair key="info_rsc"><String>msg_tool_mount_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>mount_hdd_game</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+			<Table key="unmount_items">
+				<Pair key="icon_rsc"><String>item_tex_disc_icon</String></Pair>
+				<Pair key="title_rsc"><String>msg_tool_unmount</String></Pair>
+				<Pair key="info_rsc"><String>msg_tool_unmount_info</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>unmount_hdd</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/module-action"  key="mount_items" attr="mount_items" />
+			<Item class="type:x-xmb/module-action"  key="unmount_items" attr="unmount_items" />
+		</Items>
+	</View>
 
 	<View id="seg_install_files_psn_path">
 		<Items>

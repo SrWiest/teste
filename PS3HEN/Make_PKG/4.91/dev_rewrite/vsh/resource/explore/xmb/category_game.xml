@@ -14,7 +14,7 @@
 			</Table>
 		</Attributes>
 		<Items>
-			<Query class="type:x-xmb/folder-pixmap" key="folder_s" attr="folder_s" src="xmb://localhost/dev_hdd0/hen/ofw_m.xml#folder_si"/>						
+			<Query class="type:x-xmb/folder-pixmap" key="folder_s" attr="folder_s" src="xmb://localhost/dev_hdd0/hen/ofw_m.xml#folder_si"/>
 			<Query class="type:x-xmb/folder-pixmap" key="folder" attr="folder" src="xmb://localhost/dev_hdd0/hen/mag.xml#folder"/>
 			<Query
 				class="type:x-xmb/folder-pixmap"
@@ -26,7 +26,7 @@
 				class="type:x-xmb/folder-pixmap"
 				key="seg_gamedebug" 
 				src="xmb://localhost/dev_hdd0/hen/apphome.xml#seg_gamedebug"
-				/>	
+				/>
 			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="seg_package_files"

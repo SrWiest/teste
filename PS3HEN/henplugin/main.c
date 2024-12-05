@@ -16,6 +16,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include <time.h>
 #include <types.h>
@@ -23,10 +24,13 @@
 #include "common.h"
 #include "bildtype.h"
 #include "stdc.h"
+#include "typew.h"
+#include "vpad.h"
 #include "download_plugin.h"
 #include "game_ext_plugin.h"
 #include "xmb_plugin.h"
 #include "xregistry.h"
+
 //#include "paf.h"
 
 #include <sys/sys_time.h>
@@ -70,6 +74,7 @@ extern uint32_t vshmain_EB757101(void);        // get running mode flag, 0 = XMB
 #define GetCurrentRunningMode vshmain_EB757101 // _ZN3vsh18GetCooperationModeEv	 | vsh::GetCooperationMode(void)
 #define IS_ON_XMB		(GetCurrentRunningMode() == 0)
 #define IS_INGAME		(GetCurrentRunningMode() != 0)
+
 
 static sys_ppu_thread_t thread_id=-1;
 static int done = 0;
@@ -194,6 +199,221 @@ static void * getNIDfunc(const char * vsh_module, uint32_t fnid, int offset)
 	return 0;
 }
 
+#define SC_PAD_SET_DATA_INSERT_MODE		(573)
+#define SC_PAD_REGISTER_CONTROLLER		(574)
+#define BETWEEN(a, b, c)	( ((a) <= (b)) && ((b) <= (c)) )
+
+static bool IS(const char *a, const char *b)
+{
+	if(!a || !b ||!*a) return false;
+	return !strcmp(a, b); // compare two strings. returns true if they are identical
+}
+
+static u32 vcombo = 0;
+static s32 vpad_handle = NULL;
+
+static inline void sys_pad_dbg_ldd_register_controller(u8 *data, s32 *handle, u8 addr, u32 capability)
+{
+	// syscall for registering a virtual controller with custom capabilities
+	system_call_4(SC_PAD_REGISTER_CONTROLLER, (u32)(u8 *)data, (u32)(s32 *)handle, addr, capability);
+}
+
+static inline void sys_pad_dbg_ldd_set_data_insert_mode(s32 handle, u16 addr, u32 *mode, u8 addr2)
+{
+	// syscall for controlling button data filter (allows a virtual controller to be used in games)
+	system_call_4(SC_PAD_SET_DATA_INSERT_MODE, handle, addr, *mode, addr2);
+}
+
+static s32 register_ldd_controller(void)
+{
+	// register ldd controller with custom device capability
+	if (vpad_handle <= NULL)
+	{
+		u8 data[0x114];
+		s32 port;
+		u32 capability, mode, port_setting;
+
+		capability = 0xFFFF; // CELL_PAD_CAPABILITY_PS3_CONFORMITY | CELL_PAD_CAPABILITY_PRESS_MODE | CELL_PAD_CAPABILITY_HP_ANALOG_STICK | CELL_PAD_CAPABILITY_ACTUATOR;
+		sys_pad_dbg_ldd_register_controller(data, (s32 *)&(vpad_handle), 5, (u32)capability << 1); //vpad_handle = cellPadLddRegisterController();
+		sys_timer_usleep(500000);
+		//sys_ppu_thread_usleep(500000); // allow some time for ps3 to register ldd controller
+
+		if (vpad_handle < 0) return(vpad_handle);
+
+		// all pad data into games
+		mode = CELL_PAD_LDD_INSERT_DATA_INTO_GAME_MODE_ON; // = (1)
+		sys_pad_dbg_ldd_set_data_insert_mode((s32)vpad_handle, 0x100, (u32 *)&mode, 4);
+
+		// set press and sensor mode on
+		port_setting = CELL_PAD_SETTING_PRESS_ON | CELL_PAD_SETTING_SENSOR_ON;
+		port = cellPadLddGetPortNo(vpad_handle);
+
+		if (port < 0) return(port);
+
+		cellPadSetPortSetting(port, port_setting);
+	}
+	return(CELL_PAD_OK);
+}
+
+static s32 unregister_ldd_controller(void)
+{
+	if (vpad_handle >= 0)
+	{
+		s32 r = cellPadLddUnregisterController(vpad_handle);
+		if (r != CELL_OK) return(r);
+		vpad_handle = NULL;
+	}
+	return(CELL_PAD_OK);
+}
+
+static u8 parse_pad_command(const char *pad_cmds, u8 is_combo)
+{
+	register_ldd_controller();
+
+	CellPadData data;
+	memset(&data, NULL, sizeof(CellPadData));
+	data.len = CELL_PAD_MAX_CODES;
+
+	// set default controller values
+	data.button[CELL_PAD_BTN_OFFSET_ANALOG_LEFT_X]  = // 0x0080;
+	data.button[CELL_PAD_BTN_OFFSET_ANALOG_LEFT_Y]  = // 0x0080;
+
+	data.button[CELL_PAD_BTN_OFFSET_ANALOG_RIGHT_X] = // 0x0080;
+	data.button[CELL_PAD_BTN_OFFSET_ANALOG_RIGHT_Y] =    0x0080;
+
+	data.button[CELL_PAD_BTN_OFFSET_SENSOR_X] = // 0x0200;
+	data.button[CELL_PAD_BTN_OFFSET_SENSOR_Y] = // 0x0200;
+	data.button[CELL_PAD_BTN_OFFSET_SENSOR_Z] = // 0x0200;
+	data.button[CELL_PAD_BTN_OFFSET_SENSOR_G] =    0x0200;
+
+	char *sep, *param; param = (char*)pad_cmds;
+
+	if(IS(param, "off")) unregister_ldd_controller(); else
+	{
+		u32 delay = 70000;
+
+	parse_buttons:
+		sep = strchr(param, '|'); if(sep) *sep = '\0';
+
+		if(sep && BETWEEN('0', *param, '9'))
+		{
+			sys_timer_usleep(1000);
+			param = sep + 1;
+			goto parse_buttons;
+		}
+
+		// press button
+		if(strcasestr(param, "psbtn") ) {data.button[0] |= CELL_PAD_CTRL_LDD_PS;}
+
+		if(strcasestr(param, "start") ) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_START; }
+		if(strcasestr(param, "select")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_SELECT;}
+
+		u8 ax = 0, ay = 0;
+		if (strcasestr(param, "analogL")) {ax = CELL_PAD_BTN_OFFSET_ANALOG_LEFT_X,  ay = CELL_PAD_BTN_OFFSET_ANALOG_LEFT_Y;}
+		if (strcasestr(param, "analogR")) {ax = CELL_PAD_BTN_OFFSET_ANALOG_RIGHT_X, ay = CELL_PAD_BTN_OFFSET_ANALOG_RIGHT_Y;}
+
+		if (ax)
+		{
+			// pad.ps3?analogL_up || pad.ps3?analogR_up
+			if(strcasestr(param, "up"   )) {data.button[ay] = 0x00;}
+			if(strcasestr(param, "down" )) {data.button[ay] = 0xFF;}
+			if(strcasestr(param, "left" )) {data.button[ax] = 0x00;}
+			if(strcasestr(param, "right")) {data.button[ax] = 0xFF;}
+			delay = 150000;
+		}
+		else
+		{
+			if(strcasestr(param, "up"   )) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_UP;		data.button[CELL_PAD_BTN_OFFSET_PRESS_UP]		= 0xFF;}
+			if(strcasestr(param, "down" )) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_DOWN;	data.button[CELL_PAD_BTN_OFFSET_PRESS_DOWN]		= 0xFF;}
+			if(strcasestr(param, "left" )) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_LEFT;	data.button[CELL_PAD_BTN_OFFSET_PRESS_LEFT]		= 0xFF;}
+			if(strcasestr(param, "right")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_RIGHT;	data.button[CELL_PAD_BTN_OFFSET_PRESS_RIGHT]	= 0xFF;}
+		}
+
+		if(strcasestr(param, "cross"   )) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_CROSS;	data.button[CELL_PAD_BTN_OFFSET_PRESS_CROSS]	= 0xFF;}
+		if(strcasestr(param, "square"  )) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_SQUARE;	data.button[CELL_PAD_BTN_OFFSET_PRESS_SQUARE]	= 0xFF;}
+		if(strcasestr(param, "triangle")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_TRIANGLE;	data.button[CELL_PAD_BTN_OFFSET_PRESS_TRIANGLE]	= 0xFF;}
+		if(strcasestr(param, "circle"  )) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_CIRCLE;	data.button[CELL_PAD_BTN_OFFSET_PRESS_CIRCLE]	= 0xFF;}
+
+		if(strcasestr(param, "L1")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_L1; data.button[CELL_PAD_BTN_OFFSET_PRESS_L1] = 0xFF;}
+		if(strcasestr(param, "L2")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_L2; data.button[CELL_PAD_BTN_OFFSET_PRESS_L2] = 0xFF;}
+		if(strcasestr(param, "R1")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_R1; data.button[CELL_PAD_BTN_OFFSET_PRESS_R1] = 0xFF;}
+		if(strcasestr(param, "R2")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] |= CELL_PAD_CTRL_R2; data.button[CELL_PAD_BTN_OFFSET_PRESS_R2] = 0xFF;}
+
+		if(strcasestr(param, "L3")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_L3;}
+		if(strcasestr(param, "R3")) {data.button[CELL_PAD_BTN_OFFSET_DIGITAL1] |= CELL_PAD_CTRL_R3;}
+
+		if(is_combo) {vcombo = (data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] << 8) | (data.button[CELL_PAD_BTN_OFFSET_DIGITAL1]); return CELL_OK;}
+
+		// assign enter button
+		if((data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] & (CELL_PAD_CTRL_CROSS | CELL_PAD_CTRL_CIRCLE)) && ((param[5] == '=') || (param[6] == '=')))
+		{
+			int enter_button = (data.button[CELL_PAD_BTN_OFFSET_DIGITAL2] == CELL_PAD_CTRL_CROSS);
+			if(strcasestr(param, "swap")) {xsettings()->GetEnterButtonAssign(&enter_button); enter_button ^= 1;}
+
+			xsettings()->SetEnterButtonAssign(enter_button);
+			return 'X';
+		}
+
+		// send pad data to virtual pad
+		cellPadLddDataInsert(vpad_handle, &data);
+
+		if(!strcasestr(param, "hold"))
+		{
+			//sys_ppu_thread_usleep(delay); // hold for 70ms
+			sys_timer_usleep(delay);
+
+			// release all buttons and set default values
+			memset(&data, NULL, sizeof(CellPadData));
+			data.len = CELL_PAD_MAX_CODES;
+
+			data.button[CELL_PAD_BTN_OFFSET_ANALOG_LEFT_X]  = // 0x0080;
+			data.button[CELL_PAD_BTN_OFFSET_ANALOG_LEFT_Y]  = // 0x0080;
+
+			data.button[CELL_PAD_BTN_OFFSET_ANALOG_RIGHT_X] = // 0x0080;
+			data.button[CELL_PAD_BTN_OFFSET_ANALOG_RIGHT_Y] =    0x0080;
+
+			data.button[CELL_PAD_BTN_OFFSET_SENSOR_X] = // 0x0200;
+			data.button[CELL_PAD_BTN_OFFSET_SENSOR_Y] = // 0x0200;
+			data.button[CELL_PAD_BTN_OFFSET_SENSOR_Z] = // 0x0200;
+			data.button[CELL_PAD_BTN_OFFSET_SENSOR_G] =    0x0200;
+
+			// send pad data to virtual pad
+			cellPadLddDataInsert(vpad_handle, &data);
+		}
+
+		if(strcasestr(param, "accept")  ) press_accept_button();
+		if(strcasestr(param, "cancel")  ) press_cancel_button(0);
+
+		if(sep)
+		{
+			param = sep + 1;
+			goto parse_buttons;
+		}
+	}
+
+	return CELL_OK;
+}
+
+static void press_cancel_button(int do_enter)
+{
+	int enter_button = 1;
+	xsettings()->GetEnterButtonAssign(&enter_button);
+
+	if(do_enter) enter_button ^= 1;
+
+	if(enter_button)
+		parse_pad_command("circle", 0);
+	else
+		parse_pad_command("cross", 0);
+
+	unregister_ldd_controller();
+}
+
+static void press_accept_button(void)
+{
+	press_cancel_button(1);
+}
+
 /*static int sys_timer_sleep(uint64_t sleep_time)
 {
 	system_call_1(0x8e,sleep_time);
@@ -298,7 +518,8 @@ static void path_mm(void)
 		pokeq(map_data + (n * 0x20) + 0x08, dst_len);
 	}
 	
-}*/
+}
+*/
 
 // LED Control (thanks aldostools)
 #define SC_SYS_CONTROL_LED				(386)
@@ -417,11 +638,26 @@ static void reload_xmb(void)
 		sys_timer_usleep(7000);
 	}
 // Reload All Categories and Swap Icons if Remaped 
-	explore_interface->ExecXMBcommand("reload_category_items game",0,0);
 
-// Reload All Categories for New Queries
-	explore_interface->ExecXMBcommand("reload_category game",0,0);
-	explore_interface->ExecXMBcommand("reload_category network",0,0);
+	CellFsStat stat;
+	
+	if(cellFsStat("/dev_hdd0/hen/hen_reload.on",&stat)!=0)
+	{
+	 explore_interface->ExecXMBcommand("reload_category_items game",0,0);
+	 explore_interface->ExecXMBcommand("reload_category game",0,0);
+	 explore_interface->ExecXMBcommand("reload_category network",0,0);
+	}
+	else
+	{
+	 explore_interface->ExecXMBcommand("close_all_list", 0, 0);
+	 explore_interface->ExecXMBcommand("focus_category user", 0, 0);
+	 sys_timer_usleep(130000);
+	 press_accept_button();
+	 sys_timer_usleep(2000);
+	 press_accept_button();
+	 sys_timer_usleep(2000);
+	 explore_interface->ExecXMBcommand("exec_push", 0, 0);
+	} 
 }
 
 static inline void _sys_ppu_thread_exit(uint64_t val)
@@ -747,7 +983,8 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/clear_info.off","/dev_hdd0/hen/clear_info.on");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hotkeys.off","/dev_hdd0/hen/hotkeys.on");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/gameboot.off","/dev_hdd0/hen/gameboot.on");
-	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/trophy.off","/dev_hdd0/hen/trophy.on");	
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/trophy.off","/dev_hdd0/hen/trophy.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_apphome.off","/dev_hdd0/hen/hen_apphome.on");
 	
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/auto_update.png", "/dev_hdd0/hen/auto_update.on");
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/audio.png", "/dev_hdd0/hen/hen_audio.on");
@@ -755,6 +992,7 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/hotkeys.png", "/dev_hdd0/hen/hotkeys.on");
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/gameboot.png", "/dev_hdd0/hen/gameboot.on");
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/trophy.png", "/dev_hdd0/hen/trophy.on");
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/nobd.png", "/dev_hdd0/hen/nobd.png");
 	
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_gall.off", "/dev_hdd0/hen/hen_gall.on");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_gps3.off", "/dev_hdd0/hen/hen_gps3.on");
@@ -780,6 +1018,7 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_ofw.on", "/dev_hdd0/hen/hen_ofw.off");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_pm.on", "/dev_hdd0/hen/hen_pm.off");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_xmb.on", "/dev_hdd0/hen/hen_xmb.off");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_reload.on", "/dev_hdd0/hen/hen_reload.off");	
 
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/clear_web_auth_cache.png", "/dev_hdd0/hen/clear_web_auth_cache.off");
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/clear_web_cookie.png", "/dev_hdd0/hen/clear_web_cookie.off");
@@ -788,10 +1027,11 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_pm.png", "/dev_hdd0/hen/hen_pm.off");
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_xmb.png", "/dev_hdd0/hen/hen_xmb.off");
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_mag.png", "/dev_hdd0/hen/hen_mag.off");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_reload.png", "/dev_hdd0/hen/hen_reload.off");
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_apphome.png", "/dev_hdd0/hen/hen_apphome.off");
 
 	filecopy("/dev_flash/hen/xml/ofw_m.xml","/dev_hdd0/hen/ofw_m.xml", "/dev_hdd0/hen/hen_ofw.off");
-	filecopy("/dev_flash/hen/xml/mag_on.xml","/dev_hdd0/hen/mag.xml", "/dev_hdd0/hen/hen_mag.off");
+	filecopy("/dev_flash/hen/xml/mag_on.xml","/dev_hdd0/hen/mag.xml", "/dev_hdd0/hen/hen_mag.off");	
 	sys_timer_usleep(200);
 	cellFsUnlink("/dev_hdd0/hen/apphome.xml");// Removing old
 }
@@ -1155,6 +1395,11 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	{		
 		copyflag_thread();
 		reboot_flag=1;
+	}
+	
+	if (cellFsStat("/dev_hdd0/hen/ofw_m.xml",&stat)!=0)  // check flag
+	{
+	do_update=1;
 	}
 	
 	if((do_install_hen!=0) || (do_update==1))	

@@ -33,10 +33,14 @@
 				<Pair key="icon_rsc"><String>tex_recovery</String></Pair>
 				<Pair key="title_rsc"><String>msg_recovery_menu_title</String></Pair>
 			</Table>
-			<Table key="mode">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_update.png</String></Pair>				
-				<Pair key="title"><String>MODE</String></Pair>
+			<Table key="ftp_menu">
+				<Pair key="icon_rsc"><String>tex_ftp</String></Pair>
+				<Pair key="title"><String>FTP</String></Pair>
 			</Table>
+			<Table key="xreg_settings">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_backup_xregistry.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_xreg_settings_title</String></Pair>
+			</Table>			
 			<Table key="ps3hen_maintenance">
 				<Pair key="icon_rsc"><String>tex_folder_list</String></Pair>				
 				<Pair key="title_rsc"><String>msg_hfw_maintenance</String></Pair>
@@ -47,9 +51,17 @@
 				<Pair key="title_rsc"><String>msg_hfw_interface</String></Pair>
                 <Pair key="info_rsc"><String>msg_hfw_interface_info</String></Pair>
 			</Table>
+			<Table key="plugin_manager">
+				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
+				<Pair key="title_rsc"><String>plugin_manager</String></Pair>								
+			</Table>
             <Table key="fan_settings">
 				<Pair key="icon_rsc"><String>tex_fan</String></Pair>
 				<Pair key="title_rsc"><String>msg_fan_settings_title</String></Pair>
+			</Table>
+			<Table key="mode">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_update.png</String></Pair>				
+				<Pair key="title"><String>MODE</String></Pair>
 			</Table>
 			<Table key="ps3hen_update">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/folder_net_download.png</String></Pair>
@@ -61,19 +73,34 @@
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/NP00PKGI3.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hfw_pkgi</String></Pair>
 				<Pair key="info_rsc"><String>msg_hfw_pkgi_info</String></Pair>
- 			</Table>			
+ 			</Table>
+			<Table key="uninstall_hen">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_uninstall_hen</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_uninstall_hen_info</String></Pair>				
+				<Pair key="str_noitem"><String>msg_error_no_title</String></Pair>				
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="module_action"><String>uninstall_hen</String></Pair>				
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>				
+			</Table>			
 		</Attributes>
 		<Items>			
 			<Query class="type:x-xmb/folder-pixmap" key="reboot_ps3"		attr="reboot_ps3"		src="#seg_reboot_ps3"/>
-			<Query class="type:x-xmb/folder-pixmap" key="psn_tools" 	 attr="psn_tools" 	   src="#seg_psn_tools" />	
-			<Query class="type:x-xmb/folder-pixmap" key="dump_tools"		attr="dump_tools"		src="#seg_dump_tools"/>
-			<Query class="type:x-xmb/folder-pixmap" key="recovery_menu"		attr="recovery_menu"	src="#seg_recovery_menu"/>
+			<Query class="type:x-xmb/folder-pixmap" key="psn_tools" 	 	attr="psn_tools" 	   src="#seg_psn_tools" />	
 			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_maintenance"		attr="ps3hen_maintenance"		src="#seg_ps3hen_maintenance"/>
-			<Query class="type:x-xmb/folder-pixmap" key="int"		attr="int"		src="#seg_int"/>
+			<Query class="type:x-xmb/folder-pixmap" key="int"				attr="int"		src="#seg_int"/>
+			<Query class="type:x-xmb/folder-pixmap" key="ftp_menu"			attr="ftp_menu"			src="#seg_ftp_menu"/>
+			<Query class="type:x-xmb/folder-pixmap" key="xreg_settings"		attr="xreg_settings"    src="#seg_xreg_settings" />
+			<Query class="type:x-xmb/folder-pixmap" key="plugin_manager"	attr="plugin_manager"	src="#seg_plug_menu"/>
+			<Query class="type:x-xmb/folder-pixmap" key="dump_tools"		attr="dump_tools"		src="#seg_dump_tools"/>
+			<Query class="type:x-xmb/folder-pixmap" key="recovery_menu"		attr="recovery_menu"	src="#seg_recovery_menu"/>		
 			<Query class="type:x-xmb/folder-pixmap" key="mode"	attr="mode"	src="#seg_mode"/>
 			<!--<<Query class="type:x-xmb/folder-pixmap" key="fan_settings"	 attr="fan_settings"   src="#seg_fan_settings" />/>--> 			
 			<Query class="type:x-xmb/folder-pixmap" key="ps3hen_update"		attr="ps3hen_update"	src="xmb://localhost/dev_flash/hen/xml/ps3hen_updater.xml#seg_ps3hen_updater"/>
 			<Query class="type:x-xmb/folder-pixmap"	key="update_toolbox_main" attr="update_toolbox_main" src="#update_toolbox_item"/>
+			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
 		</Items>
 	</View>
 		
@@ -92,6 +119,87 @@
 			<Item class="type:x-xmb/xmlnpsignup" key="update_toolbox_link" attr="update_toolbox_link"/>
 		</Items> 
 	</View>
+	
+	<!-- Plugin Option Menu -->
+	<View id="seg_plug_menu">
+		<Attributes>
+			<Table key="shared_actions">
+				<Pair key="str_noitem"><String>msg_error_no_title</String></Pair>				
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>			
+			<Table key="view_active_plugins">
+				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
+				<Pair key="title_rsc"><String>msg_view_plugin</String></Pair>
+				<Pair key="info_rsc"><String>info_view_plugin</String></Pair>
+				<Pair key="module_name"><String>webrender_plugin</String></Pair>
+				<Pair key="module_action"><String>javascript:window.resizeTo(screen.width,screen.height);window.location.assign("http://nikolaevich23.github.io/active_plugins.html");</String></Pair>
+			</Table>
+			<Table key="toggle_plugins" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
+				<Pair key="title_rsc"><String>msg_toggle_cobra_plugins_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_toggle_cobra_plugins_info</String></Pair>				
+				<Pair key="module_action"><String>toggle_plugins</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>				
+			</Table>
+			<Table key="delete_plugin">
+				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
+				<Pair key="title_rsc"><String>msg_tool_delete_file</String></Pair>
+				<Pair key="info_rsc"><String>msg_tool_delete_file_info</String></Pair>
+				<Pair key="str_noitem"><String>msg_tool_no_package</String></Pair>				
+				<Pair key="child"><String>segment</String></Pair>
+			</Table>	
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/module-action" key="view_active_plugins" attr="view_active_plugins"/>
+			<Item class="type:x-xmb/module-action" key="toggle_plugins" attr="toggle_plugins" />			
+			<Query class="type:x-xmb/folder-pixmap" key="delete_plugin" attr="delete_plugin" src="#seg_del_files_plugin"/>
+		</Items>		
+	</View>	
+	
+	<View id="seg_del_files_plugin">
+	<Items>
+		<Query class="type:x-xmb/xmlpackagefolder" key="delete_plugin" src="host://localhost/q?path=/dev_hdd0/plugins"/>
+	</Items>
+	</View>		
+		
+	<!-- FTP Option Menu -->
+	<View id="seg_ftp_menu">
+		<Attributes>
+			<Table key="shared_actions">
+				<Pair key="str_noitem"><String>msg_error_no_title</String></Pair>				
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="ingame"><String>disable</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+				<Pair key="lbl_half"><String>1</String></Pair>
+			</Table>			
+			<Table key="status_ftp" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_ftp</String></Pair>
+				<Pair key="title_rsc"><String>msg_ftp_status_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_ftp_status_info</String></Pair>
+				<Pair key="module_action"><String>status_ftp</String></Pair>				
+			</Table>
+			<Table key="enable_ftp" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_ftp</String></Pair>
+				<Pair key="title_rsc"><String>msg_ftp_enable_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_ftp_enable_info</String></Pair>
+				<Pair key="module_action"><String>enable_ftp</String></Pair>				
+			</Table>
+			<Table key="disable_ftp" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_ftp</String></Pair>
+				<Pair key="title_rsc"><String>msg_ftp_disable_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_ftp_disable_info</String></Pair>				
+				<Pair key="module_action"><String>disable_ftp</String></Pair>
+			</Table>	
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/module-action"  key="status_ftp"	 		attr="status_ftp" />
+			<Item class="type:x-xmb/module-action"  key="enable_ftp"	 		attr="enable_ftp" />
+			<Item class="type:x-xmb/module-action"  key="disable_ftp"			attr="disable_ftp" />
+		</Items>		
+	</View>	
 
 	<!-- Power Option Menu -->
 	<View id="seg_reboot_ps3">
@@ -713,6 +821,13 @@
 				<Pair key="info_rsc"><String>msg_dump_syscon_error_log_info</String></Pair>				
 				<Pair key="module_action"><String>dump_syscon_log</String></Pair>
 			</Table>
+			<Table key="view_log_sys_eror">
+				<Pair key="icon_rsc"><String>tex_log</String></Pair>
+				<Pair key="title_rsc"><String>msg_hfw_view_log</String></Pair>
+				<Pair key="info_rsc"><String>msg_hfw_view_log_info</String></Pair>
+				<Pair key="module_name"><String>webrender_plugin</String></Pair>
+				<Pair key="module_action"><String>http://localhost/dev_hdd0/tmp/sm_error.log</String></Pair>
+			</Table>			
 			<Table key="log_klic" include="shared_actions">
 				<Pair key="icon_rsc"><String>tex_backup_license</String></Pair>
 				<Pair key="title_rsc"><String>msg_log_klic_title</String></Pair>
@@ -724,6 +839,12 @@
 				<Pair key="title_rsc"><String>msg_log_secureid_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_log_secureid_info</String></Pair>	
 				<Pair key="module_action"><String>log_secureid</String></Pair>				
+			</Table>
+			<!-- Decrypt ISOs -->
+			<Table key="decrypt_redump_isos" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_backup_license</String></Pair>
+				<Pair key="title_rsc"><String>msg_decrypt_3k3y_dumps</String></Pair>
+				<Pair key="info_rsc"><String>info_decrypt_3k3y_dumps</String></Pair>
 			</Table>
 			<Table key="dump_disc_key" include="shared_actions">
 				<Pair key="icon_rsc"><String>tex_disc</String></Pair>
@@ -753,9 +874,38 @@
 			<Item class="type:x-xmb/module-action" key="dump_sysrom"      attr="dump_sysrom" />
 			<Item class="type:x-xmb/module-action" key="dump_eeprom"   	  attr="dump_eeprom" />			
 			<Item class="type:x-xmb/module-action" key="dump_syscon_log"  attr="dump_syscon_log" />			
+			<Item class="type:x-xmb/module-action" key="view_log_sys_eror"	      attr="view_log_sys_eror" />
 			<Item class="type:x-xmb/module-action" key="log_klic"         attr="log_klic" />
 			<Item class="type:x-xmb/module-action" key="log_secureid"     attr="log_secureid" />
+			<Query class="type:x-xmb/folder-pixmap" key="decrypt_redump_isos" attr="decrypt_redump_isos" src="#seg_decrypt_redump_isos_items"/>
 			<Item class="type:x-xmb/module-action" key="dump_disc_key"    attr="dump_disc_key" />
+		</Items>
+	</View>
+	
+	<View id="seg_decrypt_redump_isos_items">
+		<Attributes>
+			<Table key="shared_actions">
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+			</Table>
+			<!-- Decrypt ISOs 3k3y/redump from HDD -->
+			<Table key="decrypt_redump_isos_hdd" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_dump_id</String></Pair>
+				<Pair key="title_rsc"><String>msg_decrypt_3k3y_dumps_hdd</String></Pair>
+				<Pair key="info_rsc"><String>info_decrypt_3k3y_dumps_hdd</String></Pair>
+				<Pair key="module_action"><String>decrypt_redump_isos_hdd</String></Pair>
+			</Table>
+			<!-- Decrypt ISOs 3k3y/redump from HDD -->
+			<Table key="decrypt_redump_isos_usb" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_kernel_usb</String></Pair>
+				<Pair key="title_rsc"><String>msg_decrypt_3k3y_dumps_usb</String></Pair>
+				<Pair key="info_rsc"><String>info_decrypt_3k3y_dumps_usb</String></Pair>
+				<Pair key="module_action"><String>decrypt_redump_isos_usb</String></Pair>
+			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/module-action" key="decrypt_redump_isos_hdd" attr="decrypt_redump_isos_hdd"/>
+			<Item class="type:x-xmb/module-action" key="decrypt_redump_isos_usb" attr="decrypt_redump_isos_usb"/>		
 		</Items>
 	</View>
 
@@ -785,18 +935,7 @@
 				<Pair key="info_rsc"><String>msg_disable_syscalls_info</String></Pair>				
 				<Pair key="module_action"><String>disable_syscalls</String></Pair>
 			</Table>
-			<Table key="enable_ftp" include="shared_actions">
-				<Pair key="icon_rsc"><String>tex_ftp</String></Pair>
-				<Pair key="title_rsc"><String>msg_ftp_enable_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_ftp_enable_info</String></Pair>
-				<Pair key="module_action"><String>enable_ftp</String></Pair>				
-			</Table>
-			<Table key="disable_ftp" include="shared_actions">
-				<Pair key="icon_rsc"><String>tex_ftp</String></Pair>
-				<Pair key="title_rsc"><String>msg_ftp_disable_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_ftp_disable_info</String></Pair>				
-				<Pair key="module_action"><String>disable_ftp</String></Pair>
-			</Table>
+			
 			<!--<Table key="allow_restore_sc">
 				<Pair key="icon_rsc"><String>tex_cobra_syscalls</String></Pair>
 				<Pair key="title_rsc"><String>msg_allow_restore_sc_title</String></Pair>
@@ -828,14 +967,7 @@
 				<Pair key="title_rsc"><String>msg_create_rap_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_create_rap_info</String></Pair>				
 				<Pair key="module_action"><String>export_rap</String></Pair>				
-			</Table>
-			<Table key="toggle_plugins" include="shared_actions">
-				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
-				<Pair key="title_rsc"><String>msg_toggle_cobra_plugins_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_toggle_cobra_plugins_info</String></Pair>				
-				<Pair key="module_action"><String>toggle_plugins</String></Pair>
-				<Pair key="ingame"><String>disable</String></Pair>				
-			</Table>
+			</Table>			
 			<Table key="toggle_upd" include="shared_actions">
 				<Pair key="icon_rsc"><String>tex_toggle_cobra</String></Pair>
 				<Pair key="title_rsc"><String>msg_swap_upd_title</String></Pair>
@@ -858,15 +990,17 @@
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
 			</Table>			
-			<Table key="xreg_settings">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/dump_backup_xregistry.png</String></Pair>
-				<Pair key="title_rsc"><String>msg_xreg_settings_title</String></Pair>
-			</Table>
 			<Table key="toggle_coldboot" include="shared_actions">
 				<Pair key="icon_rsc"><String>tex_toggle_coldboot</String></Pair>
 				<Pair key="title_rsc"><String>msg_toggle_coldboot_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_toggle_coldboot_info</String></Pair>				
 				<Pair key="module_action"><String>toggle_coldboot</String></Pair>				
+			</Table>
+			<Table key="hen_gameboot" include="shared_actions">
+				<Pair key="icon"><String>/dev_hdd0/hen/gameboot.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_toggle_gameboot_title</String></Pair>
+				<Pair key="info_rsc"><String>msg_toggle_gameboot_info</String></Pair>				
+				<Pair key="module_action"><String>toggle_hen_gameboot</String></Pair>				
 			</Table>			
 			<Table key="applicable_version" include="shared_actions">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/recovery_display_minver.png</String></Pair>
@@ -901,18 +1035,15 @@
 			<Item class="type:x-xmb/module-action"  key="check_syscall8" 	    attr="check_syscall8" />			
 			<Item class="type:x-xmb/module-action"  key="cobra_create_syscalls"	attr="cobra_create_syscalls" />
 			<Item class="type:x-xmb/module-action"	key="disable_syscalls" 		attr="disable_syscalls" />
-			<Item class="type:x-xmb/module-action"  key="enable_ftp"	 		attr="enable_ftp" />
-			<Item class="type:x-xmb/module-action"  key="disable_ftp"			attr="disable_ftp" />
 			<Item class="type:x-xmb/module-action" 	key="toggle_devblind" 		attr="toggle_devblind" />				
 			<!--<Item class="type:x-xmb/module-action"  key="allow_restore_sc"	    attr="allow_restore_sc" />			
 			<Item class="type:x-xmb/module-action"  key="skip_existing_rif"	 	attr="skip_existing_rif" />-->	
 			<Item class="type:x-xmb/module-action" 	key="create_license" 		attr="create_license" />	
-			<Item class="type:x-xmb/module-action" 	key="create_license_rap" 	attr="create_license_rap" />
-			<Item class="type:x-xmb/module-action"  key="toggle_plugins"	 	attr="toggle_plugins" />			
+			<Item class="type:x-xmb/module-action" 	key="create_license_rap" 	attr="create_license_rap" />			
 			<Item class="type:x-xmb/module-action"  key="toggle_upd"	 		attr="toggle_upd" />
-			<Item class="type:x-xmb/module-action" key="override_sfo"			attr="override_sfo"/>
-			<Query class="type:x-xmb/folder-pixmap" key="xreg_settings"		 	attr="xreg_settings"     src="#seg_xreg_settings" />
-			<Item class="type:x-xmb/module-action"  key="toggle_coldboot"	 	attr="toggle_coldboot" />			
+			<Item class="type:x-xmb/module-action" key="override_sfo"			attr="override_sfo"/>			
+			<Item class="type:x-xmb/module-action"  key="toggle_coldboot"	 	attr="toggle_coldboot" />
+			<Item class="type:x-xmb/module-action" key="hen_gameboot" attr="hen_gameboot"/>
 			<Item class="type:x-xmb/module-action"  key="applicable_version"	attr="applicable_version"/>
 			<Item class="type:x-xmb/module-action"  key="fs_check"				attr="fs_check"/>
 			<Item class="type:x-xmb/module-action"  key="rebuild_db"			attr="rebuild_db"/>
@@ -928,23 +1059,144 @@
 				<Pair key="module_name"><String>xai_plugin</String></Pair>
 				<Pair key="bar_action"><String>none</String></Pair>
 				<Pair key="lbl_half"><String>1</String></Pair>
-			</Table>						
+			</Table>
+			<!-- Backup xRegistry -->			
 			<Table key="backup_registry" include="shared_actions">
 				<Pair key="icon_rsc"><String>tex_backup_xreg</String></Pair>
 				<Pair key="title_rsc"><String>msg_backup_registry_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_backup_registry_info</String></Pair>				
 				<Pair key="module_action"><String>backup_registry</String></Pair>				
 			</Table>
+			<!-- Show Region Info -->
+			<Table key="xreg_checkdvd_mode" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_backup_xreg</String></Pair>
+				<Pair key="title_rsc"><String>msg_show_system_region</String></Pair>
+				<Pair key="info_rsc"><String>info_show_system_region</String></Pair>
+				<Pair key="module_action"><String>check_region_values</String></Pair>
+			</Table>
+			<!-- Toggle DVD TV System -->
+			<Table key="xreg_dvdtvsys" include="shared_actions">
+				<Pair key="icon_rsc"><String>tex_backup_xreg</String></Pair>
+				<Pair key="title_rsc"><String>msg_toggle_dvdtv_system</String></Pair>
+				<Pair key="info_rsc"><String>info_toggle_dvdtv_system</String></Pair>
+				<Pair key="module_action"><String>toggle_dvdtvsys</String></Pair>
+			</Table>
+		<!-- System Region Tools -->
+			<Table key="xreg_system_region">
+				<Pair key="icon_rsc"><String>tex_backup_xreg</String></Pair>
+				<Pair key="title_rsc"><String>msg_system_region_tools</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_tools</String></Pair>
+			</Table>			
+		<!-- Buttons Assignment -->
 			<Table key="button_assignment" include="shared_actions">
 				<Pair key="icon_rsc"><String>tex_button_assignment</String></Pair>
 				<Pair key="title_rsc"><String>msg_button_assignment_title</String></Pair>
 				<Pair key="info_rsc"><String>msg_button_assignment_info</String></Pair>				
 				<Pair key="module_action"><String>button_assignment</String></Pair>				
-			</Table>					
+			</Table>
 		</Attributes>
-		<Items>		
-			<Item class="type:x-xmb/module-action" key="backup_registry"   attr="backup_registry" />				
+		<Items>	
+			<Item class="type:x-xmb/module-action" 	key="xreg_checkdvd_mode" attr="xreg_checkdvd_mode"/>
+			<Item class="type:x-xmb/module-action" 	key="xreg_dvdtvsys" attr="xreg_dvdtvsys"/>
+			<Item class="type:x-xmb/module-action" key="backup_registry"   attr="backup_registry" />							
+			<Query class="type:x-xmb/folder-pixmap" key="xreg_system_region" attr="xreg_system_region" src="#seg_system_xreg_region_items"/>			
 			<Item class="type:x-xmb/module-action" key="button_assignment" attr="button_assignment" />
+		</Items>
+	</View>
+	
+	<View id="seg_system_xreg_region_items">
+		<Attributes>
+			<Table key="shared_actions">
+				<Pair key="icon_rsc"><String>tex_backup_xreg</String></Pair>
+				<Pair key="module_name"><String>xai_plugin</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_default" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_default</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_default</String></Pair>
+				<Pair key="module_action"><String>set_region_default</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_japan" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_japan</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_japan</String></Pair>
+				<Pair key="module_action"><String>set_region_japan</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_usa" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_usa</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_usa</String></Pair>
+				<Pair key="module_action"><String>set_region_usa</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_eur" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_eur</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_eur</String></Pair>
+				<Pair key="module_action"><String>set_region_eur</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_korea" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_korea</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_korea</String></Pair>
+				<Pair key="module_action"><String>set_region_korea</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_uk" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_uk</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_uk</String></Pair>
+				<Pair key="module_action"><String>set_region_uk</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_mexico" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_mexico</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_mexico</String></Pair>
+				<Pair key="module_action"><String>set_region_mexico</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_australia" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_australia</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_australia</String></Pair>
+				<Pair key="module_action"><String>set_region_australia</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_asia" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_asia</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_asia</String></Pair>
+				<Pair key="module_action"><String>set_region_asia</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_taiwan" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_taiwan</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_taiwan</String></Pair>
+				<Pair key="module_action"><String>set_region_taiwan</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_russia" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_russia</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_russia</String></Pair>
+				<Pair key="module_action"><String>set_region_russia</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_china" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_china</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_china</String></Pair>
+				<Pair key="module_action"><String>set_region_china</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_hongkong" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_hongkong</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_hongkong</String></Pair>
+				<Pair key="module_action"><String>set_region_hongkong</String></Pair>
+			</Table>
+			<Table key="xreg_system_region_brazil" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_system_region_brazil</String></Pair>
+				<Pair key="info_rsc"><String>info_system_region_brazil</String></Pair>
+				<Pair key="module_action"><String>set_region_brazil</String></Pair>
+			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_default" attr="xreg_system_region_default"/>			
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_japan" attr="xreg_system_region_japan"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_usa" attr="xreg_system_region_usa"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_eur" attr="xreg_system_region_eur"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_korea" attr="xreg_system_region_korea"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_uk" attr="xreg_system_region_uk"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_mexico" attr="xreg_system_region_mexico"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_australia" attr="xreg_system_region_australia"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_asia" attr="xreg_system_region_asia"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_taiwan" attr="xreg_system_region_taiwan"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_russia" attr="xreg_system_region_russia"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_china" attr="xreg_system_region_china"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_hongkong" attr="xreg_system_region_hongkong"/>
+			<Item class="type:x-xmb/module-action" key="xreg_system_region_brazil" attr="xreg_system_region_brazil"/>
 		</Items>
 	</View>
 	
@@ -969,6 +1221,12 @@
 				<Pair key="info_rsc"><String>msg_hen_xmb_info</String></Pair>				
 				<Pair key="module_action"><String>toggle_audio</String></Pair>				
 			</Table>
+			<Table key="debug_menu" include="shared_actions">
+				<Pair key="icon"><String>/dev_hdd0/hen/dm.png</String></Pair>
+				<Pair key="title"><String>debug_menu</String></Pair>
+				<Pair key="info"><String>дебаг меню</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_debug_set</String></Pair>
+			</Table>			
 			<Table key="hen_cwh" include="shared_actions">
 				<Pair key="icon"><String>/dev_hdd0/hen/clear_web_history.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hen_cwh</String></Pair>
@@ -1005,30 +1263,71 @@
 				<Pair key="info_rsc"><String>msg_hen_xmb_reload</String></Pair>				
 				<Pair key="module_action"><String>toggle_hen_trophy</String></Pair>				
 			</Table>
-			<Table key="hen_gameboot" include="shared_actions">
-				<Pair key="icon"><String>/dev_hdd0/hen/gameboot.png</String></Pair>
-				<Pair key="title_rsc"><String>msg_toggle_gameboot_title</String></Pair>
-				<Pair key="info_rsc"><String>msg_toggle_gameboot_info</String></Pair>				
-				<Pair key="module_action"><String>toggle_hen_gameboot</String></Pair>				
-			</Table>
-			<Table key="uninstall_hen" include="shared_actions">
-				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
-				<Pair key="title_rsc"><String>msg_hfw_uninstall_hen</String></Pair>
-				<Pair key="info_rsc"><String>msg_hfw_uninstall_hen_info</String></Pair>				
-				<Pair key="module_action"><String>uninstall_hen</String></Pair>				
-			</Table>
 		</Attributes>
 		<Items>
 			<Item class="type:x-xmb/module-action" key="toggle_auto_update"	attr="toggle_auto_update"/>
 			<Item class="type:x-xmb/module-action" key="hen_audio_on" attr="hen_audio_on"/>
+			<!-- <Item class="type:x-xmb/module-action" key="debug_menu" attr="debug_menu"/>-->
 			<Item class="type:x-xmb/module-action" key="hen_cwh" attr="hen_cwh"/>
 			<Item class="type:x-xmb/module-action" key="hen_cwa" attr="hen_cwa"/>
 			<Item class="type:x-xmb/module-action" key="hen_cwc" attr="hen_cwc"/>
 			<Item class="type:x-xmb/module-action" key="hen_clog" attr="hen_clog"/>			
 			<Item class="type:x-xmb/module-action" key="hen_keys" attr="hen_keys"/>
-			<Item class="type:x-xmb/module-action" key="hen_trophy" attr="hen_trophy"/>
-			<!--<Item class="type:x-xmb/module-action" key="hen_gameboot" attr="hen_gameboot"/>-->
-			<Item class="type:x-xmb/module-action" key="uninstall_hen"	attr="uninstall_hen"/>
+			<Item class="type:x-xmb/module-action" key="hen_trophy" attr="hen_trophy"/>			
+		</Items>
+	</View>
+	
+	<View id="seg_webman_no_bd_patch_items">
+	<Attributes>
+			<Table key="shared_actions">
+				<Pair key="icon_rsc"><String>tex_warning</String></Pair>
+			</Table>
+			<!-- Enable No-BD Patch -->
+			<Table key="enable_no_bd_patch" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_webman_no_bd_patch_enable</String></Pair>
+				<Pair key="info_rsc"><String>info_webman_no_bd_patch_enable</String></Pair>
+			</Table>
+			<!-- Disable No-BD Patch -->
+			<Table key="disable_no_bd_patch" include="shared_actions">
+				<Pair key="title_rsc"><String>msg_webman_no_bd_patch_disable</String></Pair>
+				<Pair key="info_rsc"><String>info_webman_no_bd_patch_disable</String></Pair>
+			</Table>
+		</Attributes>
+		<Items>
+			<Query class="type:x-xmb/folder-pixmap" key="enable_no_bd_patch" attr="enable_no_bd_patch" src="#enable_no_bd_patch_item"/>
+			<Query class="type:x-xmb/folder-pixmap" key="disable_no_bd_patch" attr="disable_no_bd_patch" src="#disable_no_bd_patch_item"/>
+		</Items>
+	</View>
+
+	<View id="enable_no_bd_patch_item">
+		<Attributes>
+			<Table key="enable_no_bd_patch_warning">
+				<Pair key="icon_rsc"><String>tex_warning</String></Pair>
+				<Pair key="title_rsc"><String>msg_webman_no_bd_patch_enable_item</String></Pair>
+				<Pair key="info_rsc"><String>info_webman_no_bd_patch_enable_item</String></Pair>
+				<Pair key="module_name"><String>idle_plugin</String></Pair>
+				<Pair key="module_action"><String>/write.ps3/dev_hdd0/tmp/wm_config.bin&t=01&pos=0x14C;/write.ps3/dev_hdd0/patches.bat&t=/nobd.ps3?enable&line=1;/mount.ps3/dev_hdd0/patches.bat;/copy.ps3/dev_hdd0/hen/on.png&to=/dev_hdd0/hen/nobd.png;/popup.ps3?msg_completed_count&rco=explore_plugin&icon=tex_check_ws;/xmb.ps3$reload_category network</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/module-action" key="enable_no_bd_patch_warning" attr="enable_no_bd_patch_warning"/>
+		</Items>
+	</View>
+
+	<View id="disable_no_bd_patch_item">
+		<Attributes>	
+			<Table key="disable_no_bd_patch_warning">
+				<Pair key="icon_rsc"><String>tex_warning</String></Pair>
+				<Pair key="title_rsc"><String>msg_webman_no_bd_patch_disable_item</String></Pair>
+				<Pair key="info_rsc"><String>info_confirmation_normal</String></Pair>
+				<Pair key="module_name"><String>idle_plugin</String></Pair>
+				<Pair key="module_action"><String>/write.ps3/dev_hdd0/tmp/wm_config.bin&t=00&pos=0x14C;/write.ps3/dev_hdd0/patches.bat&t=/nobd.ps3?disable&line=1;/mount.ps3/dev_hdd0/patches.bat;/copy.ps3/dev_hdd0/hen/off.png&to=/dev_hdd0/hen/nobd.png;/popup.ps3?msg_completed_count&rco=explore_plugin&icon=tex_check_ws;/xmb.ps3$reload_category network</String></Pair>
+				<Pair key="bar_action"><String>none</String></Pair>
+			</Table>
+		</Attributes>
+		<Items>
+			<Item class="type:x-xmb/module-action" key="disable_no_bd_patch_warning" attr="disable_no_bd_patch_warning"/>
 		</Items>
 	</View>
 	
@@ -1056,6 +1355,11 @@
 				<Pair key="icon"><String>/dev_hdd0/hen/hen_ofw.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_hen_ofw</String></Pair>
 				<Pair key="module_action"><String>toggle_hen_ofw</String></Pair>
+			</Table>
+			<Table key="hen_reload" include="shared_actions">
+				<Pair key="icon"><String>/dev_hdd0/hen/hen_reload.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_hen_reload</String></Pair>
+				<Pair key="module_action"><String>toggle_hen_reload</String></Pair>
 			</Table>
 			<Table key="hen_mag" include="shared_actions">
 				<Pair key="icon"><String>/dev_hdd0/hen/hen_mag.png</String></Pair>
@@ -1108,6 +1412,11 @@
 				<Pair key="title_rsc"><String>msg_hen_grg</String></Pair>
 				<Pair key="module_action"><String>toggle_hen_grg</String></Pair>
 			</Table>
+			<Table key="ofw_int">
+				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
+				<Pair key="title_rsc"><String>msg_ofw_sm</String></Pair>
+				<Pair key="info_rsc"><String>msg_ofw_sm_info</String></Pair>
+ 			</Table>
 			<Table key="old_int">
 				<Pair key="icon"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
 				<Pair key="title_rsc"><String>msg_int_old</String></Pair>
@@ -1118,6 +1427,7 @@
 			<Item class="type:x-xmb/module-action" key="hen_off" attr="hen_off"/>
 			<Item class="type:x-xmb/module-action" key="hen_pm" attr="hen_pm"/>
 			<Item class="type:x-xmb/module-action" key="hen_ofw" attr="hen_ofw"/>
+			<Item class="type:x-xmb/module-action" key="hen_reload" attr="hen_reload"/>
 			<Item class="type:x-xmb/module-action" key="hen_mag" attr="hen_mag"/>
 			<Item class="type:x-xmb/module-action" key="hen_app" attr="hen_app"/>
 			<Item class="type:x-xmb/module-action" key="hen_gall" attr="hen_gall"/>
@@ -1128,6 +1438,7 @@
 			<Item class="type:x-xmb/module-action" key="hen_gpsn" attr="hen_gpsn"/>
 			<Item class="type:x-xmb/module-action" key="hen_ghb" attr="hen_ghb"/>
 			<Item class="type:x-xmb/module-action" key="hen_grg" attr="hen_grg"/>
+			<Query class="type:x-xmb/folder-pixmap"	key="ofw_int" attr="ofw_int" src="#ofw_item"/>
 			<Query class="type:x-xmb/folder-pixmap"	key="old_int" attr="old_int" src="#old_int_item"/>
 		</Items>
 	</View>
@@ -1145,6 +1456,22 @@
 		</Attributes> 
 			<Items>
 			<Item class="type:x-xmb/xmlnpsignup" key="old_int" attr="old_int"/>
+		</Items> 
+	</View>
+	
+	<View id="ofw_item">
+		<Attributes>
+			<Table key="ofw_int">
+				<Pair key="info"><String>net_package_install</String></Pair>
+				<Pair key="pkg_src"><String>https://github.com/nikolaevich23/man/raw/master/XMB/sysmenu-ofw.pkg</String></Pair>
+				<Pair key="pkg_src_qa"><String>https://github.com/nikolaevich23/man/raw/master/XMB/sysmenu-ofw.pkg</String></Pair>
+				<Pair key="content_name"><String>msg_install</String></Pair>
+				<Pair key="content_id"><String>CUSTOM-INSTALLER_00-0000000000000000</String></Pair>
+				<Pair key="prod_pict_path"><String>/dev_flash/vsh/resource/explore/icon/uninstall_hen.png</String></Pair>
+ 			</Table> 
+		</Attributes> 
+			<Items>
+			<Item class="type:x-xmb/xmlnpsignup" key="ofw_int" attr="ofw_int"/>
 		</Items> 
 	</View>
 	

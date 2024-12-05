@@ -34,7 +34,7 @@
 				class="type:x-xmb/folder-pixmap"
 				key="seg_sdps2"
 				src="#seg_sdps2"
-				/>
+				/>				
 			<Query
 				class="type:x-xmb/folder-pixmap"
 				key="seg_fixed_items2"
@@ -42,6 +42,7 @@
 				/>
 		</Items>
 	</View>
+
 	
 	<View id="seg_fixed_items">
 		<Attributes>

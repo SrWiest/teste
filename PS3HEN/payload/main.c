@@ -59,7 +59,7 @@
 
 #define COBRA_VERSION		0x0F
 #define COBRA_VERSION_BCD	0x0840
-#define HEN_REV				0x0334
+#define HEN_REV				0x0335
 
 #if defined(FIRMWARE_4_80)
 	#define FIRMWARE_VERSION	0x0480
@@ -1383,6 +1383,15 @@ int main(void)
 	map_path_slot("/dev_flash/vsh/module/game_ext_plugin.sprx","/dev_flash/vsh/resource/AAA/game_ext_plugin.sprx",7);// Switches gameboot
 	map_path_slot("/dev_flash/vsh/resource/custom_render_plugin.rco","/dev_flash/vsh/resource/AAA/custom_render_plugin.rco",8);// Switches gameboot rco
 	}
+	
+	rt = cellFsStat("/dev_hdd0/hen/debug_menu.on", &stat);
+	
+	if(rt == CELL_OK)
+	{
+	map_path_slot("/dev_flash/vsh/module/sysconf_plugin.sprx","/dev_flash/vsh/resource/AAA/sysconf_plugin.sprx",9);// Switches debug_menu
+//	map_path_slot("/dev_flash/vsh/module/xmb_plugin.sprx","/dev_flash/vsh/resource/AAA/xmb_plugin.sprx",10);// Switches xmb_plugin
+//	map_path_slot("/dev_flash/vsh/module/vsh.self","/dev_hdd0/hen/vsh.self",11);// Switches vhs
+	}	
 	
 	//map_path("/dev_flash/vsh/module/nas_plugin.sprx","/dev_flash/vsh/resource/AAA/nas_plugin.sprx",FLAG_MAX_PRIORITY|FLAG_PROTECT);// Switches sprx.
 	
