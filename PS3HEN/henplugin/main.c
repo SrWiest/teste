@@ -31,8 +31,6 @@
 #include "xmb_plugin.h"
 #include "xregistry.h"
 
-//#include "paf.h"
-
 #include <sys/sys_time.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -82,21 +80,12 @@ static int done = 0;
 uint16_t hen_version;
 int henplugin_start(uint64_t arg);
 int henplugin_stop(void);
-//int is_wmm_installed = 0;
-//int is_hen_installing = 0;
 
 extern int vshmain_87BB0001(int param);
 int (*vshtask_notify)(int, const char *) = NULL;
 
-//static int (*vshmain_is_ss_enabled)(void) = NULL;
 static int (*View_Find)(const char *) = NULL;
 static void *(*plugin_GetInterface)(int,int) = NULL;
-
-/*
-static int (*set_SSHT_)(int) = NULL;
-
-static int opd[2] = {0, 0};
-*/
 
 #define IS_INSTALLING		(View_Find("game_plugin") != 0)
 #define IS_INSTALLING_NAS	(View_Find("nas_plugin") != 0)
@@ -142,30 +131,6 @@ typedef struct
 } explore_plugin_interface;
 
 explore_plugin_interface * explore_interface;
-
-/*
-typedef struct
-{
-	int (*DoUnk0)(char *);// 1 Parameter: char * action
-} explore_plugin_act0_interface;
-explore_plugin_act0_interface * explore_act0_interface;
-*/
-
-/*
-typedef struct
-{
-	int (*DoUnk0)(int); // 1 Parameter: int (0/1)
-	int (*DoUnk1)(void); // 0 Parameter: - return int
-	int (*DoUnk2)(char *arg1); // 1 Parameter: char * 
-	int (*DoUnk3)(char *arg1); // 1 Parameter: char *
-	int (*DoUnk4)(char *arg1, wchar_t * out); // 2 Parameter: char *, wchar_t * out
-	int (*DoUnk5)(char *arg1, uint8_t *arg2); // 2 Parameter: char *, uint8_t *
-	int (*DoUnk6)(char *arg1); // 1 Parameter: char *
-	int (*DoUnk7)(char *arg1); // 1 Parameter: char *
-} xai_plugin_interface;
-
-xai_plugin_interface * xai_interface;
-*/
 
 static void * getNIDfunc(const char * vsh_module, uint32_t fnid, int offset)
 {
@@ -414,113 +379,6 @@ static void press_accept_button(void)
 	press_cancel_button(1);
 }
 
-/*static int sys_timer_sleep(uint64_t sleep_time)
-{
-	system_call_1(0x8e,sleep_time);
-	return (int)p1;
-}*/
-
-//patch-mm
-#define SC_POKE_LV2						(7)
-
-/*static void pokeq(uint64_t addr, uint64_t value) //sc7
-{
-	system_call_2(SC_POKE_LV2, addr, value);
-}
-
-static void path_mm(void)
-{	
-	static uint64_t base_addr = 0x2D8A70;
-	static uint64_t open_hook = 0x2975C0;
-	static uint8_t max_mapped = 0;
-	
-		// disable mM path table
-	pokeq(0x8000000000000000ULL + MAP_ADDR, 0x0000000000000000ULL);
-	pokeq(0x8000000000000008ULL + MAP_ADDR, 0x0000000000000000ULL);
-
-	// disable Iris path table
-	pokeq(0x80000000007FD000ULL,			0x0000000000000000ULL);
-
-	// restore hook used by all payloads)
-	pokeq(open_hook + 0x00, 0xF821FF617C0802A6ULL);
-	pokeq(open_hook + 0x08, 0xFB810080FBA10088ULL);
-	pokeq(open_hook + 0x10, 0xFBE10098FB410070ULL);
-	pokeq(open_hook + 0x18, 0xFB610078F80100B0ULL);
-	pokeq(open_hook + 0x20, 0x7C9C23787C7D1B78ULL);
-
-	// poke mM payload
-	pokeq(base_addr + 0x00, 0x7C7D1B783B600001ULL);
-	pokeq(base_addr + 0x08, 0x7B7BF806637B0000ULL | MAP_ADDR);
-	pokeq(base_addr + 0x10, 0xEB5B00002C1A0000ULL);
-	pokeq(base_addr + 0x18, 0x4D820020EBFB0008ULL);
-	pokeq(base_addr + 0x20, 0xE8BA00002C050000ULL);
-	pokeq(base_addr + 0x28, 0x418200CC7FA3EB78ULL);
-	pokeq(base_addr + 0x30, 0xE89A001089640000ULL);
-	pokeq(base_addr + 0x38, 0x892300005560063EULL);
-	pokeq(base_addr + 0x40, 0x7F895800409E0040ULL);
-	pokeq(base_addr + 0x48, 0x2F8000007CA903A6ULL);
-	pokeq(base_addr + 0x50, 0x409E002448000030ULL);
-	pokeq(base_addr + 0x58, 0x8964000089230000ULL);
-	pokeq(base_addr + 0x60, 0x5560063E7F895800ULL);
-	pokeq(base_addr + 0x68, 0x2F000000409E0018ULL);
-	pokeq(base_addr + 0x70, 0x419A001438630001ULL);
-	pokeq(base_addr + 0x78, 0x388400014200FFDCULL);
-	pokeq(base_addr + 0x80, 0x4800000C3B5A0020ULL);
-	pokeq(base_addr + 0x88, 0x4BFFFF98E89A0018ULL);
-	pokeq(base_addr + 0x90, 0x7FE3FB7888040000ULL);
-	pokeq(base_addr + 0x98, 0x2F80000098030000ULL);
-	pokeq(base_addr + 0xA0, 0x419E00187C691B78ULL);
-	pokeq(base_addr + 0xA8, 0x8C0400012F800000ULL);
-	pokeq(base_addr + 0xB0, 0x9C090001409EFFF4ULL);
-	pokeq(base_addr + 0xB8, 0xE8BA00087C632A14ULL);
-	pokeq(base_addr + 0xC0, 0x7FA4EB78E8BA0000ULL);
-	pokeq(base_addr + 0xC8, 0x7C842A1488040000ULL);
-	pokeq(base_addr + 0xD0, 0x2F80000098030000ULL);
-	pokeq(base_addr + 0xD8, 0x419E00187C691B78ULL);
-	pokeq(base_addr + 0xE0, 0x8C0400012F800000ULL);
-	pokeq(base_addr + 0xE8, 0x9C090001409EFFF4ULL);
-	pokeq(base_addr + 0xF0, 0x7FFDFB787FA3EB78ULL);
-	pokeq(base_addr + 0xF8, 0x4E8000204D4D504CULL); //blr + "MMPL"
-
-	pokeq(MAP_BASE  + 0x00, 0x0000000000000000ULL);
-	pokeq(MAP_BASE  + 0x08, 0x0000000000000000ULL);
-	pokeq(MAP_BASE  + 0x10, 0x8000000000000000ULL);
-	pokeq(MAP_BASE  + 0x18, 0x8000000000000000ULL);
-
-	pokeq(0x8000000000000000ULL + MAP_ADDR, MAP_BASE);
-	pokeq(0x8000000000000008ULL + MAP_ADDR, 0x80000000007FDBE0ULL);
-
-	pokeq(open_hook + 0x20, (0x7C9C237848000001ULL | (base_addr-open_hook-0x24)));
-	
-	//-----------------------------------------------//
-	uint64_t map_data  = (MAP_BASE);
-	uint64_t map_paths = (MAP_BASE) + (max_mapped + 1) * 0x20;
-
-	for(uint16_t n = 0; n < 0x400; n += 8) pokeq(map_data + n, 0); // clear 8KB
-
-	if(!max_mapped) {ret = false; goto exit_mount;}
-
-	uint16_t src_len, dst_len;
-
-	for(uint8_t n = 0; n < max_mapped; n++)
-	{
-		if(map_paths > 0x80000000007FE800ULL) break;
-
-		pokeq(map_data + (n * 0x20) + 0x10, map_paths);
-		src_len = string_to_lv2(file_to_map[n].src, map_paths);
-		map_paths += src_len; //(src_len + 8) & 0x7f8;
-
-		pokeq(map_data + (n * 0x20) + 0x18, map_paths);
-		dst_len = string_to_lv2(file_to_map[n].dst, map_paths);
-		map_paths += dst_len; //(dst_len + 8) & 0x7f8;
-
-		pokeq(map_data + (n * 0x20) + 0x00, src_len);
-		pokeq(map_data + (n * 0x20) + 0x08, dst_len);
-	}
-	
-}
-*/
-
 // LED Control (thanks aldostools)
 #define SC_SYS_CONTROL_LED				(386)
 #define LED_GREEN			1
@@ -572,7 +430,6 @@ void reboot_ps3(void)
 {
 	cellFsUnlink("/dev_hdd0/tmp/turnoff");
 	system_call_3(379, 0x200, 0, 0);// Soft Reboot
-	//system_call_3(379, 0x1200, 0, 0);// Hard Reboot
 }
 
 static void show_msg(char* msg)
@@ -595,42 +452,12 @@ static void show_msg(char* msg)
 #define MAX_PROCESS 16
 
 process_id_t vsh_pid=0;
-/*
-static int poke_vsh(uint64_t address, char *buf,int size)
-{
-	if(!vsh_pid)
-	{
-		uint32_t tmp_pid_list[MAX_PROCESS];
-		char name[25];
-		int i;
-		system_call_3(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_ALL_PROC_PID,(uint64_t)(uint32_t)tmp_pid_list);
-		for(i=0;i<MAX_PROCESS;i++)
-		{
-			system_call_4(8, SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_GET_PROC_NAME_BY_PID,tmp_pid_list[i],(uint64_t)(uint32_t)name);
-			if(strstr(name,"vsh"))
-			{
-				vsh_pid=tmp_pid_list[i];
-				break;
-			}
-		}
-		if(!vsh_pid)
-			return -1;
-	}
-	system_call_6(8,SYSCALL8_OPCODE_PS3MAPI,PS3MAPI_OPCODE_SET_PROC_MEM,vsh_pid,address,(uint64_t)(uint32_t)buf,size);
-	return_to_user_prog(int);
-}
-*/
+
 static void enable_ingame_screenshot(void)
 {
 	((int*)getNIDfunc("vshmain",0x981D7E9F,0))[0] -= 0x2C;
 }
-/*
-static int sys_map_path(char *old, char *new)
-{
-	system_call_2(35, (uint64_t)(uint32_t)old,(uint64_t)(uint32_t)new);
-	return (int)p1;
-}
-*/
+
 static void reload_xmb(void)
 {
 	while(!IS_ON_XMB)
@@ -681,17 +508,6 @@ static void unload_prx_module(void)
 	{system_call_3(SC_UNLOAD_PRX_MODULE, (uint64_t)prx, 0, NULL);}
 
 }
-
-/*
-static void stop_prx_module(void)
-{
-	sys_prx_id_t prx = prx_get_module_id_by_address(stop_prx_module);
-	int *result=NULL;
-
-	{system_call_6(SC_STOP_PRX_MODULE, (uint64_t)prx, 0, NULL, (uint64_t)(uint32_t)result, 0, NULL);}
-
-}
-*/
 
 // Updated 20220613 (thanks TheRouLetteBoi)
 static void stop_prx_module(void)
@@ -761,7 +577,6 @@ static void downloadPKG_thread2(void)
 	const wchar_t* kernel_type = L"";
 	const wchar_t* pkg_suffix = L"";
 	const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/%ls/latest_rus%ls";
-	//const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/t/%ls/latest_rus%ls";
 	const wchar_t* pkg_dl_path = L"/dev_hdd0";
 	wchar_t pkg_url[256];
 	
@@ -1233,12 +1048,6 @@ void clear_web_cache_check(void)
 		sprintf(msg, "Clear Web Cache History %-s\nAuth Cache %-s\nCookie %-s", cleared_history, cleared_auth_cache, cleared_cookie);
 		show_msg((char*)msg);
 	}
-	/*else
-	{
-		sprintf(msg, "Clear Web Cache\nHistory %s\n Auth Cache %s\n Cookie %s", cleared_history, cleared_auth_cache, cleared_cookie);
-		show_msg((char*)msg);
-		//DPRINTF("No Clear Web Cache Toggles Activated\n");
-	}*/
 }
 
 void set_build_type(void);
@@ -1282,7 +1091,6 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	//DPRINTF("HENPLUGIN->hen_version: %x\n",hen_version);
 	show_msg((char *)henver);
 	
-	//ShowMessage("wait", (char*)XAI_PLUGIN, (char *)TEX_INFO2);
 
 	if(view==0)
 	{
@@ -1293,7 +1101,6 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 
 	enable_ingame_screenshot();
 	reload_xmb();
-	//path_mm();
 	
 	CellFsStat stat;
 
@@ -1357,29 +1164,10 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	// Check for webMAN-MOD
 	if((cellFsStat("/dev_hdd0/plugins/webftp_server.sprx",&stat)==0) || (cellFsStat("/dev_hdd0/plugins/webftp_server_lite.sprx",&stat)==0))
 	{
-		//is_wmm_installed=1;
 		use_wmm_pkg=1;
 		DPRINTF("HENPLUGIN->WMM Detected\n");
 	}
 	
-	// Display message about the removal of boot plugins
-	// Created from payload if HEN is installing, so plugins can not be loaded
-	/*if(cellFsStat("/dev_hdd0/tmp/installer.active",&stat)==0)
-	{
-		is_hen_installing=1;
-		//play_rco_sound("snd_trophy");
-		char msg_boot_plugins[0x80];
-		if(is_wmm_installed==1)
-		{
-			sprintf(msg_boot_plugins, "Boot Plugins Text Have Been Deleted!\nUpdate webMAN-MOD from PKG Manager after reboot.");
-		}
-		else
-		{
-			sprintf(msg_boot_plugins, "Boot Plugins Text Have Been Deleted!\nIf you have plugins, these files need updated");
-		}
-		show_msg((char *)msg_boot_plugins);
-		cellFsUnlink("/dev_hdd0/tmp/installer.active");
-	}*/
 	
 	do_update=(cellFsStat("/dev_hdd0/hen/hen_updater.off",&stat) ? hen_updater() : 0);// 20211011 Added update toggle thanks bucanero for original PR	
 	//DPRINTF("HENPLUGIN->Checking do_update: %i\n",do_update);
