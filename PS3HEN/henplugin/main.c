@@ -651,13 +651,11 @@ static void reload_xmb(void)
 	{
 	 explore_interface->ExecXMBcommand("close_all_list", 0, 0);
 	 explore_interface->ExecXMBcommand("focus_category user", 0, 0);
-	 sys_timer_usleep(130000);
+	 sys_timer_usleep(160000);
 	 press_accept_button();
-	 sys_timer_usleep(2000);
 	 press_accept_button();
-	 sys_timer_usleep(2000);
 	 explore_interface->ExecXMBcommand("exec_push", 0, 0);
-	} 
+	}
 }
 
 static inline void _sys_ppu_thread_exit(uint64_t val)
