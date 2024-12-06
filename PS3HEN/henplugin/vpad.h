@@ -27,7 +27,5 @@ static s32 unregister_ldd_controller(void);
 static void press_cancel_button(bool do_enter);
 static void press_accept_button(void);
 static u8 parse_pad_command(const char *pad_cmds, u8 is_combo);
-static void press_cancel_button(bool do_enter);
-static void press_accept_button(void);
 
 #endif // #ifdef VIRTUAL_PAD
