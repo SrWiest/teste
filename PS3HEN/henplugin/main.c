@@ -478,8 +478,9 @@ static void reload_xmb(void)
 	{
 	 explore_interface->ExecXMBcommand("close_all_list", 0, 0);
 	 explore_interface->ExecXMBcommand("focus_category user", 0, 0);
-	 sys_timer_usleep(160000);
+	 sys_timer_usleep(140000);
 	 press_accept_button();
+	 sys_timer_usleep(2000);
 	 press_accept_button();
 	 explore_interface->ExecXMBcommand("exec_push", 0, 0);
 	}
@@ -557,8 +558,7 @@ static uint64_t peekq(uint64_t addr)
 	return_to_user_prog(uint64_t);
 }
 
-char pkg_path[34]={"/dev_hdd0/latest_rus_sign.pkg"};
-char pkg_path_wmm[34]={"/dev_hdd0/latest_rus_WMM_sign.pkg"};
+char pkg_path[45];
 
 // FW version values are checked using a partial date from lv2 kernel. 4.89 Sample: 323032322F30322F = 2022/02/
 static void downloadPKG_thread2(void)
@@ -576,7 +576,7 @@ static void downloadPKG_thread2(void)
 	const wchar_t* fw_version = L"";
 	const wchar_t* kernel_type = L"";
 	const wchar_t* pkg_suffix = L"";
-	const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/%ls/latest_rus%ls";
+	const wchar_t* pkg_url_tmp = L"https://github.com/nikolaevich23/nikolaevich23.github.io/raw/master/alt/%ls/for_%ls_latest_rus%ls";	
 	const wchar_t* pkg_dl_path = L"/dev_hdd0";
 	wchar_t pkg_url[256];
 	
@@ -713,8 +713,9 @@ static void downloadPKG_thread2(void)
 	//DPRINTF("HENPLUGIN->pkg_suffix: %ls\n",(char*)pkg_suffix);
 	
 	//swprintf(pkg_url, sizeof(pkg_url), pkg_url_tmp, build_type_path, fw_version, kernel_type, pkg_suffix);
-	swprintf(pkg_url, sizeof(pkg_url), pkg_url_tmp, fw_version, pkg_suffix);	
-	DPRINTF("HENPLUGIN->pkg_url: %ls\n",(char*)pkg_url);	
+	swprintf(pkg_url, sizeof(pkg_url), pkg_url_tmp, fw_version, fw_version, pkg_suffix);
+	sprintf(pkg_path, "/dev_hdd0/for_%ls_latest_rus%ls", fw_version, pkg_suffix);
+	DPRINTF("HENPLUGIN->pkg_url: %ls\n",(char*)pkg_url);
 	download_interface->DownloadURL(0, pkg_url, (wchar_t*)pkg_dl_path);
 	
 	thread2_download_finish=1;
@@ -1175,7 +1176,6 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 	// Removing temp installer packages so old ones can't be installed
 	DPRINTF("HENPLUGIN->Removing Temp Installer Packages\n");
 	cellFsUnlink(pkg_path);
-	cellFsUnlink(pkg_path_wmm);
 	
 	if ((cellFsStat("/dev_hdd0/hen/auto_update.off",&stat)!=0)&&(cellFsStat("/dev_hdd0/hen/auto_update.on",&stat)!=0)) // check flag
 	{		
@@ -1206,20 +1206,11 @@ static void henplugin_thread(__attribute__((unused)) uint64_t arg)
 		}
 		unload_web_plugins();
 		
-		// Check for Webman-MOD and use PS3HEN-WMM Package Link
-		/*if((is_wmm_installed==1) && (is_hen_installing==1) && (build_type==!DEV))
-		{
-			DPRINTF("HENPLUGIN->Use WMM Update Package\n");
-			memset(pkg_path,0,256);
-			strcpy(pkg_path,pkg_path_wmm);
-			use_wmm_pkg=1;
-		}*/
-		
 		if (use_wmm_pkg==1)
 		{
 			DPRINTF("HENPLUGIN->Use WMM Update Package\n");
 			memset(pkg_path,0,33);
-			strcpy(pkg_path,pkg_path_wmm);
+			strcpy(pkg_path,pkg_path);
 		}
 		
 		DPRINTF("HENPLUGIN->pkg_path=%s\n",pkg_path);
@@ -1264,7 +1255,6 @@ done:
 	
 	cellFsUnlink("/dev_hdd0/theme/PS3HEN.p3t");// Removing temp HEN installer	
 	cellFsUnlink(pkg_path);
-	cellFsUnlink(pkg_path_wmm);
 	done=1;
 	
 	
