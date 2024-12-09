@@ -262,7 +262,7 @@ static u8 parse_pad_command(const char *pad_cmds, u8 is_combo)
 
 		if(sep && BETWEEN('0', *param, '9'))
 		{
-			sys_timer_usleep(1000);
+			sys_timer_usleep(5000);
 			param = sep + 1;
 			goto parse_buttons;
 		}
@@ -478,10 +478,10 @@ static void reload_xmb(void)
 	{
 	 explore_interface->ExecXMBcommand("close_all_list", 0, 0);
 	 explore_interface->ExecXMBcommand("focus_category user", 0, 0);
-	 sys_timer_usleep(140000);
+//	 sys_timer_usleep(140000);
 	 press_accept_button();
-	 sys_timer_usleep(2000);
-	 press_accept_button();
+//	 sys_timer_usleep(2000);
+//	 press_accept_button();
 	 explore_interface->ExecXMBcommand("exec_push", 0, 0);
 	}
 }
@@ -799,6 +799,7 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/gameboot.off","/dev_hdd0/hen/gameboot.on");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/trophy.off","/dev_hdd0/hen/trophy.on");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_apphome.off","/dev_hdd0/hen/hen_apphome.on");
+	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_reload.off", "/dev_hdd0/hen/hen_reload.on");	
 	
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/auto_update.png", "/dev_hdd0/hen/auto_update.on");
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/audio.png", "/dev_hdd0/hen/hen_audio.on");
@@ -806,7 +807,7 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/hotkeys.png", "/dev_hdd0/hen/hotkeys.on");
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/gameboot.png", "/dev_hdd0/hen/gameboot.on");
 	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/trophy.png", "/dev_hdd0/hen/trophy.on");
-	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/nobd.png", "/dev_hdd0/hen/nobd.png");
+	filecopy("/dev_hdd0/hen/off.png","/dev_hdd0/hen/hen_reload.png", "/dev_hdd0/hen/hen_reload.on");
 	
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_gall.off", "/dev_hdd0/hen/hen_gall.on");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_gps3.off", "/dev_hdd0/hen/hen_gps3.on");
@@ -832,7 +833,6 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_ofw.on", "/dev_hdd0/hen/hen_ofw.off");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_pm.on", "/dev_hdd0/hen/hen_pm.off");
 	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_xmb.on", "/dev_hdd0/hen/hen_xmb.off");
-	filecopy("/dev_hdd0/hen/off.off","/dev_hdd0/hen/hen_reload.on", "/dev_hdd0/hen/hen_reload.off");	
 
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/clear_web_auth_cache.png", "/dev_hdd0/hen/clear_web_auth_cache.off");
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/clear_web_cookie.png", "/dev_hdd0/hen/clear_web_cookie.off");
@@ -840,8 +840,7 @@ static void copyflag_thread(void)
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_ofw.png", "/dev_hdd0/hen/hen_ofw.off");
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_pm.png", "/dev_hdd0/hen/hen_pm.off");
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_xmb.png", "/dev_hdd0/hen/hen_xmb.off");
-	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_mag.png", "/dev_hdd0/hen/hen_mag.off");
-	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_reload.png", "/dev_hdd0/hen/hen_reload.off");
+	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_mag.png", "/dev_hdd0/hen/hen_mag.off");	
 	filecopy("/dev_hdd0/hen/on.png","/dev_hdd0/hen/hen_apphome.png", "/dev_hdd0/hen/hen_apphome.off");
 
 	filecopy("/dev_flash/hen/xml/ofw_m.xml","/dev_hdd0/hen/ofw_m.xml", "/dev_hdd0/hen/hen_ofw.off");
